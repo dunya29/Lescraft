@@ -1,0 +1,28 @@
+.breadcrumbs {
+    margin-bottom: 24px;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        li {
+            font-size: 16px;
+            color: var(--gray-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            &:before {
+                content: "/";
+                margin: 0 5px;
+            }
+            &:first-child:before {
+                display: none;
+            }
+            a {          
+                color: var(--gray-color);
+                &:hover {
+                    color: var(--green-color);
+                }
+            }
+        }
+    }
+}

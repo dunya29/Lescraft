@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Результаты поиска"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Результаты поиска"})
+                    </div>
+                </div>
+                <!--search-p-->
+                <section class="section catalog search-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1 class="text-l">Результаты поиска</h1>
+                            <p><b>Результаты по запросу «Евровагонка»</b></p>
+                        </div>
+                        <div class="catalog-p__top">
+                            <div class="catalog-p__top-right">
+                                <div class="dropdown radio-select">
+                                    <div class="dropdown__header">
+                                        <span>По умолчанию</span>
+                                        <svg aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                    </div>
+                                    <div class="dropdown__body">
+                                        <div class="custom-scroll">
+                                            <label>
+                                                <input type="radio" name="f-sort" checked>
+                                                <span>По умолчанию</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="f-sort">
+                                                <span>По возрастанию цены</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="f-sort">
+                                                <span>По убыванию цены</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="f-sort">
+                                                <span>По названию (А-Я)</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="f-sort">
+                                                <span>По названию (Я-А)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog__items">
+                            @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
+                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
+                            @@include("_card.html", {"hasPhoto": true, "nmb": "3", "inStock": false})
+                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
+                            @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
+                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
+                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
+                        </div>
+                        @@include("_pagination.html")
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

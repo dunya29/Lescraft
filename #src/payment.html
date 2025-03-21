@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Оплата"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Оплата"})                    
+                    </div>
+                </div>
+                <!--payment-p-->
+                <section class="section payment-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Оплата</h1>
+                        </div>
+                        <!--payment-p__sec-->
+                        <section class="mb-60 payment-p__sec">
+                            <div class="sec-top">
+                                <h3>Способы оплаты</h3>
+                            </div>
+                            <div class="payment-p__advants">
+                                <!--item-advant-->
+                                <div class="item-advant">
+                                    <div class="item-advant__icon">
+                                        <img src="img/svg/cash.svg" alt>
+                                    </div>
+                                    <h5>Наличными в подразделении компании</h5>
+                                </div>
+                                <!--item-advant-->
+                                <div class="item-advant">
+                                    <div class="item-advant__icon">
+                                        <img src="img/svg/card.svg" alt>
+                                    </div>
+                                    <h5>Картой в подразделении компании</h5>
+                                </div>
+                                <!--item-advant-->
+                                <div class="item-advant">
+                                    <div class="item-advant__icon">
+                                        <img src="img/svg/requisite.svg" alt>
+                                    </div>
+                                    <div class="item-tippy">
+                                        <h5>По банковским реквизитам</h5>
+                                        <div class="tippy">
+                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                            <p>Менеджер отправляет счёт с QR-кодом клиенту на почту или мессенджер для оплаты через СберБанк.онлайн по реквизитам компании</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--item-advant-->
+                                <div class="item-advant">
+                                    <div class="item-advant__icon">
+                                        <img src="img/svg/qr.svg" alt>
+                                    </div>
+                                    <div class="item-tippy">
+                                        <h5>Дистанционно через QR-код</h5>
+                                        <div class="tippy">
+                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                            <p>Менеджер отправляет счёт с QR-кодом клиенту на почту или мессенджер для оплаты через СберБанк.онлайн по реквизитам компании</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!--payment-p__sec-->
+                        <section class="mb-60 swiper6 payment-p__sec">
+                            <div class="sec-top">
+                                <h3>Платёжные системы</h3>
+                            </div>
+                            <div class="swiper payment-p__swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <img src="img/logo/visa.svg" alt="Visa">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <img src="img/logo/mir.svg"  alt="МИР">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <img src="img/logo/mastercard.svg" alt="Mastercard">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <img src="img/logo/paypal.svg" alt="PayPal">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <img src="img/logo/apple-pay.svg" alt="Apple Pay">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <img src="img/logo/alfa.svg" alt="Альфа-Банк">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <img src="img/logo/apple-pay.svg" alt="Apple Pay">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-nav">
+                                    <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                                </div>
+                            </div>
+                        </section>
+                        <!--payment-p__sec-->
+                        <section class="payment-p__sec">
+                            <div class="sec-top">
+                                <h3>Реквизиты компании</h3>
+                            </div>
+                            <div class="payment-p__requisites">
+                                <div class="item-contact">
+                                    <span>Компания</span>
+                                    <span>ООО «Лескрафт»</span>
+                                </div>
+                                <div class="item-contact">
+                                    <span>Адрес</span>
+                                    <span>350049 край Краснодарский, город Краснодар, улица имени Бабушкина, дом 189, оф 404</span>
+                                </div>
+                                <div class="item-contact">
+                                    <span>ОГРН</span>
+                                    <span>1132308017698</span>
+                                </div>
+                                <div class="item-contact">
+                                    <span>Электронная почта</span>
+                                    <span>info@leskraft.ru, office@leskraft.ru</span>
+                                </div>
+                                <div class="item-contact">
+                                    <span>Тел./факс</span>
+                                    <span>+7&nbsp;861&nbsp;252-23-63, +7&nbsp;861&nbsp;252-44-96, +7&nbsp;861&nbsp;252-44-75</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

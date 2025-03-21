@@ -1,0 +1,78 @@
+<!--item-cart-->
+@@if(inStock === true){
+<div class="item-cart item-cart--inStock js-prodBlock" data-id="173534">  
+}
+@@if(inStock === false){
+<div class="item-cart item-cart--outOfStock js-prodBlock" data-id="173534">  
+}  
+    <div class="item-cart__left">
+        <label class="item-checkbox">
+            @@if(inStock === true){
+                <input type="checkbox" checked class=" item-cart__check">  
+            }
+            @@if(inStock === false){
+                <input type="checkbox" class=" item-cart__check">  
+            }
+            <span></span>
+        </label>
+        <div class="item-cart__preview">
+            <div class="card-lbls">
+                <span class="promo">Акция</span>
+                <span class="recommended">Лескрафт рекомендует</span>
+            </div>
+            <a href="#" class="media-contain">
+                <img src="img/content/product-1-sm.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм">
+            </a>
+        </div>
+    </div>
+    <div class="item-cart__main">
+        @@if(inStock === true){
+        <div class="card-status in-stock">Доступно сегодня</div>
+        }
+        @@if(inStock === false){
+        <div class="card-status out-of-stock">Ожидает поступления</div>
+        }
+        <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+        <div class="item-cart__info">1 уп = 10 шт/192 м²</div>
+        <div class="item-cart__art">Артикул: 171916</div>
+    </div>
+    @@if(inStock === true) {
+    <div class="item-cart__count">
+        <div class="quantity" data-stock="45">
+            <button class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
+            <input class="quantity__count" value="1" aria-label="Количество">
+            <button class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
+        </div>
+        <div class="item-tippy">
+            Цена за упаковку:
+            <div class="tippy">
+                <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                <p>Специальная цена для вас</p>
+            </div>
+        </div>
+        <div class="product-price item-cart__price">
+            <span class="rub prdocut-price__current">6 000</span>
+            <del class="rub product-price__old">7 600</del>
+        </div>
+    </div>
+    <div class="item-cart__total">
+        <div class="product-price">
+            <span class="rub h4 product-price__current">18 000</span>
+            <del class="rub product-price__old">22 200</del>
+        </div>
+    </div>
+    }
+    <div class="item-cart__action">
+        <button class="card-del" aria-label="Удалить из корзины">
+            <svg><use xlink:href="img/svg/sprite.svg#bin"></use></svg>
+        </button>
+        @@if(isFav === true) {
+        <button class="card-fav js-fav active" aria-label="Удалить из избранного">
+            }
+            @@if(isFav === false) {
+            <button class="card-fav js-fav" aria-label="Добавить в избранное">
+                }
+                <svg><use xlink:href="img/svg/sprite.svg#card-fav"></use></svg>
+            </button>
+        </div>
+    </div>

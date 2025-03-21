@@ -1,0 +1,49 @@
+<!--callback-form-->
+<section class="section callback-form">
+    <div class="container">
+        <div class="callback-form__inner">
+            <div class="callback-form__info">
+                <h2>Заполните форму, и&nbsp;мы перезвоним вам.</h2>
+                <div class="callback-form__contacts">
+                    <div class="page-contact phone">
+                        <a href="tel:88001004407">8 800 100-44-07</a>
+                        <span>Бесплатно по России (8:00–20:00)</span>
+                    </div>
+                    <div class="page-contact mail">
+                        <a href="mailto:info@leskraft.ru">info@leskraft.ru</a>
+                    </div>
+                </div>
+            </div>
+            <form class="form disabled-form">
+                <div class="form__grid">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" id="name" placeholder=" " class="required">
+                            <label for="name" class="item-form__placeholder">Ваше имя</label>
+                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" id="phone" placeholder=" " class="required">
+                            <label for="phone" class="item-form__placeholder">Телефон</label>
+                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn">
+                        Отправить
+                        <span class="link-icon"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

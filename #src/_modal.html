@@ -1,0 +1,134 @@
+<div class="overlay"></div>
+<div class="tippy-content"></div>
+<!--modal-->
+<modal class="modal">
+    <div class="custom-scroll modal__overlay">
+        <div class="modal__content">
+            <button type="button" class="btn btn-close"></button>
+            <div class="custom-scroll">
+                <div class="modal__top"></div>
+            </div>
+        </div>
+    </div>
+</modal>
+<!--city-modal-->
+<div class="custom-scroll modal city-modal" id="city-modal">
+    <div class="modal__content">
+        <button type="button" class="btn btn-close"></button>
+        <div class="custom-scroll">
+            <div class="modal__top">
+                <h3>Выберите ближайший к вам город</h3>
+                <p>Мы не ограничены списком представленных городов. Доставка осуществляется по всему Югу России</p>
+            </div>
+            <ul class="custom-scroll city-modal__list">
+                <li class="link-btn"><a href="#">Краснодар</a></li>
+                <li class="link-btn"><a href="#">Новороссийск</a></li>
+                <li class="link-btn"><a href="#">Новороссийск</a></li>
+                <li class="link-btn"><a href="#">Адлер</a></li>
+                <li class="link-btn"><a href="#">Ростов-на-Дону</a></li>
+                <li class="link-btn"><a href="#">Ростов-на-Дону</a></li>
+                <li class="link-btn"><a href="#">Армавир</a></li>
+                <li class="link-btn"><a href="#">Симферополь</a></li>
+                <li class="link-btn"><a href="#">Симферополь</a></li>
+                <li class="link-btn"><a href="#">Ростов-на-Дону</a></li>
+                <li class="link-btn"><a href="#">Сочи</a></li>
+                <li class="link-btn"><a href="#">Сочи</a></li>
+                <li class="link-btn"><a href="#">Пятигорск</a></li>
+                <li class="link-btn"><a href="#">Симферополь</a></li>
+                <li class="link-btn"><a href="#">Симферополь</a></li>
+                <li class="link-btn"><a href="#">Сочи</a></li>
+                <li class="link-btn"><a href="#">Новороссийск</a></li>
+                <li class="link-btn"><a href="#">Новороссийск</a></li>
+                <li class="link-btn"><a href="#">Симферополь</a></li>
+                <li class="link-btn"><a href="#">Симферополь</a></li>
+                <li class="link-btn"><a href="#">Симферополь</a></li>
+                <li class="link-btn"><a href="#">Краснодар</a></li>
+                <li class="link-btn"><a href="#">Новороссийск</a></li>
+                <li class="link-btn"><a href="#">Новороссийск</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--review-modal-->
+<div class="custom-scroll modal review-modal" id="review-modal">
+    <div class="modal__content">
+        <button type="button" class="btn btn-close"></button>
+        <div class="custom-scroll">
+            <div class="modal__top">
+                <h3>Оставить отзыв</h3>
+            </div>
+            <form class="form" onsubmit="event.preventDefault();formSuccess(this)">
+                <div class="form__lbl">Оцените</div>
+                <div class="form__items">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" aria-label="Оценить в 5 звезд">
+                        <label for="star5"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                        <input type="radio" id="star4" name="rate" value="4" aria-label="Оценить в 4 звезды">
+                        <label for="star4"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                        <input type="radio" id="star3" name="rate" value="3" aria-label="Оценить в 3 звезды">
+                        <label for="star3"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                        <input type="radio" id="star2" name="rate" value="2" aria-label="Оценить в 2 звезды">
+                        <label for="star2"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                        <input type="radio" id="star1" name="rate" value="1" aria-label="Оценить в 1 звезду">
+                        <label for="star1"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                    </div>
+                </div>
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" id="name" name="name" placeholder=" " class="required">
+                            <label for="name" class="item-form__placeholder">Имя</label>
+                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" id="surname" placeholder=" " name="surname">
+                            <label for="surname" class="item-form__placeholder">Фамилия</label>
+                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" id="email" placeholder=" " name="email" class="required">
+                            <label for="email" class="item-form__placeholder">Email</label>
+                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__items">
+                    <div class="form__lbl">Загрузите фото</div>
+                    <div class="item-form file-form">
+                        <div class="file-form__info">
+                            <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                        </div>
+                        <label>
+                            <input type="file" accept=".png,.jpg,.jpeg,.pdf">
+                            <span>Перетащите, или <span>выберите файл</span></span>
+                        </label>
+                        <div class="file-form__items"></div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__items">
+                    <div class="item-form">
+                        <textarea placeholder="Текст вашего отзыва"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn">
+                        Отправить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

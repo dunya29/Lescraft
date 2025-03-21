@@ -1,0 +1,25 @@
+.notfound-p__inner,
+.search-noresult {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.notfound-p,
+.search-noresult {
+    &__content {
+        h3,
+        .h3 {
+            margin-bottom: 16px;
+        }
+        .main-btn {
+            margin-top: 32px;
+        }
+    }
+}
+.search-noresult {
+    &__img {
+        margin-bottom: 8px;
+    }
+}
+

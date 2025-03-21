@@ -1,0 +1,205 @@
+<script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"></script>
+<script>
+    let showrooms = [
+        {
+            "id": 1,
+            "city_id": 1,
+            "coords": [45.090527, 38.995741],
+            "title": 'Краснодар, Тополиная, 27/1',
+            "address": 'ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)',
+            "phone": ['+7 861 252-23-63'],
+            "store-hours": "Пн-вс: 8:30–17:30"
+        },
+        {
+            "id": 2,
+            "city_id": 1,
+            "coords": [45.026775, 38.970516],
+            "title": 'Краснодар, Красная, 45',
+            "address": 'ул. Красная, 27/1 (база ЮГТЕХКОМПЛЕКТ)',
+            "phone": ['+7 861 252-23-63'],
+            "store-hours": "Пн-вс: 8:30–17:30"
+        },
+        {
+            "id": 3,
+            "city_id": 2,
+            "coords": [43.585472, 39.723098],
+            "title": 'Сочи, Тополиная, 27/1',
+            "address": 'ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)',
+            "phone": ['+7 861 252-23-63'],
+            "store-hours": "Пн-вс: 8:30–17:30"
+        },
+        {
+            "id": 4,
+            "city_id": 3,
+            "coords": [44.997655, 41.129644],
+            "title": 'Армавир, Тополиная, 27/1',
+            "address": 'ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)',
+            "phone": ['+7 861 252-23-63'],
+            "store-hours": "Пн-вс: 8:30–17:30"
+        },
+        {
+            "id": 5,
+            "city_id": 4,
+            "coords": [44.616020, 33.524471],
+            "title": 'Севастополь, Тополиная, 27/1',
+            "address": 'ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)',
+            "phone": ['+7 861 252-23-63'],
+            "store-hours": "Пн-вс: 8:30–17:30"
+        },
+        {
+            "id": 6,
+            "city_id": 5,
+            "coords": [47.222109, 39.718813],
+            "title": 'Ростов-на-дону, Тополиная, 27/1',
+            "address": 'ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)',
+            "phone": ['+7 861 252-23-63'],
+            "store-hours": "Пн-вс: 8:30–17:30"
+        }
+    ]
+</script>
+<script>
+    const showroomsList = document.querySelector(".showrooms__list")
+    const showroomsCities = document.querySelectorAll("[data-showroom-city-id]")
+    const showroomsBranchs = document.querySelectorAll("[data-showroom-id]")
+    let center = [45.035470, 38.975313];  
+    let showroomsMap
+    let geoObjects = [] 
+    let activePlacemark 
+    let showroomTimeout
+    function setmapDefaults(map) {
+        map.controls.remove('geolocationControl'); // удаляем геолокацию
+        map.controls.remove('searchControl'); // удаляем поиск
+        map.controls.remove('trafficControl'); // удаляем контроль трафика
+        map.controls.remove('typeSelector'); // удаляем тип
+        map.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+        map.controls.remove('rulerControl'); // удаляем контрол правил
+        map.controls.remove('zoomControl');
+        map.margin.setDefaultMargin(100);
+    }   
+    function placemarkOnClick(cityId, showroomId) {
+        clearTimeout(showroomTimeout)
+        const cityItem = document.querySelector(`[data-showroom-city-id='${cityId}']`)
+        const showroomItem = document.querySelector(`[data-showroom-id='${showroomId}']`)
+        if (showroomsList) {
+            if (cityItem && !cityItem.classList.contains("active") ) {
+               cityItem.click()
+            }
+            if (showroomItem) {
+                showroomItem.click()
+                showroomTimeout = setTimeout(() => {                 
+                    let scrollDiff = showroomItem.getBoundingClientRect().top - showroomsList.getBoundingClientRect().top ;
+                    showroomsList.scrollTop = parseInt(showroomsList.scrollTop + scrollDiff )
+                }, 600) 
+            }
+        }
+    } 
+    function balloonOnOpen(placemark) {
+        placemark.balloon.open()
+    }
+    function balloonOnClose(placemark) {
+        placemark.balloon.close()
+    }
+    function closeAllMarks() {
+        if(showroomsBranchs.length) {
+                showroomsBranchs.forEach(item => {
+                    if (item.classList.contains("active")) {
+                        item.click()
+                    }
+                })
+        } 
+    }
+    function showroomsMapInit() {
+        showroomsMap = new ymaps.Map('showrooms-map', {
+            center: center,
+            zoom: 6
+        },{
+            zoomControlPosition: { right: 10, top: "50%" },
+            zoomControlSize: "large",
+        });
+        setmapDefaults(showroomsMap) 
+        showrooms.forEach((item,i) => {
+            geoObjects[i] = new ymaps.Placemark(item.coords, 
+                {
+                    balloonContent: `
+                    <div class="balloon">
+                        <div class="balloon__header">
+                            <h5 class="balloon__name">${item.title}</h5>
+                        </div>
+                        <div class="balloon__body">
+                            <div class="item-contact">
+                                <span>Адрес склада и офиса</span>
+                                <span>${item.address}</span>
+                            </div>
+                            ${item.phone ?
+                            `<div class="item-contact">
+                                <span>Телефон</span>
+                                <span>${item.phone}</span>
+                            </div>` : ''}
+                             ${item['store-hours'] ? 
+                            `<div class="item-contact">
+                                <span>Адрес склада и офиса</span>
+                                <span>${item['store-hours']}</span>
+                            </div>` : ""
+                            }
+                        </div>
+                    </div>`,
+                }, 
+                {
+                    iconLayout: "default#image",
+                    iconImageHref: "img/svg/map-marker.svg",
+                    iconImageSize: [32, 32],
+                    iconImageOffset: [-16, -32],
+                    cursor: "grab",
+                    hideIconOnBalloonOpen: false,
+                    balloonOffset: [0, 80]
+                }
+            )
+            geoObjects[i].events.add('click', e => {
+                e.preventDefault()
+                let cityId = showrooms[i]['city_id']
+                let showroomId = showrooms[i]['id']
+                placemarkOnClick(cityId, showroomId)
+            });
+        })
+        geoObjects.forEach(item => showroomsMap.geoObjects.add(item))
+        showroomsMap.setBounds(showroomsMap.geoObjects.getBounds(), {checkZoomRange: true, zoomMargin: 100})
+        showroomsMap.events.add('click', closeAllMarks); 
+        showroomsMap.geoObjects.events.add('balloonclose', closeAllMarks);   
+        if (showroomsCities.length) {
+            showroomsCities.forEach(item => {
+                item.addEventListener("click", e => {
+                    let id = Number(item.getAttribute("data-showroom-city-id"))
+                    let pointsList = showrooms.filter(item => Number(item['city_id']) === id).map(item => item.coords)
+                    if (pointsList.length) {
+                        showroomsMap.setBounds(ymaps.util.bounds.fromPoints(pointsList), {
+                            checkZoomRange: true
+                        });
+                    }  
+                    showroomsMap.balloon.close()             
+                })
+            }) 
+            showroomsCities[0].click()                   
+        }
+        if (showroomsBranchs.length) {
+            showroomsBranchs.forEach(item => {
+                item.addEventListener("click", e => {
+                    let id = Number(item.getAttribute("data-showroom-id"))
+                    let idx = showrooms.findIndex(item => Number(item.id) === id)
+                    if (geoObjects[idx]) {
+                        if(item.parentNode.classList.contains("active")) {
+                            const coords = geoObjects[idx].geometry.getCoordinates(); 
+                            showroomsMap.setCenter(coords, 15);
+                            balloonOnOpen(geoObjects[idx])
+                        } else {
+                            balloonOnClose(geoObjects[idx])
+                        }
+                        
+                    }   
+                }) 
+            })  
+        }
+    }    
+    if (showrooms.length && document.querySelector("#showrooms-map")) {
+        ymaps.ready(showroomsMapInit);
+    }
+</script>

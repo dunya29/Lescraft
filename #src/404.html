@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Страница не найдена"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Страница не найдена"})
+                    </div>
+                </div>
+                <!--notfound-p-->
+                <section class="section notfound-p">
+                    <div class="container">
+                        <div class="notfound-p__inner">
+                            <div class="mb-60 notfound-p__img">
+                                <img src="img/svg/404.svg" alt="404">
+                            </div>
+                            <div class="notfound-p__content">
+                                <h1 class="h3">Страница не найдена</h1>
+                                <p>Пора вернуться к покупкам</p>
+                                <a href="#" class="btn main-btn">
+                                    Перейти в каталог
+                                    <span class="link-icon"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

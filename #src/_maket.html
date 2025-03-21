@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+@@include('_head.html', {   
+    "title": "Главная"
+})
+
+<body>
+    <div class="wrap">
+        @@include('_header.html', {"main": true})
+        <!--main-->  
+        <main class="main">
+            @@include('_breadcrumbs.html', {
+                "page": ""
+            })
+        </main>
+        @@include('_footer.html', {"main": true})
+        @@include('_modal.html')
+    </div>
+    @@include('_js.html')
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Транспортировочный распил"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs-2.html', {"page1": "Услуги", "page2": "Транспортировочный распил"})
+                    </div>
+                </div>
+                <!--article-p-->
+                <section class="section service-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Транспортировочный распил</h1>
+                        </div>
+                        <div class="service-p__row">
+                            <nav class="service-p__nav">
+                                <ul>
+                                    <li class="link-btn"><a href="#">Собственная доставка</a></li>
+                                    <li class="link-btn active"><a href="#">Транспортировочный распил</a></li>
+                                    <li class="link-btn"><a href="#">Консультации по монтажу</a></li>
+                                </ul>
+                            </nav>
+                            <div class="service-p__content">
+                                <div class="page-content">
+                                    <p>Чтобы вам было удобно грузить и перевозить материалы, мы предусмотрели услугу транспортировочного распила плитной и погонажной
+                                        продукции. Распиливаем по торцу — на одну доску не более трёх резов.</p>
+                                    <p>Компания существует на рынке с 2008 года и на сегодняшний
+                                        день занимает лидирующие позиции в отрасли на территории:</p>
+                                    <ul>
+                                        <li>Краснодарского края;</li>
+                                        <li>Ростовской области;</li>
+                                        <li>Ставропольского края;</li>
+                                        <li>Республики Крым;</li>
+                                    </ul>
+                                </div>
+                                <a href="#" download class="btn text-btn">
+                                    Скачать прайс
+                                    <svg><use xlink:href="img/svg/sprite.svg#download"></use></svg>
+                                </a>
+                            </div>
+                            <div class="service-p__banner">
+                                <img src="img/service-banner.jpg" alt="Транспортировочный распил">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

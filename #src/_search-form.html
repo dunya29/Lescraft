@@ -1,0 +1,47 @@
+<!--search-form-->
+@@if(results === true) {
+<form class="form search-form show-results">
+}
+@@if(results === false) {
+<form class="form search-form">
+}
+    <div class="search-form__inp">
+        <input type="text" placeholder="Поиск по сайту">
+    </div>
+    <button type="reset" class="btn-close search-form__reset" aria-label="Очистить поиск"></button>
+    <button type="submit" class="btn main-btn search-form__submit">Найти</button>
+    @@if(results === true) {
+    <div class="search-form__results">
+        <ul class="custom-scroll">
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+            <li class="link-btn has-icon">
+                <a href="#">Евровагонка 12,5 × 96 × 2 100 мм</a>
+            </li>
+        </ul>
+        <a href="#" class="btn text-btn">
+            Смотреть все
+            <svg><use xlink:href="img/svg/sprite.svg#chevron-right"></use></svg>
+        </a>        
+    </div>
+    }
+</form>

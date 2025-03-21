@@ -1,0 +1,178 @@
+.item-order {
+    display: grid;
+    grid-template-columns: 150px minmax(auto, 500px) 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 8px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .media-contain {
+        padding-top: 72.35%;
+        border-radius: 16px;
+    }
+    &__info,
+    &__art {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--gray-color);
+        margin-bottom: 4px;
+    }
+    &__info {
+        margin-bottom: 4px;
+    }
+    &__art {
+        margin-top: 12px;
+    }
+    &__count {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--gray-color);
+    }
+    &__count,
+    &__total {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    &__old-price {
+        font-size: 16px;
+    }
+}
+[data-visibility] {
+    display: none;
+    &.show {
+        display: block;
+    }
+}
+.order-p {
+    .accordion {
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        counter-increment: order;
+        .text-btn::before {
+            content: attr(data-open);
+        }
+        &.active {
+            .text-btn::before {
+                content: attr(data-close);
+            }
+        }
+        &__header {
+            padding: 24px 40px;
+            background: var(--green-color-light);
+            h4 {
+                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
+                span {
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: var(--gray-color);
+                    margin-left: 20px;
+                }
+            }
+            &:before {
+                content: counter(order);
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 32px;
+                color: var(--white);
+                min-width: 32px;
+                padding: 0 10px;
+                text-align: center;
+                border-radius: 16px;
+                background: var(--primary-color);
+                margin-right: 12px;
+                white-space: nowrap;
+            }
+        }
+        &__content {
+            padding: 32px 40px;
+        }
+    }
+    .form__items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        .item-form {
+            margin-bottom: 0;
+            &--span-3 {
+                grid-column-end: span 3;
+            }
+            &--span-2 {
+                grid-column-end: span 2;
+            }
+        }
+    }
+    &__loc {
+        margin-bottom: 20px;
+        .tippy {
+            flex: 0 0 24px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+    &__form {
+        display: grid;
+        grid-template-columns: 9fr 3fr;
+        gap: 20px;
+        align-items: start;
+    }
+    &__fieldset {
+        margin-bottom: 24px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__radio-items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+    &__delivery-block {
+        .form__items {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+.desc-block {
+    padding: 20px 24px;
+    border-radius: 20px;
+    background: var(--gray-color-light);
+    margin-top: 20px;
+    &__inner {
+        display: grid;
+        grid-template-columns: 0.865fr 1fr;
+        gap: 20px;
+    }
+    &__item {
+        padding-left: 20px;
+        border-left: 1px solid var(--border-color);
+        &:first-child {
+            padding-left: 0;
+            border-left: none;
+        }
+    }
+    &__title {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 8px;
+        svg {
+            fill: var(--gray-color);
+            flex: 0 0 24px;
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+    }
+    &__content {
+        p {
+            font-size: 14px;
+        }
+    }
+}

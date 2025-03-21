@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "InterDisplay";
+    font-weight: 400;
+    font-style: normal;
+    src: local("InterDisplay Regular"), local("InterDisplay-Regular"), url("../fonts/InterDisplay-Regular.woff2") format("woff2"), url("../fonts/InterDisplay-Regular.woff") format("woff"), url("../fonts/InterDisplay-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "InterDisplay";
+    font-weight: 500;
+    font-style: normal;
+    src: local("InterDisplay Medium"), local("InterDisplay-Medium"), url("../fonts/InterDisplay-Medium.woff2") format("woff2"), url("../fonts/InterDisplay-Medium.woff") format("woff"), url("../fonts/InterDisplay-Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: "InterDisplay";
+    font-weight: 600;
+    font-style: normal;
+    src: local("InterDisplay SemiBold"), local("InterDisplay-SemiBold"), url("../fonts/InterDisplay-SemiBold.woff2") format("woff2"), url("../fonts/InterDisplay-SemiBold.woff") format("woff"), url("../fonts/InterDisplay-SemiBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "InterDisplay";
+    font-weight: 700;
+    font-style: normal;
+    src: local("InterDisplay Bold"), local("InterDisplay-Bold"), url("../fonts/InterDisplay-Bold.woff2") format("woff2"), url("../fonts/InterDisplay-Bold.woff") format("woff"), url("../fonts/InterDisplay-Bold.ttf") format("truetype");
+}

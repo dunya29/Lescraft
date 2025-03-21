@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Новости"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Новости"})
+                    </div>
+                </div>
+                <!--news-p-->
+                <section class="section news-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Новости</h1>
+                        </div>
+                        <div class="news-p__wrapper">
+                            <div class="news-p__items">
+                                @@include('_item-news.html', {"nmb": 1})
+                                @@include('_item-news.html', {"nmb": 2})
+                                @@include('_item-news.html', {"nmb": 3})
+                                @@include('_item-news.html', {"nmb": 4})
+                                @@include('_item-news.html', {"nmb": 5})
+                                @@include('_item-news.html', {"nmb": 6})
+                                @@include('_item-news.html', {"nmb": 7})
+                                @@include('_item-news.html', {"nmb": 1})
+                                @@include('_item-news.html', {"nmb": 2})
+                                @@include('_item-news.html', {"nmb": 3})
+                                @@include('_item-news.html', {"nmb": 4})
+                                @@include('_item-news.html', {"nmb": 5})
+                            </div>
+                            @@include("_pagination.html")
+                        </div>
+                    </div>
+                </section>
+                <!--other-cat-->
+                <section class="section swiper5 other-cat">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1"><span>Популярные</span> товары</h2>
+                            <a href="#" class="btn stroke-btn stroke-btn--link">
+                                Смотреть все
+                                <span class="link-icon"></span>
+                            </a>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
+                                </div>
+                            </div>
+                            <div class="swiper-nav">
+                                <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

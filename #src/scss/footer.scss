@@ -1,0 +1,116 @@
+.footer {
+    padding-top: 60px;
+    background: var(--green-color-light);
+    .social-list {
+        margin-top: 28px;
+    }
+    .page-contact {
+        margin-top: 40px;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    .page-up {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &--main {
+        .page-logo {
+            pointer-events: none;
+        }
+    }
+    &__inner {
+        position: relative;
+    }
+    &__top,
+    &__bot {
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr;
+        gap: 20px;
+    }
+    &__top {
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--primary-color);
+    }
+    &__col:last-child {
+        padding-right: 62px;
+    }
+    &__info {
+        h5 {
+            font-size: 16px;
+            line-height: 1.35;
+            color: var(--gray-color-dark);
+            letter-spacing: normal;
+            max-width: 290px;
+            margin-top: 16px;
+        }
+    }
+    &__menu {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        .accordion__header {
+            font-size: 20px;
+            font-weight: 600;
+            pointer-events: none;
+            margin-bottom: 12px;
+        }
+        .accordion__icon {
+            display: none;
+        }
+        .accordion__body {
+            display: block;
+            ul li {
+                margin-bottom: 8px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    font-size: 16px;
+                    color: var(--gray-color-dark);
+                    &:hover {
+                        color: var(--green-color);
+                    }
+                }
+            }
+        }
+    }
+    &__contacts {
+        .main-btn {
+            margin-top: 16px;
+        }
+    }
+    &__bot {
+        font-size: 14px;
+        color: var(--gray-color);
+        padding: 16px 0;
+    }
+    &__links {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px;
+        a {
+            color: var(--gray-color);
+            &:hover {
+                color: var(--green-color);
+            }
+        }
+    }
+    &__dev {
+        display: flex;
+        align-items: center;
+        a {
+            svg {
+                fill: var(--gray-color);
+                transition: all 0.3s linear;
+                margin-left: 8px;
+            }
+            &:hover {
+                svg {
+                    fill: var(--green-color);
+                }
+            }
+        }
+    }
+}

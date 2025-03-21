@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Корзина"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Корзина"})
+                    </div>
+                </div>
+                <section class="section cart-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Ваша корзина</h1>
+                        </div>
+                        <form class="cart-p__form">
+                            <div class="cart-p__top">
+                                <label class="item-checkbox">
+                                    <input type="checkbox" checked class="cart-p__inStock-allChek">
+                                    <span>Выбрать все</span>
+                                </label>
+                                <button class="btn text-btn">Удалить выбранные</button>
+                                <button class="btn text-btn">Очистить корзину<svg><use xlink:href="img/svg/sprite.svg#bin"></use></svg></button>
+                            </div>
+                            <div class="cart-p__row">
+                                <div class="cart-p__content">
+                                    <div class="mb-90 cart-p__items">
+                                        @@include("_item-cart.html", {"isFav": false, "inStock": true})
+                                        @@include("_item-cart.html", {"isFav": true, "inStock": true})
+                                    </div>
+                                    <section class="cart-p__sec">
+                                        <div class="sec-top">
+                                            <h3>Недоступные товары</h3>
+                                            <button class="btn text-btn">Удалить все</button>
+                                        </div>
+                                        <div class="cart-p__items">
+                                            @@include("_item-cart.html", {"isFav": false, "inStock": false})
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="total-cart">
+                                    <dl class="prod-details">
+                                        <div class="prod-details__item">
+                                            <dt>Скидка</dt>
+                                            <dd class="rub">2 499,78</dd>
+                                        </div>
+                                    </dl>
+                                    <div class="total-cart__footer">
+                                        <div class="total-cart__total">
+                                            <span>Итого</span>
+                                            <span class="h4 rub">3 532,74</span>
+                                        </div>
+                                        <a href="#" class="btn main-btn total-cart__submit">
+                                            Перейти к оформлению
+                                            <span class="link-icon"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <!--other-cat-->
+                <section class="mb-90 swiper5 other-cat">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Вы недавно смотрели</h2>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
+                                </div>
+                            </div>
+                            <div class="swiper-nav">
+                                <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

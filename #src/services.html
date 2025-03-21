@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Услуги"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Услуги"})
+                    </div>
+                </div>
+                <!--article-p-->
+                <section class="section services-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Услуги</h1>
+                        </div>
+                        <div class="services-p__items">
+                            <!--item-service-->
+                            <div class="item-service">
+                                <div class="item-service__icon">
+                                    <img src="img/svg/own-delivery.svg" alt>
+                                </div>
+                                <div class="item-service__row">
+                                    <div class="item-service__content">
+                                        <h4>Собственная доставка</h4>
+                                        <p>Если наш склад — в вашем городе, а товар — в наличии, мы доставим материалы в течение 24 часов после оформления заказа. В населённые
+                                            пункты Краснодарского, Ставропольского края и в республику Крым доставим заказ в течение недели. Если материалы нужны срочно —
+                                            доставим по городу и в ближайшие населённые пункты в день заказа.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--item-service-->
+                            <div class="item-service">
+                                <div class="item-service__icon">
+                                    <img src="img/svg/consultation.svg" alt>
+                                </div>
+                                <div class="item-service__row">
+                                    <div class="item-service__content">
+                                        <h4>Транспортировочный распил</h4>
+                                        <p>Производится для того, чтобы вы могли загрузить лист любых размеров даже в легковой автомобиль. Распил 1 листа делаем прямо на
+                                            месте, быстро и бесплатно (ограничение — 2 транспортировочных реза / распил листа на 3 части). При большом объёме работ, требуется
+                                            уточнение сроков производства.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--item-service-->
+                            <div class="item-service">
+                                <div class="item-service__icon">
+                                    <img src="img/svg/consultation.svg" alt>
+                                </div>
+                                <div class="item-service__row">
+                                    <div class="item-service__content">
+                                        <h4>Консультации по монтажу</h4>
+                                        <p>Если наш склад — в вашем городе, а товар — в наличии, мы доставим материалы в течение 24 часов после оформления заказа. В населённые
+                                            пункты Краснодарского, Ставропольского края и в республику Крым доставим заказ в течение недели. Если материалы нужны срочно —
+                                            доставим по городу и в ближайшие населённые пункты в день заказа..</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "О компании"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "О компании"})
+                    </div>
+                </div>
+                <!--about-p-->
+                <section class="section about-p">
+                    <div class="container">
+                        <div class="about-p__inner">
+                            <div class="about-p__content">
+                                <h1 class="text-l">О компании</h1>
+                                <p>В 2008 году мы основали «Лескрафт» на базовых принципах — высокое качество материалов, доступные цены и настолько широкий ассортимент,
+                                    насколько
+                                    это возможно. Материалы, отпускаемые на метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты, свяжитесь с
+                                    нами.</p>
+                                <div class="about-p__stats">
+                                    <div class="item-stat">
+                                        <span class="h2">6500 м²</span>
+                                        <span>площадь складов</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="h2">+10 лет</span>
+                                        <span>опыта</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="h2">5 филиалов</span>
+                                        <span>в Южном федеральном округе</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="h2">+3500</span>
+                                        <span>наименований товаров</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-p__logo">
+                                <svg><use xlink:href="img/svg/sprite.svg#logo"></use></svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--main-about-->
+                <section class="section main-about">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Нам <span>важно</span></h2>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "1", "title": "Качественные материалы", "txt":
+                                    "Мы лично ездим к новым поставщикам, оцениваем их условия работы и каждую поставку в дальнейшем"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "2", "title": "Широкий ассортимент", "txt":
+                                    "Благодаря большим площадям складов, у&nbsp;нас есть возможность дать клиенту максимально широкий выбор ассортимент"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "3", "title": "Особые условия хранения", "txt":
+                                    "Соблюдаем все условия, чтобы древесина не впитывала лишнюю влагу и не рассыхалась, а площадь складов более 15&nbsp;тыс.&nbsp;м2"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "4", "title": "Высокий уровень сервиса", "txt":
+                                    "Всё, чтобы вам было удобно: профессиональная консультация, шоу-румы с образцами материалов, оперативная доставка и др."})
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--video-about-->
+                <section class="section video-about">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Видео о компании</h2>
+                            <div class="sec-top__content">
+                                <p>Узнайте, как мы помогаем нашим клиентам успешно реализовывать строительные проекты, предоставляя качественные материалы и профессиональную
+                                    поддержку на каждом этапе.</p>
+                                <div class="btn video-btn">
+                                    <span class="video"></span>
+                                    <div class="text-btn">Смотреть видео</div>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--info-about-->
+                <div class="section info-about">
+                    <div class="container">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <!--info-about-->
+                                    <div class="info-about">
+                                        <div class="media-cover">
+                                            <img src="img/content/info-1.jpg" alt>
+                                        </div>
+                                        <div class="info-about__content">
+                                            <h3 class="h2">Как отбираем товар</h3>
+                                            <div class="page-content">
+                                                <p>Материалы, отпускаемые на метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты, свяжитесь с
+                                                    нами.</p>
+                                                <p><b>Вернуть нельзя:</b></p>
+                                                <ul>
+                                                    <li>Колерованную краску</li>
+                                                    <li>Товар под заказ</li>
+                                                    <li>Уценённый товар</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-about-->
+                                    <div class="info-about">
+                                        <div class="media-cover">
+                                            <img src="img/content/info-2.jpg" alt>
+                                        </div>
+                                        <div class="info-about__content">
+                                            <h3 class="h2">Как отбираем товар</h3>
+                                            <div class="page-content">
+                                                <p>Материалы, отпускаемые на метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты, свяжитесь с
+                                                    нами.</p>
+                                                <p><b>Для возврата товара нам нужны документы:</b></p>
+                                                <ul>
+                                                    <li>Паспорт РФ</li>
+                                                    <li>Товарный и кассовый чеки или их копии</li>
+                                                    <li>Если вы оплачивали картой — оригинал банковской карты и слип-чек</li>
+                                                    <li>Доверенность</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-about-->
+                                    <div class="info-about">
+                                        <div class="media-cover">
+                                            <img src="img/content/info-3.jpg" alt>
+                                        </div>
+                                        <div class="info-about__content">
+                                            <h3 class="h2">Как отбираем товар</h3>
+                                            <div class="page-content">
+                                                <p>Материалы, отпускаемые на метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты, свяжитесь с
+                                                    нами.</p>
+                                                <p>Если товар не подошёл, обменяйте его на аналог в течение 14 дней — нужны только чек и паспорт. Если товара не окажется на
+                                                    складе, мы вернём деньги или обменяем на аналог, когда он появится в продаже.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--geo-about-->
+                <section class="section geo-about">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Наша <span>география</span></h2>
+                            <a href="#" class="btn main-btn">
+                                Узнать больше
+                                <span class="link-icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <!--main-idea-->
+                <section class="section swiper5 main-idea">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Вдохновляем на <span>новые идеи</span></h2>
+                            <div class="sec-top__content">
+                                <p>Мы находим новые интересные решения и&nbsp;примеры использования материалов, чтобы наши клиенты вдохновлялись на новые задумки.</p>
+                                @@include("_social.html", {"whatsapp": false, "youtube": false})
+                            </div>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-1.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-2.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-3.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-4.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-5.jpg" alt>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

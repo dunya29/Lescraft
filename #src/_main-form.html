@@ -1,0 +1,54 @@
+<!--main-form-->
+<section class="section main-form">
+    <div class="container">
+        <div class="main-form__inner">
+            <div class="media-contain">
+                <img src="img/main-form-bg.png" alt>
+            </div>
+            <div class="main-form__content">
+                <div class="main-form__top">
+                    <h2>Получите скидку на первый заказ</h2>
+                    <p>Заполните небольшую форму, и мы отправим вам прайс лист с&nbsp;самыми свежими ценами на наши качественные и долговечные материалы</p>
+                </div>
+                <form class="form disabled-form">
+                    <div class="form__items">
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" id="name" placeholder=" " class="required">
+                                <label for="name" class="item-form__placeholder">Ваше имя</label>
+                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="tel" id="phone" placeholder=" " class="required">
+                                <label for="phone" class="item-form__placeholder">Телефон</label>
+                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" id="email" placeholder=" " class="required">
+                                <label for="email" class="item-form__placeholder">Email</label>
+                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <label class="item-checkbox">
+                            <input type="checkbox" checked class="required">
+                            <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                        </label>
+                        <button type="submit" class="btn main-btn">
+                            Отправить
+                            <span class="link-icon"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

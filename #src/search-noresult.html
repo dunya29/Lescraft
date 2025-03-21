@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Результаты поиска"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Результаты поиска"})
+                    </div>
+                </div>
+                <!--search-p-->
+                <section class="section search-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1 class="text-l">Результаты поиска</h1>
+                        </div>
+                        <div class="search-noresult">
+                            <div class="search-noresult__img">
+                                <img src="img/svg/search-noresult.svg" alt>
+                            </div>
+                            <div class="search-noresult__content">
+                                <h3>По вашему запросу ничего не найдено</h3>
+                                <p>Проверьте правильность ввода или попробуйте изменить запрос.</p>
+                                <a href="#" class="btn main-btn">
+                                    Перейти в каталог
+                                    <span class="link-icon"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--other-cat-->
+                <section class="mb-90 swiper5 other-cat">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Вы недавно смотрели</h2>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
+                                </div>
+                            </div>
+                            <div class="swiper-nav">
+                                <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

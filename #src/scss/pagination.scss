@@ -1,0 +1,64 @@
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: -12px;
+    .nav-btn {
+        flex: 0 0 40px;
+        width: 40px;
+        height: 40px;
+        svg {
+            fill: var(--gray-color);
+        }
+        &:hover {
+            svg {
+                fill: var(--green-color);
+            }
+        }
+        &:before {
+            background: var(--green-color-light);
+        }
+    }
+    .nav-btn:first-child {
+        margin-right: 12px;
+    }
+    .nav-btn:last-child {
+        margin-left: 12px;
+    }
+    .nav-btn.disabled,
+    .nav-btn:disabled {
+        display: none;
+    }
+    &__link,
+    &__item {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1;
+        min-width: 40px;
+        height: 40px;
+        padding: 9px;
+        border-radius: 20px;
+        background: var(--green-color-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 6px;
+        transition: all 0.4s linear;
+        white-space: nowrap;
+        &.current,
+        &.active {
+            color: var(--white);
+            background: var(--primary-color);
+        }
+    }
+    &__link,
+    &__item,
+    .nav-btn {
+        margin-bottom: 12px;
+    }
+    &__item {
+        pointer-events: none;
+    }
+}
