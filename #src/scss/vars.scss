@@ -44,7 +44,7 @@ $bp7: 350.98px;
     :root {
         --content-width: 950px;
         --header-height: 130px;
-        --main-offset: calc(var(--header-height) + 20px);
+        --main-offset: 20px;
     }
 }
 @media (max-width: $bp3) {
@@ -55,6 +55,6 @@ $bp7: 350.98px;
 @media (max-width: $bp4) {
     :root {
         --content-width: 530px;
-         --header-height: 125px;
+         --header-height: 126px;
     }
 }

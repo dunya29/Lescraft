@@ -215,7 +215,7 @@
         }
     }
     @media (max-width: $bp1) {
-        padding: 80px 0;
+        padding: 78px 0;
         &__content {
             p {
                 font-size: 16px;
@@ -309,7 +309,7 @@
 .page-top + .about-p {
     margin-top: -93px;
     @media (max-width: $bp1) {
-        margin-top: -80px;
+        margin-top: -78px;
     }
     @media (max-width: $bp2) {
         margin-top: -72px;

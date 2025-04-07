@@ -28,8 +28,8 @@
                                     <input type="checkbox" checked class="cart-p__inStock-allChek">
                                     <span>Выбрать все</span>
                                 </label>
-                                <button type="button" class="btn text-btn cart-p__checked-remove">Удалить выбранные</button>
-                                <button type="button" class="btn text-btn cart-p__all-remove">
+                                <button type="button" class="btn text-btn cart-p__checked-remove cart-clear-btn" data-cart-type="in-stock">Удалить выбранные</button>
+                                <button type="button" class="btn text-btn cart-p__all-remove cart-clear-btn" data-cart-type="in-stock">
                                     Очистить корзину
                                     <svg><use xlink:href="img/svg/sprite.svg#bin"></use></svg>
                                 </button>
@@ -46,7 +46,7 @@
                                     <section class="js-prodWrapper cart-p__sec" data-animation="fadeUp">
                                         <div class="sec-top">
                                             <h3>Недоступные товары</h3>
-                                            <button type="button" class="btn text-btn">Удалить все</button>
+                                            <button type="button" class="btn text-btn cart-clear-btn" data-cart-type="out-of-stock">Удалить все</button>
                                         </div>
                                         <div class="cart-p__items">
                                             @@include("_item-cart.html", {"isFav": false, "inStock": false})

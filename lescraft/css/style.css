@@ -388,7 +388,7 @@ body.loaded .preloader {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding-top: var(--main-offset);
+  padding-top: calc(var(--main-offset) + var(--header-height));
 }
 
 .intro-banner {
@@ -2548,43 +2548,36 @@ p a:hover {
 }
 
 .header {
-  position: relative;
-  z-index: 501;
-}
-
-.header.scroll .header__body {
+  border: 1px solid var(--green-color-light);
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.1803921569);
+  box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.1803921569);
+  background: var(--white);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 501;
   -webkit-transition: -webkit-transform 0.3s linear;
   transition: -webkit-transform 0.3s linear;
   transition: transform 0.3s linear;
   transition: transform 0.3s linear, -webkit-transform 0.3s linear;
-  border-color: var(--green-color-light);
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.1803921569);
-  box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.1803921569);
 }
 
-.header.scroll .header__top,
-.header.scroll .header__bot {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.header.scroll .header__bot {
-  margin-top: 98px;
-}
-
-.header.scroll.unshow .header__body {
-  -webkit-transform: translateY(-100%);
-  -ms-transform: translateY(-100%);
-  transform: translateY(-100%);
+.header.scroll .header__body {
+  -webkit-transition: -webkit-transform 0.3s linear;
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
 }
 
 .header.scroll.unshow .search-form__results {
   visibility: hidden;
   opacity: 0;
+}
+
+.header.scroll.unshow .header__bot {
+  max-height: 0;
+  padding-bottom: 0;
 }
 
 .header .page-phone {
@@ -2599,7 +2592,7 @@ p a:hover {
   pointer-events: none;
 }
 
-.header__top-inner {
+.header__top {
   padding: 12px 0;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -2613,12 +2606,6 @@ p a:hover {
 .header__body {
   padding: 20px 0;
   background: var(--white);
-  border-bottom: 1px solid transparent;
-  -webkit-transition: border 0.3s linear;
-  transition: border 0.3s linear;
-}
-
-.header__body .container {
   display: grid;
   grid-template-columns: auto 1fr auto;
   -webkit-box-align: center;
@@ -2708,11 +2695,11 @@ p a:hover {
 }
 
 .header__bot {
+  max-height: 100px;
+  overflow: hidden;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--green-color-light);
-  background: var(--white);
-  -webkit-transition: visibility 0.15s linear, opacity 0.15s linear;
-  transition: visibility 0.15s linear, opacity 0.15s linear;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
 .header__bot ul {
@@ -4738,23 +4725,21 @@ p a:hover {
   top: 20px;
 }
 
-.product__content p {
-  font-size: 16px;
+.product__main .text-btn {
+  margin-top: 12px;
 }
 
-.product__content .read-more {
+.product__content {
   margin-bottom: 32px;
 }
 
-.product__content .read-more:last-child {
-  margin-bottom: 0;
-}
-
-.product__content .read-more.more-hidden .read-more__content {
+.product__content p {
+  font-size: 16px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 7;
   text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .prod-details.more-hidden .prod-details__item {
@@ -7206,11 +7191,6 @@ p a:hover {
     transition: visibility 0.3s ease-out, opacity 0.3s ease-out !important;
   }
 
-  .tippy-content:hover {
-    visibility: visible;
-    opacity: 1;
-  }
-
   .tippy-content:before {
     content: "";
     width: 0;
@@ -7781,11 +7761,7 @@ p a:hover {
     max-width: 154px;
   }
 
-  .header.scroll .header__bot {
-    margin-top: 79px;
-  }
-
-  .header__top-inner {
+  .header__top {
     padding: 7px 0;
     gap: 20px;
   }
@@ -7797,9 +7773,6 @@ p a:hover {
 
   .header__body {
     padding: 14px 0;
-  }
-
-  .header__body .container {
     gap: 20px;
   }
 
@@ -8207,12 +8180,16 @@ p a:hover {
     background-size: 13px 13px;
   }
 
-  .product__content p {
-    font-size: 14px;
+  .product__main .text-btn {
+    margin-top: 8px;
   }
 
-  .product__content .read-more {
+  .product__content {
     margin-bottom: 16px;
+  }
+
+  .product__content p {
+    font-size: 14px;
   }
 
   .prod-details__item {
@@ -8348,7 +8325,7 @@ p a:hover {
   }
 
   .about-p {
-    padding: 80px 0;
+    padding: 78px 0;
   }
 
   .about-p__content p {
@@ -8361,7 +8338,7 @@ p a:hover {
   }
 
   .page-top + .about-p {
-    margin-top: -80px;
+    margin-top: -78px;
   }
 
   .item-stat span:last-child {
@@ -8945,7 +8922,7 @@ p a:hover {
   :root {
     --content-width: 950px;
     --header-height: 130px;
-    --main-offset: calc(var(--header-height) + 20px);
+    --main-offset: 20px;
   }
 
   .intro-banner {
@@ -9145,44 +9122,14 @@ p a:hover {
   }
 
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    -webkit-transition: -webkit-transform 0.3s linear;
-    transition: -webkit-transform 0.3s linear;
-    transition: transform 0.3s linear;
-    transition: transform 0.3s linear, -webkit-transform 0.3s linear;
-  }
-
-  .header.scroll {
-    -webkit-box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.1803921569);
-    box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.1803921569);
-  }
-
-  .header.scroll.unshow {
-    -webkit-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    transform: translateY(-100%);
-  }
-
-  .header.scroll .header__top {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .header.scroll .header__body {
-    position: relative !important;
     -webkit-transform: none !important;
     -ms-transform: none !important;
     transform: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
   }
 
-  .header.scroll .header__center {
-    visibility: hidden;
-    opacity: 0;
+  .header.scroll.unshow .header__center {
+    max-height: 0;
+    padding-bottom: 0;
   }
 
   .header.show-menu .search-form__results {
@@ -9222,23 +9169,17 @@ p a:hover {
     overflow: visible;
   }
 
-  .header__inner {
+  .header__container {
     position: relative;
     z-index: 2;
   }
 
   .header__top {
-    background: var(--green-color-light);
-  }
-
-  .header__top .container {
-    padding: 0;
-  }
-
-  .header__top-inner {
     padding: 0;
     grid-template-columns: 1fr;
     border-bottom: none;
+    background: var(--green-color-light);
+    margin: 0 calc((100vw - var(--content-width)) / -2);
   }
 
   .header__top .page-loc,
@@ -9254,25 +9195,18 @@ p a:hover {
   }
 
   .header__body {
-    padding: 10px 0;
-  }
-
-  .header__body .container {
+    padding: 10px 0 0;
     grid-template-columns: auto 1fr;
     gap: 10px 20px;
   }
 
   .header__center {
-    padding-bottom: 9px;
-    border-bottom: 1px solid var(--green-color-light);
-    background: var(--white);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+    max-height: 100px;
+    grid-area: 2/1/3/3;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
-    z-index: -1;
+    overflow: hidden;
+    padding-bottom: 10px;
   }
 
   .header__center-inner {
@@ -9519,7 +9453,7 @@ p a:hover {
     margin-top: 32px;
   }
 
-  .product__content .read-more.more-hidden .read-more__content {
+  .product__content p {
     -webkit-line-clamp: 3;
   }
 
@@ -10739,7 +10673,7 @@ p a:hover {
 @media (max-width: 700.98px) {
   :root {
     --content-width: 530px;
-    --header-height: 125px;
+    --header-height: 126px;
   }
 
   body {
@@ -11291,8 +11225,12 @@ p a:hover {
     margin-top: 16px;
   }
 
-  .product__content {
+  .product__main {
     margin-top: 30px;
+  }
+
+  .product__content {
+    margin-bottom: 20px;
   }
 
   .product__thumbswiper {
@@ -11687,7 +11625,7 @@ p a:hover {
   }
 }
 
-@media (max-width: 700.98px) and (max-width: 530px) {
+@media (max-width: 700.98px) and (max-width: 548px) {
   .page-content table {
     padding: 0 var(--container-offset);
     margin: 0 calc(var(--container-offset) / -1) 24px;
@@ -11728,7 +11666,7 @@ p a:hover {
   }
 }
 
-@media (max-width: 530px) {
+@media (max-width: 548px) {
   .tabs-scroll {
     margin: 0 calc(var(--container-offset) * -1) 20px;
   }
@@ -11741,6 +11679,11 @@ p a:hover {
   .tabs-scroll .tabs a:last-child,
   .tabs-scroll .tabs span:last-child {
     margin-right: var(--container-offset);
+  }
+
+  .header__top {
+    padding: 0 var(--container-offset);
+    margin: 0 calc(var(--container-offset) / -1);
   }
 }
 

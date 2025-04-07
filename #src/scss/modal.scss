@@ -587,10 +587,6 @@
         transition:
             visibility 0.3s ease-out,
             opacity 0.3s ease-out !important;
-        &:hover {
-            visibility: visible;
-            opacity: 1;
-        }
         &:before {
             content: "";
             width: 0;

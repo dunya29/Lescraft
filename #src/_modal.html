@@ -145,7 +145,68 @@
         </div>
     </div>
 </div>
-<!--review-modal-->
+<!--cart-clear-modal-->
+<div class="custom-scroll modal cart-clear-modal" id="cart-clear-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Вы уверены, что хотите удалить товары?</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="modal__btns">
+                <button type="button" class="btn main-btn js-clear-cart" data-cart-type
+                    onclick="clearCart(this.getAttribute('data-cart-type'), ()=>closeModal(document.querySelector('#cart-clear-modal')))">Да</button>
+                <button type="button" class="btn stroke-btn modal__close">Нет</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--feedback-modal-->
+<div class="custom-scroll modal feedback-modal" id="feedback-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Написать нам</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();openSuccessMod(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" id="name" name="name" placeholder=" " class="required">
+                            <label for="name" class="item-form__placeholder">Имя</label>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" id="phone" placeholder=" " class="required">
+                            <label for="phone" class="item-form__placeholder">Телефон</label>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Комментарий" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--contact-manager-modal-->
 <div class="custom-scroll modal contact-manager-modal" id="contact-manager-modal">
     <div class="modal__content">
         <button type="button" class="btn-cross modal__close"></button>

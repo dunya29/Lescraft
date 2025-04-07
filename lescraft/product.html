@@ -24,64 +24,59 @@
             <!--header-->
 
     
-    <header class="header">
+    <header class="header fixed-block">
         
-        <div class="header__inner">
+        <div class="container header__container">
             <div class="header__top">
-                <div class="container">
-                    <div class="header__top-inner">
-                        <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
-                            <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
-                            <span>Краснодар</span>
-                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                        </button>
-                        <div class="header__delivery">Доставка по всему Югу России</div>
-                        <nav class="top-menu">
-                            <ul class="top-menu__list">
-                                <li><a href="#" class="top-menu__header">Доставка</a></li>
-                                <li><a href="#" class="top-menu__header">Услуги</a></li>
-                                <li>
-                                    <div class="top-menu__header">
-                                        Для клиента
-                                        <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                    </div>
-                                    <div class="top-menu__body">
-                                        <div class="top-menu__subnavs">
-                                            <ul class="custom-scroll">
-                                                <li><a href="#">Акции</a></li>
-                                                <li><a href="#">Возврат и обмен</a></li>
-                                                <li><a href="#">Условия оплаты</a></li>
-                                                <li><a href="#">Для юридических лиц</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="#" class="top-menu__header">Филиалы и контакты</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <div class="header__body fixed-header">
-                <div class="container">
-                    <div class="header__left">
-                        <a href="main.html" class="page-logo">
-                            <svg><use xlink:href="img/svg/sprite.svg#logo"></use></svg>
-                        </a>
-                    </div>
-                    <div class="header__center">
-                        <div class="header__center-inner">
-                            <a href="#" class="menu-btn" role="button" aria-expanded="false">
-                                <div class="menu-btn__items">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+                <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
+                    <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
+                    <span>Краснодар</span>
+                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                </button>
+                <div class="header__delivery">Доставка по всему Югу России</div>
+                <nav class="top-menu">
+                    <ul class="top-menu__list">
+                        <li><a href="#" class="top-menu__header">Доставка</a></li>
+                        <li><a href="#" class="top-menu__header">Услуги</a></li>
+                        <li>
+                            <div class="top-menu__header">
+                                Для клиента
+                                <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                            </div>
+                            <div class="top-menu__body">
+                                <div class="top-menu__subnavs">
+                                    <ul class="custom-scroll">
+                                        <li><a href="#">Акции</a></li>
+                                        <li><a href="#">Возврат и обмен</a></li>
+                                        <li><a href="#">Условия оплаты</a></li>
+                                        <li><a href="#">Для юридических лиц</a></li>
+                                    </ul>
                                 </div>
-                                <span class="menu-btn__txt">Каталог</span>
-                            </a>
-                            
-                            
-                            <!--search-form-->
+                            </div>
+                        </li>
+                        <li><a href="#" class="top-menu__header">Филиалы и контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header__body">
+                <div class="header__left">
+                    <a href="main.html" class="page-logo">
+                        <svg><use xlink:href="img/svg/sprite.svg#logo"></use></svg>
+                    </a>
+                </div>
+                <div class="header__center">
+                    <div class="header__center-inner">
+                        <a href="#" class="menu-btn" role="button" aria-expanded="false">
+                            <div class="menu-btn__items">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="menu-btn__txt">Каталог</span>
+                        </a>
+                        
+                        
+                        <!--search-form-->
 
     
     <form class="form search-form">
@@ -99,46 +94,43 @@
         
     </form>
 
-                            
-                        </div>
+                        
                     </div>
-                    <div class="header__right">
-                        <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
-                            <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
-                            <span>Краснодар</span>
-                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                </div>
+                <div class="header__right">
+                    <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
+                        <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
+                        <span>Краснодар</span>
+                        <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                    </button>
+                    <div class="page-contact page-contact--phone">
+                        <a href="tel:88001004407">8 800 100-44-07</a>
+                        <span>Бесплатно по России (8:00–20:00)</span>
+                    </div>
+                    <div class="header__actions">
+                        <a href="#" class="header__fav" aria-label="Перейти в избранные"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg></a>
+                        <button type="button" class="header__profile mod-open-btn" aria-label="Войти" data-modal="login-modal">
+                            <svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg>
                         </button>
-                        <div class="page-contact page-contact--phone">
-                            <a href="tel:88001004407">8 800 100-44-07</a>
-                            <span>Бесплатно по России (8:00–20:00)</span>
-                        </div>
-                        <div class="header__actions">
-                            <a href="#" class="header__fav" aria-label="Перейти в избранные"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg></a>
-                            <button type="button" class="header__profile mod-open-btn" aria-label="Войти" data-modal="login-modal">
-                                <svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg>
-                            </button>
-                            <!-- <a href="#" class="header__profile" aria-label="Личный кабинет"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></a>  -->
-                            <a href="#" class="header__cart" aria-label="Перейти в корзину">
-                                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
-                                <span>6</span>
-                            </a>
-                        </div>
+                        <!-- <a href="#" class="header__profile" aria-label="Личный кабинет"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></a>  -->
+                        <a href="#" class="header__cart" aria-label="Перейти в корзину">
+                            <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
+                            <span>6</span>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="header__bot">
-                <div class="container">
-                    <ul>
-                        <li><a href="#">Новинки</a></li>
-                        <li><a href="#">Отделочные материалы</a></li>
-                        <li><a href="#">Террасная доска</a></li>
-                        <li><a href="#">Лаки и краски</a></li>
-                        <li><a href="#">Крепёж</a></li>
-                        <li><a href="#">Фанера и древесные плиты</a></li>
-                        <li><a href="#">Экзотические породы</a></li>
-                        <li><a href="#">Для бани и сауны</a></li>
-                    </ul>
-                </div>
+                <ul>
+                    <li><a href="#">Новинки</a></li>
+                    <li><a href="#">Отделочные материалы</a></li>
+                    <li><a href="#">Террасная доска</a></li>
+                    <li><a href="#">Лаки и краски</a></li>
+                    <li><a href="#">Крепёж</a></li>
+                    <li><a href="#">Фанера и древесные плиты</a></li>
+                    <li><a href="#">Экзотические породы</a></li>
+                    <li><a href="#">Для бани и сауны</a></li>
+                </ul>
             </div>
         </div>
         <!--main-menu-->
@@ -634,23 +626,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product__content">
-                                <div class="read-more">
-                                    <div class="read-more__content">
-                                        <p>Строганая доска из сосны со скруглёнными краями — это универсальный пиломатериал, который находит широкое применение в различных
-                                            сферах. Благодаря обработке строганием, поверхность доски становится гладкой и ровной, что делает её идеальной для видимых
-                                            элементов конструкций, таких как: Отделка интерьера и экстерьера: Используется для обшивки стен и потолков, изготовления
-                                            вагонки,
-                                            половых покрытий, декоративных элементов, а также для создания беседок и террас. Закруглённые края придают изделиям более
-                                            эстетичный и безопасный вид.</p>
-                                    </div>
-                                    <button type="button" class="text-btn read-more__btn" data-open="Читать далее" data-close="Свернуть">
+                            <div class="product__main">
+                                <div class="product__content">
+                                    <p>Строганая доска из сосны со скруглёнными краями — это универсальный пиломатериал, который находит широкое применение в различных
+                                        сферах. Благодаря обработке строганием, поверхность доски становится гладкой и ровной, что делает её идеальной для видимых
+                                        элементов конструкций, таких как: Отделка интерьера и экстерьера: Используется для обшивки стен и потолков, изготовления
+                                        вагонки, половых покрытий, декоративных элементов, а также для создания беседок и террас. Закруглённые края придают изделиям более
+                                        эстетичный и безопасный вид.</p>
+                                    <a href="#info-product" class="btn js-anchor text-btn" data-tab="1">
                                         <span>Читать далее</span>
                                         <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                    </button>
+                                    </a>
                                 </div>
-                                <dl class="read-more prod-details">
-                                    <div class="read-more__content">
+                                <div class="product__details">
+                                    <dl class="prod-details">
                                         <div class="prod-details__item">
                                             <dt>Артикул</dt>
                                             <dd>171916</dd>
@@ -672,35 +661,15 @@
                                             <dt>1 упаковка</dt>
                                             <dd>10 шт / 192 м²</dd>
                                         </div>
-                                        <div class="prod-details__item">
-                                            <dt>Вид товара</dt>
-                                            <dd>Вагонка</dd>
-                                        </div>
-                                        <div class="prod-details__item">
-                                            <dt>Сорт</dt>
-                                            <dd>AB</dd>
-                                        </div>
-                                        <div class="prod-details__item">
-                                            <dt>Классификация</dt>
-                                            <dd>Стандарт</dd>
-                                        </div>
-                                        <div class="prod-details__item">
-                                            <dt>Ширина</dt>
-                                            <dd>20 см</dd>
-                                        </div>
-                                        <div class="prod-details__item">
-                                            <dt>Длина</dt>
-                                            <dd>2000 см</dd>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="text-btn read-more__btn" data-open="Все характеристики" data-close="Свернуть">
+                                    </dl>
+                                    <a href="#info-product" class="btn js-anchor text-btn" data-tab="2">
                                         <span>Все характеристики</span>
                                         <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                    </button>
-                                </dl>
+                                    </a>
+                                </div>
                             </div>
                             <div class="switch-block info-product">
-                                <div class="tabs-scroll">
+                                <div class="tabs-scroll" id="info-product">
                                     <div class="tabs">
                                         <span class="h3 active" data-tab="1">Описание</span>
                                         <span class="h3" data-tab="2">Характеристики</span>
@@ -891,7 +860,8 @@
                                                         <h5>По банковским реквизитам</h5>
                                                         <div class="tippy">
                                                             <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                            <p>Оплатите заказ банковским переводом. Введите указанные реквизиты в приложении вашего банка или в отделении банка</p>
+                                                            <p>Оплатите заказ банковским переводом. Введите указанные реквизиты в приложении вашего банка или в отделении
+                                                                банка</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1356,7 +1326,7 @@
             <h2 class="h1"><span>Похожие</span> товары</h2>
             
             <a href="#" class="btn stroke-btn stroke-btn--link">
-                <span class="mobile-hidden">Смотреть </span>
+                <span class="mobile-hidden">Смотреть&nbsp;</span>
                 <span>все</span>
                 <span class="link-icon"></span>
             </a>
@@ -1751,7 +1721,7 @@
             <h2 class="h1"><span>Популярные</span> товары</h2>
             
             <a href="#" class="btn stroke-btn stroke-btn--link">
-                <span class="mobile-hidden">Смотреть </span>
+                <span class="mobile-hidden">Смотреть&nbsp;</span>
                 <span>все</span>
                 <span class="link-icon"></span>
             </a>
@@ -2631,7 +2601,7 @@
                         <div class="page-contact">
                             <a href="mailto:info@leskraft.ru">info@leskraft.ru</a>
                         </div>
-                        <button type="button" class="btn main-btn main-btn--link mod-open-btn" data-modal>
+                        <button type="button" class="btn main-btn main-btn--link mod-open-btn" data-modal="feedback-modal">
                             Написать нам
                             <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
                         </button>
@@ -2811,7 +2781,68 @@
         </div>
     </div>
 </div>
-<!--review-modal-->
+<!--cart-clear-modal-->
+<div class="custom-scroll modal cart-clear-modal" id="cart-clear-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Вы уверены, что хотите удалить товары?</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="modal__btns">
+                <button type="button" class="btn main-btn js-clear-cart" data-cart-type
+                    onclick="clearCart(this.getAttribute('data-cart-type'), ()=>closeModal(document.querySelector('#cart-clear-modal')))">Да</button>
+                <button type="button" class="btn stroke-btn modal__close">Нет</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--feedback-modal-->
+<div class="custom-scroll modal feedback-modal" id="feedback-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Написать нам</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();openSuccessMod(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" id="name" name="name" placeholder=" " class="required">
+                            <label for="name" class="item-form__placeholder">Имя</label>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" id="phone" placeholder=" " class="required">
+                            <label for="phone" class="item-form__placeholder">Телефон</label>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Комментарий" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--contact-manager-modal-->
 <div class="custom-scroll modal contact-manager-modal" id="contact-manager-modal">
     <div class="modal__content">
         <button type="button" class="btn-cross modal__close"></button>

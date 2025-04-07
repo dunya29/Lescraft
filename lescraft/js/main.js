@@ -55,6 +55,13 @@ function removeFromFav(productId, callback = false) {
         callback()
     }
 }
+function clearCart(cartType, callback = false) {
+    console.log(cartType)
+    clearTimeout(lblTimeout)
+    if (callback) {
+        callback()
+    }
+}
 function catFilterSubmit() {
 }
 /* perenesti в back end */
@@ -202,23 +209,47 @@ if (isFirefox) {
         })
     }
 }
-
+//anchor
+if (document.querySelector(".js-anchor")) {
+    document.querySelectorAll(".js-anchor").forEach(item => {
+        item.addEventListener("click", e => {
+            e.preventDefault()
+            let dest = document.querySelector(item.getAttribute("href"))
+            let diff = window.innerWidth > bp.desktop ? header.querySelector(".header__body").clientHeight : header.clientHeight
+            destPos = dest.getBoundingClientRect().top - diff - 10
+            if (item.hasAttribute("data-tab")) {
+                let attr = item.getAttribute("data-tab")
+                if (dest.querySelector(`[data-tab='${attr}']`)) {
+                    dest.querySelector(`[data-tab='${attr}']`).click()
+                }
+            }
+            if (menuBtn && menuBtn.classList.contains("active")) {
+                menuBtn.click()
+                setTimeout(() => {
+                    window.scrollTo({ top: scrollPos() + destPos, behavior: 'smooth' })
+                }, 300);
+            } else {
+                window.scrollTo({ top: scrollPos() + destPos, behavior: 'smooth' })
+            }
+        })
+    })
+}
 //fixed header
 let lastScroll = scrollPos();
+const headerTop = document.querySelector(".header__top")
 window.addEventListener("scroll", () => {
-    if (document.querySelector(".header__top").getBoundingClientRect().bottom < 0 || (window.innerWidth < bp.desktop && scrollPos() > 5)) {
+    if (scrollPos() > headerTop.clientHeight) {
         header.classList.add("scroll")
-        if (window.innerWidth > bp.desktop) {
-            headerFix.classList.add("fixed-block")
-        }
-        if ((scrollPos() > lastScroll && scrollPos() > 150 && !header.classList.contains("unshow"))) {
+        if ((scrollPos() > lastScroll &&  !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
+            header.style.transform = 'translateY(' + (-headerTop.clientHeight - 1) + 'px)'
         } else if (scrollPos() < lastScroll && header.classList.contains("unshow")) {
             header.classList.remove("unshow")
+            header.style.transform = 'translateY(0)'
         }
     } else {
-        header.classList.remove("scroll", "unshow",)
-        headerFix.classList.remove("fixed-block")
+        header.classList.remove("scroll", "unshow")
+        header.style.transform = 'translateY(0)'
     }
     lastScroll = scrollPos()
 })
@@ -898,9 +929,7 @@ if (tippy.length > 0) {
     function move(item) {
         let top = item.getBoundingClientRect().top
         let left = item.getBoundingClientRect().left
-        // tippyContent.style.left = left - tippyContent.clientWidth / 2 < 0 ? 0 : left - tippyContent.clientWidth / 2 + "px"
         tippyContent.style.top = top + item.clientHeight + 10 + "px"
-        console.log(left + tippyContent.clientWidth / 2 + item.clientWidth / 2)
         if (left - tippyContent.clientWidth / 2 + item.clientWidth / 2 < 0) {
             tippyContent.style.left = '15px'
             tippyContent.style.right = 'auto'
@@ -936,6 +965,7 @@ if (tippy.length > 0) {
                 move(item)
             }
         })
+        item.addEventListener("mouseleave", leave)
         item.addEventListener("click", () => {
             if (window.innerWidth < bp.laptop) {
                 tippyContent.querySelector(".tippy-content__inner").textContent = item.querySelector("p").textContent
@@ -943,7 +973,6 @@ if (tippy.length > 0) {
             }
         })
     })
-    tippyContent.addEventListener("mouseleave", leave)
     window.addEventListener("resize", leave)
     window.addEventListener("scroll", leave)
 }
@@ -988,7 +1017,7 @@ if (accordion) {
                     if (el.querySelector(".accordion__header").classList.contains("active")) {
                         smoothDrop(el.querySelector(".accordion__header"), el.querySelector(".accordion__body"))
                         if (el.getBoundingClientRect().top < 0) {
-                            let pos = scrollPos() + item.getBoundingClientRect().top - el.querySelector(".accordion__body").clientHeight - headerFix.clientHeight - 10
+                            let pos = scrollPos() + item.getBoundingClientRect().top - el.querySelector(".accordion__body").clientHeight - header.clientHeight - 10
                             window.scrollTo(0, pos)
                         }
                     }
@@ -1236,11 +1265,11 @@ if (document.querySelector(".intro .swiper")) {
             prevEl: document.querySelector(".intro .nav-btn--prev"),
             nextEl: document.querySelector(".intro .nav-btn--next"),
         },
-        /*  autoplay: {
-             delay: 5000,
-             pauseOnMouseEnter: true,
-             disableOnInteraction: false
-         }, */
+        autoplay: {
+            delay: 5000,
+            pauseOnMouseEnter: true,
+            disableOnInteraction: false
+        },
         speed: 1000,
     });
 }
@@ -1722,6 +1751,20 @@ if (cartP) {
     if (inStockAllCheckBtn && inStockCheckBtns.length) {
         allCheckBtn(inStockAllCheckBtn, inStockCheckBtns)
     }
+}
+const clearCartBtns = document.querySelectorAll(".cart-clear-btn")
+if (clearCartBtns.length) {
+    clearCartBtns.forEach(item => {
+        item.addEventListener("click", () => {
+            let cartType = item.getAttribute("data-cart-type")
+            const cartClearModal = document.getElementById("cart-clear-modal")
+            if (cartClearModal) {
+                cartClearModal.querySelector(".js-clear-cart").setAttribute("data-cart-type", cartType)
+                openModal(document.querySelector("#cart-clear-modal"))
+            }
+        })
+    })
+
 }
 //order
 const orderP = document.querySelector(".order-p")
