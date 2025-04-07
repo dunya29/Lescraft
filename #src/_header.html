@@ -44,22 +44,20 @@
                     </a>
                 </div>
                 <div class="header__center">
-                    <div class="header__center-inner">
-                        <a href="#" class="menu-btn" role="button" aria-expanded="false">
-                            <div class="menu-btn__items">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <span class="menu-btn__txt">Каталог</span>
-                        </a>
-                        @@if(search === true) {
-                        @@include("_search-form.html", {"results": true})
-                        }
-                        @@if(search === false) {
-                        @@include("_search-form.html", {"results": false})
-                        }
-                    </div>
+                    <a href="#" class="menu-btn" role="button" aria-expanded="false">
+                        <div class="menu-btn__items">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="menu-btn__txt">Каталог</span>
+                    </a>
+                    @@if(search === true) {
+                    @@include("_search-form.html", {"results": true})
+                    }
+                    @@if(search === false) {
+                    @@include("_search-form.html", {"results": false})
+                    }
                 </div>
                 <div class="header__right">
                     <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">

@@ -59,13 +59,13 @@
         border-radius: 8px;
         background: var(--green-color-light);
     }
-    &__center-inner,
+    &__center,
     &__right {
         display: grid;
         grid-template-columns: auto 1fr;
         align-items: center;
     }
-    &__center-inner {
+    &__center {
         gap: 20px;
     }
     &__right {
@@ -117,7 +117,7 @@
         max-height: 100px;
         overflow: hidden;
         padding-bottom: 20px;
-        transition:all .3s linear;
+        transition: all 0.3s linear;
         ul {
             display: flex;
             justify-content: center;
@@ -249,12 +249,7 @@
             transition: all 0.3s linear;
             overflow: hidden;
             padding-bottom: 10px;
-            &-inner {
-                gap: 8px;
-                max-width: var(--container-width);
-                padding: 0 var(--container-offset);
-                margin: 0 auto;
-            }
+            gap: 8px;
         }
         &__right {
             grid-template-columns: repeat(3, auto);

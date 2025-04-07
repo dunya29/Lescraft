@@ -18,6 +18,7 @@ const errorModal = document.querySelector("#error-modal")
 const cookiePopup = document.querySelector("#cookie-popup")
 const dropdown = document.querySelectorAll(".dropdown")
 let animSpd = 400
+let headerTranslate = 0
 let bp = {
     largeDesktop: 1700.98,
     desktop: 1250.98,
@@ -242,13 +243,16 @@ window.addEventListener("scroll", () => {
         header.classList.add("scroll")
         if ((scrollPos() > lastScroll &&  !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
+            headerTranslate = headerTop.clientHeight
             header.style.transform = 'translateY(' + (-headerTop.clientHeight - 1) + 'px)'
         } else if (scrollPos() < lastScroll && header.classList.contains("unshow")) {
             header.classList.remove("unshow")
+            headerTranslate = 0
             header.style.transform = 'translateY(0)'
         }
     } else {
         header.classList.remove("scroll", "unshow")
+        headerTranslate = 0
         header.style.transform = 'translateY(0)'
     }
     lastScroll = scrollPos()
@@ -1419,8 +1423,8 @@ function showMainMenu() {
     if (!menuBtn.classList.contains("active")) {
         disableScroll()
         header.classList.add("show-menu")
-        mainMenu.style.top = menuBtn.getBoundingClientRect().bottom + (header.classList.contains("unshow") ? header.querySelector(".header__top").clientHeight : 0) + "px"
-        mainMenu.style.maxHeight = window.innerHeight - menuBtn.getBoundingClientRect().bottom + "px"
+        mainMenu.style.top = menuBtn.getBoundingClientRect().bottom + headerTranslate + "px"
+        mainMenu.style.maxHeight = window.innerHeight - menuBtn.getBoundingClientRect().bottom - headerTranslate + "px"
         menuBtn.setAttribute("aria-expanded", true)
         menuBtn.classList.add("active");
         mainMenu.classList.add("show")

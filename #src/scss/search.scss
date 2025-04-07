@@ -22,6 +22,7 @@
         &:before {
             content: "";
             display: block;
+            flex: 0 0 24px;
             width: 24px;
             height: 24px;
             background: url(../img/svg/loupe.svg) center / contain no-repeat;
@@ -91,6 +92,7 @@
         &__inner {
             padding-left: 16px;
             &::before {
+                flex: 0 0 20px;
                 width: 20px;
                 height: 20px;
                 margin-right: 6px;
@@ -123,6 +125,7 @@
             padding: 2px 12px;
             margin-right: 50px;
             &::before {
+                flex: 0 0 16px;
                 width: 16px;
                 height: 16px;
             }
