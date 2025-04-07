@@ -5866,6 +5866,10 @@ p a:hover {
   margin: 4px 0 0;
 }
 
+.item-cart__action {
+  justify-self: end;
+}
+
 .item-cart__action button {
   display: block;
   margin-bottom: 24px;
