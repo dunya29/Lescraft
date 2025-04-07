@@ -457,6 +457,9 @@ function setActiveOption(item) {
 }
 //close dropdonw
 function closeDropdown(item) {
+    if (item.querySelector(".modal")) {
+        item.querySelector(".modal").classList.remove("open")
+    }
     item.classList.remove("open");
     item.setAttribute("aria-expanded", false);
     enableScroll()
@@ -937,7 +940,7 @@ if (tippy.length > 0) {
             if (window.innerWidth < bp.laptop) {
                 tippyContent.querySelector(".tippy-content__inner").textContent = item.querySelector("p").textContent
                 openModal(tippyContent)
-            }            
+            }
         })
     })
     tippyContent.addEventListener("mouseleave", leave)
