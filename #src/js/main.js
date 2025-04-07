@@ -1419,7 +1419,7 @@ function showMainMenu() {
     if (!menuBtn.classList.contains("active")) {
         disableScroll()
         header.classList.add("show-menu")
-        mainMenu.style.top = menuBtn.getBoundingClientRect().bottom + "px"
+        mainMenu.style.top = menuBtn.getBoundingClientRect().bottom + (header.classList.contains("unshow") ? header.querySelector(".header__top").clientHeight : 0) + "px"
         mainMenu.style.maxHeight = window.innerHeight - menuBtn.getBoundingClientRect().bottom + "px"
         menuBtn.setAttribute("aria-expanded", true)
         menuBtn.classList.add("active");
