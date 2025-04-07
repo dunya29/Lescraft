@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -23,41 +24,41 @@
                             <h1>Оплата</h1>
                         </div>
                         <!--payment-p__sec-->
-                        <section class="mb-60 payment-p__sec">
+                        <section class="mb-60 payment-p__sec" data-animation="fadeUp">
                             <div class="sec-top">
                                 <h3>Способы оплаты</h3>
                             </div>
-                            <div class="payment-p__advants">
-                                <!--item-advant-->
-                                <div class="item-advant">
-                                    <div class="item-advant__icon">
+                            <div class="payment-features">
+                                <!--info-card-->
+                                <div class="info-card">
+                                    <div class="info-card__icon">
                                         <img src="img/svg/cash.svg" alt>
                                     </div>
-                                    <h5>Наличными в подразделении компании</h5>
+                                    <h5>Наличными в&nbsp;подразделении компании</h5>
                                 </div>
-                                <!--item-advant-->
-                                <div class="item-advant">
-                                    <div class="item-advant__icon">
+                                <!--info-card-->
+                                <div class="info-card">
+                                    <div class="info-card__icon">
                                         <img src="img/svg/card.svg" alt>
                                     </div>
-                                    <h5>Картой в подразделении компании</h5>
+                                    <h5>Картой в&nbsp;подразделении компании</h5>
                                 </div>
-                                <!--item-advant-->
-                                <div class="item-advant">
-                                    <div class="item-advant__icon">
+                                <!--info-card-->
+                                <div class="info-card">
+                                    <div class="info-card__icon">
                                         <img src="img/svg/requisite.svg" alt>
                                     </div>
                                     <div class="item-tippy">
                                         <h5>По банковским реквизитам</h5>
                                         <div class="tippy">
                                             <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                            <p>Менеджер отправляет счёт с QR-кодом клиенту на почту или мессенджер для оплаты через СберБанк.онлайн по реквизитам компании</p>
+                                            <p>Оплатите заказ банковским переводом. Введите указанные реквизиты в приложении вашего банка или в отделении банка</p>
                                         </div>
                                     </div>
                                 </div>
-                                <!--item-advant-->
-                                <div class="item-advant">
-                                    <div class="item-advant__icon">
+                                <!--info-card-->
+                                <div class="info-card">
+                                    <div class="info-card__icon">
                                         <img src="img/svg/qr.svg" alt>
                                     </div>
                                     <div class="item-tippy">
@@ -71,7 +72,7 @@
                             </div>
                         </section>
                         <!--payment-p__sec-->
-                        <section class="mb-60 swiper6 payment-p__sec">
+                        <section class="mb-60 swiper6 payment-p__sec" data-animation="fadeUp">
                             <div class="sec-top">
                                 <h3>Платёжные системы</h3>
                             </div>
@@ -114,13 +115,13 @@
                                     </div>
                                 </div>
                                 <div class="swiper-nav">
-                                    <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                                    <button type="button" class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                    <button type="button" class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
                                 </div>
                             </div>
                         </section>
                         <!--payment-p__sec-->
-                        <section class="payment-p__sec">
+                        <section class="payment-p__sec" data-animation="fadeUp">
                             <div class="sec-top">
                                 <h3>Реквизиты компании</h3>
                             </div>
@@ -129,7 +130,7 @@
                                     <span>Компания</span>
                                     <span>ООО «Лескрафт»</span>
                                 </div>
-                                <div class="item-contact">
+                                <div class="item-contact item-contact--address">
                                     <span>Адрес</span>
                                     <span>350049 край Краснодарский, город Краснодар, улица имени Бабушкина, дом 189, оф 404</span>
                                 </div>

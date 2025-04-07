@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -26,9 +27,9 @@
                             <div class="notfound-p__content">
                                 <h1 class="h3">Страница не найдена</h1>
                                 <p>Пора вернуться к покупкам</p>
-                                <a href="#" class="btn main-btn">
+                                <a href="#" class="btn main-btn main-btn--link">
                                     Перейти в каталог
-                                    <span class="link-icon"></span>
+                                    <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
                                 </a>
                             </div>
                         </div>

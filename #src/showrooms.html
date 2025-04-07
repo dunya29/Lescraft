@@ -10,10 +10,11 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
-                        @@include('_breadcrumbs.html', {"page": "Шоу-румы и филиалы"})                       
+                        @@include('_breadcrumbs.html', {"page": "Шоу-румы и филиалы"})
                     </div>
                 </div>
                 <!--showroom-p-->
@@ -22,202 +23,227 @@
                         <div class="sec-top">
                             <h1>Шоу-румы и филиалы</h1>
                         </div>
-                        <div class="showrooms__inner">
-                            <ul class="custom-scroll showrooms__list">
-                                <li class="accordion showrooms-city">
-                                    <div class="accordion__header showrooms-city__header" data-showroom-city-id="1">
-                                        <span class="h4">Краснодар</span>
-                                        <span class="accordion__icon" aria-label="Развернуть/Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </span>
-                                    </div>
-                                    <div class="accordion__body showrooms-city__body">
-                                        <ul class="showrooms-city__list">
-                                            <li class="accordion item-showroom">
-                                                <div class="accordion__header item-showroom__header" data-showroom-id="1">
-                                                    <h5>Краснодар, Тополиная, 27/1</h5>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="item-showroom__content">
-                                                        <div class="item-contact">
-                                                            <span>Адрес склада и офиса</span>
-                                                            <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                        <div class="switch-block">
+                            <div class="showrooms__tabs">
+                                <div class="tabs">
+                                    <span class="h3 active" data-tab="showrooms-list">Список</span>
+                                    <span class="h3" data-tab="showrooms-map">Карта</span>
+                                </div>
+                            </div>
+                            <div class="showrooms__blocks">
+                                <div class="custom-scroll showrooms__block active" data-block="showrooms-list">
+                                    <ul class="showrooms__list">
+                                        <li class="accordion showrooms-city">
+                                            <div class="accordion__header showrooms-city__header" data-showroom-city-id="1">
+                                                <span class="h4">Краснодар</span>
+                                                <span class="accordion__icon" aria-label="Развернуть/Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </span>
+                                            </div>
+                                            <div class="accordion__body showrooms-city__body">
+                                                <ul class="showrooms-city__list">
+                                                    <li class="accordion item-showroom">
+                                                        <div class="accordion__header item-showroom__header" data-showroom-id="1">
+                                                            <h5>Краснодар, Тополиная, 27/1</h5>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Телефон</span>
-                                                            <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                        <div class="accordion__body">
+                                                            <div class="item-showroom__content">
+                                                                <div class="item-contact">
+                                                                    <span>Адрес склада и офиса</span>
+                                                                    <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Телефон</span>
+                                                                    <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Режим работы</span>
+                                                                    <span>Пн-вс: 8:30–17:30</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Режим работы</span>
-                                                            <span>Пн-вс: 8:30–17:30</span>
+                                                    </li>
+                                                    <li class="accordion item-showroom">
+                                                        <div class="accordion__header item-showroom__header" data-showroom-id="2">
+                                                            <h5>Краснодар, Красная, 45</h5>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="accordion item-showroom">
-                                                <div class="accordion__header item-showroom__header" data-showroom-id="2">
-                                                    <h5>Краснодар, Красная, 45</h5>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="item-showroom__content">
-                                                        <div class="item-contact">
-                                                            <span>Адрес склада и офиса</span>
-                                                            <span>ул. Красная, 45/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                        <div class="accordion__body">
+                                                            <div class="item-showroom__content">
+                                                                <div class="item-contact">
+                                                                    <span>Адрес склада и офиса</span>
+                                                                    <span>ул. Красная, 45/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Телефон</span>
+                                                                    <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Режим работы</span>
+                                                                    <span>Пн-вс: 8:30–17:30</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Телефон</span>
-                                                            <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="accordion showrooms-city">
+                                            <div class="accordion__header showrooms-city__header" data-showroom-city-id="2">
+                                                <span class="h4">Сочи</span>
+                                                <span class="accordion__icon" aria-label="Развернуть/Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </span>
+                                            </div>
+                                            <div class="accordion__body showrooms-city__body">
+                                                <ul class="showrooms-city__list">
+                                                    <li class="accordion item-showroom">
+                                                        <div class="accordion__header item-showroom__header" data-showroom-id="3">
+                                                            <h5>Сочи, Тополиная, 27/1</h5>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Режим работы</span>
-                                                            <span>Пн-вс: 8:30–17:30</span>
+                                                        <div class="accordion__body">
+                                                            <div class="item-showroom__content">
+                                                                <div class="item-contact">
+                                                                    <span>Адрес склада и офиса</span>
+                                                                    <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Телефон</span>
+                                                                    <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Режим работы</span>
+                                                                    <span>Пн-вс: 8:30–17:30</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="accordion showrooms-city">
-                                    <div class="accordion__header showrooms-city__header" data-showroom-city-id="2">
-                                        <span class="h4">Сочи</span>
-                                        <span class="accordion__icon" aria-label="Развернуть/Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </span>
-                                    </div>
-                                    <div class="accordion__body showrooms-city__body">
-                                        <ul class="showrooms-city__list">
-                                            <li class="accordion item-showroom">
-                                                <div class="accordion__header item-showroom__header" data-showroom-id="3">
-                                                    <h5>Сочи, Тополиная, 27/1</h5>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="item-showroom__content">
-                                                        <div class="item-contact">
-                                                            <span>Адрес склада и офиса</span>
-                                                            <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="accordion showrooms-city">
+                                            <div class="accordion__header showrooms-city__header" data-showroom-city-id="3">
+                                                <span class="h4">Армавир</span>
+                                                <span class="accordion__icon" aria-label="Развернуть/Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </span>
+                                            </div>
+                                            <div class="accordion__body showrooms-city__body">
+                                                <ul class="showrooms-city__list">
+                                                    <li class="accordion item-showroom">
+                                                        <div class="accordion__header item-showroom__header" data-showroom-id="4">
+                                                            <h5>Армавир, Тополиная, 27/1</h5>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Телефон</span>
-                                                            <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                        <div class="accordion__body">
+                                                            <div class="item-showroom__content">
+                                                                <div class="item-contact">
+                                                                    <span>Адрес склада и офиса</span>
+                                                                    <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Телефон</span>
+                                                                    <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Режим работы</span>
+                                                                    <span>Пн-вс: 8:30–17:30</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Режим работы</span>
-                                                            <span>Пн-вс: 8:30–17:30</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="accordion showrooms-city">
+                                            <div class="accordion__header showrooms-city__header" data-showroom-city-id="4">
+                                                <span class="h4">Севастополь</span>
+                                                <span class="accordion__icon" aria-label="Развернуть/Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </span>
+                                            </div>
+                                            <div class="accordion__body showrooms-city__body">
+                                                <ul class="showrooms-city__list">
+                                                    <li class="accordion item-showroom">
+                                                        <div class="accordion__header item-showroom__header" data-showroom-id="5">
+                                                            <h5>Севастополь, Тополиная, 27/1</h5>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="accordion showrooms-city">
-                                    <div class="accordion__header showrooms-city__header" data-showroom-city-id="3">
-                                        <span class="h4">Армавир</span>
-                                        <span class="accordion__icon" aria-label="Развернуть/Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </span>
-                                    </div>
-                                    <div class="accordion__body showrooms-city__body">
-                                        <ul class="showrooms-city__list">
-                                            <li class="accordion item-showroom">
-                                                <div class="accordion__header item-showroom__header" data-showroom-id="4">
-                                                    <h5>Армавир, Тополиная, 27/1</h5>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="item-showroom__content">
-                                                        <div class="item-contact">
-                                                            <span>Адрес склада и офиса</span>
-                                                            <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                        <div class="accordion__body">
+                                                            <div class="item-showroom__content">
+                                                                <div class="item-contact">
+                                                                    <span>Адрес склада и офиса</span>
+                                                                    <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Телефон</span>
+                                                                    <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Режим работы</span>
+                                                                    <span>Пн-вс: 8:30–17:30</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Телефон</span>
-                                                            <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="accordion showrooms-city">
+                                            <div class="accordion__header showrooms-city__header" data-showroom-city-id="5">
+                                                <span class="h4">Ростов-на-дону</span>
+                                                <span class="accordion__icon" aria-label="Развернуть/Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </span>
+                                            </div>
+                                            <div class="accordion__body showrooms-city__body">
+                                                <ul class="showrooms-city__list">
+                                                    <li class="accordion item-showroom">
+                                                        <div class="accordion__header item-showroom__header" data-showroom-id="6">
+                                                            <h5>Ростов-на-дону, Тополиная, 27/1</h5>
                                                         </div>
-                                                        <div class="item-contact">
-                                                            <span>Режим работы</span>
-                                                            <span>Пн-вс: 8:30–17:30</span>
+                                                        <div class="accordion__body">
+                                                            <div class="item-showroom__content">
+                                                                <div class="item-contact">
+                                                                    <span>Адрес склада и офиса</span>
+                                                                    <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Телефон</span>
+                                                                    <a href="tel:88612522363">+7 861 252-23-63</a>
+                                                                </div>
+                                                                <div class="item-contact">
+                                                                    <span>Режим работы</span>
+                                                                    <span>Пн-вс: 8:30–17:30</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="accordion showrooms-city">
-                                    <div class="accordion__header showrooms-city__header" data-showroom-city-id="4">
-                                        <span class="h4">Севастополь</span>
-                                        <span class="accordion__icon" aria-label="Развернуть/Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </span>
-                                    </div>
-                                    <div class="accordion__body showrooms-city__body">
-                                        <ul class="showrooms-city__list">
-                                            <li class="accordion item-showroom">
-                                                <div class="accordion__header item-showroom__header" data-showroom-id="5">
-                                                    <h5>Севастополь, Тополиная, 27/1</h5>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="item-showroom__content">
-                                                        <div class="item-contact">
-                                                            <span>Адрес склада и офиса</span>
-                                                            <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
-                                                        </div>
-                                                        <div class="item-contact">
-                                                            <span>Телефон</span>
-                                                            <a href="tel:88612522363">+7 861 252-23-63</a>
-                                                        </div>
-                                                        <div class="item-contact">
-                                                            <span>Режим работы</span>
-                                                            <span>Пн-вс: 8:30–17:30</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="accordion showrooms-city">
-                                    <div class="accordion__header showrooms-city__header" data-showroom-city-id="5">
-                                        <span class="h4">Ростов-на-дону</span>
-                                        <span class="accordion__icon" aria-label="Развернуть/Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </span>
-                                    </div>
-                                    <div class="accordion__body showrooms-city__body">
-                                        <ul class="showrooms-city__list">
-                                            <li class="accordion item-showroom">
-                                                <div class="accordion__header item-showroom__header" data-showroom-id="6">
-                                                    <h5>Ростов-на-дону, Тополиная, 27/1</h5>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="item-showroom__content">
-                                                        <div class="item-contact">
-                                                            <span>Адрес склада и офиса</span>
-                                                            <span>ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
-                                                        </div>
-                                                        <div class="item-contact">
-                                                            <span>Телефон</span>
-                                                            <a href="tel:88612522363">+7 861 252-23-63</a>
-                                                        </div>
-                                                        <div class="item-contact">
-                                                            <span>Режим работы</span>
-                                                            <span>Пн-вс: 8:30–17:30</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="map showrooms__map" id="showrooms-map"></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="showrooms__block showrooms__block--map" data-block="showrooms-map">
+                                    <div class="map showrooms__map" id="showrooms-map"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
-                @@include('_callback-form.html')
+                @@include('_callback-form.html', {"contacts": true})
             </main>
             @@include('_footer.html', {"main": false})
+            <div class="custom-scroll modal showrooms-modal" id="showrooms-modal">
+                <div class="modal__content">
+                    <button type="button" class="btn-cross modal__close"></button>
+                    <div class="modal__top">
+                        <div class="balloon__header">
+                            <h4 class="balloon__name"></h4>
+                        </div>
+                    </div>
+                    <div class="custom-scroll modal__scroll">
+                        <div class="balloon__body"></div>
+                    </div>
+                </div>
+            </div>
             @@include('_modal.html')
         </div>
         @@include('_js.html')

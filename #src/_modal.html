@@ -1,25 +1,34 @@
 <div class="overlay"></div>
-<div class="tippy-content"></div>
-<!--modal-->
-<modal class="modal">
-    <div class="custom-scroll modal__overlay">
-        <div class="modal__content">
-            <button type="button" class="btn btn-close"></button>
-            <div class="custom-scroll">
-                <div class="modal__top"></div>
-            </div>
+<div class="modal tippy-content" id="tippy-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="custom-scroll modal__scroll">
+            <div class="tippy-content__inner"></div>
         </div>
     </div>
-</modal>
+</div>
+<!--cookie-->
+<div class="cookie" id="cookie-popup">
+    <div class="cookie__inner">
+        <div class="cookie__content">
+            <p>Мы используем файлы cookie, чтобы сделать сайт еще удобнее. Продолжая использовать наш сайт, вы даете согласие на обработку файлов cookie и пользовательских
+                данных.</p>
+        </div>
+        <div class="cookie__btns">
+            <button class="btn main-btn" onclick="unshowCookie()">Отлично</button>
+            <a href="#" class="btn text-btn">Подробнее</a>
+        </div>
+    </div>
+</div>
 <!--city-modal-->
 <div class="custom-scroll modal city-modal" id="city-modal">
     <div class="modal__content">
-        <button type="button" class="btn btn-close"></button>
-        <div class="custom-scroll">
-            <div class="modal__top">
-                <h3>Выберите ближайший к вам город</h3>
-                <p>Мы не ограничены списком представленных городов. Доставка осуществляется по всему Югу России</p>
-            </div>
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Выберите ближайший к&nbsp;вам&nbsp;город</h3>
+            <p>Мы не ограничены списком представленных городов. Доставка осуществляется по всему Югу&nbsp;России</p>
+        </div>
+        <div class="custom-scroll modal__scroll">
             <ul class="custom-scroll city-modal__list">
                 <li class="link-btn"><a href="#">Краснодар</a></li>
                 <li class="link-btn"><a href="#">Новороссийск</a></li>
@@ -52,71 +61,59 @@
 <!--review-modal-->
 <div class="custom-scroll modal review-modal" id="review-modal">
     <div class="modal__content">
-        <button type="button" class="btn btn-close"></button>
-        <div class="custom-scroll">
-            <div class="modal__top">
-                <h3>Оставить отзыв</h3>
-            </div>
-            <form class="form" onsubmit="event.preventDefault();formSuccess(this)">
-                <div class="form__lbl">Оцените</div>
-                <div class="form__items">
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" aria-label="Оценить в 5 звезд">
-                        <label for="star5"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
-                        <input type="radio" id="star4" name="rate" value="4" aria-label="Оценить в 4 звезды">
-                        <label for="star4"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
-                        <input type="radio" id="star3" name="rate" value="3" aria-label="Оценить в 3 звезды">
-                        <label for="star3"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
-                        <input type="radio" id="star2" name="rate" value="2" aria-label="Оценить в 2 звезды">
-                        <label for="star2"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
-                        <input type="radio" id="star1" name="rate" value="1" aria-label="Оценить в 1 звезду">
-                        <label for="star1"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Оставить отзыв</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form disabled-form" onsubmit="event.preventDefault();formReset(this);openSuccessMod('Спасибо за отзыв!')">
+                <div class="form__group">
+                    <div class="form__lbl">Оцените</div>
+                    <div class="form__items">
+                        <div class="rate">
+                            <input checked type="radio" id="star5" name="rate" value="5" aria-label="Оценить в 5 звезд">
+                            <label for="star5"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                            <input type="radio" id="star4" name="rate" value="4" aria-label="Оценить в 4 звезды">
+                            <label for="star4"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                            <input type="radio" id="star3" name="rate" value="3" aria-label="Оценить в 3 звезды">
+                            <label for="star3"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                            <input type="radio" id="star2" name="rate" value="2" aria-label="Оценить в 2 звезды">
+                            <label for="star2"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                            <input type="radio" id="star1" name="rate" value="1" aria-label="Оценить в 1 звезду">
+                            <label for="star1"><svg><use href="img/svg/sprite.svg#star-1"></use></svg></label>
+                        </div>
                     </div>
                 </div>
-                <div class="form__items">
-                    <div class="item-form">
-                        <div class="item-form__inp">
-                            <input type="text" id="name" name="name" placeholder=" " class="required">
-                            <label for="name" class="item-form__placeholder">Имя</label>
-                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                <div class="form__group">
+                    <div class="form__items">
+                        <div class="item-form error">
+                            <div class="item-form__inp">
+                                <input type="text" id="name" name="name" placeholder=" " class="required">
+                                <label for="name" class="item-form__placeholder">Имя</label>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error>Заполните поле</span>
                         </div>
-                        <span data-error></span>
-                    </div>
-                    <div class="item-form">
-                        <div class="item-form__inp">
-                            <input type="text" id="surname" placeholder=" " name="surname">
-                            <label for="surname" class="item-form__placeholder">Фамилия</label>
-                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" id="surname" placeholder=" " name="surname">
+                                <label for="surname" class="item-form__placeholder">Фамилия</label>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
                         </div>
-                        <span data-error></span>
-                    </div>
-                    <div class="item-form">
-                        <div class="item-form__inp">
-                            <input type="text" id="email" placeholder=" " name="email" class="required">
-                            <label for="email" class="item-form__placeholder">Email</label>
-                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" id="email" placeholder=" " name="email" class="required">
+                                <label for="email" class="item-form__placeholder">Email</label>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
                         </div>
-                        <span data-error></span>
-                    </div>
-                </div>
-                <div class="form__items">
-                    <div class="form__lbl">Загрузите фото</div>
-                    <div class="item-form file-form">
-                        <div class="file-form__info">
-                            <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                        <div class="item-form">
+                            <textarea placeholder="Текст вашего отзыва" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                            <span data-error></span>
                         </div>
-                        <label>
-                            <input type="file" accept=".png,.jpg,.jpeg,.pdf">
-                            <span>Перетащите, или <span>выберите файл</span></span>
-                        </label>
-                        <div class="file-form__items"></div>
-                        <span data-error></span>
-                    </div>
-                </div>
-                <div class="form__items">
-                    <div class="item-form">
-                        <textarea placeholder="Текст вашего отзыва"></textarea>
-                        <span data-error></span>
                     </div>
                 </div>
                 <div class="form__footer">
@@ -131,4 +128,121 @@
             </form>
         </div>
     </div>
+</div>
+<!--cart-removal-modal-->
+<div class="custom-scroll modal cart-removal-modal" id="cart-removal-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Вы уверены, что хотите удалить товар?</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="modal__btns">
+                <button type="button" class="btn main-btn js-remove-from-cart" data-id
+                    onclick="removeFromCart(this.dataset.id, ()=>closeModal(document.querySelector('#cart-removal-modal')))">Да</button>
+                <button type="button" class="btn stroke-btn modal__close">Нет</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--review-modal-->
+<div class="custom-scroll modal contact-manager-modal" id="contact-manager-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Связаться с менеджером</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();openSuccessMod(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" id="name" name="name" placeholder=" " class="required">
+                            <label for="name" class="item-form__placeholder">Имя</label>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" id="phone" placeholder=" " class="required">
+                            <label for="phone" class="item-form__placeholder">Телефон</label>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Комментарий" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--success-modal-->
+<div class="custom-scroll modal success-modal" id="success-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Заявка успешно отправлена</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <p></p>
+            <button type="button" class="btn stroke-btn modal__close">Закрыть</button>
+        </div>
+    </div>
+</div>
+<!--error-modal-->
+<div class="custom-scroll modal error-modal" id="error-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Что-то пошло не так</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <p></p>
+            <button type="button" class="btn stroke-btn modal__close">Закрыть</button>
+        </div>
+    </div>
+</div>
+<!--cart-popup-->
+<div class="fixed-block cart-popup js-prodWrapper">
+    <div class="cart-popup__inner">
+        <div class="custom-scroll cart-popup__items">
+            @@include("_item-cart-popup.html")
+            @@include("_item-cart-popup.html")
+            @@include("_item-cart-popup.html")
+            @@include("_item-cart-popup.html")
+            @@include("_item-cart-popup.html")
+            @@include("_item-cart-popup.html")
+        </div>
+        <div class="cart-popup__bot">
+            <a href="#" class="btn main-btn">В корзину</a>
+        </div>
+    </div>
+</div>
+<!--fixed-menu-->
+<div class="fixed-block fixed-menu">
+    <div class="container">
+        <ul>
+            <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#home"></use></svg><span>Главная</span></a></li>
+            <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#catalog"></use></svg><span>Каталог</span></a></li>
+            <li><a href><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg><span>Избранное</span></a></li>
+            <!-- <li><a href="profile.html"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg><span>Профиль</span></a></li> -->
+            <li><button class="btn mod-open-btn" data-modal="account-modal"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg><span>Войти</span></button></li>
+            <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg><span>Корзина</span></a></li>
+        </ul>
+    </div>
+
 </div>

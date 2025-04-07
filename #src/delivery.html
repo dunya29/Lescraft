@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -26,34 +27,34 @@
                         <div class="page-row">
                             <!--page-row__content-->
                             <div class="page-row__content">
-                                <div class="mb-60 delivery-p__advants">
-                                    <!--item-advant-->
-                                    <div class="item-advant">
-                                        <div class="item-advant__icon">
-                                            <img src="img/svg/delivery.svg" alt>
+                                <div class="mb-60 delivery-features">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/add-delivery.svg" alt>
                                         </div>
-                                        <h5>Заказ в магазине или на сайте</h5>
+                                        <h5>Заказ в&nbsp;магазине или&nbsp;на&nbsp;сайте</h5>
                                     </div>
-                                    <!--item-advant-->
-                                    <div class="item-advant">
-                                        <div class="item-advant__icon">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
                                             <img src="img/svg/export.svg" alt>
                                         </div>
-                                        <h5>Доставка с выгрузкой от 300 ₽</h5>
+                                        <h5>Доставка с&nbsp;выгрузкой от&nbsp;300&nbsp;₽</h5>
                                     </div>
-                                    <!--item-advant-->
-                                    <div class="item-advant">
-                                        <div class="item-advant__icon">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
                                             <img src="img/svg/clock.svg" alt>
                                         </div>
-                                        <h5>Доставка осуществляется<br>с 9:00 до 21:00</h5>
+                                        <h5>Доставка осуществляется с&nbsp;9:00&nbsp;до&nbsp;21:00</h5>
                                     </div>
-                                    <!--item-advant-->
-                                    <div class="item-advant">
-                                        <div class="item-advant__icon">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
                                             <img src="img/svg/pickup.svg" alt>
                                         </div>
-                                        <h5>Самовывоз в любом филиале<br>с 8:00 до 22:00</h5>
+                                        <h5>Самовывоз в&nbsp;любом филиале с&nbsp;8:00&nbsp;до&nbsp;22:00</h5>
                                     </div>
                                 </div>
                                 <div class="mb-60 page-content">
@@ -86,18 +87,16 @@
                                             от водителя-экспедитора/продавца, водитель-экспедитор вправе уехать с места разгрузки. При этом повторная доставка товара
                                             оплачивается покупателем отдельно.
                                         </li>
-                                        <li>Выгрузка товара осуществляется силами покупателя, если не заказаны услуги разгрузки и подъёма товаров. Стоимость доставки
-                                            зависит
-                                            от расстояния от склада компании до места выгрузки, веса купленного товара и заказанных покупателем
-                                            услуг.</li>
+                                        <li>Выгрузка товара осуществляется силами покупателя, если не заказаны услуги разгрузки и подъёма товаров.</li>
+                                        <li>Стоимость доставки зависит от расстояния от склада компании до места выгрузки, веса купленного товара и заказанных покупателем услуг.</li>
                                     </ol>
                                 </div>
                                 <section class="delivery-p__sec">
                                     <div class="sec-top">
-                                        <h2>Доставка по Краснодару</h2>
+                                        <h3>Доставка по Краснодару</h3>
                                     </div>
                                     <div class="page-content">
-                                        <div class="deliery__map">
+                                        <div class="delivery-p__map">
                                             <iframe
                                                 src="https://yandex.ru/map-widget/v1/?um=constructor%3A81e86a6af0cb02dcf5d3682a1e35079d5f2c16ce99ae107bf4230e6b52f07938&amp;source=constructor"
                                                 width="100%" height="380" frameborder="0"></iframe>
@@ -257,9 +256,9 @@
                                 </section>
                             </div>
                             <!--page-row__aside-->
-                            <div class="page-row__aside">
+                            <aside class="page-row__aside">
                                 @@include('_feedback-form.html', {"title": "Остались вопросы?", "btnTxt": "Задать вопрос"})
-                            </div>
+                            </aside>
                         </div>
                     </div>
                 </section>

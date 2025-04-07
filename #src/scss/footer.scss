@@ -26,15 +26,12 @@
     &__top,
     &__bot {
         display: grid;
-        grid-template-columns: 3fr 6fr 3fr;
+        grid-template-columns: 1fr 2fr 1fr;
         gap: 20px;
     }
     &__top {
-        padding-bottom: 24px;
+        padding-bottom: 40px;
         border-bottom: 1px solid var(--primary-color);
-    }
-    &__col:last-child {
-        padding-right: 62px;
     }
     &__info {
         h5 {
@@ -42,7 +39,7 @@
             line-height: 1.35;
             color: var(--gray-color-dark);
             letter-spacing: normal;
-            max-width: 290px;
+            max-width: 300px;
             margin-top: 16px;
         }
     }
@@ -62,12 +59,12 @@
         .accordion__body {
             display: block;
             ul li {
+                font-size: 16px;
                 margin-bottom: 8px;
                 &:last-child {
                     margin-bottom: 0;
                 }
                 a {
-                    font-size: 16px;
                     color: var(--gray-color-dark);
                     &:hover {
                         color: var(--green-color);
@@ -91,7 +88,9 @@
         grid-template-columns: 1fr 2fr;
         gap: 10px;
         a {
+            width: max-content;
             color: var(--gray-color);
+            display: inline-block;
             &:hover {
                 color: var(--green-color);
             }
@@ -111,6 +110,139 @@
                     fill: var(--green-color);
                 }
             }
+        }
+    }
+    @media (max-width: $bp1) {
+        padding-top: 40px;
+        .social-list {
+            margin-top: 20px;
+        }
+        .page-contact a {
+            font-size: 18px;
+        }
+        &__info {
+            h5 {
+                font-size: 14px;
+                max-width: 240px;
+            }
+        }
+        &__menu {
+            .accordion__header {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+            .accordion__body {
+                ul li {
+                    font-size: 14px;
+                    margin-bottom: 6px;
+                }
+            }
+        }
+        &__top,
+        &__bot,
+        &__menu {
+            gap: 16px;
+        }
+        &__top {
+            padding-bottom: 24px;
+        }
+        &__links,
+        &__dev {
+            font-size: 12px;
+        }
+    }
+    @media (max-width: $bp2) {
+        &__info {
+            h5 {
+                font-size: 12px;
+            }
+        }
+        &__menu {
+            .accordion {
+                &__header {
+                    font-size: 16px;
+                }
+                &__body {
+                    ul li {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        &__links {
+            grid-template-columns: auto auto;
+        }
+    }
+    @media (max-width: $bp3) {
+        padding-top: 32px;
+        .page-contact {
+            margin-top: 20px;
+            a {
+                font-size: 16px;
+            }
+        }
+        .social-list {
+            margin-top: 14px;
+        }
+        &__top {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        &__info {
+            padding-right: 50px;
+            h5 {
+                max-width: 400px;
+                margin-top: 12px;
+            }
+        }
+        &__menu {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            .accordion {
+                padding-bottom: 12px;
+                border-bottom: 1px solid var(--primary-color);
+                &__header {
+                    pointer-events: auto;
+                    margin-bottom: 0;
+                }
+                &__icon {
+                    display: block;
+                }
+                &__body {
+                    display: none;
+                    ul li {
+                        margin-bottom: 8px;
+                        a {
+                            font-size: 14px;
+                        }
+                    }
+                }
+                &__content {
+                    padding-top: 12px;
+                }
+            }
+        }
+        &__contacts {
+            .main-btn {
+                margin-top: 12px;
+            }
+        }
+        &__copyright {
+            font-size: 12px;
+        }
+        &__bot {
+            grid-template-columns: 1fr auto;
+        }
+        &__links {
+            grid-area: 1/1/2/3;
+            grid-template-columns: 1fr;
+            justify-items: start;
+        }
+    }
+    @media (max-width: $bp4) {
+        .page-logo {
+            width: 160px;
+            height: 40px;
         }
     }
 }

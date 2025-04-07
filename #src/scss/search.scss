@@ -1,35 +1,42 @@
 .search-form {
     width: 100%;
     max-width: 753px;
-    padding: 4px 4px 4px 20px;
-    display: flex;
-    align-items: center;
-    border-radius: 100px;
-    border: 1px solid var(--primary-color);
     position: relative;
-    transition: all 0.3s linear;
-    .btn-close {
-        &:before, &:after {
-            background-color: var(--gray-color);
-        }
-    }
-    &.focused {
+    &.focused .search-form__inner {
         border-color: var(--green-color);
     }
     &.show-results {
         .search-form__results {
             visibility: visible;
             opacity: 1;
-            pointer-events: all;
         }
     }
-    &:before {
-        content: "";
-        display: block;
-        width: 24px;
-        height: 24px;
-        background: url(../img/svg/loupe.svg) center / contain no-repeat;
-        margin-right: 10px;
+    &__inner {
+        padding: 4px 4px 4px 20px;
+        display: flex;
+        align-items: center;
+        border-radius: 100px;
+        border: 1px solid var(--primary-color);
+        position: relative;
+        transition: all 0.3s linear;
+        &:before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: url(../img/svg/loupe.svg) center / contain no-repeat;
+            margin-right: 10px;
+        }
+        .btn-cross {
+            &:before,
+            &:after {
+                background-color: var(--gray-color);
+            }
+        }
+        .main-btn {
+            width: auto;
+            padding: 11px 30px;
+        }
     }
     &__inp {
         flex: 1 1 auto;
@@ -40,10 +47,11 @@
         margin-left: 10px;
         visibility: hidden;
         opacity: 0;
+        pointer-events: none;
         &.show {
             visibility: visible;
             opacity: 1;
-            pointer-events: all;
+            pointer-events: auto;
         }
     }
     &__reset {
@@ -52,9 +60,6 @@
             width: 20px;
             height: 20px;
         }
-    }
-    &__submit {
-        padding: 11px 30px;
     }
     &__results {
         visibility: hidden;
@@ -66,21 +71,91 @@
         background: var(--white);
         position: absolute;
         top: 100%;
+        left: 0;
         width: 100%;
         margin-top: 10px;
+        .text-btn {
+            margin: 20px 20px 8px;
+        }
+    }
+    &__results-inner {
         .custom-scroll {
             padding-right: 2px;
             margin-right: -2px;
             max-height: 308px;
             overflow: auto;
         }
-        .text-btn {
-            margin: 20px 20px 8px;
+    }
+    @media (max-width: $bp1) {
+        max-width: 443px;
+        &__inner {
+            padding-left: 16px;
+            &::before {
+                width: 20px;
+                height: 20px;
+                margin-right: 6px;
+            }
+            .main-btn {
+                padding-top: 9.5px;
+                padding-bottom: 9.5px;
+            }
+        }
+        &__submit,
+        &__reset {
+            margin-left: 8px;
+        }
+        &__results {
+            margin-top: 6px;
+            .text-btn {
+                margin: 12px 16px 6px;
+            }
+        }
+        &__results-inner {
+            .custom-scroll {
+                max-height: 208px;
+            }
+        }
+    }
+    @media (max-width: $bp2) {
+        max-width: 100%;
+        &__inner {
+            height: 40px;
+            padding: 2px 12px;
+            margin-right: 50px;
+            &::before {
+                width: 16px;
+                height: 16px;
+            }
+            .main-btn {
+                color: var(--green-color);
+                padding: 0;
+                border-radius: 0;
+                white-space: nowrap;
+                visibility: visible;
+                opacity: 1;
+                pointer-events: auto;
+                position: absolute;
+                left: 100%;
+                &::before,
+                &::after {
+                    content: none;
+                }
+            }
         }
     }
 }
 .search-p {
     .sec-top {
         display: block;
+    }
+}
+.search-noresult {
+    &__img {
+        margin-bottom: 8px;
+    }
+    @media (max-width: $bp1) {
+        &__img {
+            max-width: 154px;
+        }
     }
 }

@@ -1,7 +1,10 @@
 .pub-date {
     color: var(--gray-color);
     display: block;
-    margin-top: 24px;
+    margin-top: 16px;
+    @media (max-width: $bp4) {
+        margin-top: 12px;
+    }
 }
 .item-news {
     .media-cover {
@@ -17,18 +20,16 @@
     }
     &__content {
         padding: 0 12px;
-        a, p {
+        h4 {
+            margin-bottom: 16px;
+        }
+        a,
+        p {
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
             text-overflow: ellipsis;
             overflow: hidden;
-        }
-        & > * {
-            margin-bottom: 16px;
-            &:last-child {
-                margin-bottom: 0;
-            }
         }
         a:hover {
             color: var(--green-color);
@@ -36,6 +37,7 @@
         p {
             font-size: 16px;
             font-weight: 400;
+            margin-bottom: 16px;
         }
     }
     &__date {
@@ -43,12 +45,64 @@
         font-weight: 400;
         color: var(--gray-color);
     }
+    @media (max-width: $bp1) {
+        .media-cover {
+            border-radius: 16px;
+        }
+        &__content {
+            h4 {
+                margin-bottom: 12px;
+            }
+            p {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+        }
+        &__date {
+            font-size: 14px;
+        }
+    }
+    @media (max-width: $bp2) {
+        &__content {
+            h4 {
+                font-size: 16px;
+                margin-bottom: 4px;
+            }
+            p {
+                font-size: 12px;
+            }
+        }
+        &__date {
+            font-size: 12px;
+        }
+    }
+     @media (max-width: $bp4) {
+        h4 {
+            font-size: 14px;
+        }
+        .media-cover {
+            border-radius: 12px;
+        }
+        &__content {
+            padding: 0;
+        }
+     }
 }
 .news-p {
     &__items {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 40px 20px;
+        @media (max-width: $bp1) {
+            gap: 40px 16px;
+        }
+        @media (max-width: $bp2) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: $bp4) {
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
     }
 }
 .article-p {
@@ -56,10 +110,66 @@
         display: block;
     }
     &__img {
+        max-width: 960px;
         margin-bottom: 24px;
         img {
             width: 100%;
             border-radius: 20px;
+        }
+        @media (max-width: $bp1) {
+            max-width: 690px;
+        }
+        @media (max-width: $bp2) {
+            max-width: 100%;
+        }
+        @media (max-width: $bp4) {
+            img {
+                border-radius: 16px;
+            }
+        }
+    }
+}
+.news-banner {
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    .media-cover,
+    &__content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .media-cover {
+        background: var(--green-color-light);
+    }
+    &__content {
+        padding: 24px 32px;
+        z-index: 1;
+        h3 {
+            font-weight: 500;
+            color: var(--green-color);
+        }
+    }
+    @media (max-width: $bp1) {
+        border-radius: 16px;
+        &__content {
+            padding: 16px 24px;
+        }
+    }
+    @media (max-width: $bp2) {
+        &__content {
+            padding: 16px;
+            h3 {
+                font-size: 24px;
+            }
+        }
+    }
+    @media (max-width: $bp4) {
+        border-radius: 12px;
+        &__content {
+            padding: 12px;
         }
     }
 }

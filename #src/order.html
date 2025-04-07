@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -23,242 +24,368 @@
                         </div>
                         <div class="order-p__top"></div>
                         <form class="form order-p__form">
-                            <div class="order-p__fieldsets">
-                                <div class="accordion no-close order-p__fieldset active">
-                                    <div class="accordion__header active">
-                                        <h4>Товары в заказе</h4>
-                                        <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </div>
-                                    </div>
-                                    <div class="accordion__body active">
-                                        <div class="accordion__content">
-                                            @@include("_item-order.html")
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion no-close order-p__fieldset active" data-step="1">
-                                    <div class="accordion__header active">
-                                        <h4>Покупатель</h4>
-                                        <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </div>
-                                    </div>
-                                    <div class="accordion__body active">
-                                        <div class="accordion__content">
-                                            <div class="switch-block">
-                                                <div class="tabs-scroll">
-                                                    <div class="tabs">
-                                                        <span class="active" data-tab="individual">Для физических лиц</span>
-                                                        <span data-tab="legal-entity">Для юридических лиц</span>
-                                                    </div>
-                                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                                                </div>
-                                                <div class="order-p__block active" data-block="individual">
-                                                    <div class="form__items">
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="text" id="name" placeholder=" " class="required">
-                                                                <label for="name" class="item-form__placeholder">Ваше имя</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="tel" id="phone" placeholder=" " class="required">
-                                                                <label for="phone" class="item-form__placeholder">Телефон</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="text" id="email" placeholder=" " class="required">
-                                                                <label for="email" class="item-form__placeholder">Email</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form item-form--span-3">
-                                                            <textarea placeholder="Комментарий"></textarea>
-                                                            <span data-error></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="order-p__block" data-block="legal-entity">
-                                                    <div class="form__lbl">Информация о компании</div>
-                                                    <div class="form__items">
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="text" id="company_name" placeholder=" " class="required">
-                                                                <label for="company_name" class="item-form__placeholder">Название компании</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="text" id="inn" placeholder=" " class="required">
-                                                                <label for="inn" class="item-form__placeholder">ИНН</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="text" id="email" placeholder=" " class="required">
-                                                                <label for="email" class="item-form__placeholder">Email</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form item-form--textarea">
-                                                            <textarea placeholder="Комментарий"></textarea>
-                                                            <span data-error></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form__lbl">Карточка компании</div>
-                                                    <div class="item-form file-form">
-                                                        <div class="file-form__info">
-                                                            <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
-                                                        </div>
-                                                        <label>
-                                                            <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
-                                                            <span>Перетащите, или <span>выберите файл</span></span>
-                                                        </label>
-                                                        <div class="file-form__items"></div>
-                                                        <span data-error></span>
-                                                    </div>
-                                                    <div class="form__lbl">Контактное лицо</div>
-                                                    <div class="form__items">
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="text" id="name" placeholder=" " class="required">
-                                                                <label for="name" class="item-form__placeholder">ФИО</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form">
-                                                            <div class="item-form__inp">
-                                                                <input type="tel" id="phone" placeholder=" " class="required">
-                                                                <label for="phone" class="item-form__placeholder">Телефон</label>
-                                                                <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
-                                                            </div>
-                                                            <span data-error></span>
-                                                        </div>
-                                                        <div class="item-form item-form--textarea">
-                                                            <textarea placeholder="Комментарий"></textarea>
-                                                            <span data-error></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion no-close order-p__fieldset" data-step="2">
-                                    <div class="accordion__header">
-                                        <h4>Доставка <span data-radio-value></span></h4>
-                                        <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                        </div>
-                                    </div>
-                                    <div class="accordion__body">
-                                        <div class="switch-block accordion__content">
-                                            <div class="item-tippy order-p__loc">
-                                                <button class="btn mod-open-btn page-loc" data-modal="city-modal">
-                                                    <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
-                                                    <span data-address="city">Нижний Новгород</span>
+                            <div class="page-row">
+                                <!--page-row__content-->
+                                <div class="page-row__content">
+                                    <div class="order-p__fieldsets">
+                                        <div class="accordion no-close order-p__fieldset active">
+                                            <div class="accordion__header active">
+                                                <h4>Товары в заказе <span>3 товара</span></h4>
+                                                <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
                                                     <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                                </button>
-                                                <div class="tippy">
-                                                    <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                    <p>При смене региона может измениться состав заказа и стоимость</p>
                                                 </div>
                                             </div>
-                                            <div class="order-p__radio-items">
-                                                <label class="text-radio">
-                                                    <input type="radio" name="order-delivery" value="1" data-tab="1">
-                                                    <div class="text-radio__content">
-                                                        <div class="text-radio__icon"><img src="img/svg/pickup.svg" alt></div>
-                                                        <p>Самовывоз</p>
-                                                    </div>
-                                                </label>
-                                                <label class="text-radio">
-                                                    <input type="radio" name="order-delivery" value="2" data-tab="2">
-                                                    <div class="text-radio__content">
-                                                        <div class="text-radio__icon"><img src="img/svg/export.svg" alt></div>
-                                                        <p>Доставка до адреса</p>
-                                                    </div>
-                                                </label>
+                                            <div class="accordion__body active">
+                                                <div class="accordion__content">
+                                                    @@include("_item-order.html")
+                                                    @@include("_item-order.html")
+                                                    @@include("_item-order.html")
+                                                </div>
                                             </div>
-                                            <div class="order-p__delivery-block" data-block="2">
-                                                <div class="form__lbl">Доставка</div>
-                                                <div class="form__items">
-                                                    <div class="item-form item-form--span-2">
-                                                        <div class="item-form__inp">
-                                                            <input type="text" id="locality" placeholder=" " class="required" data-address="locality">
-                                                            <label for="locality" class="item-form__placeholder">Населённый пункт</label>
-                                                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                                        </div>
+                                        <div class="accordion no-close order-p__fieldset active" data-step="1">
+                                            <div class="accordion__header active">
+                                                <h4>Покупатель</h4>
+                                                <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </div>
+                                            </div>
+                                            <div class="accordion__body active">
+                                                <div class="accordion__content">
+                                                    <div class="switch-block">
+                                                        <div class="tabs-scroll">
+                                                            <div class="tabs">
+                                                                <span class="active" data-tab="individual">Для физических лиц</span>
+                                                                <span data-tab="legal-entity">Для юридических лиц</span>
+                                                            </div>
                                                         </div>
-                                                        <span data-error></span>
-                                                    </div>
-                                                    <div class="item-form">
-                                                        <div class="item-form__inp">
-                                                            <input type="text" id="street" placeholder=" " class="required" data-address="street">
-                                                            <label for="street" class="item-form__placeholder">Улица</label>
-                                                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                                                        <div class="order-p__block active" data-block="individual">
+                                                            <div class="form__items">
+                                                                <div class="item-form">
+                                                                    <div class="item-form__inp">
+                                                                        <input type="text" id="name" placeholder=" " class="required">
+                                                                        <label for="name" class="item-form__placeholder">Ваше имя</label>
+                                                                        <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                    </div>
+                                                                    <span data-error></span>
+                                                                </div>
+                                                                <div class="item-form">
+                                                                    <div class="item-form__inp">
+                                                                        <input type="tel" id="phone" placeholder=" " class="required">
+                                                                        <label for="phone" class="item-form__placeholder">Телефон</label>
+                                                                        <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                    </div>
+                                                                    <span data-error></span>
+                                                                </div>
+                                                                <div class="item-form item-form--mob-span-2">
+                                                                    <div class="item-form__inp">
+                                                                        <input type="text" id="email" placeholder=" " class="required">
+                                                                        <label for="email" class="item-form__placeholder">Email</label>
+                                                                        <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                    </div>
+                                                                    <span data-error></span>
+                                                                </div>
+                                                                <div class="item-form item-form--span-3">
+                                                                    <textarea placeholder="Комментарий"></textarea>
+                                                                    <span data-error></span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <span data-error></span>
-                                                    </div>
-                                                    <div class="item-form">
-                                                        <div class="item-form__inp">
-                                                            <input type="text" id="home" placeholder=" " class="required" data-address="home">
-                                                            <label for="home" class="item-form__placeholder">Дом</label>
-                                                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                                                        <div class="order-p__block" data-block="legal-entity">
+                                                            <div class="form__group">
+                                                                <div class="form__lbl">Информация о компании</div>
+                                                                <div class="form__items">
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="company_name" placeholder=" " class="required">
+                                                                            <label for="company_name" class="item-form__placeholder">Название компании</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="inn" placeholder=" " class="required">
+                                                                            <label for="inn" class="item-form__placeholder">ИНН</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                    <div class="item-form item-form--mob-span-2">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="email" placeholder=" " class="required">
+                                                                            <label for="email" class="item-form__placeholder">Email</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form__group">
+                                                                <div class="form__lbl">Карточка компании</div>
+                                                                <div class="item-form file-form">
+                                                                    <div class="file-form__info">
+                                                                        <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                                                                    </div>
+                                                                    <label>
+                                                                        <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                                                                        <span>Перетащите, или <span>выберите файл</span></span>
+                                                                    </label>
+                                                                    <div class="file-form__items"></div>
+                                                                    <span data-error></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form__group">
+                                                                <div class="form__lbl">Контактное лицо</div>
+                                                                <div class="form__items">
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="name" placeholder=" " class="required">
+                                                                            <label for="name" class="item-form__placeholder">ФИО</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="tel" id="phone" placeholder=" " class="required">
+                                                                            <label for="phone" class="item-form__placeholder">Телефон</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                    <div class="item-form item-form--span-3">
+                                                                        <textarea placeholder="Комментарий"></textarea>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <span data-error></span>
                                                     </div>
                                                 </div>
-                                                <div class="desc-block">
-                                                    <div class="desc-block__inner">
-                                                        <div class="desc-block__item">
-                                                            <span class="h6 desc-block__title">
-                                                                <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                                Доставка
-                                                            </span>
-                                                            <div class="desc-block__content">
-                                                                <p>Доставка осуществляется транспортом компании или наёмными автомобилями</p>
-                                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion no-close order-p__fieldset" data-step="2">
+                                            <div class="accordion__header">
+                                                <h4>Доставка <span data-radio-value></span></h4>
+                                                <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </div>
+                                            </div>
+                                            <div class="accordion__body">
+                                                <div class="switch-block accordion__content">
+                                                    <div class="item-tippy order-p__loc">
+                                                        <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
+                                                            <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
+                                                            <span data-address="city">Краснодар</span>
+                                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                        </button>
+                                                        <div class="tippy">
+                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                            <p>При смене региона может измениться состав заказа и стоимость</p>
                                                         </div>
-                                                        <div class="desc-block__item">
-                                                            <div class="item-contact">
-                                                                <span>Адрес доставки</span>
-                                                                <span data-full-address>г. Краснодар, ул. Красная, 45</span>
+                                                    </div>
+                                                    <div class="form__group form__group--radio">
+                                                        <span data-error></span>
+                                                        <div class="order-p__radio-items">
+                                                            <label class="text-radio">
+                                                                <input type="radio" name="order-delivery" value="1" data-tab="1">
+                                                                <div class="text-radio__content">
+                                                                    <div class="text-radio__icon"><img src="img/svg/pickup.svg" alt></div>
+                                                                    <p>Самовывоз</p>
+                                                                </div>
+                                                            </label>
+                                                            <label class="text-radio">
+                                                                <input type="radio" name="order-delivery" value="2" data-tab="2">
+                                                                <div class="text-radio__content">
+                                                                    <div class="text-radio__icon"><img src="img/svg/export.svg" alt></div>
+                                                                    <p>Доставка до&nbsp;адреса</p>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="order-p__delivery__blocks">
+                                                        <div class="order-p__delivery-block" data-block="2">
+                                                            <div class="form__group">
+                                                                <div class="form__lbl">Адрес доставки</div>
+                                                                <div class="form__items">
+                                                                    <div class="item-form item-form--span-3">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="locality" placeholder=" " class="required" data-address="locality">
+                                                                            <label for="locality" class="item-form__placeholder">Населённый пункт</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="street" placeholder=" " class="required" data-address="street">
+                                                                            <label for="street" class="item-form__placeholder">Улица</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="home" placeholder=" " class="required" data-address="home">
+                                                                            <label for="home" class="item-form__placeholder">Дом</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                    <div class="item-form item-form--span-3">
+                                                                        <textarea placeholder="Комментарий"></textarea>
+                                                                        <span data-error></span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="item-contact">
-                                                                <span>Стоимость</span>
-                                                                <span>Будет рассчитана менеджером</span>
+                                                            <div class="desc-block">
+                                                                <div class="desc-block__inner">
+                                                                    <div class="desc-block__item">
+                                                                        <span class="h6 desc-block__title">
+                                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                                            Доставка
+                                                                        </span>
+                                                                        <div class="desc-block__content">
+                                                                            <p>Доставка осуществляется транспортом компании или наёмными автомобилями</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="desc-block__item">
+                                                                        <div class="desc-block__contacts">
+                                                                            <div class="item-contact">
+                                                                                <span>Адрес доставки</span>
+                                                                                <span data-full-address>г. Краснодар, ул. Красная, 45</span>
+                                                                            </div>
+                                                                            <div class="item-contact">
+                                                                                <span>Стоимость</span>
+                                                                                <span>Будет рассчитана менеджером</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
+                                                            <div class="form__group">
+                                                                <div class="form__lbl">Контактное лицо, получающее груз</div>
+                                                                <div class="form__items">
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="text" id="receiver-name" placeholder=" ">
+                                                                            <label for="receiver-name" class="item-form__placeholder">ФИО</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item-form">
+                                                                        <div class="item-form__inp">
+                                                                            <input type="tel" id="receiver-phone" placeholder=" ">
+                                                                            <label for="receiver-phone" class="item-form__placeholder">Телефон</label>
+                                                                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form__lbl">Контактное лицо, получающее груз</div>
-                                                <div class="form__items">
-                                                    <div class="item-form">
-                                                        <div class="item-form__inp">
-                                                            <input type="text" id="receiver-name" placeholder=" ">
-                                                            <label for="receiver-name" class="item-form__placeholder">ФИО</label>
-                                                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                                            </div>
+                                        </div>
+                                        <div class="accordion no-close order-p__fieldset" data-step="3">
+                                            <div class="accordion__header">
+                                                <h4>Оплата <span data-radio-value></span></h4>
+                                                <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                </div>
+                                            </div>
+                                            <div class="accordion__body">
+                                                <div class="switch-block accordion__content">
+                                                    <div class="form__group form__group--radio">
+                                                        <span data-error></span>
+                                                        <div class="order-p__radio-items">
+                                                            <label class="text-radio">
+                                                                <input type="radio" name="order-payment" value="1" data-tab="1">
+                                                                <div class="text-radio__content">
+                                                                    <div class="text-radio__icon"><img src="img/svg/cash.svg" alt></div>
+                                                                    <p>При доставке</p>
+                                                                </div>
+                                                            </label>
+                                                            <label class="text-radio">
+                                                                <input type="radio" name="order-payment" value="2" data-tab="2">
+                                                                <div class="text-radio__content">
+                                                                    <div class="text-radio__icon"><img src="img/svg/requisite.svg" alt></div>
+                                                                    <p>При самовывозе</p>
+                                                                </div>
+                                                            </label>
+                                                            <label class="text-radio">
+                                                                <input type="radio" name="order-payment" value="3" data-tab="3">
+                                                                <div class="text-radio__content">
+                                                                    <div class="text-radio__icon"><img src="img/svg/card.svg" alt></div>
+                                                                    <p>Онлайн</p>
+                                                                </div>
+                                                            </label>
+                                                            <label class="text-radio" data-visibility="legal-entity">
+                                                                <input type="radio" name="order-payment" value="4" data-tab="4">
+                                                                <div class="text-radio__content">
+                                                                    <div class="text-radio__icon"><img src="img/svg/invoice.svg" alt></div>
+                                                                    <p>По счёту</p>
+                                                                </div>
+                                                            </label>
                                                         </div>
                                                     </div>
-                                                    <div class="item-form">
-                                                        <div class="item-form__inp">
-                                                            <input type="tel" id="receiver-phone" placeholder=" ">
-                                                            <label for="receiver-phone" class="item-form__placeholder">Телефон</label>
-                                                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                                                    <div class="order-p__payment-blocks">
+                                                        <div class="desc-block" data-block="1">
+                                                            <div class="desc-block__inner">
+                                                                <div class="desc-block__item">
+                                                                    <span class="h6 desc-block__title">
+                                                                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                                        При доставке
+                                                                    </span>
+                                                                    <div class="desc-block__content">
+                                                                        <p>Оплата заказа производится при получении наличными или картой курьеру. Проверка заказа перед оплатой
+                                                                            приветствуется</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="desc-block" data-block="2">
+                                                            <div class="desc-block__inner">
+                                                                <div class="desc-block__item">
+                                                                    <span class="h6 desc-block__title">
+                                                                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                                        При самовывозе
+                                                                    </span>
+                                                                    <div class="desc-block__content">
+                                                                        <p>Оплата заказа при самовывозе производится при получении в пункте выдачи наличными или картой</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="desc-block" data-block="3">
+                                                            <div class="desc-block__inner">
+                                                                <div class="desc-block__item">
+                                                                    <span class="h6 desc-block__title">
+                                                                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                                        Онлайн
+                                                                    </span>
+                                                                    <div class="desc-block__content">
+                                                                        <p>Оплата заказа производится с помощью вашей банковской карты на стороннем ресурсе с защищённым
+                                                                            подключением. Внимательно проверяйте данные при вводе</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="desc-block" data-block="4">
+                                                            <div class="desc-block__inner">
+                                                                <div class="desc-block__item">
+                                                                    <span class="h6 desc-block__title">
+                                                                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                                        По счёту
+                                                                    </span>
+                                                                    <div class="desc-block__content">
+                                                                        <p>Оплата заказа производится по счету, который будет выставлен после оформления заказа. Отгрузка
+                                                                            товара производится после поступления оплаты.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -266,137 +393,45 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion no-close order-p__fieldset" data-step="3">
-                                    <div class="accordion__header">
-                                        <h4>Оплата <span data-radio-value></span></h4>
-                                        <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
-                                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                <!--page-row__aside-->
+                                <aside class="page-row__aside">
+                                    <div class="total-cart">
+                                        <div class="total-cart__header">
+                                            <h4>Ваш заказ</h4>
+                                        </div>
+                                        <dl class="prod-details">
+                                            <div class="prod-details__item">
+                                                <dt>Товары</dt>
+                                                <dd class="rub">54 799,78</dd>
+                                            </div>
+                                            <div class="prod-details__item">
+                                                <dt>Общая скидка</dt>
+                                                <dd class="rub">2 499,78</dd>
+                                            </div>
+                                            <div class="prod-details__item">
+                                                <dt>Доставка</dt>
+                                                <dd>Требуется просчёт</dd>
+                                            </div>
+                                        </dl>
+                                        <div class="total-cart__footer">
+                                            <div class="total-cart__price-wrapper">
+                                                <span class="total-cart__price-lbl">Итого</span>
+                                                <div class="total-cart__price-total">
+                                                    <span class="h4 rub">54 499,78</span>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn main-btn main-btn--link total-cart__submit">
+                                                Оформить заказ
+                                                <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                                            </button>
+                                            <label class="item-checkbox">
+                                                <input type="checkbox" checked data-agree>
+                                                <span>Нажимая кнопку «Оформить заказ», я даю согласие на обработку своих персональных данных в соответствии с <a href="#"
+                                                        target="_blank">Политикой конфиденциальности</a></span>
+                                            </label>
                                         </div>
                                     </div>
-                                    <div class="accordion__body">
-                                        <div class="switch-block accordion__content">
-                                            <div class="order-p__radio-items">
-                                                <label class="text-radio">
-                                                    <input type="radio" name="order-payment" value="1" data-tab="1">
-                                                    <div class="text-radio__content">
-                                                        <div class="text-radio__icon"><img src="img/svg/cash.svg" alt></div>
-                                                        <p>При доставке</p>
-                                                    </div>
-                                                </label>
-                                                <label class="text-radio">
-                                                    <input type="radio" name="order-payment" value="2" data-tab="2">
-                                                    <div class="text-radio__content">
-                                                        <div class="text-radio__icon"><img src="img/svg/requisite.svg" alt></div>
-                                                        <p>При самовывозе</p>
-                                                    </div>
-                                                </label>
-                                                <label class="text-radio">
-                                                    <input type="radio" name="order-payment" value="3" data-tab="3">
-                                                    <div class="text-radio__content">
-                                                        <div class="text-radio__icon"><img src="img/svg/card.svg" alt></div>
-                                                        <p>Онлайн</p>
-                                                    </div>
-                                                </label>
-                                                <label class="text-radio" data-visibility="legal-entity">
-                                                    <input type="radio" name="order-payment" value="4" data-tab="4">
-                                                    <div class="text-radio__content">
-                                                        <div class="text-radio__icon"><img src="img/svg/invoice.svg" alt></div>
-                                                        <p>По счёту</p>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <div class="desc-block" data-block="1">
-                                                <div class="desc-block__inner">
-                                                    <div class="desc-block__item">
-                                                        <span class="h6 desc-block__title">
-                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                            При доставке
-                                                        </span>
-                                                        <div class="desc-block__content">
-                                                            <p>Оплата заказа производится при получении наличными или картой курьеру. Проверка заказа перед оплатой
-                                                                приветствуется</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="desc-block" data-block="2">
-                                                <div class="desc-block__inner">
-                                                    <div class="desc-block__item">
-                                                        <span class="h6 desc-block__title">
-                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                            При самовывозе
-                                                        </span>
-                                                        <div class="desc-block__content">
-                                                            <p>Оплата заказа при самовывозе производится при получении в пункте выдачи наличными или картой</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="desc-block" data-block="3">
-                                                <div class="desc-block__inner">
-                                                    <div class="desc-block__item">
-                                                        <span class="h6 desc-block__title">
-                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                            Онлайн
-                                                        </span>
-                                                        <div class="desc-block__content">
-                                                            <p>Оплата заказа производится с помощью вашей банковской карты на стороннем ресурсе с защищённым
-                                                                подключением. Внимательно проверяйте данные при вводе</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="desc-block" data-block="4">
-                                                <div class="desc-block__inner">
-                                                    <div class="desc-block__item">
-                                                        <span class="h6 desc-block__title">
-                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                            По счёту
-                                                        </span>
-                                                        <div class="desc-block__content">
-                                                            <p>Оплата заказа производится по счету, который будет выставлен после оформления заказа. Отгрузка
-                                                                товара производится после поступления оплаты.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="total-cart">
-                                <div class="total-cart__header">
-                                    <h4>Ваш заказ</h4>
-                                </div>
-                                <dl class="prod-details">
-                                    <div class="prod-details__item">
-                                        <dt>Товары</dt>
-                                        <dd class="rub">54 799,78</dd>
-                                    </div>
-                                    <div class="prod-details__item">
-                                        <dt>Общая скидка</dt>
-                                        <dd class="rub">2 499,78</dd>
-                                    </div>
-                                    <div class="prod-details__item">
-                                        <dt>Доставка</dt>
-                                        <dd>Требуется просчёт</dd>
-                                    </div>
-                                </dl>
-                                <div class="total-cart__footer">
-                                    <div class="total-cart__total">
-                                        <span>Итого</span>
-                                        <span class="h4 rub">54 499,78</span>
-                                    </div>
-                                    <button class="btn main-btn total-cart__submit">
-                                        Оформить заказ
-                                        <span class="link-icon"></span>
-                                    </button>
-                                    <label class="item-checkbox">
-                                        <input type="checkbox" checked data-agree>
-                                        <span>Нажимая кнопку «Оформить заказ», я даю согласие на обработку своих персональных данных в соответствии с <a href="#"
-                                                target="_blank">Политикой конфиденциальности</a></span>
-                                    </label>
-                                </div>
+                                </aside>
                             </div>
                         </form>
                     </div>

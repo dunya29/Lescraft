@@ -22,3 +22,9 @@
     font-style: normal;
     src: local("InterDisplay Bold"), local("InterDisplay-Bold"), url("../fonts/InterDisplay-Bold.woff2") format("woff2"), url("../fonts/InterDisplay-Bold.woff") format("woff"), url("../fonts/InterDisplay-Bold.ttf") format("truetype");
 }
+@font-face {
+    font-family: "FirsNeue";
+    font-weight: 500;
+    font-style: normal;
+    src: local("FirsNeue Medium"), local("FirsNeue-Medium"), url("../fonts/FirsNeue-Medium.woff2") format("woff2"), url("../fonts/FirsNeue-Medium.woff") format("woff"), url("../fonts/FirsNeue-Medium.ttf") format("truetype");
+}

@@ -1,26 +1,31 @@
 <!--callback-form-->
-<section class="section callback-form">
+<section class="section callback-form" data-animation="fadeUp">
     <div class="container">
         <div class="callback-form__inner">
             <div class="callback-form__info">
                 <h2>Заполните форму, и&nbsp;мы перезвоним вам.</h2>
+                @@if(contacts === true) {
                 <div class="callback-form__contacts">
                     <div class="page-contact phone">
                         <a href="tel:88001004407">8 800 100-44-07</a>
-                        <span>Бесплатно по России (8:00–20:00)</span>
+                        <span>Бесплатно по России (8:00&nbsp;–&nbsp;20:00)</span>
                     </div>
                     <div class="page-contact mail">
                         <a href="mailto:info@leskraft.ru">info@leskraft.ru</a>
                     </div>
                 </div>
+                }
+                @@if(contacts === false) {
+                <p>Не ждите! Заполните форму, и мы оперативно свяжемся с вами</p>
+                }
             </div>
-            <form class="form disabled-form">
+            <form class="form disabled-form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
                 <div class="form__grid">
                     <div class="item-form">
                         <div class="item-form__inp">
                             <input type="text" id="name" placeholder=" " class="required">
                             <label for="name" class="item-form__placeholder">Ваше имя</label>
-                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                         </div>
                         <span data-error></span>
                     </div>
@@ -28,7 +33,7 @@
                         <div class="item-form__inp">
                             <input type="tel" id="phone" placeholder=" " class="required">
                             <label for="phone" class="item-form__placeholder">Телефон</label>
-                            <button type="button" class="item-form__reset" aria-label="Очистить поле"></button>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                         </div>
                         <span data-error></span>
                     </div>
@@ -38,9 +43,9 @@
                         <input type="checkbox" checked class="required">
                         <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
                     </label>
-                    <button type="submit" class="btn main-btn">
+                    <button type="submit" class="btn main-btn main-btn--link">
                         Отправить
-                        <span class="link-icon"></span>
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
                     </button>
                 </div>
             </form>

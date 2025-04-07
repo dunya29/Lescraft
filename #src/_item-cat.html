@@ -1,12 +1,18 @@
 <!--item-cat-->
 <div class="item-cat">
     <div class="media-cover">
-        <img src="img/category-@@nmb.png" alt="@@title">
+        <picture>
+            <source srcset="img/category-@@nmb.webp" type="image/webp" media="(min-width: 700.98px)">
+            <source srcset="img/category-@@nmb.png" media="(min-width: 700.98px)">
+            <source srcset="img/category-@@nmb-mob.webp" type="image/webp">
+            <source srcset="img/category-@@nmb-mob.png">
+            <img src="img/category-@@nmb.png" alt="@@title">
+        </picture>
     </div>
-    <div class="item-cat__top">
-        <h4><a href="#">@@title</a></h4>
-        <a href="#" class="link-icon"></a>
-    </div>
+    <a href="#" class="item-cat__top">
+        <h4>@@title</h4>
+        <div class="link-icon"></div>
+    </a>
     <div class="custom-scroll item-cat__items">
         <ul>
             <li><a href="#">Вагонка «Евро»</a></li>
@@ -22,5 +28,4 @@
             <li><a href="#">Планкен</a></li>
         </ul>
     </div>
-
 </div>

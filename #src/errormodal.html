@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Главная"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": true, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--intro-->
+                <section class="section intro-banner intro">
+                    <div class="container">
+                        <div class="intro__inner">
+                            <h1 class="visually-hidden">Лескрафт - пиломатериалы купить с доставкой по всему Югу России</h1>
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                    <div class="swiper-slide">
+                                        @@include("_item-intro.html")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-navigation">
+                                <button type="button" class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                <button type="button" class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                @@include("_main-features.html")
+                <!--category-->
+                <section class="section category">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1"><span>Популярные</span> категории</h2>
+                            <a href="#" class="btn stroke-btn stroke-btn--link">
+                                <span>Все </span>
+                                <span class="mobile-hidden">категории</span>
+                                <span class="link-icon"></span>
+                            </a>
+                        </div>
+                        <div class="category__items">
+                            @@include('_item-cat.html', {"nmb": "1", "title": "Отделочные материалы"})
+                            @@include('_item-cat.html', {"nmb": "2", "title": "Фанера древесные плиты"})
+                            @@include('_item-cat.html', {"nmb": "3", "title": "Крепёжные материалы"})
+                            @@include('_item-cat.html', {"nmb": "4", "title": "Рейка, брусок"})
+                            @@include('_item-cat.html', {"nmb": "5", "title": "Доска строганая сухая"})
+                            @@include('_item-cat.html', {"nmb": "6", "title": "Средства защиты и ухода"})
+                        </div>
+                    </div>
+                </section>
+                <!--catalog-->
+                <section class="section catalog">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Новинки</h2>
+                            <a href="#" class="btn stroke-btn stroke-btn--link">
+                                <span class="mobile-hidden">Смотреть </span>
+                                <span>все</span>
+                                <span class="link-icon"></span>
+                            </a>
+                        </div>
+                        <div class="js-prodWrapper catalog__items">
+                            @@include("_card.html", {"fav": false, "hasPhoto": false, "nmb": "1", "inStock": false})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "1", "inStock": true})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "3", "inStock": false})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "5", "inStock": true})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "1", "inStock": false})
+                            @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "3", "inStock": false})
+                        </div>
+                    </div>
+                </section>
+                <!--main-about-->
+                <section class="section main-about">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Нам <span>важно</span></h2>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "1", "title": "Качественные материалы", "txt":
+                                    "Мы лично ездим к новым поставщикам, оцениваем их условия работы и каждую поставку в дальнейшем"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "2", "title": "Широкий ассортимент", "txt":
+                                    "Благодаря большим площадям складов, у&nbsp;нас есть возможность дать клиенту максимально широкий выбор ассортимент"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "3", "title": "Особые условия хранения", "txt":
+                                    "Соблюдаем все условия, чтобы древесина не впитывала лишнюю влагу и не рассыхалась, а площадь складов более 15&nbsp;тыс.&nbsp;м2"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-about.html", {"nmb": "4", "title": "Высокий уровень сервиса", "txt":
+                                    "Всё, чтобы вам было удобно: профессиональная консультация, шоу-румы с образцами материалов, оперативная доставка и др."})
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                @@include("_main-form.html")
+                <!--main-idea-->
+                <section class="section swiper5 main-idea">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Вдохновляем на&nbsp;<span>новые идеи</span></h2>
+                            <div class="sec-top__content">
+                                <p>Мы находим новые интересные решения и&nbsp;примеры использования материалов, чтобы наши клиенты вдохновлялись на новые задумки.</p>
+                                @@include("_social.html", {"whatsapp": false, "youtube": false})
+                            </div>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-1.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-2.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-3.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-4.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="media-cover">
+                                        <img src="img/content/idea-5.jpg" alt>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": true})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+        <script>
+            window.addEventListener("load", event => {
+                showCookie()
+                openErrorMod("Ошибка", "Не удалось отправить заказ, попробуйте снова", "Повторить")
+            });      
+        </script>
+    </body>
+
+</html>

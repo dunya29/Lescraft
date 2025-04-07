@@ -5,6 +5,7 @@
 @import "preloader";
 @import "search";
 @import "header";
+@import "mainMenu";
 @import "breadcrumbs";
 @import "pagination";
 @import "404";
@@ -22,3 +23,21 @@
 @import "services";
 @import "modal";
 @import "footer";
+
+
+[data-animation=fadeUp] {
+    opacity: 0;
+}
+.fadeUp {
+    animation: fadeUp 1s forwards;
+}
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

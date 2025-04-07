@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -20,7 +21,7 @@
                 <section class="section article-p">
                     <div class="container">
                         <div class="sec-top">
-                            <h1>Новинка месяца в ЛесКрафт: Брус строганный</h1>
+                            <h1>Новинка месяца в&nbsp;ЛесКрафт: Брус&nbsp;строганный</h1>
                             <span class="pub-date">14.04.2025</span>
                         </div>
                         <!--page-row-->
@@ -223,7 +224,7 @@
                                 </div>
                             </div>
                             <!--page-row__aside-->
-                            <div class="page-row__aside">
+                            <aside class="page-row__aside">
                                 @@include('_feedback-form.html', {"title": "Остались вопросы?", "btnTxt": "Задать вопрос"})
                                 <!--share-list-->
                                 <div class="share-list">
@@ -244,10 +245,12 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </aside>
                         </div>
                     </div>
                 </section>
+                @@include('_other-cat.html', {"title": "Товары из статьи", "btn": false})
+                @@include('_other-cat.html', {"title": "<span>Популярные</span> товары", "btn": true})
             </main>
             @@include('_footer.html', {"main": false})
             @@include('_modal.html')

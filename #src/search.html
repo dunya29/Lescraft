@@ -7,9 +7,10 @@
 
     <body>
         <div class="wrap">
-            @@include('_header.html', {"main": false, "search": false})
+            @@include('_header.html', {"main": false, "search": true})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -23,52 +24,68 @@
                             <h1 class="text-l">Результаты поиска</h1>
                             <p><b>Результаты по запросу «Евровагонка»</b></p>
                         </div>
-                        <div class="catalog-p__top">
-                            <div class="catalog-p__top-right">
+                        <div class="catalog-top">
+                            <div class="catalog-top__action">
                                 <div class="dropdown radio-select">
                                     <div class="dropdown__header">
-                                        <span>По умолчанию</span>
-                                        <svg aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                        <span class="mob-hidden">По умолчанию</span>
+                                        <div class="dropdown__icon" aria-label="Развернуть/Свернуть">
+                                            <svg class="mob-hidden"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                            <svg class="desktop-hidden"><use xlink:href="img/svg/sprite.svg#sort"></use></svg>
+                                        </div>
                                     </div>
                                     <div class="dropdown__body">
-                                        <div class="custom-scroll">
-                                            <label>
-                                                <input type="radio" name="f-sort" checked>
-                                                <span>По умолчанию</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По возрастанию цены</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По убыванию цены</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По названию (А-Я)</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По названию (Я-А)</span>
-                                            </label>
+                                        <div class="modal">
+                                            <div class="modal__content">
+                                                <button type="button" class="btn-cross modal__close"></button>
+                                                <div class="modal__top">
+                                                    <h3>Сортировать</h3>
+                                                </div>
+                                                <div class="custom-scroll modal__scroll">
+                                                    <div class="dropdown__options">
+                                                        <label>
+                                                            <input type="radio" name="f-sort" checked>
+                                                            <span>По умолчанию</span>
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="f-sort">
+                                                            <span>По возрастанию цены</span>
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="f-sort">
+                                                            <span>По убыванию цены</span>
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="f-sort">
+                                                            <span>По названию (А-Я)</span>
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="f-sort">
+                                                            <span>По названию (Я-А)</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="catalog__items">
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "3", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
+                        <div class="js-prodWrapper">
+                            <div class="catalog__items">
+                                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "1", "inStock": true})
+                                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "3", "inStock": false})
+                                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+                                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "5", "inStock": true})
+                                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+                            </div>
+                            @@include("_pagination.html")
                         </div>
-                        @@include("_pagination.html")
                     </div>
                 </section>
+                @@include('_other-cat.html', {"title": "Вы недавно смотрели", "btn": false})
             </main>
             @@include('_footer.html', {"main": false})
             @@include('_modal.html')

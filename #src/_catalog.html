@@ -1,0 +1,266 @@
+
+<!--catalog-top-->
+<div class="catalog-top">
+    <button type="button" class="btn main-btn filter-icon">
+        <svg><use xlink:href="img/svg/sprite.svg#filter"></use></svg>
+        Фильтры<span class="filter-count"></span>
+    </button>
+    <div class="filter-selected">
+        <ul class="filter-selected__items"></ul>
+        <div class="filter-reset filter-selected__reset">
+            Очистить все
+            <button type="button" class="btn-cross"></button>
+        </div>
+    </div>
+    <div class="catalog-top__action">
+        <div class="dropdown radio-select">
+            <div class="dropdown__header">
+                <span class="mob-hidden">По умолчанию</span>
+                <div class="dropdown__icon" aria-label="Развернуть/Свернуть">
+                    <svg class="mob-hidden"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                    <svg class="desktop-hidden"><use xlink:href="img/svg/sprite.svg#sort"></use></svg>
+                </div>               
+            </div>
+            <div class="dropdown__body">
+                <div class="modal">
+                    <div class="modal__content">
+                        <button type="button" class="btn-cross modal__close"></button>
+                        <div class="modal__top">
+                            <h3>Сортировать</h3>
+                        </div>
+                        <div class="custom-scroll modal__scroll">
+                            <div class="dropdown__options">
+                                <label>
+                                    <input type="radio" name="f-sort" checked>
+                                    <span>По умолчанию</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="f-sort">
+                                    <span>По возрастанию цены</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="f-sort">
+                                    <span>По убыванию цены</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="f-sort">
+                                    <span>По названию (А-Я)</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="f-sort">
+                                    <span>По названию (Я-А)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--page-row-->
+<div class="page-row">
+    <!--page-row__aside-->
+    <aside class="page-row__aside">
+        <div class="cat-filter">
+            <!--filter-->
+            <form class="cat-filter__form">
+                <div class="cat-filter__top">
+                    <span class="h4">Фильтры</span>
+                    <button type="button" class="btn-cross cat-filter__close" aria-label="Закрыть фильтр"></button>
+                </div>
+                <div class="custom-scroll cat-filter__scroll">
+                    <div class="cat-filter__body">
+                        <div class="cat-filter__sec">
+                            <div class="accordion no-close">
+                                <div class="accordion__header">
+                                    <span>Цена, ₽</span>
+                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use
+                                            xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                                <div class="accordion__body">
+                                    <div class="range-filter" data-min="20" data-max="290" data-start="20" data-end="290" data-name="Цена"
+                                        data-id="f[1]">
+                                        <div class="range-filter__amounts">
+                                            <div class="range-filter__amount">
+                                                <span>от</span>
+                                                <input type="number" min="20" max="290" placeholder="20" value="20"
+                                                    class="range-filter__start">
+                                            </div>
+                                            <div class="range-filter__amount">
+                                                <span>до</span>
+                                                <input type="number" min="20" max="290" placeholder="290" value="290"
+                                                    class="range-filter__end">
+                                            </div>
+                                        </div>
+                                        <div class="range-filter__slider"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-filter__sec">
+                            <div class="accordion no-close">
+                                <div class="accordion__header">
+                                    <span>Ширина, см</span>
+                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use
+                                            xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                                <div class="accordion__body">
+                                    <div class="range-filter" data-min="20" data-max="290" data-start="20" data-end="290"
+                                        data-name="Ширина"
+                                        data-id="f[2]">
+                                        <div class="range-filter__amounts">
+                                            <div class="range-filter__amount">
+                                                <span>от</span>
+                                                <input type="number" min="20" max="290" placeholder="20" value="20"
+                                                    class="range-filter__start">
+                                            </div>
+                                            <div class="range-filter__amount">
+                                                <span>до</span>
+                                                <input type="number" min="20" max="290" placeholder="290" value="290"
+                                                    class="range-filter__end">
+                                            </div>
+                                        </div>
+                                        <div class="range-filter__slider"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-filter__sec">
+                            <div class="accordion no-close">
+                                <div class="accordion__header">
+                                    <span>Высота, см</span>
+                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use
+                                            xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                                <div class="accordion__body">
+                                    <div class="range-filter" data-min="20" data-max="290" data-start="20" data-end="290"
+                                        data-name="Высота"
+                                        data-id="f[3]">
+                                        <div class="range-filter__amounts">
+                                            <div class="range-filter__amount">
+                                                <span>от</span>
+                                                <input type="number" min="20" max="290" placeholder="20" value="20"
+                                                    class="range-filter__start">
+                                            </div>
+                                            <div class="range-filter__amount">
+                                                <span>до</span>
+                                                <input type="number" min="20" max="290" placeholder="290" value="290"
+                                                    class="range-filter__end">
+                                            </div>
+                                        </div>
+                                        <div class="range-filter__slider"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-filter__sec">
+                            <div class="accordion no-close">
+                                <div class="accordion__header">
+                                    <span>Длина, см</span>
+                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use
+                                            xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                                <div class="accordion__body">
+                                    <div class="range-filter" data-min="20" data-max="300" data-start="20" data-end="300" data-name="Длина"
+                                        data-id="f[4]">
+                                        <div class="range-filter__amounts">
+                                            <div class="range-filter__amount">
+                                                <span>от</span>
+                                                <input type="number" min="20" max="300" placeholder="20" value="20"
+                                                    class="range-filter__start">
+                                            </div>
+                                            <div class="range-filter__amount">
+                                                <span>до</span>
+                                                <input type="number" min="20" max="300" placeholder="300" value="300"
+                                                    class="range-filter__end">
+                                            </div>
+                                        </div>
+                                        <div class="range-filter__slider"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-filter__sec">
+                            <div class="accordion no-close">
+                                <div class="accordion__header">
+                                    <span>Углы</span>
+                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use
+                                            xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                                <div class="accordion__body">
+                                    <label class="item-checkbox">
+                                        <input type="checkbox" data-id="1" data-name="Углы">
+                                        <span>Любые</span>
+                                    </label>
+                                    <label class="item-checkbox">
+                                        <input type="checkbox" data-id="2" data-name="Углы">
+                                        <span>Прямые</span>
+                                    </label>
+                                    <label class="item-checkbox">
+                                        <input type="checkbox" data-id="3" data-name="Углы">
+                                        <span>Скруглённые верни</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-filter__sec">
+                            <div class="accordion no-close">
+                                <div class="accordion__header">
+                                    <span>Производитель</span>
+                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use
+                                            xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                                <div class="accordion__body">
+                                    <label class="item-checkbox">
+                                        <input type="checkbox" data-id="4" data-name="Производитель">
+                                        <span>Любые</span>
+                                    </label>
+                                    <label class="item-checkbox">
+                                        <input type="checkbox" data-id="5" data-name="Производитель">
+                                        <span>Прямые</span>
+                                    </label>
+                                    <label class="item-checkbox">
+                                        <input type="checkbox" data-id="6" data-name="Производитель">
+                                        <span>Скруглённые верни</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <label class="item-toggle">
+                            <input type="checkbox" data-id="7" checked>
+                            <span>В наличии</span>
+                        </label>
+                        <label class="item-toggle">
+                            <input type="checkbox" data-id="8">
+                            <span>Sale</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="cat-filter__bot">
+                    <button type="submit" class="btn main-btn filter-submit">
+                        Показать (8)
+                    </button>
+                    <button type="reset" class="btn stroke-btn filter-reset">
+                        Сбросить фильтр
+                    </button>
+                </div>
+            </form>
+        </div>
+    </aside>
+    <!--page-row__content-->
+    <div class="page-row__content">
+        <div class="js-prodWrapper">
+            <div class="catalog__items">
+                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "1", "inStock": true})
+                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "3", "inStock": false})
+                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "5", "inStock": true})
+                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+            </div>
+            @@include("_pagination.html")
+        </div>
+    </div>
+</div>

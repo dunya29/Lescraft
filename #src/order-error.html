@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Оформление заказа"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Оформление заказа"})
+                    </div>
+                </div>
+                <section class="section order-error">
+                    <div class="container">
+                        <h1>Ошибка, заказ не&nbsp;оформлен</h1>
+                        <p><b>Свяжитесь с менеджером для уточнения деталей и завершения покупки</b></p>
+                        <button class="btn main-btn main-btn--link mod-open-btn" data-modal="contact-manager-modal">
+                            Связаться с менеджером
+                            <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                        </button>
+                    </div>
+                </section>
+                @@include('_other-cat.html', {"title": "Вы недавно смотрели", "btn": false})
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

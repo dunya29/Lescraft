@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -25,56 +26,132 @@
                     </div>
                 </div>
                 <!--product-->
-                <section class="section product js-prodBlock" data-id="173534">
+                <div class="total-product-mob js-prodBlock js-prodBlock--product js-prodWrapper" data-id="173534">
+                    <div class="container">
+                        <div class="quantity" data-stock="45">
+                            <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
+                            <input type="number" class="quantity__count" value="1" aria-label="Количество">
+                            <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
+                        </div>
+                        <div class="product-action product-action--product">
+                            <button type="button" class="btn main-btn js-add-to-cart">
+                                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
+                                <span class="rub total-product__mobprice">3 532,74</span>
+                            </button>
+                            <a href="#" class="btn stroke-btn js-in-cart">
+                                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                                <span class="rub total-product__mobprice">3 532,74</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <section class="section product">
                     <div class="container">
                         <div class="product__inner">
                             <div class="product__preview">
-                                <div class="card-lbls">
+                                <div class="product-lbls">
                                     <span class="promo">Акция</span>
                                     <span class="recommended">Лескрафт рекомендует</span>
                                 </div>
-                                <div class="product__swipers">
+                                <div class="fancy-block product__swipers">
                                     <div class="swiper product__mainswiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="media-contain" data-fancy data-type="image" data-src="img/content/product-1-1.webp" data-fit="media-contain"
-                                                    data-thumb>
-                                                    <img src="img/content/product-1-1.png" alt>
+                                        <div class="swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                                        data-fit="media-contain"
+                                                        data-thumb>
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="media-contain video" data-fancy data-type="video" data-src="media/product-1-1.mp4" data-fit="media-contain"
-                                                    data-thumb>
-                                                    <img src="img/content/product-1-1.png" alt>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain video" data-fancy="product-gallery" data-type="video" data-poster="img/content/product-1.png"
+                                                        data-src="media/product-1-1.mp4" data-fit="media-contain"
+                                                        data-thumb>
+                                                        <img src="img/content/product-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                                        data-fit="media-contain"
+                                                        data-thumb>
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                                        data-fit="media-contain"
+                                                        data-thumb>
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                                        data-fit="media-contain"
+                                                        data-thumb>
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                                        data-fit="media-contain"
+                                                        data-thumb>
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="swiper-pagination"></div>
                                     </div>
                                     <!--esli izobrajeniy bolshe odnoqo-->
                                     <div class="swiper product__thumbswiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="media-contain">
-                                                    <img src="img/content/product-1-1.png" alt>
+                                        <div class="swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain">
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain video">
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain">
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain">
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain">
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="media-contain">
+                                                        <img src="img/content/product-1-1.png" alt>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="swiper-slide">
-                                                <div class="media-contain video">
-                                                    <img src="img/content/product-1-1.png" alt>
-                                                </div>
-                                            </div>
+                                        </div>
+                                        <div class="swiper-navigation">
+                                            <button type="button" class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                            <button type="button" class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
                                         </div>
                                     </div>
                                 </div>
                                 <!--esli izobrajenie ne zaqrujeno-->
-                                <!-- <div class="media-contain" >
-                                    <img src="img/cat-no-photo.png" alt>
-                                </div>   -->
+                                <!--<div class="media-contain no-photo"></div>-->
                             </div>
                             <h1 class="h3 product__title">
-                                Доска строганая 58 × 168 × 5950 мм сорт С скруглением сосна ЛС
+                                Доска строганая 58&nbsp;×&nbsp;168&nbsp;×&nbsp;5950&nbsp;мм сорт С скруглением сосна ЛС
                             </h1>
-                            <div class="product__sticky">
+                            <div class="product__sticky js-prodBlock js-prodBlock--product js-prodWrapper" data-id="173534">
                                 <div class="total-product">
                                     <div class="total-product__top">
                                         <div class="total-product__info">
@@ -82,9 +159,9 @@
                                             <span>1 уп — 10 шт/192 м²</span>
                                         </div>
                                         <div class="quantity" data-stock="45">
-                                            <button class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
-                                            <input class="quantity__count" value="1" aria-label="Количество">
-                                            <button class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
+                                            <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
+                                            <input type="number" class="quantity__count" value="1" aria-label="Количество">
+                                            <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
                                         </div>
                                     </div>
                                     <div class="total-product__body">
@@ -102,29 +179,28 @@
                                                 <dd>0,07 м3</dd>
                                             </div>
                                         </dl>
-                                        <div class="total-product__total">
-                                            <span>Итого</span>
+                                        <div class="total-product__price-wrapper">
+                                            <span class="total-product__price-lbl">Итого</span>
                                             <div class="product-price">
-                                                <span class="rub product-price__current">3 532,74</span>
+                                                <span class="rub h4 product-price__current">3 532,74</span>
                                                 <del class="rub product-price__old">4 200 </del>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="total-product__bot">
-                                        <div class="card-status in-stock">Доступно сегодня (45)</div>
-                                        <div class="total-product__action">
-                                            <div class="total-product__btns">
-                                                <button class="btn main-btn js-add-to-cart">В корзину</button>
-                                                <a href="#" class="btn stroke-btn js-in-cart">
-                                                    <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
-                                                    Товар в корзине
-                                                </a>
-                                            </div>
-                                            <button class="card-fav tippy" aria-label="Добавить в избранное">
-                                                <svg><use xlink:href="img/svg/sprite.svg#card-fav"></use></svg>
-                                                <p>Добавить в избранное</p>
-                                            </button>
+                                        <div class="product-status in-stock">Доступно сегодня (45)</div>
+                                        <div class="product-action">
+                                            <button type="button" class="btn main-btn js-add-to-cart">
+                                                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
+                                                В корзину</button>
+                                            <a href="#" class="btn stroke-btn js-in-cart">
+                                                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                                                Товар в корзине
+                                            </a>
                                         </div>
+                                        <button type="button" class="product-fav js-fav" aria-label="Добавить в избранное">
+                                            <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +214,7 @@
                                             половых покрытий, декоративных элементов, а также для создания беседок и террас. Закруглённые края придают изделиям более
                                             эстетичный и безопасный вид.</p>
                                     </div>
-                                    <button class="text-btn read-more__btn" data-open="Читать далее" data-close="Свернуть">
+                                    <button type="button" class="text-btn read-more__btn" data-open="Читать далее" data-close="Свернуть">
                                         <span>Читать далее</span>
                                         <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
                                     </button>
@@ -200,7 +276,8 @@
                                         <span class="h3" data-tab="2">Характеристики</span>
                                         <span class="h3" data-tab="3">Доставка и оплата</span>
                                     </div>
-                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                                    <button type="button" class="nav-btn nav-btn--next tabs-scroll__btn"><svg><use
+                                                xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
                                 </div>
                                 <div class="info-product__blocks">
                                     <div class="info-product__block active" data-block="1">
@@ -211,8 +288,8 @@
                                                 элементов конструкций, таких как:</p>
                                             <ul>
                                                 <li>Отделка интерьера и экстерьера: Используется для обшивки стен и потолков, изготовления вагонки, половых покрытий,
-                                                    декоративных</li>
-                                                элементов, а также для создания беседок и террас. Закруглённые края придают изделиям более эстетичный и безопасный вид.
+                                                    декоративных элементов, а также для создания беседок и террас. Закруглённые края придают изделиям более эстетичный и
+                                                    безопасный вид.</li>
                                                 <li>Мебельное производство: Применяется для изготовления каркасов мебели, полок, столешниц и других элементов, где важна
                                                     гладкость и отсутствие острых углов.</li>
                                                 <li>Столярные работы: Подходит для создания различных столярных изделий, таких как скамейки, ящики, рамы, балясины и другие
@@ -276,291 +353,137 @@
                                         </div>
                                     </div>
                                     <div class="info-product__block" data-block="3">
-                                        <div class="read-more read-more--delivery">
-                                            <div class="read-more__content">
-                                                <h4>Доставка по адресу</h4>
-                                                <div class="mb-60 delivery-p__advants">
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/delivery.svg" alt>
-                                                        </div>
-                                                        <h5>Заказ в магазине или на сайте</h5>
+                                        <section class="delivery-section info-product__sec">
+                                            <h4 class="info-product__sec-title">Доставка по адресу</h4>
+                                            <div class="delivery-features">
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/add-delivery.svg" alt>
                                                     </div>
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/export.svg" alt>
-                                                        </div>
-                                                        <h5>Доставка с выгрузкой от 300 ₽</h5>
-                                                    </div>
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/clock.svg" alt>
-                                                        </div>
-                                                        <h5>Доставка осуществляется<br>с 9:00 до 21:00</h5>
-                                                    </div>
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/pickup.svg" alt>
-                                                        </div>
-                                                        <h5>Самовывоз в любом филиале<br>с 8:00 до 22:00</h5>
-                                                    </div>
+                                                    <h5>Заказ в&nbsp;магазине или&nbsp;на&nbsp;сайте</h5>
                                                 </div>
-                                                <div class="mb-60 page-content">
-                                                    <ol>
-                                                        <li>
-                                                            Доставка приобретённого товара осуществляется по адресу, согласованному с клиентом, при наличии подъездных путей,
-                                                            предназначенных
-                                                            для грузовых автомобилей. Если подъезд к месту разгрузки невозможен, машина остановится на максимально близком от
-                                                            него
-                                                            расстоянии,
-                                                            не нарушая ПДД и исключая
-                                                            вероятность повреждения транспорта.
-                                                        </li>
-                                                        <li>
-                                                            Доставка осуществляется в согласованный с покупателем день с 09:00 до 18:00. Менеджер отдела логистики за сутки до
-                                                            согласованного
-                                                            дня доставки по телефону дополнительно уточняет готовность покупателя принять
-                                                            заказ в назначенную дату. За один час до времени доставки водитель-экспедитор уведомляет покупателя по телефону о
-                                                            планируемом
-                                                            прибытии.
-                                                        </li>
-                                                        <li>
-                                                            Время ожидания покупателя водителем-экспедитором составляет 20 минут. По истечение этого времени, при отсутствии
-                                                            связи с
-                                                            покупателем и/или непринятия товара покупателем по обстоятельствам, не зависящим
-                                                            от водителя-экспедитора/продавца, водитель-экспедитор вправе уехать с места разгрузки. При этом повторная доставка
-                                                            товара
-                                                            оплачивается покупателем отдельно.
-                                                        </li>
-                                                        <li>Выгрузка товара осуществляется силами покупателя, если не заказаны услуги разгрузки и подъёма товаров. Стоимость
-                                                            доставки
-                                                            зависит
-                                                            от расстояния от склада компании до места выгрузки, веса купленного товара и заказанных покупателем
-                                                            услуг.</li>
-                                                    </ol>
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/export.svg" alt>
+                                                    </div>
+                                                    <h5>Доставка с&nbsp;выгрузкой от&nbsp;300&nbsp;₽</h5>
+                                                </div>
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/clock.svg" alt>
+                                                    </div>
+                                                    <h5>Доставка осуществляется с&nbsp;9:00&nbsp;до&nbsp;21:00</h5>
+                                                </div>
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/pickup.svg" alt>
+                                                    </div>
+                                                    <h5>Самовывоз в&nbsp;любом филиале с&nbsp;8:00&nbsp;до&nbsp;22:00</h5>
                                                 </div>
                                             </div>
-                                            <button class="text-btn read-more__btn" data-open="Читать больше" data-close="Свернуть">
-                                                <span>Читать больше</span>
-                                                <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                            </button>
-                                        </div>
-                                        <div class="read-more read-more--payment">
-                                            <div class="read-more__content">
-                                                <h4>Оплата</h4>
-                                                <div class="payment-p__advants">
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/cash.svg" alt>
-                                                        </div>
-                                                        <h5>Наличными в подразделении компании</h5>
+                                            <div class="page-content">
+                                                <ol>
+                                                    <li>
+                                                        Доставка приобретённого товара осуществляется по адресу, согласованному с клиентом, при наличии подъездных путей,
+                                                        предназначенных
+                                                        для грузовых автомобилей. Если подъезд к месту разгрузки невозможен, машина остановится на максимально близком от
+                                                        него
+                                                        расстоянии,
+                                                        не нарушая ПДД и исключая
+                                                        вероятность повреждения транспорта.
+                                                    </li>
+                                                    <li>
+                                                        Доставка осуществляется в согласованный с покупателем день с 09:00 до 18:00. Менеджер отдела логистики за сутки до
+                                                        согласованного
+                                                        дня доставки по телефону дополнительно уточняет готовность покупателя принять
+                                                        заказ в назначенную дату. За один час до времени доставки водитель-экспедитор уведомляет покупателя по телефону о
+                                                        планируемом
+                                                        прибытии.
+                                                    </li>
+                                                    <li>
+                                                        Время ожидания покупателя водителем-экспедитором составляет 20 минут. По истечение этого времени, при отсутствии
+                                                        связи с
+                                                        покупателем и/или непринятия товара покупателем по обстоятельствам, не зависящим
+                                                        от водителя-экспедитора/продавца, водитель-экспедитор вправе уехать с места разгрузки. При этом повторная доставка
+                                                        товара
+                                                        оплачивается покупателем отдельно.
+                                                    </li>
+                                                    <li>Выгрузка товара осуществляется силами покупателя, если не заказаны услуги разгрузки и подъёма товаров. Стоимость
+                                                        доставки
+                                                        зависит
+                                                        от расстояния от склада компании до места выгрузки, веса купленного товара и заказанных покупателем
+                                                        услуг.</li>
+                                                </ol>
+                                            </div>
+                                            <a href="#" class="btn text-btn">Читать больше</a>
+                                        </section>
+                                        <section class="payment-section info-product__sec">
+                                            <h4 class="info-product__sec-title">Оплата</h4>
+                                            <div class="payment-features">
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/cash.svg" alt>
                                                     </div>
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/card.svg" alt>
-                                                        </div>
-                                                        <h5>Картой в подразделении компании</h5>
+                                                    <h5>Наличными в&nbsp;подразделении компании</h5>
+                                                </div>
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/card.svg" alt>
                                                     </div>
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/requisite.svg" alt>
-                                                        </div>
-                                                        <div class="item-tippy">
-                                                            <h5>По банковским реквизитам</h5>
-                                                            <div class="tippy">
-                                                                <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                                <p>Менеджер отправляет счёт с QR-кодом клиенту на почту или мессенджер для оплаты через СберБанк.онлайн по
-                                                                    реквизитам компании</p>
-                                                            </div>
+                                                    <h5>Картой в&nbsp;подразделении компании</h5>
+                                                </div>
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/qr.svg" alt>
+                                                    </div>
+                                                    <div class="item-tippy">
+                                                        <h5>Дистанционно через QR-код</h5>
+                                                        <div class="tippy">
+                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                            <p>Менеджер отправляет счёт с QR-кодом клиенту на почту или мессенджер для оплаты через СберБанк.онлайн по
+                                                                реквизитам компании</p>
                                                         </div>
                                                     </div>
-                                                    <!--item-advant-->
-                                                    <div class="item-advant">
-                                                        <div class="item-advant__icon">
-                                                            <img src="img/svg/qr.svg" alt>
-                                                        </div>
-                                                        <div class="item-tippy">
-                                                            <h5>Дистанционно через QR-код</h5>
-                                                            <div class="tippy">
-                                                                <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                                                                <p>Менеджер отправляет счёт с QR-кодом клиенту на почту или мессенджер для оплаты через СберБанк.онлайн по
-                                                                    реквизитам компании</p>
-                                                            </div>
+                                                </div>
+                                                <!--info-card-->
+                                                <div class="info-card">
+                                                    <div class="info-card__icon">
+                                                        <img src="img/svg/requisite.svg" alt>
+                                                    </div>
+                                                    <div class="item-tippy">
+                                                        <h5>По банковским реквизитам</h5>
+                                                        <div class="tippy">
+                                                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                            <p>Оплатите заказ банковским переводом. Введите указанные реквизиты в приложении вашего банка или в отделении банка</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="text-btn read-more__btn" data-open="Читать больше" data-close="Свернуть">
-                                                <span>Читать больше</span>
-                                                <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                            </button>
-                                        </div>
+                                            <a href="#" class="btn text-btn">Читать больше</a>
+                                        </section>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    @@include("_main-advants.html")
-                    <!--other-cat-->
-                    <section class="section swiper5 other-cat">
-                        <div class="container">
-                            <div class="sec-top">
-                                <h2 class="h1"><span>С этим</span> товаром покупают</h2>
-                                <a href="#" class="btn stroke-btn stroke-btn--link">
-                                    Смотреть все
-                                    <span class="link-icon"></span>
-                                </a>
-                            </div>
-                            <div class="swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                </div>
-                                <div class="swiper-nav">
-                                    <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!--other-cat-->
-                    <section class="section swiper5 other-cat">
-                        <div class="container">
-                            <div class="sec-top">
-                                <h2 class="h1"><span>Похожие</span> товары</h2>
-                                <a href="#" class="btn stroke-btn stroke-btn--link">
-                                    Смотреть все
-                                    <span class="link-icon"></span>
-                                </a>
-                            </div>
-                            <div class="swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                </div>
-                                <div class="swiper-nav">
-                                    <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!--other-cat-->
-                    <section class="section swiper5 other-cat">
-                        <div class="container">
-                            <div class="sec-top">
-                                <h2 class="h1"><span>Популярные</span> товары</h2>
-                                <a href="#" class="btn stroke-btn stroke-btn--link">
-                                    Смотреть все
-                                    <span class="link-icon"></span>
-                                </a>
-                            </div>
-                            <div class="swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                </div>
-                                <div class="swiper-nav">
-                                    <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!--other-cat-->
-                    <section class="mb-90 swiper5 other-cat">
-                        <div class="container">
-                            <div class="sec-top">
-                                <h2 class="h1">Вы недавно смотрели</h2>
-                            </div>
-                            <div class="swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
-                                    </div>
-                                    <div class="swiper-slide">
-                                        @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    </div>
-                                </div>
-                                <div class="swiper-nav">
-                                    <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                    <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </main>
-                @@include('_footer.html', {"main": false})
-                @@include('_modal.html')
-            </div>
-            @@include('_js.html')
-        </body>
+                    </div>
+                </section>
+                @@include("_main-features.html")
+                @@include('_other-cat.html', {"title": "<span>С этим</span> товаром покупают", "btn": false})
+                @@include('_other-cat.html', {"title": "<span>Похожие</span> товары", "btn": true})
+                @@include('_other-cat.html', {"title": "<span>Популярные</span> товары", "btn": true})
+                @@include('_other-cat.html', {"title": "Вы недавно смотрели", "btn": false})
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
 
-    </html>
+</html>

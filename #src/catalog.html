@@ -10,390 +10,69 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Каталог"})
+                    </div>
+                </div>
                 <!--catalog-p-->
-                <section class="section catalog-p">
+                <section class="section catalog catalog-p">
                     <div class="container">
                         <div class="sec-top">
-                            <h2 class="h1">Каталог товаров</h2>
+                            <h1>Каталог товаров</h1>
                         </div>
-                        <div class="catalog-p__top">
-                            <button class="btn main-btn filter-icon">
-                                <svg><use xlink:href="img/svg/sprite.svg#filter-icon"></use></svg>
-                                Фильтры
-                            </button>
-                            <div class="filter-selected">
-                                <ul class="filter-selected__items"></ul>
-                                <div class="filter-reset filter-selected__reset">
-                                    Очистить все
-                                    <button class="btn-close"></button>
-                                </div>
+                        <div class="tabs-scroll catalog-tabs" data-visibility="sections">
+                            <div class="tabs">
+                                <a href="#">Черновая отделка</a>
+                                <a href="#">Обшивка бани</a>
+                                <a href="#">Мебель своими руками</a>
+                                <a href="#">Для дачи</a>
+                                <a href="#">Для навеса</a>
+                                <a href="#">Подборка</a>
                             </div>
-                            <div class="catalog-p__top-right">
-                                <div class="dropdown radio-select">
-                                    <div class="dropdown__header">
-                                        <span>По умолчанию</span>
-                                        <svg aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                    </div>
-                                    <div class="dropdown__body">
-                                        <div class="custom-scroll">
-                                            <label>
-                                                <input type="radio" name="f-sort" checked>
-                                                <span>По умолчанию</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По возрастанию цены</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По убыванию цены</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По названию (А-Я)</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="f-sort">
-                                                <span>По названию (Я-А)</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="catalog-p__actions">
-                                    <button class="catalog-p__btn active" data-column="column-grid"><svg>
-                                            <use xlink:href="img/svg/sprite.svg#column-grid"></use>
-                                        </svg></button>
-                                    <button class="catalog-p__btn" data-column="column-block"><svg>
-                                            <use xlink:href="img/svg/sprite.svg#column-block"></use>
-                                        </svg></button>
-                                    <button class="catalog-p__btn" data-column="column-list"><svg>
-                                            <use xlink:href="img/svg/sprite.svg#column-list"></use>
-                                        </svg></button>
-                                </div>
-                            </div>
-
                         </div>
-                        <div class="catalog-p__row">
-                            <div class="cat-filter">
-                                <form class="cat-filter__form">
-                                    <div class="cat-filter__top">
-                                        <span class="h4">Фильтры</span>
-                                        <button type="button" class="btn-close"></button>
-                                    </div>
-                                    <div class="cat-filter__body">
-                                        <div class="cat-filter__sec">
-                                            <div class="accordion no-close">
-                                                <div class="accordion__header">
-                                                    <span>Цена, ₽</span>
-                                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="range-filter" data-min="20" data-max="290" data-start="20" data-end="290" data-name="Цена" data-id="f[1]">
-                                                        <div class="range-filter__amounts">
-                                                            <div class="range-filter__amount">
-                                                                <span>От</span>
-                                                                <input type="number" min="20" max="290" placeholder="20" value="20" class="range-filter__start">
-                                                            </div>
-                                                            <div class="range-filter__amount">
-                                                                <span>До</span>
-                                                                <input type="number" min="20" max="290" placeholder="290" value="290" class="range-filter__end">
-                                                            </div>
-                                                        </div>
-                                                        <div class="range-filter__slider"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cat-filter__sec">
-                                            <div class="accordion no-close">
-                                                <div class="accordion__header">
-                                                    <span>Ширина, см</span>
-                                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="range-filter" data-min="20" data-max="290" data-start="20" data-end="290" data-name="Ширина" data-id="f[2]">
-                                                        <div class="range-filter__amounts">
-                                                            <div class="range-filter__amount">
-                                                                <span>От</span>
-                                                                <input type="number" min="20" max="290" placeholder="20" value="20" class="range-filter__start">
-                                                            </div>
-                                                            <div class="range-filter__amount">
-                                                                <span>До</span>
-                                                                <input type="number" min="20" max="290" placeholder="290" value="290" class="range-filter__end">
-                                                            </div>
-                                                        </div>
-                                                        <div class="range-filter__slider"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cat-filter__sec">
-                                            <div class="accordion no-close">
-                                                <div class="accordion__header">
-                                                    <span>Высота, см</span>
-                                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="range-filter" data-min="20" data-max="290" data-start="20" data-end="290" data-name="Высота" data-id="f[3]">
-                                                        <div class="range-filter__amounts">
-                                                            <div class="range-filter__amount">
-                                                                <span>От</span>
-                                                                <input type="number" min="20" max="290" placeholder="20" value="20" class="range-filter__start">
-                                                            </div>
-                                                            <div class="range-filter__amount">
-                                                                <span>До</span>
-                                                                <input type="number" min="20" max="290" placeholder="290" value="290" class="range-filter__end">
-                                                            </div>
-                                                        </div>
-                                                        <div class="range-filter__slider"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cat-filter__sec">
-                                            <div class="accordion no-close">
-                                                <div class="accordion__header">
-                                                    <span>Длина, см</span>
-                                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <div class="range-filter" data-min="20" data-max="300" data-start="20" data-end="300" data-name="Длина" data-id="f[4]">
-                                                        <div class="range-filter__amounts">
-                                                            <div class="range-filter__amount">
-                                                                <span>От</span>
-                                                                <input type="number" min="20" max="300" placeholder="20" value="20"
-                                                                    class="range-filter__start">
-                                                            </div>
-                                                            <div class="range-filter__amount">
-                                                                <span>До</span>
-                                                                <input type="number" min="20" max="300" placeholder="300" value="300"
-                                                                    class="range-filter__end">
-                                                            </div>
-                                                        </div>
-                                                        <div class="range-filter__slider"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cat-filter__sec">
-                                            <div class="accordion no-close">
-                                                <div class="accordion__header">
-                                                    <span>Углы</span>
-                                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <label class="item-checkbox">
-                                                        <input type="checkbox" data-id="1" data-name="Углы">
-                                                        <span>Любые</span>
-                                                    </label>
-                                                    <label class="item-checkbox">
-                                                        <input type="checkbox" data-id="2" data-name="Углы">
-                                                        <span>Прямые</span>
-                                                    </label>
-                                                    <label class="item-checkbox">
-                                                        <input type="checkbox" data-id="3" data-name="Углы">
-                                                        <span>Скруглённые верни</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cat-filter__sec">
-                                            <div class="accordion no-close">
-                                                <div class="accordion__header">
-                                                    <span>Производитель</span>
-                                                    <svg class="accordion__icon" aria-label="Развернуть/Свернуть"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                                                </div>
-                                                <div class="accordion__body">
-                                                    <label class="item-checkbox">
-                                                        <input type="checkbox" data-id="4" data-name="Производитель">
-                                                        <span>Любые</span>
-                                                    </label>
-                                                    <label class="item-checkbox">
-                                                        <input type="checkbox" data-id="5" data-name="Производитель">
-                                                        <span>Прямые</span>
-                                                    </label>
-                                                    <label class="item-checkbox">
-                                                        <input type="checkbox" data-id="6" data-name="Производитель">
-                                                        <span>Скруглённые верни</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <label class="item-toggle">
-                                            <input type="checkbox" data-id="7" checked>
-                                            <span>В наличии</span>
-                                        </label>
-                                        <label class="item-toggle">
-                                            <input type="checkbox" data-id="8">
-                                            <span>Sale</span>
-                                        </label>
-                                    </div>
-                                    <div class="cat-filter__bot">
-                                        <button type="submit" class="btn main-btn">
-                                            Показать (8)
-                                        </button>
-                                        <button type="reset" class="btn stroke-btn filter-reset">
-                                            Сбросить фильтр
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="catalog-p__content">
-                                <div class="catalog-p__items" data-column="column-grid">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "3", "inStock": false})
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
+                        <div class="switch-block">
+                            <div class="tabs-scroll">
+                                <div class="tabs">
+                                    <span class="h3 active" data-tab="sections">Разделы каталога</span>
+                                    <span class="h3" data-tab="catalog">Все товары</span>
                                 </div>
-                                @@include("_pagination.html")
+                                <button type="button" class="nav-btn nav-btn--next tabs-scroll__btn">
+                                    <svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg>
+                                </button>
+                            </div>
+                            <div class="catalog-p__block active" data-block="sections">
+                                <div class="catalog-p__sections">
+                                    @@include("_item-sec.html", {"nmb": 1, "name": "Популярные товары"})
+                                    @@include("_item-sec.html", {"nmb": 2, "name": "Отделочные материалы"})
+                                    @@include("_item-sec.html", {"nmb": 3, "name": "Рейка, брусок"})
+                                    @@include("_item-sec.html", {"nmb": 4, "name": "Лестницы и&nbsp;комплектующие"})
+                                    @@include("_item-sec.html", {"nmb": 5, "name": "Фанера, древесные&nbsp;плиты"})
+                                    @@include("_item-sec.html", {"nmb": 6, "name": "Крепёж"})
+                                    @@include("_item-sec.html", {"nmb": 7, "name": "Межкомнатные двери"})
+                                    @@include("_item-sec.html", {"nmb": 8, "name": "Доска строганая&nbsp;сухая"})
+                                    @@include("_item-sec.html", {"nmb": 9, "name": "Профильный погонаж"})
+                                    @@include("_item-sec.html", {"nmb": 10, "name": "Брус строганый&nbsp;сухой"})
+                                    @@include("_item-sec.html", {"nmb": 11, "name": "Клеёный брус"})
+                                    @@include("_item-sec.html", {"nmb": 12, "name": "Средства защиты&nbsp;и&nbsp;ухода"})
+                                    @@include("_item-sec.html", {"nmb": 13, "name": "Мебельный щит"})
+                                    @@include("_item-sec.html", {"nmb": 14, "name": "Пиломатериал"})
+                                    @@include("_item-sec.html", {"nmb": 15, "name": "Деревянные стеллажи"})
+                                    @@include("_item-sec.html", {"nmb": 16, "name": "Товары для сауны&nbsp;и&nbsp;бани"})
+                                    @@include("_item-sec.html", {"nmb": 17, "name": "Инвентарь и&nbsp;инструменты"})
+                                    @@include("_item-sec.html", {"nmb": 18, "name": "Экзотические породы дерева"})
+                                </div>
+                            </div>
+                            <div class="catalog-p__block" data-block="catalog">
+                                @@include("_catalog.html")
                             </div>
                         </div>
                     </div>
                 </section>
-                <!--main-advants-->
-                <section class="section main-advants">
-                    <div class="container">
-                        <div class="sec-top">
-                            <h2 class="h1">Почему выбирают нас</h2>
-                        </div>
-                        <div class="main-advants__items">
-                            <!--item-advant-->
-                            <div class="item-advant">
-                                <div class="item-advant__icon">
-                                    <svg><use xlink:href="img/svg/sprite.svg#wood"></use></svg>
-                                </div>
-                                <h4>Специализируемся <span>на дереве</span></h4>
-                            </div>
-                            <!--item-advant-->
-                            <div class="item-advant">
-                                <div class="item-advant__icon">
-                                    <svg><use xlink:href="img/svg/sprite.svg#profi"></use></svg>
-                                </div>
-                                <h4>Работаем <span>с 2008 года</span></h4>
-                            </div>
-                            <!--item-advant-->
-                            <div class="item-advant">
-                                <div class="item-advant__icon">
-                                    <svg><use xlink:href="img/svg/sprite.svg#branch"></use></svg>
-                                </div>
-                                <h4>8 филиалов <span>в разных городах</span></h4>
-                            </div>
-                            <!--item-advant-->
-                            <div class="item-advant">
-                                <div class="item-advant__icon">
-                                    <svg><use xlink:href="img/svg/sprite.svg#assortment"></use></svg>
-                                </div>
-                                <h4>Широкий <span>ассортимент</span></h4>
-                            </div>
-                            <!--item-advant-->
-                            <div class="item-advant">
-                                <div class="item-advant__icon">
-                                    <svg><use xlink:href="img/svg/sprite.svg#delivery"></use></svg>
-                                </div>
-                                <h4>Доставка <span>по Югу России</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--catalog-->
-                <section class="section catalog">
-                    <div class="container">
-                        <div class="sec-top">
-                            <h2 class="h1">Новинки</h2>
-                            <a href="#" class="btn stroke-btn stroke-btn--link">
-                                Смотреть все
-                                <span class="link-icon"></span>
-                            </a>
-                        </div>
-                        <div class="catalog__items">
-                            @@include("_card.html", {"hasPhoto": false, "nmb": "1", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "3", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "3", "inStock": false})
-                        </div>
-                    </div>
-                </section>
-                <!--other-cat-->
-                <section class="section swiper5 other-cat">
-                    <div class="container">
-                        <div class="sec-top">
-                            <h2 class="h1"><span>Популярные</span> товары</h2>
-                            <a href="#" class="btn stroke-btn stroke-btn--link">
-                                Смотреть все
-                                <span class="link-icon"></span>
-                            </a>
-                        </div>
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                </div>
-                            </div>
-                            <div class="swiper-nav">
-                                <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--other-cat-->
-                <section class="mb-90 swiper5 other-cat">
-                    <div class="container">
-                        <div class="sec-top">
-                            <h2 class="h1">Вы недавно смотрели</h2>
-                        </div>
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                </div>
-                            </div>
-                            <div class="swiper-nav">
-                                <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                @@include('_other-cat.html', {"title": "<span>Популярные</span> товары", "btn": true})
+                @@include('_other-cat.html', {"title": "Вы недавно смотрели", "btn": false})
                 <!--ceo-block-->
                 <div class="mb-90 text-block">
                     <div class="container">
@@ -440,58 +119,7 @@
                     </div>
                 </div>
                 @@include("_main-form.html")
-                <!--reviews-->
-                <section class="section swiper3 reviews">
-                    <div class="container">
-                        <div class="sec-top">
-                            <h2 class="h1">Отзывы о нас</h2>
-                        </div>
-                        <div class="reviews__top">
-                            <a href="#" target="_blank" class="reviews-ratings">
-                                <div class="reviews-ratings__item">
-                                    <img src="img/logo/yandex.svg" alt="Yandex">
-                                    <div class="rating">
-                                        <span class="rating__container light">
-                                            <svg><use xlink:href="img/svg/sprite.svg#star-5"></use></svg>
-                                        </span>
-                                        <span class="rating__container dark" style="width: 96%">
-                                            <svg><use xlink:href="img/svg/sprite.svg#star-5"></use></svg>
-                                        </span>
-                                    </div>
-                                    <span>4,8</span>
-                                </div>
-                            </a>
-                            <button class="btn main-btn mod-open-btn" data-modal="review-modal">
-                                Оставить отзыв
-                                <span class="link-icon"></span>
-                            </button>
-                        </div>
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    @@include("_item-review.html", {"name": "Мария.", "text":
-                                    'Работаем с фирмой «ЛЕСКРАФТ» уже довольно давно. Всегда поставляют качественные материалы, работают точно по срокам, как часы. Уже не один год взаимовыгодно работаем с «Лескрафтом» и мы только рады такому продуктивному союзу. Никаких нареканий, только положительные впечатления. Безусловно будем продолжать сотрудничество. Работаем с фирмой «ЛЕСКРАФТ» уже довольно давно. Всегда поставляют качественные материалы, работают точно по срокам, как часы. Уже не один год взаимовыгодно работаем с «Лескрафтом» и мы только рады такому продуктивному союзу. Никаких нареканий, только положительные впечатления. Безусловно будем продолжать сотрудничество.'})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_item-review.html", {"name": "Олег Б.", "text":
-                                    'Выражаю искреннюю благодарность Сотрудникам Компании ООО"Лескрафт». Отдельную благодарность хотим выразить руководителю Сергею Георгиевичу и нашему менеджеру за оперативный и профессиональный подход к делу. От всей души желаем процветания и развития в бизнесе.'})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_item-review.html", {"name": "Евгений К", "text":
-                                    'Работаем с фирмой «ЛЕСКРАФТ» уже довольно давно. Всегда поставляют качественные материалы, работают точно по срокам, как часы. Уже не один год взаимовыгодно работаем с «Лескрафтом» и мы только рады такому продуктивному союзу. Никаких нареканий, только положительные впечатления. Безусловно будем продолжать сотрудничеств'})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_item-review.html", {"name": "Мария", "text":
-                                    'Выражаю искреннюю благодарность Сотрудникам Компании ООО"Лескрафт». Отдельную благодарность хотим выразить руководителю Сергею Георгиевичу и нашему менеджеру за оперативный и профессиональный подход к делу. От всей души желаем процветания и развития в бизнесе.'})
-                                </div>
-                            </div>
-                            <div class="swiper-nav">
-                                <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                @@include("_reviews.html")
             </main>
             @@include('_footer.html', {"main": false})
             @@include('_modal.html')

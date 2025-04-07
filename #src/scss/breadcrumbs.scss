@@ -1,15 +1,18 @@
 .breadcrumbs {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    &:last-child {
+        margin-bottom: 0;
+    }
     ul {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
+        white-space: nowrap;
+        overflow: hidden;
         li {
             font-size: 16px;
             color: var(--gray-color);
+            display: inline;
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
             &:before {
                 content: "/";
                 margin: 0 5px;
@@ -17,12 +20,22 @@
             &:first-child:before {
                 display: none;
             }
+            &:last-child {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
             a {          
                 color: var(--gray-color);
                 &:hover {
                     color: var(--green-color);
                 }
             }
+        }
+    }
+    @media (max-width: $bp1) {
+        margin-bottom: 12px;
+        ul li {
+            font-size: 14px;
         }
     }
 }

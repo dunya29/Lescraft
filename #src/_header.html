@@ -1,159 +1,109 @@
 <!--header-->
 @@if (main == true) {
-<header class="header header--main fixed-block">
+<header class="header header--main">
     }
     @@if (main == false) {
-    <header class="header fixed-block">
+    <header class="header">
         }
-        <div class="header__top">
-            <div class="container">
-                <button class="btn mod-open-btn page-loc" data-modal="city-modal">
-                    <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
-                    <span>Нижний Новгород</span>
-                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                </button>
-                <div class="header__delivery">Доставка по всему Югу России</div>
-                <nav class="top-menu">
-                    <ul class="top-menu__list">
-                        <li><a href="#" class="top-menu__header">Доставка</a></li>
-                        <li><a href="#" class="top-menu__header">Услуги</a></li>
-                        <li>
-                            <div class="top-menu__header">
-                                Для клиента
-                                <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-                            </div>
-                            <div class="top-menu__body">
-                                <div class="top-menu__subnavs">
-                                    <ul class="custom-scroll">
-                                        <li><a href="#">Акции</a></li>
-                                        <li><a href="#">Возврат и обмен</a></li>
-                                        <li><a href="#">Условия оплаты</a></li>
-                                        <li><a href="#">Для юридических лиц</a></li>
-                                    </ul>
+        <div class="header__inner">
+            <div class="header__top">
+                <div class="container">
+                    <div class="header__top-inner">
+                        <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
+                            <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
+                            <span>Краснодар</span>
+                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                        </button>
+                        <div class="header__delivery">Доставка по всему Югу России</div>
+                        <nav class="top-menu">
+                            <ul class="top-menu__list">
+                                <li><a href="#" class="top-menu__header">Доставка</a></li>
+                                <li><a href="#" class="top-menu__header">Услуги</a></li>
+                                <li>
+                                    <div class="top-menu__header">
+                                        Для клиента
+                                        <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                    </div>
+                                    <div class="top-menu__body">
+                                        <div class="top-menu__subnavs">
+                                            <ul class="custom-scroll">
+                                                <li><a href="#">Акции</a></li>
+                                                <li><a href="#">Возврат и обмен</a></li>
+                                                <li><a href="#">Условия оплаты</a></li>
+                                                <li><a href="#">Для юридических лиц</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#" class="top-menu__header">Филиалы и контакты</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="header__body fixed-header">
+                <div class="container">
+                    <div class="header__left">
+                        <a href="main.html" class="page-logo">
+                            <svg><use xlink:href="img/svg/sprite.svg#logo"></use></svg>
+                        </a>
+                    </div>
+                    <div class="header__center">
+                        <div class="header__center-inner">
+                            <a href="#" class="menu-btn" role="button" aria-expanded="false">
+                                <div class="menu-btn__items">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </div>
-                            </div>
-                        </li>
-                        <li><a href="#" class="top-menu__header">Филиалы и контакты</a></li>
+                                <span class="menu-btn__txt">Каталог</span>
+                            </a>
+                            @@if(search === true) {
+                            @@include("_search-form.html", {"results": true})
+                            }
+                            @@if(search === false) {
+                            @@include("_search-form.html", {"results": false})
+                            }
+                        </div>
+                    </div>
+                    <div class="header__right">
+                        <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
+                            <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
+                            <span>Краснодар</span>
+                            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                        </button>
+                        <div class="page-contact page-contact--phone">
+                            <a href="tel:88001004407">8 800 100-44-07</a>
+                            <span>Бесплатно по России (8:00–20:00)</span>
+                        </div>
+                        <div class="header__actions">
+                            <a href="#" class="header__fav" aria-label="Перейти в избранные"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg></a>
+                            <button type="button" class="header__profile mod-open-btn" aria-label="Войти" data-modal="login-modal">
+                                <svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg>
+                            </button>
+                            <!-- <a href="#" class="header__profile" aria-label="Личный кабинет"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></a>  -->
+                            <a href="#" class="header__cart" aria-label="Перейти в корзину">
+                                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
+                                <span>6</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__bot">
+                <div class="container">
+                    <ul>
+                        <li><a href="#">Новинки</a></li>
+                        <li><a href="#">Отделочные материалы</a></li>
+                        <li><a href="#">Террасная доска</a></li>
+                        <li><a href="#">Лаки и краски</a></li>
+                        <li><a href="#">Крепёж</a></li>
+                        <li><a href="#">Фанера и древесные плиты</a></li>
+                        <li><a href="#">Экзотические породы</a></li>
+                        <li><a href="#">Для бани и сауны</a></li>
                     </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="header__body">
-            <div class="container">
-                <a href="main.html" class="page-logo">
-                    <svg><use xlink:href="img/svg/sprite.svg#logo"></use></svg>
-                </a>
-                <div class="header__center">
-                    <a href="#" class="menu-btn" role="button" aria-expanded="false">
-                        <div class="menu-btn__items">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <span class="menu-btn__txt">Каталог</span>
-                    </a>
-                    @@if(search === true) {
-                    @@include("_search-form.html", {"results": true})
-                    }
-                    @@if(search === false) {
-                    @@include("_search-form.html", {"results": false})
-                    }
-                </div>
-                <div class="header__right">
-                    <div class="page-contact">
-                        <a href="tel:88001004407">8 800 100-44-07</a>
-                        <span>Бесплатно по России (8:00–20:00)</span>
-                    </div>
-                    <div class="header__actions">
-                        <a href="#" aria-label="Перейти в избранные"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg></a>
-                        <button class="mod-open-btn" aria-label="Войти" data-modal="login-modal"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></button>
-                        <!-- <a href="#" aria-label="Личный кабинет"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></a>  -->
-                        <a href="#" aria-label="Перейти в корзину"><svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg></a></div>
                 </div>
             </div>
         </div>
-        <div class="header__bot">
-            <div class="container">
-                <ul>
-                    <li><a href="#">Новинки</a></li>
-                    <li><a href="#">Отделочные материалы</a></li>
-                    <li><a href="#">Террасная доска</a></li>
-                    <li><a href="#">Лаки и краски</a></li>
-                    <li><a href="#">Крепёж</a></li>
-                    <li><a href="#">Фанера и древесные плиты</a></li>
-                    <li><a href="#">Экзотические породы</a></li>
-                    <li><a href="#">Для бани и сауны</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="cat-menu fixed-block">
-            <div class="custom-scroll container">
-                <div class="cat-menu__inner">
-                    <div class="cat-menu__left">
-                        <nav class="cat-menu__nav">
-                            <ul>
-                                <li class="link-btn has-icon active" data-cat-nav="1">
-                                    <a href="#">Фанера и древесные плиты</a>
-                                </li>
-                                <li class="link-btn has-icon" data-cat-nav="2">
-                                    <a href="#">Отделочные материалы</a>
-                                </li>
-                                <li class="link-btn has-icon" data-cat-nav="3">
-                                    <a href="#">Погонажные изделия</a>
-                                </li>
-                                <li class="link-btn has-icon" data-cat-nav="4">
-                                    <a href="#">Клеёные изделия</a>
-                                </li>
-                                <li class="link-btn has-icon" data-cat-nav="5">
-                                    <a href="#">Для бани и сауны</a>
-                                </li>
-                                <li class="link-btn has-icon" data-cat-nav="6">
-                                    <a href="#">Лакокрасочные материалы</a>
-                                </li>
-                                <li class="link-btn has-icon" data-cat-nav="7">
-                                    <a href="#">Инвентарь и инструменты</a>
-                                </li>
-                                <li class="link-btn has-icon" data-cat-nav="8">
-                                    <a href="#">Крепёжные материалы</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="cat-menu__contact">
-                            <a href="88001004407" class="cat-menu__phone">8 800 100-44-07</a>
-                            @@include("_social.html", {"whatsapp": true, "youtube": true})
-                        </div>
-                    </div>
-                    <div class="cat-menu__subnavs">
-                        <nav class="cat-menu__subnav active animated" data-cat-subnav="1">
-                            <ul>
-                                <li class="link-btn"><a href="#">Osmo</a></li>
-                                <li class="link-btn"><a href="#">Живица</a></li>
-                                <li class="link-btn"><a href="#">Gnature</a></li>
-                                <li class="link-btn"><a href="#">ДСП</a></li>
-                                <li class="link-btn"><a href="#">Pinotex</a></li>
-                                <li class="link-btn"><a href="#">Tikkurila</a></li>
-                                <li class="link-btn"><a href="#">Hemel</a></li>
-                                <li class="link-btn"><a href="#">Составные для бани и сауны</a></li>
-                            </ul>
-                            <ul>
-                                <li class="link-btn"><a href="#">Дезинфицирующие и защитные средства</a></li>
-                                <li class="link-btn"><a href="#">ВГТ(Эмаль)</a></li>
-                                <li class="link-btn"><a href="#">Шпатлёвка, клей, герметик, растворители, составы</a></li>
-                                <li class="link-btn"><a href="#">Лаки</a></li>
-                                <li class="link-btn"><a href="#">Рогнеда</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="cat-menu__banner">
-                        <div class="page-logo">
-                            <img src="img/svg/logo.svg" alt="Логотип ЛЕСКРАФТ">
-                        </div>
-                        <div class="cat-menu__banner-icon">
-                            <img src="img/svg/delivery.svg" alt>
-                        </div>
-                        <h3>Доставка по всему Югу России</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @@include("_main-menu.html")
     </header>

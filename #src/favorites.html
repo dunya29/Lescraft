@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -20,54 +21,23 @@
                 <section class="section catalog favorites-p">
                     <div class="container">
                         <div class="sec-top">
-                            <h1 class="text-l">Избранное</h1>
+                            <h1>Избранное</h1>
                         </div>
-                        <div class="catalog__items">
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "3", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": true})
-                            @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": false})
-                        </div>
-                        @@include("_pagination.html")
-                    </div>
-                </section>
-                <!--other-cat-->
-                <section class="mb-90 swiper5 other-cat">
-                    <div class="container">
-                        <div class="sec-top">
-                            <h2 class="h1">Вы недавно смотрели</h2>
-                        </div>
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "2", "inStock": false})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "4", "inStock": true})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "5", "inStock": false})
-                                </div>
-                                <div class="swiper-slide">
-                                    @@include("_card.html", {"hasPhoto": true, "nmb": "1", "inStock": true})
-                                </div>
+                        <div class="js-prodWrapper">
+                            <div class="catalog__items">
+                                @@include("_card.html", {"fav": true, "hasPhoto": true, "nmb": "1", "inStock": true})
+                                @@include("_card.html", {"fav": true, "hasPhoto": true, "nmb": "2", "inStock": true})
+                                @@include("_card.html", {"fav": true, "hasPhoto": true, "nmb": "3", "inStock": false})
+                                @@include("_card.html", {"fav": true, "hasPhoto": true, "nmb": "4", "inStock": false})
+                                @@include("_card.html", {"fav": true, "hasPhoto": true, "nmb": "5", "inStock": true})
+                                @@include("_card.html", {"fav": true, "hasPhoto": true, "nmb": "2", "inStock": true})
+                                @@include("_card.html", {"fav": true, "hasPhoto": true, "nmb": "4", "inStock": false})
                             </div>
-                            <div class="swiper-nav">
-                                <button class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                                <button class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-                            </div>
+                            @@include("_pagination.html")
                         </div>
                     </div>
                 </section>
+                @@include('_other-cat.html', {"title": "Вы недавно смотрели", "btn": false})
             </main>
             @@include('_footer.html', {"main": false})
             @@include('_modal.html')

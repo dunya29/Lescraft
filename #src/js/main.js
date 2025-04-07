@@ -1,25 +1,63 @@
 if (document.querySelector(".preloader")) {
     window.addEventListener("load", (event) => {
         setTimeout(() => {
-            enableScroll()
             document.body.classList.add('loaded');
         }, 100);
     });
 }
 const header = document.querySelector(".header")
-const menuMobileBtn = document.querySelector('.menu-mobile__btn');
-const mobMenu = document.querySelector('.menu-mobile');
+const headerFix = document.querySelector(".fixed-header")
+const menuBtn = document.querySelector('.menu-btn');
 const iconMenu = document.querySelector('.icon-menu');
 const overlay = document.querySelector(".overlay")
 const modal = document.querySelectorAll(".modal")
 const modOpenBtn = document.querySelectorAll(".mod-open-btn")
 const modCloseBtn = document.querySelectorAll(".mod-close-btn")
-const successModal = document.querySelector(".success-mod")
-const errorModal = document.querySelector(".error-mod")
+const successModal = document.querySelector("#success-modal")
+const errorModal = document.querySelector("#error-modal")
+const cookiePopup = document.querySelector("#cookie-popup")
 const dropdown = document.querySelectorAll(".dropdown")
 let animSpd = 400
-let tablet = 991.98
-let mob = 767.98
+let bp = {
+    largeDesktop: 1700.98,
+    desktop: 1250.98,
+    laptop: 1030.98,
+    tablet: 700.98,
+    phone: 575.98
+}
+let lblTimeout
+/* perenesti в back start */
+function addToCart(productId, count, callback = false) {
+    console.log(productId + " Добавлен в корзину в количестве " + count)
+    clearTimeout(lblTimeout)
+    if (callback) {
+        callback()
+    }
+}
+function removeFromCart(productId, callback = false) {
+    console.log(productId + " Удалён из корзины")
+    clearTimeout(lblTimeout)
+    if (callback) {
+        callback()
+    }
+}
+function addToFav(productId, callback = false) {
+    console.log(productId + " Добавлен в избранное")
+    clearTimeout(lblTimeout)
+    if (callback) {
+        callback()
+    }
+}
+function removeFromFav(productId, callback = false) {
+    console.log(productId + " Удалён из избранного")
+    clearTimeout(lblTimeout)
+    if (callback) {
+        callback()
+    }
+}
+function catFilterSubmit() {
+}
+/* perenesti в back end */
 //get path to sprite id
 function sprite(id) {
     return '<svg><use xlink:href="img/svg/sprite.svg#' + id + '"></use></svg>'
@@ -45,20 +83,24 @@ function maskEmail(email) {
 }
 //enable scroll
 function enableScroll() {
-    if (document.querySelectorAll(".fixed-block")) {
-        document.querySelectorAll(".fixed-block").forEach(block => block.style.paddingRight = '0px')
+    if (!document.querySelector(".modal.open") && !menuBtn.classList.contains("active")) {
+        if (document.querySelectorAll(".fixed-block")) {
+            document.querySelectorAll(".fixed-block").forEach(block => block.style.paddingRight = '0px')
+        }
+        document.body.style.paddingRight = '0px'
+        document.body.classList.remove("no-scroll")
     }
-    document.body.style.paddingRight = '0px'
-    document.body.classList.remove("no-scroll")
 }
 //disable scroll
 function disableScroll() {
-    let paddingValue = window.innerWidth > 350 ? window.innerWidth - document.documentElement.clientWidth + 'px' : 0
-    if (document.querySelectorAll(".fixed-block")) {
-        document.querySelectorAll(".fixed-block").forEach(block => block.style.paddingRight = paddingValue)
+    if (!document.querySelector(".modal.open") && !menuBtn.classList.contains("active")) {
+        let paddingValue = window.innerWidth > 350 ? window.innerWidth - document.documentElement.clientWidth + 'px' : 0
+        if (document.querySelector(".fixed-block")) {
+            document.querySelectorAll(".fixed-block").forEach(block => block.style.paddingRight = paddingValue)
+        }
+        document.body.style.paddingRight = paddingValue
+        document.body.classList.add("no-scroll");
     }
-    document.body.style.paddingRight = paddingValue
-    document.body.classList.add("no-scroll");
 }
 //smoothdrop
 function smoothDrop(header, body, dur = false) {
@@ -132,54 +174,51 @@ function tabSwitch(nav, block) {
         })
     });
 }
+// tabs scroll btn
+const tabsScroll = document.querySelectorAll(".tabs-scroll")
+function tabsBtnVisibility(item) {
+    let scrollW = item.querySelector(".tabs").scrollWidth
+    let clientW = item.querySelector(".tabs").clientWidth
+    let scrollLeft = item.querySelector(".tabs").scrollLeft
+    scrollW - clientW - scrollLeft > 5 ? item.classList.add("show-btn") : item.classList.remove("show-btn")
+}
+if (tabsScroll.length) {
+    tabsScroll.forEach(item => {
+        tabsBtnVisibility(item)
+        item.querySelector(".tabs").addEventListener("scroll", () => tabsBtnVisibility(item))
+        window.addEventListener("resize", tabsBtnVisibility(item))
+    });
+}
 // custom scroll FF
 const customScroll = document.querySelectorAll(".custom-scroll")
 let isFirefox = typeof InstallTrigger !== 'undefined';
 if (isFirefox) {
+    document.documentElement.style.scrollbarWidth = "thin"
     document.documentElement.style.scrollbarColor = "#769882 #cfd8d2"
-}
-if (isFirefox && customScroll) {
-    customScroll.forEach(item => { item.style.scrollbarColor = "#769882 #cfd8d2" })
-}
-//anchor
-const anchorLinks = document.querySelectorAll(".js-anchor")
-if (anchorLinks.length) {
-    document.querySelectorAll(".js-anchor").forEach(item => {
-        item.addEventListener("click", e => {
-            e.preventDefault()
-            let windowTop = window.pageYOffset || document.documentElement.scrollTop
-            let dest = document.querySelector(item.getAttribute("href"))
-            let diff = 0
-            if (dest.querySelector(".reports__row") && dest.getBoundingClientRect().top < 0) {
-                diff = dest.querySelector(".reports__row").clientHeight
-            }
-            destPos = dest.getBoundingClientRect().top < 0 ? dest.getBoundingClientRect().top - 60 : dest.getBoundingClientRect().top - 20
-            if (iconMenu.classList.contains("open")) {
-                iconMenu.click()
-                setTimeout(() => {
-                    window.scrollTo({ top: windowTop - diff + destPos, behavior: 'smooth' })
-                }, 300);
-            } else {
-                window.scrollTo({ top: windowTop - diff + destPos, behavior: 'smooth' })
-            }
+    if (customScroll) {
+        customScroll.forEach(item => {
+            document.documentElement.style.scrollbarWidth = "thin"
+            item.style.scrollbarColor = "#769882 #cfd8d2"
         })
-    })
+    }
 }
+
 //fixed header
 let lastScroll = scrollPos();
 window.addEventListener("scroll", () => {
-    if (document.querySelector(".header__top").getBoundingClientRect().bottom < 0) {
+    if (document.querySelector(".header__top").getBoundingClientRect().bottom < 0 || (window.innerWidth < bp.desktop && scrollPos() > 5)) {
         header.classList.add("scroll")
-        header.querySelector(".header__body").classList.add("fixed-block")
+        if (window.innerWidth > bp.desktop) {
+            headerFix.classList.add("fixed-block")
+        }
         if ((scrollPos() > lastScroll && scrollPos() > 150 && !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
         } else if (scrollPos() < lastScroll && header.classList.contains("unshow")) {
             header.classList.remove("unshow")
         }
     } else {
-        header.classList.remove("scroll")
-        header.classList.remove("unshow")
-        header.querySelector(".header__body").classList.remove("fixed-block")
+        header.classList.remove("scroll", "unshow",)
+        headerFix.classList.remove("fixed-block")
     }
     lastScroll = scrollPos()
 })
@@ -190,12 +229,22 @@ if (switchBlock) {
         tabSwitch(item.querySelectorAll("[data-tab]"), item.querySelectorAll("[data-block]"))
     })
 }
+//show cookie
+function showCookie() {
+    if (cookiePopup) {
+        cookiePopup.classList.add("show")
+    }
+}
+//show cookie
+function unshowCookie() {
+    if (cookiePopup) {
+        cookiePopup.classList.remove("show")
+    }
+}
 //open modal
 function openModal(modal) {
     let activeModal = document.querySelector(".modal.open")
-    if (!activeModal /* && !mobMenu.classList.contains("open") */) {
-        disableScroll()
-    }
+    disableScroll()
     if (activeModal) {
         activeModal.classList.remove("open")
     }
@@ -206,23 +255,27 @@ function closeModal(modal) {
     if (modal.querySelector("video")) {
         modal.querySelectorAll("video").forEach(item => item.pause())
     }
+    if (modal.closest(".dropdown")) {
+        modal.closest(".dropdown").classList.remove("open")
+    }
     modal.classList.remove("open")
     setTimeout(() => {
-        //  if (!mobMenu.classList.contains("open")) {
         enableScroll()
-        // } 
     }, animSpd);
 }
 // modal click outside
 if (modal) {
     modal.forEach((mod) => {
         mod.addEventListener("click", (e) => {
-            if (!mod.querySelector(".modal__content").contains(e.target) ||
-                mod.querySelector(".btn-close").contains(e.target) ||
-                (mod.querySelector(".modal__close") && mod.querySelector(".modal__close").contains(e.target))) {
+            if (!mod.querySelector(".modal__content").contains(e.target)) {
                 closeModal(mod);
             }
         });
+        mod.querySelectorAll(".modal__close").forEach(btn => {
+            btn.addEventListener("click", () => {
+                closeModal(mod)
+            })
+        })
     });
 }
 // modal button on click
@@ -246,112 +299,140 @@ if (modCloseBtn) {
     })
 }
 // custom fancybox
-function fancyModal(e, fancyItems, fancyModalClass = false) {
-    if (fancyItems) {
-        fancyItems.forEach(item => {
-            if (item.contains(e.target)) {
-                let mediaSrc = []
-                let objectFit = item.getAttribute("data-fit") ? item.getAttribute("data-fit") : "media-cover"
-                let val = item.getAttribute("data-fancy")
-                let thumb = item.hasAttribute("data-thumb")
-                document.querySelectorAll("[data-fancy]").forEach(el => {
-                    if (!el.closest(".swiper-slide-duplicate") && el.getAttribute("data-fancy") === val) {
-                        mediaSrc.push({ src: el.getAttribute("data-src"), type: el.getAttribute("data-type") || 'image' })
-                    }
-                })
-                let initialSl = mediaSrc.findIndex(el => el.src === item.getAttribute("data-src"))
-                document.querySelector(".footer").insertAdjacentHTML('afterend', `
-                <div class="custom-scroll modal fancy-modal ${fancyModalClass ? fancyModalClass : ''}">
+function fancyModal(fancyItem) {
+    let mediaSrc = []
+    let objectFit = fancyItem.getAttribute("data-fit") ? fancyItem.getAttribute("data-fit") : "media-cover"
+    let val = fancyItem.getAttribute("data-fancy")
+    let thumb = fancyItem.hasAttribute("data-thumb")
+    document.querySelectorAll("[data-fancy]").forEach(el => {
+        if (!el.closest(".swiper-slide-duplicate") && el.getAttribute("data-fancy") === val) {
+            let obj = {
+                src: el.getAttribute("data-src"),
+                type: el.getAttribute("data-type") || 'image'
+            }
+            if (el.getAttribute("data-type") === 'video' && el.getAttribute("data-poster")) {
+                obj.poster = el.getAttribute("data-poster")
+            }
+            mediaSrc.push(obj)
+        }
+    })
+    let initialSl = mediaSrc.findIndex(el => el.src === fancyItem.getAttribute("data-src"))
+    document.querySelector(".footer").insertAdjacentHTML('afterend', `
+                <div class="custom-scroll modal fancy-modal ${val + '-modal'}">
                     <div class="fancy-modal__content">
-                        <button type="button" class="btn btn-close"></button>
-                        <div class="custom-scroll">
-                            <div class="fancy-modal__mainswiper">
-                                <div class="swiper">
-                                    <div class="swiper-wrapper">
-                                        ${mediaSrc.map((el, i) => `<div class="swiper-slide">
-                                            <div class="${objectFit}">
-                                                ${el.type === 'video' ? `<video ${i === initialSl ? `src='${el.src}'` : `data-src='${el.src}'`} loop autoplay playsinline mute controls></video>` : `<img src=${el.src} alt="">`}                                                
-                                            </div>
-                                        </div>`).join("")}
-                                    </div>
+                        <button type="button" class="btn-cross modal__close"></button>
+                        <div class="fancy-modal__mainswiper">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    ${mediaSrc.map((el, i) => `<div class="swiper-slide">
+                                        <div class="${objectFit}">
+                                            ${el.type === 'video' ? `<video ${i === initialSl ? `src='${el.src}'` : `data-src='${el.src}'`} ${el.poster ? `poster='${el.poster}'` : ''} loop autoplay playsinline mute controls></video>` : `<img src=${el.src} alt="">`}                                                
+                                        </div>
+                                    </div>`).join("")}
                                 </div>
                             </div>
-                            ${thumb && mediaSrc.length > 1 ? `<div class="fancy-modal__thumbswiper">
-                                <div class="swiper">
-                                    <div class="swiper-wrapper">
-                                        ${mediaSrc.map(el => `<div class="swiper-slide">
-                                            <div class="${objectFit} ${el.type === 'video' ? 'video' : ''}">
-                                                ${el.type === 'video' ? `<img src=${item.querySelector("img").getAttribute("src")}>` : `<img src=${el.src} alt="">`}                                                
-                                            </div>
-                                        </div>`).join("")}
-                                    </div>
-                                </div>
-                                <div class="swiper-nav">
-                                    <button class="nav-btn nav-btn--prev">${sprite('btn-prev')}</button>
-                                    <button class="nav-btn nav-btn--next">${sprite('btn-next')}</button>
-                                </div>
-                            </div>` : ""}
                         </div>
+                        ${thumb && mediaSrc.length > 1 ? `<div class="fancy-modal__thumbswiper">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    ${mediaSrc.map(el => `<div class="swiper-slide">
+                                        <div class="${objectFit} ${el.type === 'video' ? 'video' : ''}">
+                                            ${el.type === 'video' ? `<img ${el.poster ? `src='${el.poster}'` : ''}>` : `<img src=${el.src} alt="">`}                                                
+                                        </div>
+                                    </div>`).join("")}
+                                </div>
+                            </div>
+                            <div class="swiper-nav">
+                                <button type="button" class="nav-btn nav-btn--prev">${sprite('btn-prev')}</button>
+                                <button type="button" class="nav-btn nav-btn--next">${sprite('btn-next')}</button>
+                            </div>
+                        </div>` : ""}
                     </div>
                 </div>
             `);
-                const fancyModal = document.querySelector(".fancy-modal")
-                let fancyThumbSwiper
-                if (thumb && mediaSrc.length > 1) {
-                    fancyThumbSwiper = new Swiper(fancyModal.querySelector(".fancy-modal__thumbswiper .swiper"), {
-                        slidesPerView: 4,
-                        spaceBetween: 12,
-                        observer: true,
-                        observeParents: true,
-                        watchSlidesProgress: true,
-                        initialSlide: initialSl,
-                        navigation: {
-                            prevEl: fancyModal.querySelector(".nav-btn--prev"),
-                            nextEl: fancyModal.querySelector(".nav-btn--next"),
-                        },
-                        speed: 800
-                    })
+    const fancyModal = document.querySelector(".fancy-modal")
+    let fancyThumbSwiper
+    if (thumb && mediaSrc.length > 1) {
+        fancyThumbSwiper = new Swiper(fancyModal.querySelector(".fancy-modal__thumbswiper .swiper"), {
+            slidesPerView: 3,
+            spaceBetween: 12,
+            observer: true,
+            observeParents: true,
+            watchSlidesProgress: true,
+            initialSlide: initialSl,
+            navigation: {
+                prevEl: fancyModal.querySelector(".nav-btn--prev"),
+                nextEl: fancyModal.querySelector(".nav-btn--next"),
+            },
+            breakpoints: {
+                575.98: {
+                    slidesPerView: 4,
                 }
-                let fancyMainSwiper = new Swiper(fancyModal.querySelector(".fancy-modal__mainswiper .swiper"), {
-                    slidesPerView: 1,
-                    observer: true,
-                    observeParents: true,
-                    initialSlide: initialSl,
-                    effect: "fade",
-                    fadeEffect: {
-                        crossFade: true
-                    },
-                    thumbs: {
-                        swiper: fancyThumbSwiper || null,
-                    },
-                    speed: 300,
-                })
-                fancyMainSwiper.on("slideChange", e => {
-                    if (fancyModal.querySelector("video")) {
-                        fancyModal.querySelectorAll("video").forEach(item => item.pause())
+            },
+            speed: 800
+        })
+    }
+    let fancyMainSwiper = new Swiper(fancyModal.querySelector(".fancy-modal__mainswiper .swiper"), {
+        slidesPerView: 1,
+        observer: true,
+        observeParents: true,
+        initialSlide: initialSl,
+        effect: "fade",
+        fadeEffect: {
+            crossFade: true
+        },
+        thumbs: {
+            swiper: fancyThumbSwiper || null,
+        },
+        speed: 300,
+    })
+    fancyMainSwiper.on("slideChange", e => {
+        if (fancyModal.querySelector("video")) {
+            fancyModal.querySelectorAll("video").forEach(item => item.pause())
+        }
+        let lazyEl = fancyMainSwiper.slides[fancyMainSwiper.activeIndex].querySelector('[data-src]');
+        let videoEl = fancyMainSwiper.slides[fancyMainSwiper.activeIndex].querySelector('video');
+        if (lazyEl) {
+            lazyEl.setAttribute("src", lazyEl.getAttribute("data-src"))
+            lazyEl.removeAttribute("data-src")
+        } else if (!lazyEl && videoEl) {
+            videoEl.play()
+        }
+    })
+    openModal(fancyModal)
+    fancyModal.querySelectorAll(".modal__close").forEach(btn => {
+        btn.addEventListener("click", e => {
+            closeModal(fancyModal)
+            setTimeout(() => {
+                fancyModal.remove()
+            }, animSpd);
+        })
+    })
+}
+const fancyBlock = document.querySelectorAll(".fancy-block")
+if (fancyBlock.length) {
+    fancyBlock.forEach(block => {
+        block.addEventListener("click", e => {
+            const fancyItems = block.querySelectorAll("[data-fancy]")
+            if (fancyItems.length) {
+                fancyItems.forEach(fancyItem => {
+                    if (fancyItem.contains(e.target)) {
+                        fancyModal(fancyItem)
                     }
-                    let videoEl = fancyMainSwiper.slides[fancyMainSwiper.activeIndex].querySelector('video');
-                    if (videoEl && videoEl.getAttribute("data-src")) {
-                        videoEl.setAttribute("src", videoEl.getAttribute("data-src"))
-                        videoEl.removeAttribute("data-src")
-                    } else if (videoEl) {
-                        videoEl.play()
-                    }
-                })
-                openModal(fancyModal)
-                fancyModal.querySelector(".btn-close").addEventListener("click", e => {
-                    closeModal(fancyModal)
-                    setTimeout(() => {
-                        fancyModal.remove()
-                    }, animSpd);
                 })
             }
         })
-    }
+    });
 }
 //open dropdown
 function openDropdown(item) {
+    if (window.innerWidth <= bp.laptop) {
+        disableScroll()
+    }
     item.classList.add("open");
+    if (item.querySelector(".modal")) {
+        item.querySelector(".modal").classList.add("open")
+    }
     item.setAttribute("aria-expanded", true);
     item.querySelectorAll(".dropdown__options input").forEach(inp => {
         inp.addEventListener("change", (e) => {
@@ -378,6 +459,7 @@ function setActiveOption(item) {
 function closeDropdown(item) {
     item.classList.remove("open");
     item.setAttribute("aria-expanded", false);
+    enableScroll()
 }
 //dropdown
 if (dropdown) {
@@ -390,7 +472,7 @@ if (dropdown) {
 //setSuccessTxt
 function setSuccessTxt(title = false, txt = false, btnTxt = false) {
     successModal.querySelector("h3").textContent = title ? title : "Заявка успешно отправлена"
-    successModal.querySelector(".main-btn").textContent = btnTxt ? btnTxt : "Закрыть"
+    successModal.querySelector(".stroke-btn").textContent = btnTxt ? btnTxt : "Закрыть"
     if (txt) {
         successModal.querySelector("p").textContent = txt
     }
@@ -398,7 +480,7 @@ function setSuccessTxt(title = false, txt = false, btnTxt = false) {
 //setErrorTxt
 function setErrorTxt(title = false, txt = false, btnTxt = false) {
     errorModal.querySelector("h3").textContent = title ? title : "Что-то пошло не так"
-    errorModal.querySelector(".main-btn").textContent = btnTxt ? btnTxt : "Закрыть"
+    errorModal.querySelector(".stroke-btn").textContent = btnTxt ? btnTxt : "Закрыть"
     if (txt) {
         errorModal.querySelector("p").textContent = txt
     }
@@ -417,6 +499,9 @@ function openErrorMod(title = false, txt = false, btnTxt = false) {
 function formReset(form) {
     if (form.querySelectorAll(".item-form").length > 0) {
         form.querySelectorAll(".item-form").forEach(item => item.classList.remove("error"))
+    }
+    if (form.querySelectorAll(".item-form__reset").length > 0) {
+        form.querySelectorAll(".item-form__reset").forEach(item => item.classList.remove("show"))
     }
     if (form.querySelectorAll("[data-error]").length > 0) {
         form.querySelectorAll("[data-error]").forEach(item => item.textContent = '')
@@ -454,7 +539,7 @@ if (searchForm) {
         item.querySelector("input").addEventListener("focus", () => item.classList.add("focused"))
         item.querySelector("input").addEventListener("blur", () => item.classList.remove("focused"))
         item.addEventListener("reset", () => {
-            item.querySelector("input").value = ''
+            item.querySelector("input").setAttribute("value", '')
             item.classList.remove("show-results")
             showSearchBtns(item)
         })
@@ -589,7 +674,7 @@ function addFile(files, item) {
             item.querySelector("input").value = ""
             item.classList.add("error")
             item.querySelectorAll(".file-form__item").forEach((el => el.remove()));
-            item.querySelector("[data-error]").textContent = `Разрешённые форматы: ${accept}`
+            item.querySelector("[data-error]").textContent = 'Загрузите картинку в одном из указанных форматов'
             return
         } else {
             item.classList.remove("error")
@@ -599,7 +684,8 @@ function addFile(files, item) {
             reader.onload = () => {
                 item.querySelector(".file-form__items").insertAdjacentHTML("afterbegin", `<div class="file-form__item">
                         <div class="file-form__name">${file.name}</div>
-                        <button class="btn-close file-form__del"></button>
+                        <div class="file-form__name">${Math.ceil(file.size / 1024 / 1024 * 100) / 100} Mb</div>
+                        <button type="button" class="btn-cross file-form__del"></button>
                     </div>`)
             }
             reader.onerror = () => {
@@ -655,58 +741,6 @@ if (document.querySelector(".file-form")) {
         });
     })
 }
-// showLbl
-let lblTimeout
-function showLbl(el) {
-
-
-
-
-
-
-
-
-
-
-    overlay.classList.add("show")
-    document.querySelectorAll(".js-lbl").forEach(item => item.classList.remove("show"))
-    el.classList.add("show")
-    if (lblTimeout) {
-        clearTimeout(lblTimeout)
-    }
-    lblTimeout = setTimeout(function () {
-        overlay.classList.remove("show")
-        el.classList.remove("show")
-    }, 3500);
-}
-//js-fav
-function favOnClick() {
-    const jsFav = document.querySelectorAll(".js-fav")
-    if (jsFav) {
-        jsFav.forEach(item => {
-            item.addEventListener("click", () => {
-                clearTimeout(lblTimeout)
-                if (item.classList.contains("active")) {
-                    item.classList.remove("active")
-                    item.setAttribute("aria-label", "Добавить в избранное")
-                } else {
-                    item.classList.add("active")
-                    item.setAttribute("aria-label", "Удалить из избранного")
-                    showLbl(document.querySelector(".js-add-fav"))
-                }
-            })
-        })
-    }
-}
-favOnClick()
-//udalit
-function addToCart(productId, count) {
-    if (count > 0) {
-        //showLbl(document.querySelector(".js-add-cart"))
-    } else {
-        //showLbl(document.querySelector(".js-remove-cart"))
-    }
-}
 //quantity
 function disabledMinusBtn(item, count) {
     if (count <= 1) {
@@ -723,13 +757,26 @@ function disabledPlusBtn(item, count, inStock) {
     }
 }
 function quantityOnChange(item, count, inStock) {
-    let productID = item.closest('.js-prodBlock').dataset.id
+    let prodBlock = item.closest(".js-prodBlock")
     disabledMinusBtn(item, count)
     if (inStock) {
         disabledPlusBtn(item, count, inStock)
     }
-    clearTimeout(lblTimeout)
-    addToCart(productID, count)
+    if (prodBlock.classList.contains('js-prodBlock--product')) {
+        document.querySelectorAll('.js-prodBlock--product').forEach(block => {
+            block.querySelectorAll('.quantity').forEach(el => {
+                disabledMinusBtn(el, count)
+                if (inStock) {
+                    disabledPlusBtn(el, count, inStock)
+                }
+                el.querySelector(".quantity__count").value = count
+            })
+        })
+    }
+    if (!prodBlock.classList.contains('js-prodBlock--product') || (prodBlock.classList.contains('js-prodBlock--product') && prodBlock.classList.contains("in-cart"))) {
+        let productID = prodBlock.dataset.id
+        addToCart(productID, count)
+    }
 }
 function setQuantity() {
     const quantity = document.querySelectorAll(".quantity")
@@ -742,40 +789,104 @@ function setQuantity() {
             if (inStock) {
                 disabledPlusBtn(item, count, inStock)
             }
-            inp.addEventListener("change", e => {
-                if (Number.isInteger(e.target.value) || e.target.value >= 1) {
-                    if (e.target.value.split("")[0] == 0) {
-                        inp.value = Math.round(e.target.value.substring(1))
-                    } else {
-                        inp.value = inStock && Math.round(e.target.value) > inStock ? inStock : Math.round(e.target.value)
-                    }
-                } else {
-                    inp.value = 1
-                }
-                count = inp.value
-                quantityOnChange(item, count, inStock)
-            })
-            item.querySelector(".js-minus").addEventListener("click", () => {
-                if (inp.value > 1) {
-                    inp.value--
-                    count = inp.value;
-                } else {
-                    count = 0
-                    if (item.closest("[data-added-to-cart]")) {
-                        item.closest("[data-added-to-cart]").setAttribute("data-added-to-cart", false)
-                    }
-                }
-                quantityOnChange(item, count, inStock)
-            })
-            item.querySelector(".js-plus").addEventListener("click", () => {
-                inp.value++
-                count = inp.value
-                quantityOnChange(item, count, inStock)
-            })
         })
     }
 }
 setQuantity()
+const jsProdWrapper = document.querySelectorAll(".js-prodWrapper")
+if (jsProdWrapper.length) {
+    jsProdWrapper.forEach(wrapper => {
+        wrapper.addEventListener("click", e => {
+            if (e.target.closest(".quantity")) {
+                let item = e.target.closest(".quantity")
+                const inp = item.querySelector(".quantity__count")
+                let inStock = Number(item.getAttribute("data-stock"))
+                let count = inp.value
+                if (item.querySelector(".js-minus").contains(e.target)) {
+                    if (inp.value > 1) {
+                        inp.value--
+                        count = inp.value;
+                        quantityOnChange(item, count, inStock)
+                    } else {
+                        let prodBlock = e.target.closest(".js-prodBlock")
+                        removeFromCart(prodBlock.dataset.id, () => {
+                            prodBlock.classList.remove("in-cart")
+                            if (prodBlock.classList.contains('js-prodBlock--product')) {
+                                document.querySelectorAll('.js-prodBlock--product').forEach(el => el.classList.remove("in-cart"))
+                            }
+                        })
+                    }
+                }
+                if (item.querySelector(".js-plus").contains(e.target)) {
+                    inp.value++
+                    count = inp.value
+                    quantityOnChange(item, count, inStock)
+                }
+            }
+            if (e.target.classList.contains("js-add-to-cart")) {
+                let prodBlock = e.target.closest(".js-prodBlock")
+                let id = prodBlock.dataset.id
+                let count = prodBlock.querySelector(".quantity input").value || 1
+                addToCart(id, count, () => {
+                    if (document.querySelector(".cart-popup")) {
+                        document.querySelector(".cart-popup").classList.add("show")
+                        lblTimeout = setTimeout(() => {
+                            document.querySelector(".cart-popup").classList.remove("show")
+                        }, 1500);
+                    }
+                    prodBlock.classList.add("in-cart")
+                    if (prodBlock.classList.contains("js-prodBlock--product")) {
+                        document.querySelectorAll(".js-prodBlock--product").forEach(el => el.classList.add("in-cart"))
+                    }
+                })
+            }
+            if (e.target.classList.contains("js-fav")) {
+                let btn = e.target
+                let prodId = btn.closest(".js-prodBlock").getAttribute("data-id")
+                if (btn.classList.contains("active")) {
+                    removeFromFav(prodId, () => {
+                        btn.classList.remove("active")
+                        btn.setAttribute("aria-label", "Добавить в избранное")
+                    })
+                } else {
+                    addToFav(prodId, () => {
+                        btn.classList.add("active")
+                        btn.setAttribute("aria-label", "Удалить из избранного")
+                    })
+                }
+            }
+            if (e.target.classList.contains("product-remove")) {
+                let prodId = e.target.closest(".js-prodBlock").getAttribute("data-id")
+                const cartRemovalModal = document.getElementById("cart-removal-modal")
+                if (cartRemovalModal) {
+                    cartRemovalModal.querySelector(".js-remove-from-cart").setAttribute("data-id", prodId)
+                    openModal(document.querySelector("#cart-removal-modal"))
+                }
+            }
+        })
+        wrapper.addEventListener("change", e => {
+            if (e.target.closest(".quantity")) {
+                let item = e.target.closest(".quantity")
+                const inp = item.querySelector(".quantity__count")
+                let inStock = Number(item.getAttribute("data-stock"))
+                let count = inp.value
+                if (item.querySelector(".quantity__count").contains(e.target)) {
+                    if (Number.isInteger(e.target.value) || e.target.value >= 1) {
+                        if (e.target.value.split("")[0] == 0) {
+                            inp.value = Math.round(e.target.value.substring(1))
+                        } else {
+                            inp.value = inStock && Math.round(e.target.value) > inStock ? inStock : Math.round(e.target.value)
+                        }
+                    } else {
+                        inp.value = 1
+                    }
+                    count = inp.value
+                    quantityOnChange(item, count, inStock)
+                }
+            }
+        })
+    })
+}
 // tippy
 const tippy = document.querySelectorAll('.tippy')
 const tippyContent = document.querySelector(".tippy-content")
@@ -785,12 +896,13 @@ if (tippy.length > 0) {
         let top = item.getBoundingClientRect().top
         let left = item.getBoundingClientRect().left
         // tippyContent.style.left = left - tippyContent.clientWidth / 2 < 0 ? 0 : left - tippyContent.clientWidth / 2 + "px"
-        tippyContent.style.top = top + 10 + "px"
+        tippyContent.style.top = top + item.clientHeight + 10 + "px"
+        console.log(left + tippyContent.clientWidth / 2 + item.clientWidth / 2)
         if (left - tippyContent.clientWidth / 2 + item.clientWidth / 2 < 0) {
             tippyContent.style.left = '15px'
             tippyContent.style.right = 'auto'
         } else if (
-            left + tippyContent.clientWidth / 2 + item.clientWidth / 2 >
+            left + tippyContent.clientWidth / 2 + item.clientWidth / 2 >=
             window.innerWidth
         ) {
             tippyContent.style.left = 'auto'
@@ -805,20 +917,30 @@ if (tippy.length > 0) {
         }
     }
     function leave() {
-        tippyContent.classList.remove("show")
-        timeOut = setTimeout(() => {
-            tippyContent.textContent = ""
-        }, 300);
+        if (window.innerWidth > bp.laptop) {
+            tippyContent.classList.remove("open")
+            timeOut = setTimeout(() => {
+                tippyContent.querySelector(".tippy-content__inner").textContent = ""
+            }, 300);
+        }
     }
     tippy.forEach(item => {
         item.addEventListener("mouseenter", () => {
             clearTimeout(timeOut)
-            tippyContent.textContent = item.querySelector("p").textContent
-            tippyContent.classList.add("show")
-            move(item)
+            if (window.innerWidth > bp.laptop) {
+                tippyContent.querySelector(".tippy-content__inner").textContent = item.querySelector("p").textContent
+                tippyContent.classList.add("open")
+                move(item)
+            }
         })
-        item.addEventListener("mouseleave", leave)
+        item.addEventListener("click", () => {
+            if (window.innerWidth < bp.laptop) {
+                tippyContent.querySelector(".tippy-content__inner").textContent = item.querySelector("p").textContent
+                openModal(tippyContent)
+            }            
+        })
     })
+    tippyContent.addEventListener("mouseleave", leave)
     window.addEventListener("resize", leave)
     window.addEventListener("scroll", leave)
 }
@@ -863,7 +985,7 @@ if (accordion) {
                     if (el.querySelector(".accordion__header").classList.contains("active")) {
                         smoothDrop(el.querySelector(".accordion__header"), el.querySelector(".accordion__body"))
                         if (el.getBoundingClientRect().top < 0) {
-                            let pos = scrollPos() + item.getBoundingClientRect().top - el.querySelector(".accordion__body").clientHeight - header.querySelector(".header__body").clientHeight - 10
+                            let pos = scrollPos() + item.getBoundingClientRect().top - el.querySelector(".accordion__body").clientHeight - headerFix.clientHeight - 10
                             window.scrollTo(0, pos)
                         }
                     }
@@ -976,17 +1098,46 @@ const jsPageUp = document.querySelector(".js-pageUp")
 if (jsPageUp) {
     jsPageUp.addEventListener("click", () => window.scrollTo(0, 0))
 }
+// section animation
+const animItem = document.querySelectorAll('[data-animation]')
+function animate() {
+    animItem.forEach(item => {
+        let animName = item.getAttribute("data-animation");
+        let itemTop = item.getBoundingClientRect().top + scrollPos();
+        let itemPoint = Math.abs(window.innerHeight - item.offsetHeight * 0.1)
+        if (scrollPos() > itemTop - itemPoint) {
+            item.classList.add(animName);
+        }
+    })
+}
+if (animItem.length > 0) {
+    animate()
+    window.addEventListener("scroll", animate)
+}
+
 //swiper 6 items
 const swiper6 = document.querySelectorAll('.swiper6')
 if (swiper6.length) {
     swiper6.forEach(item => {
         let itemSwiper = new Swiper(item.querySelector(".swiper"), {
-            slidesPerView: 6,
-            spaceBetween: 20,
+            slidesPerView: 3,
+            spaceBetween: 12,
             observer: true,
             observeParents: true,
             watchSlidesProgress: true,
             breakpoints: {
+                1700.98: {
+                    slidesPerView: 6,
+                    spaceBetween: 20
+                },
+                1250.98: {
+                    slidesPerView: 6,
+                    spaceBetween: 16
+                },
+                700.98: {
+                    slidesPerView: 4,
+                    spaceBetween: 16
+                }
             },
             navigation: {
                 prevEl: item.querySelector(".nav-btn--prev"),
@@ -1001,12 +1152,28 @@ const swiper5 = document.querySelectorAll('.swiper5')
 if (swiper5.length) {
     swiper5.forEach(item => {
         let itemSwiper = new Swiper(item.querySelector(".swiper"), {
-            slidesPerView: 5,
-            spaceBetween: 20,
+            slidesPerView: 2,
+            spaceBetween: 12,
             observer: true,
             observeParents: true,
             watchSlidesProgress: true,
             breakpoints: {
+                1700.98: {
+                    slidesPerView: 5,
+                    spaceBetween: 20
+                },
+                1250.98: {
+                    slidesPerView: 5,
+                    spaceBetween: 16
+                },
+                1030.98: {
+                    slidesPerView: 4,
+                    spaceBetween: 16
+                },
+                700.98: {
+                    slidesPerView: 3,
+                    spaceBetween: 16
+                }
             },
             navigation: {
                 prevEl: item.querySelector(".nav-btn--prev"),
@@ -1021,8 +1188,8 @@ const swiper3 = document.querySelectorAll('.swiper3')
 if (swiper3.length) {
     swiper3.forEach(item => {
         let itemSwiper = new Swiper(item.querySelector(".swiper"), {
-            slidesPerView: 3,
-            spaceBetween: 20,
+            slidesPerView: 1,
+            spaceBetween: 12,
             observer: true,
             observeParents: true,
             watchSlidesProgress: true,
@@ -1031,17 +1198,298 @@ if (swiper3.length) {
                 nextEl: item.querySelector(".nav-btn--next"),
             },
             breakpoints: {
-                575.98: {
-                    //slidesPerView: 3,
+                1700.98: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
                 },
+                1030.98: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                },
+                700.98: {
+                    slidesPerView: 2.16,
+                    spaceBetween: 16
+                }
             },
             speed: 800,
         });
     })
 }
+//intro swiper
+if (document.querySelector(".intro .swiper")) {
+    let introSwiper = new Swiper(document.querySelector(".intro .swiper"), {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: document.querySelectorAll(".intro .swiper-slide").length > 1,
+        observer: true,
+        observeParents: true,
+        watchSlidesProgress: true,
+        pagination: {
+            el: document.querySelector(".intro .swiper-pagination"),
+            type: "bullets",
+            clickable: true,
+        },
+        navigation: {
+            prevEl: document.querySelector(".intro .nav-btn--prev"),
+            nextEl: document.querySelector(".intro .nav-btn--next"),
+        },
+        /*  autoplay: {
+             delay: 5000,
+             pauseOnMouseEnter: true,
+             disableOnInteraction: false
+         }, */
+        speed: 1000,
+    });
+}
+//main-idea swiper
+if (document.querySelector(".main-idea .swiper")) {
+    let itemSwiper = new Swiper(document.querySelector(".main-idea .swiper"), {
+        slidesPerView: 1.52,
+        spaceBetween: 12,
+        observer: true,
+        observeParents: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+            1700.98: {
+                slidesPerView: 5,
+                spaceBetween: 20
+            },
+            1250.98: {
+                slidesPerView: 5,
+                spaceBetween: 16
+            },
+            1030.98: {
+                slidesPerView: 4,
+                spaceBetween: 16
+            },
+            700.98: {
+                slidesPerView: 3,
+                spaceBetween: 16
+            },
+            575.98: {
+                slidesPerView: 2,
+                spaceBetween: 12,
+            }
+        },
+        speed: 800,
+    });
+}
+//about swiper
+if (document.querySelector(".main-about .swiper")) {
+    let aboutSwiper
+    let isInitialized
+    function initAboutSwiper() {
+        if (window.innerWidth <= bp.desktop && !isInitialized) {
+            isInitialized = true
+            aboutSwiper = new Swiper(document.querySelector(".main-about .swiper"), {
+                slidesPerView: 1.52,
+                spaceBetween: 12,
+                observer: true,
+                observeParents: true,
+                watchSlidesProgress: true,
+                breakpoints: {
+                    1030.98: {
+                        slidesPerView: 3,
+                        spaceBetween: 16,
+                    },
+                    700.98: {
+                        slidesPerView: 2,
+                        spaceBetween: 16
+                    },
+                    575.98: {
+                        slidesPerView: 2,
+                        spaceBetween: 12,
+                    }
+                },
+                speed: 800,
+            });
+        } else if (window.innerWidth > bp.desktop && isInitialized) {
+            isInitialized = false
+            aboutSwiper.destroy()
+        }
+    }
+    initAboutSwiper()
+    window.addEventListener("resize", initAboutSwiper)
+}
+//info swiper
+if (document.querySelector(".main-info .swiper")) {
+    let infoSwiper
+    let isInitialized
+    function initAboutSwiper() {
+        if (window.innerWidth >= bp.phone && !isInitialized) {
+            isInitialized = true
+            infoSwiper = new Swiper(document.querySelector(".main-info .swiper"), {
+                slidesPerView: 2,
+                spaceBetween: 12,
+                observer: true,
+                observeParents: true,
+                watchSlidesProgress: true,
+                breakpoints: {
+                    1700.98: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                    1030.98: {
+                        slidesPerView: 3,
+                        spaceBetween: 16,
+                    },
+                    700.98: {
+                        slidesPerView: 2,
+                        spaceBetween: 16,
+                    }
+                },
+                speed: 800,
+            });
+        } else if (window.innerWidth < bp.phone && isInitialized) {
+            isInitialized = false
+            infoSwiper.destroy()
+        }
+    }
+    initAboutSwiper()
+    window.addEventListener("resize", initAboutSwiper)
+}
+//reviews swiper
+if (document.querySelector('.reviews .swiper')) {
+    let swiper = new Swiper(document.querySelector('.reviews .swiper'), {
+        slidesPerView: 1,
+        spaceBetween: 12,
+        observer: true,
+        observeParents: true,
+        watchSlidesProgress: true,
+        navigation: {
+            prevEl: document.querySelector(".reviews .nav-btn--prev"),
+            nextEl: document.querySelector(".reviews .nav-btn--next"),
+        },
+        breakpoints: {
+            1700.98: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+            1250.98: {
+                slidesPerView: 2.18,
+                spaceBetween: 16
+            },
+            700.98: {
+                slidesPerView: 1.6,
+                spaceBetween: 16,
+            },
+            575.98: {
+                slidesPerView: 1.3,
+                spaceBetween: 12,
+            }
+        },
+        speed: 800,
+    })
+}
+//menu
+const mainMenu = document.querySelector(".main-menu")
+function showMainMenu() {
+    if (!menuBtn.classList.contains("active")) {
+        disableScroll()
+        header.classList.add("show-menu")
+        mainMenu.style.top = menuBtn.getBoundingClientRect().bottom + "px"
+        mainMenu.style.maxHeight = window.innerHeight - menuBtn.getBoundingClientRect().bottom + "px"
+        menuBtn.setAttribute("aria-expanded", true)
+        menuBtn.classList.add("active");
+        mainMenu.classList.add("show")
+        if (window.innerWidth > bp.laptop) {
+            if (mainMenu.querySelector("[data-level='2']")) {
+                mainMenu.querySelectorAll("[data-level='2']")[0].classList.add("active")
+            }
+        }
+    }
+}
+function unshowMainMenu() {
+    header.classList.remove("show-menu")
+    menuBtn.setAttribute("aria-expanded", false);
+    menuBtn.classList.remove("active");
+    mainMenu.classList.remove("show")
+    mainMenu.querySelectorAll(`[data-level]`).forEach(el => {
+        el.classList.remove("active")
+    })
+    enableScroll()
+}
+if (menuBtn && mainMenu) {
+    menuBtn.addEventListener("mouseenter", () => {
+        if (window.innerWidth > bp.desktop) {
+            showMainMenu()
+        }
+    })
+    menuBtn.addEventListener("mouseleave", () => {
+        if (window.innerWidth > bp.desktop) {
+            unshowMainMenu()
+        }
+    })
+    mainMenu.addEventListener("mouseenter", () => {
+        if (window.innerWidth > bp.desktop) {
+            showMainMenu()
+        }
+    })
+    mainMenu.addEventListener("mouseleave", () => {
+        if (window.innerWidth > bp.desktop) {
+            unshowMainMenu()
+        }
+    })
+    menuBtn.addEventListener("click", e => {
+        if (window.innerWidth <= bp.desktop) {
+            e.preventDefault()
+            if (!menuBtn.classList.contains("active")) {
+                showMainMenu()
+            } else {
+                unshowMainMenu()
+            }
+
+        }
+    })
+    const mainMenuNav = mainMenu.querySelectorAll('[data-level]')
+    const mainMenuBackNav = mainMenu.querySelectorAll("[data-back-to-level]")
+    function navMenuOnOpen(nav) {
+        if (!nav.classList.contains("active")) {
+            let attr = nav.dataset.level
+            mainMenu.querySelectorAll(`[data-level='${attr}']`).forEach(el => {
+                el.classList.remove("active")
+            })
+            nav.classList.add("active")
+        }
+    }
+    if (mainMenuNav.length) {
+        mainMenuNav.forEach(nav => {
+            nav.addEventListener("mouseenter", () => {
+                if (window.innerWidth > bp.desktop) {
+                    navMenuOnOpen(nav)
+                }
+            })
+            if (nav.classList.contains("has-icon") && nav.querySelector(".main-menu__header")) {
+                nav.querySelector(".main-menu__header").addEventListener("click", e => {
+                    if (window.innerWidth <= bp.desktop) {
+                        e.preventDefault()
+                        navMenuOnOpen(nav)
+                    }
+                })
+            }
+        });
+    }
+    if (mainMenuBackNav.length) {
+        mainMenuBackNav.forEach(item => {
+            item.addEventListener("click", e => {
+                e.preventDefault()
+                let attr = item.getAttribute("data-back-to-level")
+                if (mainMenu.querySelector(`[data-level='${attr}']`)) {
+                    mainMenu.querySelectorAll(`[data-level='${attr}']`).forEach(el => el.classList.remove("active"))
+                }
+            })
+        })
+    }
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > bp.laptop) {
+            unshowMainMenu()
+        }
+    })
+}
 // catalog filter
 const catFilter = document.querySelector(".cat-filter")
 const filterSelected = document.querySelector(".filter-selected__items")
+const filterCount = document.querySelectorAll(".filter-count")
 let catFilterObj
 //init range slider
 function initRangeSliders() {
@@ -1089,16 +1537,13 @@ function initRangeSliders() {
         rangeSlider.noUiSlider.on('slide', function (values) {
             setRangeSelected(rangeId, rangeName, values)
         });
-        rangeSlider.noUiSlider.on('change', function (values, handle) {
-            //submit filtra
-        });
     })
 }
 function setRangeSelected(rangeId, rangeName, values) {
     if (filterSelected.querySelector(`[data-target='${rangeId}']`)) {
-        filterSelected.querySelector(`[data-target='${rangeId}']`).innerHTML = rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1]) + '<button class="btn-close"></button></li>'
+        filterSelected.querySelector(`[data-target='${rangeId}']`).innerHTML = rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1]) + '<button type="button" class="btn-cross"></button></li>'
     } else {
-        filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${rangeId}">${rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1])}<button class="btn-close"></button></li>`)
+        filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${rangeId}">${rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1])}<button type="button" class="btn-cross"></button></li>`)
     }
 }
 if (catFilter && filterSelected) {
@@ -1113,11 +1558,11 @@ if (catFilter && filterSelected) {
             inp.removeAttribute("checked")
         },
         setSelected: function (inp) {
-            let txt = inp.parentNode.querySelector("span:last-child").textContent
+            let txt = inp.nextElementSibling.textContent
             let idx = inp.getAttribute("data-id")
             let inpName = inp.getAttribute("data-name")
             let selectedTxt = inpName ? inpName + " " + txt.toLowerCase() : txt
-            filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${idx}">${selectedTxt}<button class="btn-close"></button></li>`)
+            filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${idx}">${selectedTxt}<button type="button" class="btn-cross"></button></li>`)
         },
         removeSelected: function (id) {
             if (filterSelected.querySelector(`[data-target="${id}"]`)) {
@@ -1125,8 +1570,9 @@ if (catFilter && filterSelected) {
             }
         },
         selectedOnClick: function (e) {
-            filterSelected.querySelectorAll("li").forEach((item, idx) => {
-                if (item.querySelector(".btn-close").contains(e.target)) {
+            catFilterSubmit()
+            filterSelected.querySelectorAll("li").forEach(item => {
+                if (item.querySelector(".btn-cross").contains(e.target)) {
                     let dataTarget = item.getAttribute("data-target")
                     const el = catFilter.querySelector(`[data-id='${dataTarget}']`)
                     if (el.querySelector(".range-filter__slider")) {
@@ -1138,12 +1584,30 @@ if (catFilter && filterSelected) {
                 }
             })
         },
+        selectedCount: function () {
+            if (filterCount.length) {
+                let count = filterSelected.querySelector("li") ? filterSelected.querySelectorAll("li").length : ''
+                filterCount.forEach(item => {
+                    item.textContent = count
+                })
+            }
+        },
+        closeFilter: function () {
+            if (catFilter.classList.contains("show")) {
+                catFilter.classList.remove("show")
+                enableScroll()
+            }
+            catFilterObj.selectedCount()
+        },
         resetFilter: function () {
             catFilter.querySelectorAll("label input").forEach(inp => {
                 this.uncheckInp(inp)
             })
             filterSelected.innerHTML = ""
-            catFilter.querySelectorAll('.range-filter__slider').forEach(item => item.noUiSlider.reset())
+            if (catFilter.querySelector('.range-filter__slider')) {
+                catFilter.querySelectorAll('.range-filter__slider').forEach(item => item.noUiSlider.reset())
+            }
+            catFilterObj.closeFilter()
         }
     }
     catFilter.querySelectorAll("label input").forEach((inp, i) => {
@@ -1159,173 +1623,55 @@ if (catFilter && filterSelected) {
         if (inp.checked) {
             catFilterObj.setSelected(inp)
         }
+        catFilterObj.selectedCount()
     })
     filterSelected.addEventListener("click", e => catFilterObj.selectedOnClick(e))
     document.querySelectorAll(".filter-reset").forEach(item => item.addEventListener("click", () => catFilterObj.resetFilter()))
-}
-// catalog grid
-document.querySelectorAll(".catalog-p__btn").forEach(item => {
-    item.addEventListener("click", () => {
-        document.querySelectorAll(".catalog-p__btn").forEach(item => item.classList.remove("active"))
-        document.querySelector(".catalog-p__items").style.opacity = 0
-        setTimeout(() => {
-            item.classList.add("active")
-            document.querySelector(".catalog-p__items").setAttribute("data-column", item.getAttribute("data-column"))
-            document.querySelector(".catalog-p__items").style.opacity = ""
-        }, 150);
-    })
-})
-//menu
-const menuBtn = document.querySelector(".menu-btn")
-const catMenu = document.querySelector(".cat-menu")
-function showCatMenu() {
-    if (!menuBtn.classList.contains("active")) {
-        if (!document.querySelector(".modal.open") /* && !mobMenu.classList.contains("open") */) {
-            disableScroll()
-        }
-        catMenu.style.top = menuBtn.getBoundingClientRect().bottom + "px"
-        catMenu.style.maxHeight = window.innerHeight - menuBtn.getBoundingClientRect().bottom + "px"
-        menuBtn.setAttribute("aria-expanded", true)
-        menuBtn.classList.add("active");
-        catMenu.classList.add("active")
-    }
-}
-function unshowCatMenu() {
-    if (!document.querySelector(".modal.open") /* && !mobMenu.classList.contains("open") */) {
-        enableScroll()
-    }
-    menuBtn.setAttribute("aria-expanded", false);
-    menuBtn.classList.remove("active");
-    catMenu.classList.remove("active")
-}
-if (menuBtn && catMenu) {
-    menuBtn.addEventListener("mouseenter", showCatMenu)
-    catMenu.addEventListener("mouseenter", showCatMenu)
-    menuBtn.addEventListener("mouseleave", unshowCatMenu)
-    catMenu.addEventListener("mouseleave", unshowCatMenu)
-    const catMenuNav = catMenu.querySelectorAll('[data-cat-nav]')
-    const catMenuSubnavs = catMenu.querySelectorAll('[data-cat-subnav]')
-    if (catMenuNav.length) {
-        catMenuNav.forEach((nav, idx) => {
-            nav.addEventListener("mouseenter", () => {
-                if (!nav.classList.contains("active")) {
-                    catMenuNav.forEach(el => {
-                        el.classList.remove("active")
-                    })
-                    catMenuSubnavs.forEach(el => {
-                        el.classList.remove("active", "animated")
-                    })
-                    nav.classList.add("active")
-                    catMenuSubnavs[idx]?.classList.add("active")
-                    setTimeout(() => {
-                        catMenuSubnavs[idx]?.classList.add("animated")
-                    }, 150);
-                }
+    document.querySelectorAll(".filter-submit").forEach(item => item.addEventListener("click", e => {
+        e.preventDefault()
+        catFilterObj.closeFilter()
+        catFilterSubmit()
 
-            })
-        });
+    }))
+    if (document.querySelector(".filter-icon")) {
+        document.querySelector(".filter-icon").addEventListener("click", () => {
+            disableScroll()
+            catFilter.classList.add("show")
+        })
+        catFilter.querySelector(".cat-filter__close").addEventListener("click", () => {
+            catFilterObj.closeFilter()
+            enableScroll()
+        })
     }
-    window.addEventListener("resize", unshowCatMenu)
 }
-//intro swiper
-if (document.querySelector(".intro .swiper")) {
-    let introSwiper = new Swiper(document.querySelector(".intro .swiper"), {
-        slidesPerView: 1,
-        spaceBetween: 16,
-        loop: document.querySelectorAll(".intro .swiper-slide").length > 1,
-        observer: true,
-        observeParents: true,
-        watchSlidesProgress: true,
-        pagination: {
-            el: document.querySelector(".intro .swiper-pagination"),
-            type: "bullets",
-            clickable: true,
-        },
-        navigation: {
-            prevEl: document.querySelector(".intro .nav-btn--prev"),
-            nextEl: document.querySelector(".intro .nav-btn--next"),
-        },
-        autoplay: {
-            delay: 5000,
-            pauseOnMouseEnter: true,
-            disableOnInteraction: false
-        },
-        speed: 1000,
-    });
-}
-//about swiper
-if (document.querySelector(".main-about .swiper")) {
-    let aboutSwiper
-    let isInitialized
-    function initAboutSwiper() {
-        if (window.innerWidth <= tablet && !isInitialized) {
-            isInitialized = true
-            aboutSwiper = new Swiper(document.querySelector(".main-about .swiper"), {
-                slidesPerView: 2,
-                spaceBetween: 16,
-                observer: true,
-                observeParents: true,
-                watchSlidesProgress: true,
-                breakpoints: {
-                    575.98: {
-                        //slidesPerView: 3,
-                    },
-                },
-                speed: 800,
-            });
-        } else if (window.innerWidth > tablet && isInitialized) {
-            isInitialized = false
-            aboutSwiper.destroy()
-        }
-    }
-    initAboutSwiper()
-    window.addEventListener("resize", initAboutSwiper)
-}
-//info swiper
-if (document.querySelector(".info-about .swiper")) {
-    let infoSwiper
-    let isInitialized
-    function initAboutSwiper() {
-        if (window.innerWidth >= mob && !isInitialized) {
-            isInitialized = true
-            infoSwiper = new Swiper(document.querySelector(".info-about .swiper"), {
-                slidesPerView: 3,
-                spaceBetween: 20,
-                observer: true,
-                observeParents: true,
-                watchSlidesProgress: true,
-                breakpoints: {
-                    575.98: {
-                        //slidesPerView: 3,
-                    },
-                },
-                speed: 800,
-            });
-        } else if (window.innerWidth < mob && isInitialized) {
-            isInitialized = false
-            infoSwiper.destroy()
-        }
-    }
-    initAboutSwiper()
-    window.addEventListener("resize", initAboutSwiper)
-}
-const product = document.querySelector(".product")
 // product
+const product = document.querySelector(".product")
+const productSwipers = document.querySelector(".product__swipers")
 if (product) {
     //product swiper
-    if (product.querySelector(".swiper")) {
+    if (productSwipers) {
         let thumbSwiper
-        if (product.querySelector(".product__thumbswiper")) {
-            thumbSwiper = new Swiper(".product__thumbswiper", {
-                slidesPerView: 5,
-                spaceBetween: 12,
+        if (productSwipers.querySelector(".product__thumbswiper")) {
+            thumbSwiper = new Swiper(".product__thumbswiper .swiper", {
+                slidesPerView: 4,
+                spaceBetween: 8,
                 observer: true,
                 observeParents: true,
                 watchSlidesProgress: true,
+                breakpoints: {
+                    1700.98: {
+                        slidesPerView: 5.31,
+                        spaceBetween: 12,
+                    },
+                },
+                navigation: {
+                    prevEl: productSwipers.querySelector(".nav-btn--prev"),
+                    nextEl: productSwipers.querySelector(".nav-btn--next"),
+                },
                 speed: 800
             })
         }
-        let mainSwiper = new Swiper(".product__mainswiper", {
+        let mainSwiper = new Swiper(".product__mainswiper .swiper", {
             slidesPerView: 1,
             observer: true,
             observeParents: true,
@@ -1337,17 +1683,42 @@ if (product) {
             thumbs: {
                 swiper: thumbSwiper || null,
             },
+            pagination: {
+                el: productSwipers.querySelector(".swiper-pagination"),
+                type: "bullets",
+                clickable: true,
+            },
+            navigation: {
+                prevEl: productSwipers.querySelector(".nav-btn--prev"),
+                nextEl: productSwipers.querySelector(".nav-btn--next"),
+            },
             speed: 300
         })
     }
-    product.addEventListener("click", e => fancyModal(e, document.querySelectorAll("[data-fancy]")))
-    //product add to cart
-    product.querySelector(".js-add-to-cart").addEventListener("click", () => {
-        product.querySelector(".total-product__btns").classList.add("in-cart")
-        let count = product.querySelector(".quantity input").value
-        clearTimeout(lblTimeout)
-        addToCart(product.dataset.id, count)
-    })
+}
+//cart
+const cartP = document.querySelector(".cart-p")
+//enable / disable cart submit btn
+function cartSubmitBtn(checkItems) {
+    if (document.querySelector(".cart-p__form .total-cart__submit")) {
+        if (!Array.from(checkItems).some(inp => inp.checked)) {
+            document.querySelector(".total-cart__submit").classList.add("disabled")
+        } else {
+            document.querySelector(".total-cart__submit").classList.remove("disabled")
+        }
+    }
+    if (Array.from(checkItems).some(inp => inp.checked) && !Array.from(checkItems).every(inp => inp.checked)) {
+        cartP.classList.add("some-items-checked")
+    } else {
+        cartP.classList.remove("some-items-checked")
+    }
+}
+if (cartP) {
+    const inStockAllCheckBtn = cartP.querySelector(".cart-p__inStock-allChek")
+    const inStockCheckBtns = cartP.querySelectorAll(".item-cart--inStock .item-cart__check")
+    if (inStockAllCheckBtn && inStockCheckBtns.length) {
+        allCheckBtn(inStockAllCheckBtn, inStockCheckBtns)
+    }
 }
 //order
 const orderP = document.querySelector(".order-p")
@@ -1424,23 +1795,4 @@ if (orderP) {
         })
     }
 }
-//cart
-const cartP = document.querySelector(".cart-p")
-//enable / disable cart submit btn
-function cartSubmitBtn(checkItems) {
-    if (document.querySelector(".cart-p__form .total-cart__submit")) {
-        if (!Array.from(checkItems).some(inp => inp.checked)) {
-            document.querySelector(".total-cart__submit").classList.add("disabled")
-        } else {
-            document.querySelector(".total-cart__submit").classList.remove("disabled")
-        }
-    }
 
-}
-if (cartP) {
-    const inStockAllCheckBtn = cartP.querySelector(".cart-p__inStock-allChek")
-    const inStockCheckBtns = cartP.querySelectorAll(".item-cart--inStock .item-cart__check")
-    if (inStockAllCheckBtn && inStockCheckBtns.length) {
-        allCheckBtn(inStockAllCheckBtn, inStockCheckBtns)
-    }
-}

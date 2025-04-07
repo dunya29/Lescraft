@@ -2,7 +2,10 @@
     --content-width: 1660px;
     --container-offset: 16px;
     --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+    --header-height: 215px;
+    --main-offset: 40px;
     --font-family: "InterDisplay", sans-serif;
+    --font-family-secondary: "FirsNeue", sans-serif;
     --black: #232323;
     --white: #ffffff;
     --primary-color: #769882;
@@ -10,23 +13,48 @@
     --primary-color-hover: #6c8e78;
     --primary-color-active: #6c8e78;
     --border-color: #dfdfdf;
-    --border-color-green: #DEE6E1;
+    --border-color-green: #dee6e1;
     --green-color: #326b43;
     --green-color-light: #e8f0eb;
     --gray-color: #8e8e8e;
     --gray-color-dark: #505853;
     --gray-color-light: #f8f8f8;
-    --red-color: #FE3B3B;
-    --red-color-light: #FFEDED;
-    --yellow-color: #E6B017;
+    --red-color: #fe3b3b;
+    --red-color-light: #ffeded;
+    --yellow-color: #e6b017;
     --yellow-color-light: #fdf1d1;
     --scrollbar-color: #cfd8d2;
     --scrollbar-thumb-color: #769882;
 }
-$bp1: 1450.98px;
+$bp1: 1700.98px;
 $bp2: 1250.98px;
 $bp3: 1030.98px;
-$bp4: 767.98px;
+$bp4: 700.98px;
 $bp5: 575.98px;
 $bp6: 479.98px;
-$bp7: 370.98px;
+$bp7: 350.98px;
+@media (max-width: $bp1) {
+    :root {
+        --content-width: 1196px;
+        --header-height: 170px;
+        --main-offset: 24px;
+    }
+}
+@media (max-width: $bp2) {
+    :root {
+        --content-width: 950px;
+        --header-height: 130px;
+        --main-offset: calc(var(--header-height) + 20px);
+    }
+}
+@media (max-width: $bp3) {
+    :root {
+        --content-width: 668px;
+    }
+}
+@media (max-width: $bp4) {
+    :root {
+        --content-width: 530px;
+         --header-height: 125px;
+    }
+}

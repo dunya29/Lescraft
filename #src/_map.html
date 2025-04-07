@@ -61,6 +61,7 @@
     const showroomsList = document.querySelector(".showrooms__list")
     const showroomsCities = document.querySelectorAll("[data-showroom-city-id]")
     const showroomsBranchs = document.querySelectorAll("[data-showroom-id]")
+    const showroomsModal =  document.querySelector("#showrooms-modal")
     let center = [45.035470, 38.975313];  
     let showroomsMap
     let geoObjects = [] 
@@ -77,6 +78,24 @@
         map.margin.setDefaultMargin(100);
     }   
     function placemarkOnClick(cityId, showroomId) {
+        if (showroomsModal && window.innerWidth < 1030.98) {
+            let idx = showrooms.findIndex(item => Number(item.id) === showroomId)
+            showroomsModal.querySelector(".balloon__name").innerHTML = showrooms[idx].title
+            showroomsModal.querySelector(".balloon__body").innerHTML = `
+                ${showrooms[idx].address ? `<div class="item-contact">
+                    <span>Адрес склада и офиса</span>
+                    <span>${showrooms[idx].address}</span>
+                </div>` : ''}
+                ${showrooms[idx].phone ? `<div class="item-contact">
+                    <span>Телефон</span>
+                    <span>${showrooms[idx].phone}</span>
+                </div>` : ''}
+                ${showrooms[idx]['store-hours'] ? `<div class="item-contact">
+                    <span>Режим работы</span>
+                    <span>${showrooms[idx]['store-hours']}</span>
+                </div>` : ''} `
+            openModal(showroomsModal)
+        }
         clearTimeout(showroomTimeout)
         const cityItem = document.querySelector(`[data-showroom-city-id='${cityId}']`)
         const showroomItem = document.querySelector(`[data-showroom-id='${showroomId}']`)
@@ -91,7 +110,7 @@
                     showroomsList.scrollTop = parseInt(showroomsList.scrollTop + scrollDiff )
                 }, 600) 
             }
-        }
+        }        
     } 
     function balloonOnOpen(placemark) {
         placemark.balloon.open()
@@ -112,9 +131,6 @@
         showroomsMap = new ymaps.Map('showrooms-map', {
             center: center,
             zoom: 6
-        },{
-            zoomControlPosition: { right: 10, top: "50%" },
-            zoomControlSize: "large",
         });
         setmapDefaults(showroomsMap) 
         showrooms.forEach((item,i) => {
@@ -126,18 +142,16 @@
                             <h5 class="balloon__name">${item.title}</h5>
                         </div>
                         <div class="balloon__body">
-                            <div class="item-contact">
+                            ${item.address ? `<div class="item-contact">
                                 <span>Адрес склада и офиса</span>
                                 <span>${item.address}</span>
-                            </div>
-                            ${item.phone ?
-                            `<div class="item-contact">
+                            </div>` : ''}
+                            ${item.phone ? `<div class="item-contact">
                                 <span>Телефон</span>
                                 <span>${item.phone}</span>
                             </div>` : ''}
-                             ${item['store-hours'] ? 
-                            `<div class="item-contact">
-                                <span>Адрес склада и офиса</span>
+                             ${item['store-hours'] ?  `<div class="item-contact">
+                                <span>Режим работы</span>
                                 <span>${item['store-hours']}</span>
                             </div>` : ""
                             }
@@ -151,7 +165,7 @@
                     iconImageOffset: [-16, -32],
                     cursor: "grab",
                     hideIconOnBalloonOpen: false,
-                    balloonOffset: [0, 80]
+                    balloonOffset: [0, -24]
                 }
             )
             geoObjects[i].events.add('click', e => {
@@ -160,6 +174,7 @@
                 let showroomId = showrooms[i]['id']
                 placemarkOnClick(cityId, showroomId)
             });
+
         })
         geoObjects.forEach(item => showroomsMap.geoObjects.add(item))
         showroomsMap.setBounds(showroomsMap.geoObjects.getBounds(), {checkZoomRange: true, zoomMargin: 100})
@@ -198,8 +213,9 @@
                 }) 
             })  
         }
-    }    
+    }  
     if (showrooms.length && document.querySelector("#showrooms-map")) {
         ymaps.ready(showroomsMapInit);
     }
+    window.addEventListener("resize", ()=>closeAllMarks())
 </script>

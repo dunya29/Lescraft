@@ -1,7 +1,7 @@
 <!--card-->
-<article class="card">
+<article class="card js-prodBlock" data-id="123">
     <div class="card__preview">
-        <div class="card-lbls">
+        <div class="product-lbls">
             @@if(inStock === true) {
             <span class="hit">Хит</span>
             <span class="discount">Скидка</span>
@@ -11,48 +11,25 @@
             <span class="promo">Акция</span>
             }
         </div>
+        @@if(hasPhoto === true) {
         <a href="#" class="media-contain">
-            @@if(hasPhoto === true) {
-                <img src="img/content/product-@@nmb.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм">
-            }
-            @@if(hasPhoto === false) {
-                <img src="img/cat-no-photo.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм">  
-            }   
+            <img src="img/content/product-@@nmb.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм">
         </a>
-        <button class="btn main-btn">Быстрый просмотр</button>
+        }
+        @@if(hasPhoto === false) {
+        <a href="#" class="media-contain no-photo"></a>
+        }
     </div>
     <div class="card__inner">
         <div class="card__header">
             @@if(inStock === true) {
-            <div class="card-status in-stock">Доступно сегодня</div>
+            <div class="product-status in-stock">Доступно сегодня</div>
             }
             @@if(inStock === false) {
-            <div class="card-status out-of-stock">Ожидает поступления</div>
+            <div class="product-status out-of-stock">Ожидает поступления</div>
             }
             <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
             <div class="card__info">1 уп = 10 шт/192 м²</div>
-        </div>
-        <div class="card__details">
-            <div class="card__det">
-                <span>Материал:</span>
-                <span>Сосна</span>
-            </div>
-            <div class="card__det">
-                <span>Вид товара:</span>
-                <span>Вагонка</span>
-            </div>
-            <div class="card__det">
-                <span>Высота:</span>
-                <span>70 см</span>
-            </div>
-            <div class="card__det">
-                <span>Ширина:</span>
-                <span>19 см</span>
-            </div>
-            <div class="card__det">
-                <span>Длина:</span>
-                <span>2000 см</span>
-            </div>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -68,20 +45,26 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            <div class="card__btns">
-                <button class="card-view tippy" aria-label="Быстрый просмотр">
-                    <svg><use xlink:href="img/svg/sprite.svg#card-eye"></use></svg>
-                    <p>Быстрый просмотр</p>
+            @@if (fav === true) {
+            <button type="button" class="js-fav product-fav active" aria-label="Удалить из избранного">
+                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+            </button>
+            }
+            @@if (fav === false) {
+            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+            </button>
+            }
+            <div class="product-action">
+                <div class="quantity" data-stock="45">
+                    <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
+                    <input type="number" class="quantity__count" value="1" aria-label="Количество">
+                    <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
+                </div>
+                <button type="button" class="btn main-btn js-add-to-cart">
+                    <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
+                    В корзину
                 </button>
-                <button class="card-fav tippy" aria-label="Добавить в избранное">
-                    <svg><use xlink:href="img/svg/sprite.svg#card-fav"></use></svg>
-                    <p>Добавить в избранное</p>
-                </button>
-            </div>
-            <div class="card__action">
-
-                <div>quanity</div>
-                <button>korzina</button>
             </div>
         </div>
     </div>

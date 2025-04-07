@@ -10,6 +10,7 @@
             @@include('_header.html', {"main": false, "search": false})
             <!--main-->
             <main class="main">
+                @@include('_preloader.html")
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
@@ -23,9 +24,8 @@
                             <div class="about-p__content">
                                 <h1 class="text-l">О компании</h1>
                                 <p>В 2008 году мы основали «Лескрафт» на базовых принципах — высокое качество материалов, доступные цены и настолько широкий ассортимент,
-                                    насколько
-                                    это возможно. Материалы, отпускаемые на метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты, свяжитесь с
-                                    нами.</p>
+                                    насколько это возможно. Материалы, отпускаемые на&nbsp;метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты,
+                                    свяжитесь с нами.</p>
                                 <div class="about-p__stats">
                                     <div class="item-stat">
                                         <span class="h2">6500 м²</span>
@@ -46,13 +46,13 @@
                                 </div>
                             </div>
                             <div class="about-p__logo">
-                                <svg><use xlink:href="img/svg/sprite.svg#logo"></use></svg>
+                                <img src="img/svg/about-logo.svg" alt="«Лескрафт»">
                             </div>
                         </div>
                     </div>
                 </section>
                 <!--main-about-->
-                <section class="section main-about">
+                <section class="section main-about" data-animation="fadeUp">
                     <div class="container">
                         <div class="sec-top">
                             <h2 class="h1">Нам <span>важно</span></h2>
@@ -80,23 +80,26 @@
                     </div>
                 </section>
                 <!--video-about-->
-                <section class="section video-about">
+                <section class="section video-about" data-animation="fadeUp">
                     <div class="container">
                         <div class="sec-top">
-                            <h2 class="h1">Видео о компании</h2>
+                            <h2 class="h1">Видео о&nbsp;компании</h2>
                             <div class="sec-top__content">
-                                <p>Узнайте, как мы помогаем нашим клиентам успешно реализовывать строительные проекты, предоставляя качественные материалы и профессиональную
+                                <p>Узнайте, как мы помогаем нашим клиентам успешно реализовывать строительные проекты, предоставляя качественные материалы и&nbsp;профессиональную
                                     поддержку на каждом этапе.</p>
-                                <div class="btn video-btn">
-                                    <span class="video"></span>
-                                    <div class="text-btn">Смотреть видео</div>                               
+                                <div class="fancy-block">
+                                    <div class="btn video-btn" data-fancy="video-about" data-src="media/product-1-1.mp4" data-type="video" data-fit="media-contain">
+                                        <span class="video"></span>
+                                        <div class="text-btn">Смотреть видео</div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </section>
                 <!--info-about-->
-                <div class="section info-about">
+                <div class="section main-info" data-animation="fadeUp">
                     <div class="container">
                         <div class="swiper">
                             <div class="swiper-wrapper">
@@ -128,7 +131,7 @@
                                             <img src="img/content/info-2.jpg" alt>
                                         </div>
                                         <div class="info-about__content">
-                                            <h3 class="h2">Как отбираем товар</h3>
+                                            <h3 class="h2">Как его храним</h3>
                                             <div class="page-content">
                                                 <p>Материалы, отпускаемые на метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты, свяжитесь с
                                                     нами.</p>
@@ -150,7 +153,7 @@
                                             <img src="img/content/info-3.jpg" alt>
                                         </div>
                                         <div class="info-about__content">
-                                            <h3 class="h2">Как отбираем товар</h3>
+                                            <h3 class="h2">Как доставляем</h3>
                                             <div class="page-content">
                                                 <p>Материалы, отпускаемые на метраж, подлежат возврату кратно упаковке. Если вы обнаружили в товаре дефекты, свяжитесь с
                                                     нами.</p>
@@ -165,22 +168,23 @@
                     </div>
                 </div>
                 <!--geo-about-->
-                <section class="section geo-about">
+                <section class="section geo-about" data-animation="fadeUp">
                     <div class="container">
                         <div class="sec-top">
                             <h2 class="h1">Наша <span>география</span></h2>
-                            <a href="#" class="btn main-btn">
+                            <a href="#" class="btn main-btn main-btn--link">
                                 Узнать больше
-                                <span class="link-icon"></span>
+                                <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
                             </a>
                         </div>
                     </div>
                 </section>
+                @@include('_reviews.html')
                 <!--main-idea-->
-                <section class="section swiper5 main-idea">
+                <section class="section swiper5 main-idea" data-animation="fadeUp">
                     <div class="container">
                         <div class="sec-top">
-                            <h2 class="h1">Вдохновляем на <span>новые идеи</span></h2>
+                            <h2 class="h1">Вдохновляем на&nbsp;<span>новые идеи</span></h2>
                             <div class="sec-top__content">
                                 <p>Мы находим новые интересные решения и&nbsp;примеры использования материалов, чтобы наши клиенты вдохновлялись на новые задумки.</p>
                                 @@include("_social.html", {"whatsapp": false, "youtube": false})
