@@ -144,10 +144,11 @@ function smoothDrop(header, body, dur = false) {
 }
 //tabSwitch
 // options visibility on switch tabs
-function updateOptionsVisibility(activeTab) {
+function updateOptionsVisibility() {
     if (document.querySelectorAll("[data-visibility]")) {
         document.querySelectorAll("[data-visibility]").forEach(item => {
-            if (item.getAttribute("data-visibility") === activeTab) {
+            let attr = item.getAttribute("data-visibility")
+            if (document.querySelector(`[data-tab='${attr}'`) && document.querySelector(`[data-tab='${attr}'`).classList.contains("active")) {
                 item.classList.add("show")
             } else {
                 item.classList.remove("show")
@@ -158,10 +159,9 @@ function updateOptionsVisibility(activeTab) {
 function tabSwitch(nav, block) {
     nav.forEach(item => {
         if (item.classList.contains("active")) {
-            updateOptionsVisibility(item.dataset.tab)
+            updateOptionsVisibility()
         }
         item.addEventListener("click", () => {
-            updateOptionsVisibility(item.dataset.tab)
             nav.forEach(el => {
                 el.classList.remove("active")
             })
@@ -179,6 +179,7 @@ function tabSwitch(nav, block) {
                     el.classList.remove("active")
                 }
             })
+            updateOptionsVisibility()
         })
     });
 }
