@@ -117,6 +117,7 @@
         }
     }
     &__action {
+        grid-column: 5/6;
         justify-self: end;
         button {
             display: block;
@@ -227,6 +228,9 @@
         &__total {
             grid-area: 2/3/3/4;
             height: auto;
+        }
+        &__action {
+            grid-column: 4/5;
         }
         &__price {
             display: none;
