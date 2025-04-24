@@ -14,7 +14,7 @@
     <link sizes="180x180" rel="apple-touch-icon" href="img/favicon/apple-icon-180x180.png">
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preload" href="fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin> 
+    <link rel="preload" href="fonts/InterDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin> 
     <link href="css/style.min.css" type="text/css" rel="stylesheet">
     <title>Результаты поиска</title>
 </head>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div class="header__bot">
+            <!-- <div class="header__bot">
                 <ul>
                     <li><a href="#">Новинки</a></li>
                     <li><a href="#">Отделочные материалы</a></li>
@@ -129,7 +129,7 @@
                     <li><a href="#">Экзотические породы</a></li>
                     <li><a href="#">Для бани и сауны</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <!--main-menu-->
 <div class="main-menu fixed-block">
@@ -846,10 +846,7 @@
 </article>
                 </div>
             </div>
-            <div class="swiper-nav">
-                <button type="button" class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
-                <button type="button" class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
-            </div>
+            <div class="swiper-scrollbar"></div>
         </div>
     </div>
 </section>
@@ -1008,6 +1005,21 @@
         <div class="cookie__btns">
             <button class="btn main-btn" onclick="unshowCookie()">Отлично</button>
             <a href="#" class="btn text-btn">Подробнее</a>
+        </div>
+    </div>
+</div>
+<!--city-confirm-modal-->
+<div class="custom-scroll modal city-confirm-modal" id="city-confirm-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Ваш город Краснодар?</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="modal__btns">
+                <button type="button" class="btn main-btn modal__close">Да</button>
+                <button type="button" class="btn stroke-btn mod-open-btn" data-modal="city-modal">Нет</button>
+            </div>
         </div>
     </div>
 </div>

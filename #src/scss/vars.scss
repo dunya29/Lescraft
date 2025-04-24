@@ -2,7 +2,7 @@
     --content-width: 1660px;
     --container-offset: 16px;
     --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
-    --header-height: 215px;
+    --header-height: 163px;//215px;
     --main-offset: 40px;
     --font-family: "InterDisplay", sans-serif;
     --font-family-secondary: "FirsNeue", sans-serif;
@@ -36,7 +36,7 @@ $bp7: 350.98px;
 @media (max-width: $bp1) {
     :root {
         --content-width: 1196px;
-        --header-height: 170px;
+        --header-height: 125px;//170px;
         --main-offset: 24px;
     }
 }

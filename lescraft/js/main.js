@@ -1176,9 +1176,9 @@ if (swiper6.length) {
                     spaceBetween: 16
                 }
             },
-            navigation: {
-                prevEl: item.querySelector(".nav-btn--prev"),
-                nextEl: item.querySelector(".nav-btn--next"),
+            scrollbar: {
+                el: item.querySelector(".swiper-scrollbar"),
+                draggable: true,
             },
             speed: 800,
         });
@@ -1212,9 +1212,9 @@ if (swiper5.length) {
                     spaceBetween: 16
                 }
             },
-            navigation: {
-                prevEl: item.querySelector(".nav-btn--prev"),
-                nextEl: item.querySelector(".nav-btn--next"),
+            scrollbar: {
+                el: item.querySelector(".swiper-scrollbar"),
+                draggable: true,
             },
             speed: 800,
         });
@@ -1230,9 +1230,9 @@ if (swiper3.length) {
             observer: true,
             observeParents: true,
             watchSlidesProgress: true,
-            navigation: {
-                prevEl: item.querySelector(".nav-btn--prev"),
-                nextEl: item.querySelector(".nav-btn--next"),
+            scrollbar: {
+                el: item.querySelector(".swiper-scrollbar"),
+                draggable: true,
             },
             breakpoints: {
                 1700.98: {
@@ -1393,10 +1393,6 @@ if (document.querySelector('.reviews .swiper')) {
         observer: true,
         observeParents: true,
         watchSlidesProgress: true,
-        navigation: {
-            prevEl: document.querySelector(".reviews .nav-btn--prev"),
-            nextEl: document.querySelector(".reviews .nav-btn--next"),
-        },
         breakpoints: {
             1700.98: {
                 slidesPerView: 3,
@@ -1414,6 +1410,10 @@ if (document.querySelector('.reviews .swiper')) {
                 slidesPerView: 1.3,
                 spaceBetween: 12,
             }
+        },
+        scrollbar: {
+            el: document.querySelector(".reviews .swiper-scrollbar"),
+            draggable: true,
         },
         speed: 800,
     })
@@ -1549,14 +1549,6 @@ function initRangeSliders() {
                 'max': max
             }
         });
-        rangeStart.addEventListener("focus", () => {
-            rangeStart.value = rangeStart.value.replaceAll(' ', '')
-            rangeStart.setAttribute("type", "number")
-        });
-        rangeEnd.addEventListener("focus", () => {
-            rangeEnd.value = rangeEnd.value.replaceAll(' ', '')
-            rangeEnd.setAttribute("type", "number")
-        });
         rangeStart.addEventListener("change", () => {
             rangeSlider.noUiSlider.set([rangeStart.value, null])
             setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
@@ -1567,9 +1559,7 @@ function initRangeSliders() {
         });
         let rangeValues = [rangeStart, rangeEnd];
         rangeSlider.noUiSlider.on('update', function (values, handle) {
-            rangeStart.setAttribute("type", "text")
-            rangeEnd.setAttribute("type", "text")
-            rangeValues[handle].value = String(parseInt(values[handle])).replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+            rangeValues[handle].value = parseInt(values[handle])
         });
         rangeSlider.noUiSlider.on('slide', function (values) {
             setRangeSelected(rangeId, rangeName, values)

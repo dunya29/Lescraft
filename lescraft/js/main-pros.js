@@ -27,8 +27,9 @@ let bp = {
     phone: 575.98
 }
 let lblTimeout
+let filterTimer
 /* perenesti в back start */
-function addToCart(productId, count, callback = false) {
+/*function addToCart(productId, count, callback = false) {
     console.log(productId + " Добавлен в корзину в количестве " + count)
     clearTimeout(lblTimeout)
     if (callback) {
@@ -41,13 +42,14 @@ function removeFromCart(productId, callback = false) {
     if (callback) {
         callback()
     }
-}
+}*/
 function addToFav(productId, callback = false) {
-    console.log(productId + " Добавлен в избранное")
+    console.log(productId + " Добавлен в избранное!")
     clearTimeout(lblTimeout)
-    if (callback) {
+    /*if (callback) {
         callback()
-    }
+    }*/
+    addFavorite(productId)
 }
 function removeFromFav(productId, callback = false) {
     console.log(productId + " Удалён из избранного")
@@ -63,12 +65,10 @@ function clearCart(cartType, callback = false) {
         callback()
     }
 }
-function catFilterSubmit() {
-}
 /* perenesti в back end */
 //get path to sprite id
 function sprite(id) {
-    return '<svg><use xlink:href="img/svg/sprite.svg#' + id + '"></use></svg>'
+    return '<svg><use xlink:href="/local/assets/img/svg/sprite.svg#' + id + '"></use></svg>'
 }
 //scroll pos
 function scrollPos() {
@@ -162,6 +162,7 @@ function tabSwitch(nav, block) {
             updateOptionsVisibility()
         }
         item.addEventListener("click", () => {
+            updateOptionsVisibility()
             nav.forEach(el => {
                 el.classList.remove("active")
             })
@@ -179,7 +180,6 @@ function tabSwitch(nav, block) {
                     el.classList.remove("active")
                 }
             })
-            updateOptionsVisibility()
         })
     });
 }
@@ -242,7 +242,7 @@ const headerTop = document.querySelector(".header__top")
 window.addEventListener("scroll", () => {
     if (scrollPos() > headerTop.clientHeight) {
         header.classList.add("scroll")
-        if ((scrollPos() > lastScroll &&  !header.classList.contains("unshow"))) {
+        if ((scrollPos() > lastScroll && !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
             headerTranslate = headerTop.clientHeight
             header.style.transform = 'translateY(' + (-headerTop.clientHeight - 1) + 'px)'
@@ -847,6 +847,7 @@ if (jsProdWrapper.length) {
                         count = inp.value;
                         quantityOnChange(item, count, inStock)
                     } else {
+
                         let prodBlock = e.target.closest(".js-prodBlock")
                         removeFromCart(prodBlock.dataset.id, () => {
                             prodBlock.classList.remove("in-cart")
@@ -879,7 +880,7 @@ if (jsProdWrapper.length) {
                     }
                 })
             }
-            if (e.target.classList.contains("js-fav")) {
+            /*if (e.target.classList.contains("js-fav")) {
                 let btn = e.target
                 let prodId = btn.closest(".js-prodBlock").getAttribute("data-id")
                 if (btn.classList.contains("active")) {
@@ -893,7 +894,7 @@ if (jsProdWrapper.length) {
                         btn.setAttribute("aria-label", "Удалить из избранного")
                     })
                 }
-            }
+            }*/
             if (e.target.classList.contains("product-remove")) {
                 let prodId = e.target.closest(".js-prodBlock").getAttribute("data-id")
                 const cartRemovalModal = document.getElementById("cart-removal-modal")
@@ -1176,9 +1177,9 @@ if (swiper6.length) {
                     spaceBetween: 16
                 }
             },
-            scrollbar: {
-                el: item.querySelector(".swiper-scrollbar"),
-                draggable: true,
+            navigation: {
+                prevEl: item.querySelector(".nav-btn--prev"),
+                nextEl: item.querySelector(".nav-btn--next"),
             },
             speed: 800,
         });
@@ -1212,9 +1213,9 @@ if (swiper5.length) {
                     spaceBetween: 16
                 }
             },
-            scrollbar: {
-                el: item.querySelector(".swiper-scrollbar"),
-                draggable: true,
+            navigation: {
+                prevEl: item.querySelector(".nav-btn--prev"),
+                nextEl: item.querySelector(".nav-btn--next"),
             },
             speed: 800,
         });
@@ -1230,9 +1231,9 @@ if (swiper3.length) {
             observer: true,
             observeParents: true,
             watchSlidesProgress: true,
-            scrollbar: {
-                el: item.querySelector(".swiper-scrollbar"),
-                draggable: true,
+            navigation: {
+                prevEl: item.querySelector(".nav-btn--prev"),
+                nextEl: item.querySelector(".nav-btn--next"),
             },
             breakpoints: {
                 1700.98: {
@@ -1393,6 +1394,10 @@ if (document.querySelector('.reviews .swiper')) {
         observer: true,
         observeParents: true,
         watchSlidesProgress: true,
+        navigation: {
+            prevEl: document.querySelector(".reviews .nav-btn--prev"),
+            nextEl: document.querySelector(".reviews .nav-btn--next"),
+        },
         breakpoints: {
             1700.98: {
                 slidesPerView: 3,
@@ -1410,10 +1415,6 @@ if (document.querySelector('.reviews .swiper')) {
                 slidesPerView: 1.3,
                 spaceBetween: 12,
             }
-        },
-        scrollbar: {
-            el: document.querySelector(".reviews .swiper-scrollbar"),
-            draggable: true,
         },
         speed: 800,
     })
@@ -1549,6 +1550,14 @@ function initRangeSliders() {
                 'max': max
             }
         });
+        rangeStart.addEventListener("focus", () => {
+            rangeStart.value = rangeStart.value.replaceAll(' ', '')
+            rangeStart.setAttribute("type", "number")
+        });
+        rangeEnd.addEventListener("focus", () => {
+            rangeEnd.value = rangeEnd.value.replaceAll(' ', '')
+            rangeEnd.setAttribute("type", "number")
+        });
         rangeStart.addEventListener("change", () => {
             rangeSlider.noUiSlider.set([rangeStart.value, null])
             setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
@@ -1559,7 +1568,9 @@ function initRangeSliders() {
         });
         let rangeValues = [rangeStart, rangeEnd];
         rangeSlider.noUiSlider.on('update', function (values, handle) {
-            rangeValues[handle].value = parseInt(values[handle])
+            rangeStart.setAttribute("type", "text")
+            rangeEnd.setAttribute("type", "text")
+            rangeValues[handle].value = String(parseInt(values[handle])).replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
         });
         rangeSlider.noUiSlider.on('slide', function (values) {
             setRangeSelected(rangeId, rangeName, values)
@@ -1572,6 +1583,11 @@ function setRangeSelected(rangeId, rangeName, values) {
     } else {
         filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${rangeId}">${rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1])}<button type="button" class="btn-cross"></button></li>`)
     }
+    clearTimeout(filterTimer)
+    filterTimer = setTimeout(() => {
+        catFilterSet()
+    }, 500);
+
 }
 if (catFilter && filterSelected) {
     initRangeSliders()
@@ -1590,10 +1606,12 @@ if (catFilter && filterSelected) {
             let inpName = inp.getAttribute("data-name")
             let selectedTxt = inpName ? inpName + " " + txt.toLowerCase() : txt
             filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${idx}">${selectedTxt}<button type="button" class="btn-cross"></button></li>`)
+            catFilterSet()
         },
         removeSelected: function (id) {
             if (filterSelected.querySelector(`[data-target="${id}"]`)) {
                 filterSelected.querySelector(`[data-target="${id}"]`).remove()
+                catFilterSet()
             }
         },
         selectedOnClick: function (e) {

@@ -60,9 +60,6 @@ body.loaded {
 }
 .intro-banner {
 	margin-top: calc((var(--main-offset) + var(--header-height)) * -1);
-	@media (max-width: $bp2) {
-		margin-top: calc((var(--main-offset)) * -1);
-	}
 }
 .visually-hidden {
 	display: none;
@@ -530,6 +527,23 @@ p a {
 	flex-basis: 42%;
 	background: var(--primary-color);
 	pointer-events: none;
+}
+.swiper-scrollbar {
+	height: 2px;
+	border-radius: 4px;
+	background: rgba(var(--primary-color-rgb), .4);
+	margin-top: 40px;
+	@media (max-width: $bp1) {
+		margin-top: 24px;
+	}
+	@media (max-width: $bp2) {
+		margin-top: 20px;
+	}
+}
+.swiper-scrollbar-drag {
+	height: 100%;
+	border-radius: 4px;
+	background: var(--primary-color);
 }
 .nav-btns {
 	display: flex;
