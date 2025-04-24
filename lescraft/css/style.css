@@ -10025,6 +10025,12 @@ p a:hover {
     display: none;
   }
 
+  .catalog.fadeUp {
+    opacity: 1;
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+
   .catalog__items {
     grid-template-columns: repeat(3, 1fr);
   }

@@ -707,6 +707,10 @@
         .filter-selected {
             display: none;
         }
+        &.fadeUp {
+            opacity: 1;
+            animation: none!important;
+        }
         &__items {
             grid-template-columns: repeat(3, 1fr);
         }
