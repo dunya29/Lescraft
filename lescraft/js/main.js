@@ -242,7 +242,7 @@ const headerTop = document.querySelector(".header__top")
 window.addEventListener("scroll", () => {
     if (scrollPos() > headerTop.clientHeight) {
         header.classList.add("scroll")
-        if ((scrollPos() > lastScroll &&  !header.classList.contains("unshow"))) {
+        if ((scrollPos() > lastScroll && !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
             headerTranslate = headerTop.clientHeight
             header.style.transform = 'translateY(' + (-headerTop.clientHeight - 1) + 'px)'
@@ -1550,18 +1550,28 @@ function initRangeSliders() {
             }
         });
         rangeStart.addEventListener("change", () => {
+            if (!rangeEnd.value) {
+                rangeEnd.value = max
+            }
             rangeSlider.noUiSlider.set([rangeStart.value, null])
             setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
         });
         rangeEnd.addEventListener("change", () => {
+            if (!rangeStart.value) {
+                rangeStart.value = min
+            }
             rangeSlider.noUiSlider.set([null, rangeEnd.value])
             setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
         });
         let rangeValues = [rangeStart, rangeEnd];
-        rangeSlider.noUiSlider.on('update', function (values, handle) {
+        rangeSlider.noUiSlider.on('slide', function (values, handle) {
+            if (!rangeEnd.value) {
+                rangeEnd.value = max
+            }
+            if (!rangeStart.value) {
+                rangeStart.value = min
+            }
             rangeValues[handle].value = parseInt(values[handle])
-        });
-        rangeSlider.noUiSlider.on('slide', function (values) {
             setRangeSelected(rangeId, rangeName, values)
         });
     })

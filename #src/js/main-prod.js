@@ -58,13 +58,13 @@ function removeFromFav(productId, callback = false) {
         callback()
     }
 }
-function clearCart(cartType, callback = false) {
+/*function clearCart(cartType, callback = false) {
     console.log(cartType)
     clearTimeout(lblTimeout)
     if (callback) {
         callback()
     }
-}
+}*/
 /* perenesti в back end */
 //get path to sprite id
 function sprite(id) {
@@ -809,12 +809,18 @@ function quantityOnChange(item, count, inStock) {
                     disabledPlusBtn(el, count, inStock)
                 }
                 el.querySelector(".quantity__count").value = count
+                calculateProduct(count)
             })
         })
     }
     if (!prodBlock.classList.contains('js-prodBlock--product') || (prodBlock.classList.contains('js-prodBlock--product') && prodBlock.classList.contains("in-cart"))) {
         let productID = prodBlock.dataset.id
-        addToCart(productID, count)
+        addToCart(productID, count, () => {
+            if (prodBlock.classList.contains('item-cart')) {
+                recalcCart()
+            }
+        })
+
     }
 }
 function setQuantity() {
@@ -1549,20 +1555,30 @@ function initRangeSliders() {
                 'min': min,
                 'max': max
             }
-        });
+        })
         rangeStart.addEventListener("change", () => {
+            if (!rangeEnd.value) {
+                rangeEnd.value = max
+            }
             rangeSlider.noUiSlider.set([rangeStart.value, null])
             setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
         });
         rangeEnd.addEventListener("change", () => {
+            if (!rangeStart.value) {
+                rangeStart.value = min
+            }
             rangeSlider.noUiSlider.set([null, rangeEnd.value])
             setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
         });
         let rangeValues = [rangeStart, rangeEnd];
-        rangeSlider.noUiSlider.on('update', function (values, handle) {
-            rangeValues[handle].value = parseInt(values[handle]);
-        });
-        rangeSlider.noUiSlider.on('slide', function (values) {
+        rangeSlider.noUiSlider.on('slide', function (values, handle) {
+            if (!rangeEnd.value) {
+                rangeEnd.value = max
+            }
+            if (!rangeStart.value) {
+                rangeStart.value = min
+            }
+            rangeValues[handle].value = parseInt(values[handle])
             setRangeSelected(rangeId, rangeName, values)
         });
     })
