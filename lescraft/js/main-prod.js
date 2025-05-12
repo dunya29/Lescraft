@@ -1662,15 +1662,6 @@ if (catFilter && filterSelected) {
         }
     }
     catFilter.querySelectorAll("label input").forEach((inp, i) => {
-        let id = inp.getAttribute("data-id")
-        inp.addEventListener("change", () => {
-            if (inp.type === 'checkbox') {
-                inp.checked ? catFilterObj.setSelected(inp) : catFilterObj.removeSelected(id)
-            } else if (inp.type === 'radio') {
-                catFilter.querySelectorAll(`input[name='${inp.name}']`).forEach(inp => catFilterObj.removeSelected(inp.getAttribute("data-id")))
-                catFilterObj.setSelected(inp)
-            }
-        })
         if (inp.checked) {
             catFilterObj.setSelected(inp)
         }
@@ -1680,6 +1671,12 @@ if (catFilter && filterSelected) {
     document.querySelectorAll(".filter-reset").forEach(item => item.addEventListener("click", () => catFilterObj.resetFilter()))
     document.querySelectorAll(".filter-submit").forEach(item => item.addEventListener("click", e => {
         e.preventDefault()
+        filterSelected.innerHTML = ""
+        catFilter.querySelectorAll("label input").forEach((inp, i) => {
+            let id = inp.getAttribute("data-id")
+            inp.checked ? catFilterObj.setSelected(inp) : catFilterObj.removeSelected(id)
+            catFilterObj.selectedCount()
+        })
         catFilterObj.closeFilter()
         catFilterSubmit()
 
