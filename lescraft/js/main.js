@@ -1554,14 +1554,14 @@ function initRangeSliders() {
                 rangeEnd.value = max
             }
             rangeSlider.noUiSlider.set([rangeStart.value, null])
-            setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
+            setRangeSelected(item)
         });
         rangeEnd.addEventListener("change", () => {
             if (!rangeStart.value) {
                 rangeStart.value = min
             }
             rangeSlider.noUiSlider.set([null, rangeEnd.value])
-            setRangeSelected(rangeId, rangeName, [rangeStart.value, rangeEnd.value])
+            setRangeSelected(item)
         });
         let rangeValues = [rangeStart, rangeEnd];
         rangeSlider.noUiSlider.on('slide', function (values, handle) {
@@ -1572,15 +1572,13 @@ function initRangeSliders() {
                 rangeStart.value = min
             }
             rangeValues[handle].value = parseInt(values[handle])
-            setRangeSelected(rangeId, rangeName, values)
+            setRangeSelected(item)
         });
     })
 }
-function setRangeSelected(rangeId, rangeName, values) {
-    if (filterSelected.querySelector(`[data-target='${rangeId}']`)) {
-        filterSelected.querySelector(`[data-target='${rangeId}']`).innerHTML = rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1]) + '<button type="button" class="btn-cross"></button></li>'
-    } else {
-        filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${rangeId}">${rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1])}<button type="button" class="btn-cross"></button></li>`)
+function setRangeSelected(item) {
+    if (!item.classList.contains("updated")) {
+        item.classList.add('updated')
     }
 }
 if (catFilter && filterSelected) {
@@ -1661,7 +1659,7 @@ if (catFilter && filterSelected) {
             catFilterObj.setSelected(inp)
         }
         catFilterObj.selectedCount()
-    }) 
+    })
     filterSelected.addEventListener("click", e => catFilterObj.selectedOnClick(e))
     document.querySelectorAll(".filter-reset").forEach(item => item.addEventListener("click", () => catFilterObj.resetFilter()))
     document.querySelectorAll(".filter-submit").forEach(item => item.addEventListener("click", e => {
@@ -1672,6 +1670,16 @@ if (catFilter && filterSelected) {
             inp.checked ? catFilterObj.setSelected(inp) : catFilterObj.removeSelected(id)
             catFilterObj.selectedCount()
         })
+        if (catFilter.querySelector(".range-filter")) {
+            catFilter.querySelectorAll(".range-filter").forEach(item => {
+                if (item.classList.contains("updated")) {
+                    let rangeId = item.getAttribute("data-id")
+                    let rangeName = item.getAttribute("data-name")
+                    let values = item.querySelector('.range-filter__slider').noUiSlider.get()
+                    filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${rangeId}">${rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1])}<button type="button" class="btn-cross"></button></li>`)
+                }
+            })
+        }
         catFilterObj.closeFilter()
         catFilterSubmit()
     }))
