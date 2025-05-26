@@ -194,6 +194,7 @@
         }
     }
     &__thumbswiper {
+        width: 100%;
         max-width: 644px;
         padding: 0 64px;
         margin: 24px auto 0;
@@ -497,6 +498,28 @@
                         height: 24px;
                         margin: 0 auto 4px;
                     }
+                }
+            }
+        }
+        &__icon {
+            position: relative;
+            span {
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 17px;
+                color: var(--white);
+                padding: 0 3px;
+                border-radius: 10px;
+                border: 1px solid var(--white);
+                background: var(--primary-color);
+                position: absolute;
+                min-width: 19px;
+                bottom: 50%;
+                left: 50%;
+                white-space: nowrap;
+                text-align: center;
+                &:empty {
+                    display: none;
                 }
             }
         }

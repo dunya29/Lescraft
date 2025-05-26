@@ -5,6 +5,7 @@ if (document.querySelector(".preloader")) {
         }, 100);
     });
 }
+let orderReloadTimer = null
 const header = document.querySelector(".header")
 const headerFix = document.querySelector(".fixed-header")
 const menuBtn = document.querySelector('.menu-btn');
@@ -211,42 +212,20 @@ if (isFirefox) {
         })
     }
 }
-//anchor
-if (document.querySelector(".js-anchor")) {
-    document.querySelectorAll(".js-anchor").forEach(item => {
-        item.addEventListener("click", e => {
-            e.preventDefault()
-            let dest = document.querySelector(item.getAttribute("href"))
-            let diff = window.innerWidth > bp.desktop ? header.querySelector(".header__body").clientHeight : header.clientHeight
-            destPos = dest.getBoundingClientRect().top - diff - 10
-            if (item.hasAttribute("data-tab")) {
-                let attr = item.getAttribute("data-tab")
-                if (dest.querySelector(`[data-tab='${attr}']`)) {
-                    dest.querySelector(`[data-tab='${attr}']`).click()
-                }
-            }
-            if (menuBtn && menuBtn.classList.contains("active")) {
-                menuBtn.click()
-                setTimeout(() => {
-                    window.scrollTo({ top: scrollPos() + destPos, behavior: 'smooth' })
-                }, 300);
-            } else {
-                window.scrollTo({ top: scrollPos() + destPos, behavior: 'smooth' })
-            }
-        })
-    })
-}
+
 //fixed header
 let lastScroll = scrollPos();
-const headerTop = document.querySelector(".header__top")
+const headerTopEl = document.querySelector(".header__top")
 window.addEventListener("scroll", () => {
-    if (scrollPos() > headerTop.clientHeight) {
+    let scrollTop = scrollPos()
+    let headerTop = headerTopEl?.clientHeight || 0
+    if (scrollTop > headerTop) {
         header.classList.add("scroll")
-        if ((scrollPos() > lastScroll && !header.classList.contains("unshow"))) {
+        if ((scrollTop > lastScroll && !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
-            headerTranslate = headerTop.clientHeight
-            header.style.transform = 'translateY(' + (-headerTop.clientHeight - 1) + 'px)'
-        } else if (scrollPos() < lastScroll && header.classList.contains("unshow")) {
+            headerTranslate = headerTop
+            header.style.transform = 'translateY(' + (-headerTop - 1) + 'px)'
+        } else if (scrollTop < lastScroll && header.classList.contains("unshow")) {
             header.classList.remove("unshow")
             headerTranslate = 0
             header.style.transform = 'translateY(0)'
@@ -256,8 +235,42 @@ window.addEventListener("scroll", () => {
         headerTranslate = 0
         header.style.transform = 'translateY(0)'
     }
-    lastScroll = scrollPos()
+    lastScroll = scrollTop
 })
+//anchorlinks
+const anchorLinks = document.querySelectorAll(".js-anchor")
+if (anchorLinks.length) {
+    anchorLinks.forEach(item => {
+        item.addEventListener("click", e => {
+            let idx = item.getAttribute("href").indexOf("#")
+            const href = item.getAttribute("href").substring(idx)
+            let dest = document.querySelector(href)
+            if (dest) {
+                e.preventDefault()
+                let destTop = dest.getBoundingClientRect().top
+                let headerH = header.clientHeight
+                let headerBodyH = header.querySelector(".header__body")?.clientHeight || 0
+                let headerCenterH = header.querySelector(".header__center")?.clientHeight || 0
+                let diff = window.innerWidth > bp.desktop ? destTop < 0 ? headerH : headerBodyH : destTop < 0 ? headerH : headerH - headerCenterH
+                let destPos = destTop - diff - 10
+                if (item.hasAttribute("data-tab")) {
+                    let attr = item.getAttribute("data-tab")
+                    if (dest.querySelector(`[data-tab='${attr}']`)) {
+                        dest.querySelector(`[data-tab='${attr}']`).click()
+                    }
+                }
+                if (menuBtn && menuBtn.classList.contains("active")) {
+                    menuBtn.click()
+                    setTimeout(() => {
+                        window.scrollTo({ top: scrollPos() + destPos, behavior: 'smooth' })
+                    }, 300);
+                } else {
+                    window.scrollTo({ top: scrollPos() + destPos, behavior: 'smooth' })
+                }
+            }
+        })
+    })
+}
 //switch active tab/block
 const switchBlock = document.querySelectorAll(".switch-block")
 if (switchBlock) {
@@ -657,7 +670,7 @@ if (disabledForm.length > 0) {
 const inp = document.querySelectorAll('input[type=tel]')
 if (inp) {
     inp.forEach(item => {
-        Inputmask({ "mask": "+7 999 999-99-99" }).mask(item);
+        Inputmask({ "mask": "+7 999 999-99-99", "clearIncomplete": true }).mask(item);
     })
 }
 //file-form
@@ -1227,6 +1240,38 @@ if (swiper5.length) {
         });
     })
 }
+//swiper 4 items
+const swiper4 = document.querySelectorAll('.swiper4')
+if (swiper4.length) {
+    swiper4.forEach(item => {
+        let itemSwiper = new Swiper(item.querySelector(".swiper"), {
+            slidesPerView: 2,
+            spaceBetween: 12,
+            observer: true,
+            observeParents: true,
+            watchSlidesProgress: true,
+            breakpoints: {
+                1700.98: {
+                    slidesPerView: 4,
+                    spaceBetween: 20
+                },
+                1250.98: {
+                    slidesPerView: 4,
+                    spaceBetween: 16
+                },
+                700.98: {
+                    slidesPerView: 3,
+                    spaceBetween: 16
+                }
+            },
+            scrollbar: {
+                el: item.querySelector(".swiper-scrollbar"),
+                draggable: true,
+            },
+            speed: 800,
+        });
+    })
+}
 //swiper 3 items
 const swiper3 = document.querySelectorAll('.swiper3')
 if (swiper3.length) {
@@ -1555,35 +1600,47 @@ function initRangeSliders() {
             }
         })
         rangeStart.addEventListener("change", () => {
-            if (!rangeEnd.value) {
+            /* if (!rangeEnd.value) {
                 rangeEnd.value = max
-            }
+            } */
             rangeSlider.noUiSlider.set([rangeStart.value, null])
             if (!item.classList.contains("updated")) {
                 item.classList.add('updated')
             }
+            clearTimeout(filterTimer)
+            filterTimer = setTimeout(() => {
+                catFilterSet()
+            }, 500);
         });
         rangeEnd.addEventListener("change", () => {
-            if (!rangeStart.value) {
+            /* if (!rangeStart.value) {
                 rangeStart.value = min
-            }
+            } */
             rangeSlider.noUiSlider.set([null, rangeEnd.value])
             if (!item.classList.contains("updated")) {
                 item.classList.add('updated')
             }
+            clearTimeout(filterTimer)
+            filterTimer = setTimeout(() => {
+                catFilterSet()
+            }, 500);
         });
         let rangeValues = [rangeStart, rangeEnd];
         rangeSlider.noUiSlider.on('slide', function (values, handle) {
-            if (!rangeEnd.value) {
+           /*  if (!rangeEnd.value) {
                 rangeEnd.value = max
             }
             if (!rangeStart.value) {
                 rangeStart.value = min
-            }
+            } */
             rangeValues[handle].value = parseInt(values[handle])
             if (!item.classList.contains("updated")) {
                 item.classList.add('updated')
             }
+            clearTimeout(filterTimer)
+            filterTimer = setTimeout(() => {
+                catFilterSet()
+            }, 500);
         });
     })
 }
@@ -1798,9 +1855,9 @@ if (orderP) {
         let locality = orderP.querySelector("[data-address='locality']")?.value || ''
         let street = orderP.querySelector("[data-address='street']")?.value || ''
         let home = orderP.querySelector("[data-address='home']")?.value || ''
-        let addressParts = [city, locality, street, home].filter(Boolean);
+        let addressParts = [locality, street, home].filter(Boolean);
         let fullAddress = addressParts.join(', ');
-        document.querySelector("[data-full-address]").textContent = fullAddress
+        document.querySelector("[data-full-address]").textContent = fullAddress || city
     }
     //reset on tab change
     if (switchBlocks.length) {
@@ -1832,17 +1889,24 @@ if (orderP) {
         })
     }
     //set checked radio value
-    if (orderP.querySelector(".text-radio")) {
-        orderP.querySelectorAll(".text-radio").forEach(item => {
-            item.querySelector("input").addEventListener('change', () => {
-                const acc = item.closest(".accordion")
-                let content = item.querySelector("p").innerHTML
-                if (acc && content && acc.querySelector("[data-radio-value")) {
-                    acc.querySelector("[data-radio-value").innerHTML = content
-                }
+    function selectOrderBlock() {
+        if (orderP.querySelector(".text-radio")) {
+            orderP.querySelectorAll(".text-radio").forEach(item => {
+                item.querySelector("input").addEventListener('change', () => {
+                    const acc = item.closest(".accordion")
+                    let content = item.querySelector("p").innerHTML
+                    if (acc && content && acc.querySelector("[data-radio-value")) {
+                        acc.querySelector("[data-radio-value").innerHTML = content
+                    }
+                    if (item.querySelector("input").dataset.type != 'payment') {
+                        reloadOrderForm()
+                    }
+                    checkOrderButton()
+                })
             })
-        })
+        }
     }
+    selectOrderBlock()
     //set full address
     if (document.querySelector("[data-address]") && document.querySelector("[data-full-address]")) {
         setFullAddress()

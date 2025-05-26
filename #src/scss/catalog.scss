@@ -446,6 +446,8 @@
 }
 .card {
     height: 100%;
+    display: flex;
+    flex-direction: column;
     border-radius: 20px;
     background: var(--white);
     box-shadow: 0px 0px 18px 0px rgba(113, 125, 117, 0.2);
@@ -466,7 +468,12 @@
         }
     }
     .product-action {
+        width: 100%;
         grid-column: 1/3;
+        margin-top: auto;
+        & > * {
+            margin-top: 16px;
+        }
     }
     &:hover {
         box-shadow: 0px 0px 24px 0px #5e646033;
@@ -494,6 +501,10 @@
         }
     }
     &__inner {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 0 16px 16px;
     }
     &__header {
@@ -529,6 +540,9 @@
             color: var(--gray-color);
             margin-bottom: 4px;
         }
+    }
+    &__price-wrapper {
+        align-self: center;
     }
     @media (max-width: $bp1) {
         border-radius: 12px;
@@ -618,6 +632,7 @@
         &__aside {
             flex: 0 0 19%;
             margin: 0 20px 0 0;
+            position: static;
         }
         &__content {
             min-height: 330px;
@@ -670,9 +685,6 @@
     @media (min-width: $bp3) and (max-width: $bp2) {
         .page-row {
             display: flex;
-            &__aside {
-                position: sticky;
-            }
         }
     }
     @media (max-width: $bp1) {
@@ -709,7 +721,7 @@
         }
         &.fadeUp {
             opacity: 1;
-            animation: none!important;
+            animation: none !important;
         }
         &__items {
             grid-template-columns: repeat(3, 1fr);

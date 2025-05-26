@@ -32,12 +32,16 @@
                                     <img src="img/content/news-1-1.jpg" alt>
                                 </div>
                                 <div class="page-content">
-                                    <p>Строганный брус — один из главных материалов, применяемых в деревянном домостроении. Используется для возведения стен жилых и
+                                    <h2 id="stroganniy-brus">Строганный брус</h2>
+                                    <p>Строганный брус — один из главных материалов, применяемых в деревянном домостроении. Используется для возведения
+                                        стен жилых и
                                         общественных зданий, бань, хозяйственных построек, ограждений, перегородок, малых архитектурных форм, объектов туризма и сервиса,
                                         детских площадок, игровых зон. Брус широко используется в народном и сельском хозяйстве, строительстве, промышленности. Из такого
                                         бруса
                                         можно возводить здания до 4 этажей в высоту.</p>
-                                    <p>Строганный брус является экологичным материалом, поскольку выполнен целиком из массива сосны или ели, без склеек и сращиваний.
+                                    <h2 id="eco-material">Экологичные материалы</h2>
+                                    <p>Строганный брус является экологичным материалом, поскольку выполнен целиком из массива сосны или ели, без склеек и
+                                        сращиваний.
                                         За счёт качественной камерной сушки сводятся к минимуму недостатки цельнодеревянных изделий, таких, как изменение геометрии,
                                         деформация,
                                         коробление.</p>
@@ -46,8 +50,7 @@
                                         саун. Это верно лишь в отношении потолка, откуда капли горячей смолы действительно могут упасть на людей, и пола. По стенам таких
                                         ограничений нет.</p>
                                     <video src="media/product-1-1.mp4" loop playsinline mute controls poster="img/content/article-1-poster.png"></video>
-                                    <h2>Хвойные смоляные ароматы, возникающие при нагреве стен из соснового и елового бруса</h2>
-                                    <h3>Хвойные смоляные ароматы, возникающие при нагреве стен из соснового и елового бруса</h3>
+                                    <h2 id="xvoynie-aromaty">Хвойные смоляные ароматы, возникающие при нагреве стен из соснового и елового бруса</h2>
                                     <p>Но, в соответствии с требованиями дизайна или пожеланиями владельца, стены бань из бруса могут дополнительно отделываться вагонкой
                                         из
                                         липы и осины, блок-хаусом и другими отделочными досками.</p>
@@ -69,7 +72,7 @@
                                         <li>Сортность строганного бруса – «А», «В», «С», и смешанная «АВС».</li>
                                         <li>Рекомендуемые средства декорирования и защиты: антисептики, огнебиозащита, лессирующие пропитки.</li>
                                     </ol>
-                                    <h3>Хвойные смоляные ароматы, возникающие при нагреве стен из соснового и елового бруса</h3>
+                                    <h2 id="sechenie-brusa">Сечение бруса</h2>
                                     <p>Но, в соответствии с требованиями дизайна или пожеланиями владельца, стены бань из бруса могут дополнительно отделываться вагонкой
                                         из
                                         липы и осины, блок-хаусом и другими отделочными досками.</p>
@@ -223,7 +226,14 @@
                             </div>
                             <!--page-row__aside-->
                             <aside class="page-row__aside">
-                                @@include('_feedback-form.html', {"title": "Остались вопросы?", "btnTxt": "Задать вопрос"})
+                                <div class="blog-anchors">
+                                    <ul>
+                                        <li><a class="js-anchor" href="#stroganniy-brus">Строганный брус — что это</a></li>
+                                        <li><a class="js-anchor" href="#eco-material">Экологичные материалы</a></li>
+                                        <li><a class="js-anchor" href="#xvoynie-aromaty">Хвойные смоляные ароматы</a></li>
+                                        <li><a class="js-anchor" href="#sechenie-brusa">Сечение бруса</a></li>
+                                    </ul>
+                                </div>
                                 <!--share-list-->
                                 <div class="share-list">
                                     <span class="share-list__lbl">Поделиться в социальных сетях:</span>
@@ -248,7 +258,42 @@
                     </div>
                 </section>
                 @@include('_other-cat.html', {"title": "Товары из статьи", "btn": false})
-                @@include('_other-cat.html', {"title": "<span>Популярные</span> товары", "btn": true})
+                <!--other-news-->
+                <section class="section swiper4 other-news" data-animation="fadeUp">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Другие статьи</h2>
+                            <a href="#" class="btn stroke-btn stroke-btn--link">
+                                <span class="mobile-hidden">Смотреть&nbsp;</span>
+                                <span>все</span>
+                                <span class="link-icon"></span>
+                            </a>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @@include('_item-news.html', {"nmb": 1})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include('_item-news.html', {"nmb": 2})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include('_item-news.html', {"nmb": 3})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include('_item-news.html', {"nmb": 4})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include('_item-news.html', {"nmb": 5})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include('_item-news.html', {"nmb": 6})
+                                </div>
+                            </div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                </section>
             </main>
             @@include('_footer.html', {"main": false})
             @@include('_modal.html')

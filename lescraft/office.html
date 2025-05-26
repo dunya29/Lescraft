@@ -16,7 +16,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="preload" href="fonts/InterDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin> 
     <link href="css/style.min.css" type="text/css" rel="stylesheet">
-    <title>Оформление заказа</title>
+    <title>Доставка по адресу</title>
 </head>
 
     <body>
@@ -438,407 +438,116 @@
 <div class="breadcrumbs">
     <ul>
         <li><a href="#" class="link">Главная</a></li>
-        <li>Оформление заказа</li>
+        <li>Доставка по адресу</li>
     </ul>
 </div>
                     </div>
                 </div>
-                <section class="section order-error">
+                <!--delivery-p-->
+                <section class="section office-p">
                     <div class="container">
-                        <h1>Ошибка, заказ не&nbsp;оформлен</h1>
-                        <p><b>Свяжитесь с менеджером для уточнения деталей и завершения покупки</b></p>
-                        <button class="btn main-btn main-btn--link mod-open-btn" data-modal="contact-manager-modal">
-                            Связаться с менеджером
-                            <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
-                        </button>
+                        <div class="sec-top">
+                            <h1>Головной офис</h1>
+                        </div>
+                        <!--page-row-->
+                        <div class="page-row">
+                            <!--page-row__content-->
+                            <div class="page-row__content">
+                                <div class="mb-60 office-p__loc">
+                                    <div class="office-p__contacts">
+                                        <div class="item-contact">
+                                            <span>Телефон</span>
+                                            <span>+7 861 252-23-63</span>
+                                        </div>
+                                        <div class="item-contact">
+                                            <span>Адрес для почтовой корреспонденции</span>
+                                            <span>г. Краснодар, ул. Тополиная, 27/1 (база ЮГТЕХКОМПЛЕКТ)</span>
+                                        </div>
+                                        <div class="item-contact">
+                                            <span>Режим работы</span>
+                                            <span>Пн-вс: 8:30–17:30</span>
+                                        </div>
+                                    </div>
+                                    <div class="map office-p__map" id="officeMap"></div>
+                                </div>
+                                <section class="office-p__sec questions">
+                                    <div class="sec-top">
+                                        <h2>Ответим на любые ваши вопросы</h2>
+                                    </div>
+                                    <div class="questions__items">
+                                        <!--info-card-->
+                                        <div class="info-card">
+                                            <div class="info-card__icon">
+                                                <img src="img/svg/suppliers.svg" alt>
+                                            </div>
+                                            <h6>Предложения от потенциальных поставщиков</h6>
+                                        </div>
+                                        <!--info-card-->
+                                        <div class="info-card">
+                                            <div class="info-card__icon">
+                                                <img src="img/svg/applications.svg" alt>
+                                            </div>
+                                            <h6>Приём заявок на формирование заказа</h6>
+                                        </div>
+                                        <!--info-card-->
+                                        <div class="info-card">
+                                            <div class="info-card__icon">
+                                                <img src="img/svg/marketing.svg" alt>
+                                            </div>
+                                            <h6>Предложения по маркетингу и рекламе</h6>
+                                        </div>
+                                        <!--info-card-->
+                                        <div class="info-card">
+                                            <div class="info-card__icon">
+                                                <img src="img/svg/acts.svg" alt>
+                                            </div>
+                                            <h6>Акты сверки и другие финансово-отчётные документы</h6>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <!--page-row__aside-->
+                            <aside class="page-row__aside">
+                                <!--feedback-form-->
+<form action class="form disabled-form feedback-form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
+    <h3>Остались вопросы?</h3>
+    <div class="form__items">
+        <div class="item-form">
+            <div class="item-form__inp">
+                <input type="text" id="name" placeholder=" " class="required">
+                <label for="name" class="item-form__placeholder">Ваше имя</label>
+                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+            </div>
+            <span data-error></span>
+        </div>
+        <div class="item-form">
+            <div class="item-form__inp">
+                <input type="tel" id="phone" placeholder=" " class="required">
+                <label for="phone" class="item-form__placeholder">Телефон</label>
+                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+            </div>
+            <span data-error></span>
+        </div>
+        <div class="item-form">
+            <textarea placeholder="Вопрос"></textarea>
+            <span data-error></span>
+        </div>
+    </div>
+    <div class="form__footer">
+        <button type="submit" class="btn main-btn main-btn--link">
+            Задать вопрос
+            <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+        </button>        
+        <label class="item-checkbox">
+            <input type="checkbox" checked class="required">
+            <span>Нажимая кнопку «Задать вопрос», я даю согласие на обработку своих персональных данных в соответствии <a href="#" target="_blank">Политикой конфиденциальности</a></span>
+        </label>
+    </div>
+</form>
+                            </aside>
+                        </div>
                     </div>
                 </section>
-                <!--other-cat-->
-<section class="section swiper5 other-cat" data-animation="fadeUp">
-    <div class="container">
-        <div class="sec-top">
-            <h2 class="h1">Вы недавно смотрели</h2>
-            
-        </div>
-        <div class="swiper js-prodWrapper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <!--card-->
-<article class="card js-prodBlock" data-id="123">
-    <div class="card__preview">
-        <div class="product-lbls">
-            
-            <span class="hit">Хит</span>
-            <span class="discount">Скидка</span>
-            
-            
-        </div>
-        
-        <a href="#" class="media-contain">
-            <picture><source srcset="img/content/product-1.webp" type="image/webp"><img src="img/content/product-1.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм"></picture>
-        </a>
-        
-        
-    </div>
-    <div class="card__inner">
-        <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
-        </div>
-        <div class="card__footer">
-            <div class="card__price-wrapper">
-                <div class="item-tippy">
-                    Цена за упаковку:
-                    <div class="tippy">
-                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                        <p>Специальная цена для вас</p>
-                    </div>
-                </div>
-                <div class="product-price">
-                    <span class="rub product-price__current">6 000</span>
-                    <del class="rub product-price__old">7 600</del>
-                </div>
-            </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
-        </div>
-        <div class="product-action">
-            <div class="quantity" data-stock="45">
-                <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
-                <input type="number" class="quantity__count" value="1" aria-label="Количество">
-                <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
-            </div>
-            <button type="button" class="btn main-btn js-add-to-cart">
-                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
-                В корзину
-            </button>
-        </div>
-    </div>
-</article>
-                </div>
-                <div class="swiper-slide">
-                    <!--card-->
-<article class="card js-prodBlock" data-id="123">
-    <div class="card__preview">
-        <div class="product-lbls">
-            
-            
-            <span class="recommended">Лескрафт рекомендует</span>
-            <span class="promo">Акция</span>
-            
-        </div>
-        
-        <a href="#" class="media-contain">
-            <picture><source srcset="img/content/product-2.webp" type="image/webp"><img src="img/content/product-2.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм"></picture>
-        </a>
-        
-        
-    </div>
-    <div class="card__inner">
-        <div class="card__header">
-            
-            
-            <div class="product-status out-of-stock">Ожидает поступления</div>
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
-        </div>
-        <div class="card__footer">
-            <div class="card__price-wrapper">
-                <div class="item-tippy">
-                    Цена за упаковку:
-                    <div class="tippy">
-                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                        <p>Специальная цена для вас</p>
-                    </div>
-                </div>
-                <div class="product-price">
-                    <span class="rub product-price__current">6 000</span>
-                    <del class="rub product-price__old">7 600</del>
-                </div>
-            </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
-        </div>
-        <div class="product-action">
-            <div class="quantity" data-stock="45">
-                <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
-                <input type="number" class="quantity__count" value="1" aria-label="Количество">
-                <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
-            </div>
-            <button type="button" class="btn main-btn js-add-to-cart">
-                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
-                В корзину
-            </button>
-        </div>
-    </div>
-</article>
-                </div>
-                <div class="swiper-slide">
-                    <!--card-->
-<article class="card js-prodBlock" data-id="123">
-    <div class="card__preview">
-        <div class="product-lbls">
-            
-            <span class="hit">Хит</span>
-            <span class="discount">Скидка</span>
-            
-            
-        </div>
-        
-        <a href="#" class="media-contain">
-            <picture><source srcset="img/content/product-5.webp" type="image/webp"><img src="img/content/product-5.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм"></picture>
-        </a>
-        
-        
-    </div>
-    <div class="card__inner">
-        <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
-        </div>
-        <div class="card__footer">
-            <div class="card__price-wrapper">
-                <div class="item-tippy">
-                    Цена за упаковку:
-                    <div class="tippy">
-                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                        <p>Специальная цена для вас</p>
-                    </div>
-                </div>
-                <div class="product-price">
-                    <span class="rub product-price__current">6 000</span>
-                    <del class="rub product-price__old">7 600</del>
-                </div>
-            </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
-        </div>
-        <div class="product-action">
-            <div class="quantity" data-stock="45">
-                <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
-                <input type="number" class="quantity__count" value="1" aria-label="Количество">
-                <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
-            </div>
-            <button type="button" class="btn main-btn js-add-to-cart">
-                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
-                В корзину
-            </button>
-        </div>
-    </div>
-</article>
-                </div>
-                <div class="swiper-slide">
-                    <!--card-->
-<article class="card js-prodBlock" data-id="123">
-    <div class="card__preview">
-        <div class="product-lbls">
-            
-            <span class="hit">Хит</span>
-            <span class="discount">Скидка</span>
-            
-            
-        </div>
-        
-        <a href="#" class="media-contain">
-            <picture><source srcset="img/content/product-4.webp" type="image/webp"><img src="img/content/product-4.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм"></picture>
-        </a>
-        
-        
-    </div>
-    <div class="card__inner">
-        <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
-        </div>
-        <div class="card__footer">
-            <div class="card__price-wrapper">
-                <div class="item-tippy">
-                    Цена за упаковку:
-                    <div class="tippy">
-                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                        <p>Специальная цена для вас</p>
-                    </div>
-                </div>
-                <div class="product-price">
-                    <span class="rub product-price__current">6 000</span>
-                    <del class="rub product-price__old">7 600</del>
-                </div>
-            </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
-        </div>
-        <div class="product-action">
-            <div class="quantity" data-stock="45">
-                <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
-                <input type="number" class="quantity__count" value="1" aria-label="Количество">
-                <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
-            </div>
-            <button type="button" class="btn main-btn js-add-to-cart">
-                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
-                В корзину
-            </button>
-        </div>
-    </div>
-</article>
-                </div>
-                <div class="swiper-slide">
-                    <!--card-->
-<article class="card js-prodBlock" data-id="123">
-    <div class="card__preview">
-        <div class="product-lbls">
-            
-            
-            <span class="recommended">Лескрафт рекомендует</span>
-            <span class="promo">Акция</span>
-            
-        </div>
-        
-        <a href="#" class="media-contain">
-            <picture><source srcset="img/content/product-5.webp" type="image/webp"><img src="img/content/product-5.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм"></picture>
-        </a>
-        
-        
-    </div>
-    <div class="card__inner">
-        <div class="card__header">
-            
-            
-            <div class="product-status out-of-stock">Ожидает поступления</div>
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
-        </div>
-        <div class="card__footer">
-            <div class="card__price-wrapper">
-                <div class="item-tippy">
-                    Цена за упаковку:
-                    <div class="tippy">
-                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                        <p>Специальная цена для вас</p>
-                    </div>
-                </div>
-                <div class="product-price">
-                    <span class="rub product-price__current">6 000</span>
-                    <del class="rub product-price__old">7 600</del>
-                </div>
-            </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
-        </div>
-        <div class="product-action">
-            <div class="quantity" data-stock="45">
-                <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
-                <input type="number" class="quantity__count" value="1" aria-label="Количество">
-                <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
-            </div>
-            <button type="button" class="btn main-btn js-add-to-cart">
-                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
-                В корзину
-            </button>
-        </div>
-    </div>
-</article>
-                </div>
-                <div class="swiper-slide">
-                    <!--card-->
-<article class="card js-prodBlock" data-id="123">
-    <div class="card__preview">
-        <div class="product-lbls">
-            
-            <span class="hit">Хит</span>
-            <span class="discount">Скидка</span>
-            
-            
-        </div>
-        
-        <a href="#" class="media-contain">
-            <picture><source srcset="img/content/product-1.webp" type="image/webp"><img src="img/content/product-1.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм"></picture>
-        </a>
-        
-        
-    </div>
-    <div class="card__inner">
-        <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
-        </div>
-        <div class="card__footer">
-            <div class="card__price-wrapper">
-                <div class="item-tippy">
-                    Цена за упаковку:
-                    <div class="tippy">
-                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
-                        <p>Специальная цена для вас</p>
-                    </div>
-                </div>
-                <div class="product-price">
-                    <span class="rub product-price__current">6 000</span>
-                    <del class="rub product-price__old">7 600</del>
-                </div>
-            </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
-        </div>
-        <div class="product-action">
-            <div class="quantity" data-stock="45">
-                <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
-                <input type="number" class="quantity__count" value="1" aria-label="Количество">
-                <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
-            </div>
-            <button type="button" class="btn main-btn js-add-to-cart">
-                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
-                В корзину
-            </button>
-        </div>
-    </div>
-</article>
-                </div>
-            </div>
-            <div class="swiper-scrollbar"></div>
-        </div>
-    </div>
-</section>
             </main>
             <!--footer-->
 
@@ -1377,6 +1086,36 @@
 <script src="js/libs/swiper.min.js"></script>
 <script src="js/libs/nouislider.min.js"></script>
 <script src="js/main.js" defer></script>
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&amp;lang=ru_RU"></script>
+        <script>
+            function setmapDefaults(map) {
+                map.controls.remove('geolocationControl'); // удаляем геолокацию
+                map.controls.remove('searchControl'); // удаляем поиск
+                map.controls.remove('trafficControl'); // удаляем контроль трафика
+                map.controls.remove('typeSelector'); // удаляем тип
+                map.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+                map.controls.remove('rulerControl'); // удаляем контрол правил
+                map.margin.setDefaultMargin(100);
+            }
+            function officeMapinit() {
+                let officeMap = new ymaps.Map('officeMap', {
+                    center: [45.090527, 38.995741],
+                    zoom: 13
+                });
+                setmapDefaults(officeMap)
+                officeMap.geoObjects.add(new ymaps.Placemark([45.090527, 38.995741], {},
+                    {
+                        iconLayout: 'default#image',
+                        iconImageHref: 'img/svg/map-marker.svg',
+                        iconImageSize: [32, 32],
+                        iconImageOffset: [-16, -32],
+                        cursor: "grab"
+                    }));
+            }
+            if (document.querySelector("#officeMap")) {
+                ymaps.ready(officeMapinit);
+            }
+        </script>
     </body>
 
 </html>

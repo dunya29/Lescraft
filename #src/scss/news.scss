@@ -173,3 +173,39 @@
         }
     }
 }
+
+.blog-anchors {
+    ul {
+        li {
+            margin-bottom: 8px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            a {
+                font-weight: 600;
+                padding: 14px 20px;
+                display: flex;
+                align-items: center;
+                border-radius: 16px;
+                background: var(--gray-color-light);
+                &.active {
+                    color: var(--white);
+                    background: var(--primary-color);
+                    &:before {
+                        background: var(--white);
+                    }
+                }
+                &::before {
+                    content: "";
+                    display: block;
+                    flex: 0 0 6px;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background: var(--primary-color);
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Блог"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Блог"})
+                    </div>
+                </div>
+                <!--news-p-->
+                <section class="section news-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Блог</h1>
+                        </div>
+                        <div class="news-p__wrapper">
+                            <div class="news-p__items">
+                                @@include('_item-news.html', {"nmb": 1})
+                                @@include('_item-news.html', {"nmb": 2})
+                                @@include('_item-news.html', {"nmb": 3})
+                                @@include('_item-news.html', {"nmb": 4})
+                                @@include('_item-news.html', {"nmb": 5})
+                                @@include('_item-news.html', {"nmb": 6})
+                                <div class="news-banner">
+                                    <div class="media-cover">
+                                        <picture>
+                                            <source srcset="img/content/news-banner.webp" type="image/webp" media="(min-width: 700.98px)">
+                                            <source srcset="img/content/news-banner.png" media="(min-width: 700.98px)">
+                                            <source srcset="img/content/news-banner-mob.webp" type="image/webp">
+                                            <source srcset="img/content/news-banner-mob.png">
+                                            <img src="img/content/news-banner.png" alt>
+                                        </picture>
+                                    </div>
+                                    <div class="news-banner__content">
+                                        <h3 class="h2">Подборка:<br>Мебель своими руками</h3>
+                                    </div>
+                                </div>
+                                @@include('_item-news.html', {"nmb": 7})
+                                @@include('_item-news.html', {"nmb": 1})
+                                @@include('_item-news.html', {"nmb": 2})
+                                @@include('_item-news.html', {"nmb": 3})
+                                @@include('_item-news.html', {"nmb": 4})
+                            </div>
+                            @@include("_pagination.html")
+                        </div>
+                    </div>
+                </section>
+                @@include('_other-cat.html', {"title": "<span>Популярные</span> товары", "btn": true})
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

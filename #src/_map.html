@@ -67,6 +67,7 @@
     let geoObjects = [] 
     let activePlacemark 
     let showroomTimeout
+    let maxZoom = 15
     function setmapDefaults(map) {
         map.controls.remove('geolocationControl'); // удаляем геолокацию
         map.controls.remove('searchControl'); // удаляем поиск
@@ -187,8 +188,8 @@
                     let pointsList = showrooms.filter(item => Number(item['city_id']) === id).map(item => item.coords)
                     if (pointsList.length) {
                         showroomsMap.setBounds(ymaps.util.bounds.fromPoints(pointsList), {
-                            checkZoomRange: true
-                        });
+                            checkZoomRange: true,
+                        }).then(function(){ if(showroomsMap.getZoom() > maxZoom) showroomsMap.setZoom(maxZoom)});
                     }  
                     showroomsMap.balloon.close()             
                 })
@@ -203,7 +204,7 @@
                     if (geoObjects[idx]) {
                         if(item.parentNode.classList.contains("active")) {
                             const coords = geoObjects[idx].geometry.getCoordinates(); 
-                            showroomsMap.setCenter(coords, 15);
+                            showroomsMap.setCenter(coords, maxZoom);
                             balloonOnOpen(geoObjects[idx])
                         } else {
                             balloonOnClose(geoObjects[idx])

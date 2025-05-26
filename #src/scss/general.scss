@@ -456,6 +456,7 @@ p a {
 	transform: translate3d(0, 0, 0);
 }
 .swiper3,
+.swiper4,
 .swiper5,
 .swiper6,
 .reviews {
@@ -531,7 +532,7 @@ p a {
 .swiper-scrollbar {
 	height: 2px;
 	border-radius: 4px;
-	background: rgba(var(--primary-color-rgb), .4);
+	background: rgba(var(--primary-color-rgb), 0.4);
 	margin-top: 40px;
 	@media (max-width: $bp1) {
 		margin-top: 24px;
@@ -762,8 +763,9 @@ p a {
 	&__aside {
 		flex: 0 0 32.53%;
 		position: sticky;
-		top: 20px;
+		top: calc(var(--header-height) + 10px);
 		margin-left: 40px;
+		transition: top 0.3s linear;
 	}
 	&__content {
 		flex: 1 1 auto;
@@ -797,6 +799,12 @@ p a {
 				max-width: 100%;
 			}
 		}
+	}
+}
+.header.unshow + .main .page-row__aside {
+	top: 110px;
+	@media (max-width: $bp1) {
+		top: 91px;
 	}
 }
 .page-up {
@@ -1051,21 +1059,17 @@ p a {
 			display: table;
 			width: 100%;
 		}
-		thead {
-			tr {
+		tbody {
+			tr:first-child {
 				background: var(--green-color-light);
-				&:first-child {
-					border-radius: 20px 20px 0 0;
+				border-radius: 20px 20px 0 0;
+				td {
+					font-weight: 600;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
 				}
 			}
-			td {
-				font-weight: 600;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-			}
-		}
-		tbody {
 			tr:last-child {
 				border-radius: 0 0 20px 20px;
 				border-bottom: 1px solid var(--border-color);
@@ -1083,6 +1087,7 @@ p a {
 		}
 		td {
 			font-size: 16px;
+			flex: 1;
 			min-width: 150px;
 			padding: 12px;
 			border-right: 1px solid var(--border-color);
@@ -1127,16 +1132,14 @@ p a {
 				font-size: 14px;
 				padding: 8px 12px;
 			}
-			thead {
+			tbody {
 				tr {
 					&:first-child {
 						border-radius: 16px 16px 0 0;
 					}
-				}
-			}
-			tbody {
-				tr:last-child {
-					border-radius: 0 0 16px 16px;
+					&:last-child {
+						border-radius: 0 0 16px 16px;
+					}
 				}
 			}
 		}

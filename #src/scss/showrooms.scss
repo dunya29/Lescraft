@@ -254,3 +254,46 @@
         }
     }
 }
+.office-p {
+    &__contacts {
+        display: flex;
+        justify-content: space-between;
+        .item-contact {
+
+        }
+    }
+    &__map {
+        height: 380px;
+    }
+}
+.questions {
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    @media (max-width: $bp1) {
+        &__items {
+            gap: 16px;
+            .info-card {
+                padding: 12px 16px;
+                h6 {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    @media (max-width: $bp2) {
+        &__items {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    @media (max-width: $bp4) {
+        &__items {
+            gap: 12px;
+            .info-card h6 {
+                font-size: 12px;
+            }
+        }
+    }
+}
