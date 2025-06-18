@@ -448,7 +448,13 @@
                 <section class="section promo-block">
                     <div class="container">
                         <div class="promo-block__img">
-                            <picture><source srcset="img/promo-bg.webp" type="image/webp"><img src="img/promo-bg.png" alt></picture>
+                            <picture>
+                                <source srcset="img/promo-bg-tablet.webp" media="((min-width: 700.98px) and (max-width: 1030.98px))" type="image/webp">
+                                <source srcset="img/promo-bg-tablet.png" media="((min-width: 700.98px) and (max-width: 1030.98px))">
+                                <source srcset="img/promo-bg.webp" type="image/webp">
+                                <source srcset="img/promo-bg.png">
+                                <img src="img/promo-bg.png" alt="">
+                            </picture>
                         </div>
                         <div class="promo-block__content">
                             <div class="promo-block__date">14.04.2024–21.04.2025</div>

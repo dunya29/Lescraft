@@ -473,7 +473,7 @@
                                 <div class="profile-p__wrapper">
                                     <div class="profile-p__sec">
                                         <div class="profile-p__lbl">Личная информация</div>
-                                        <form class="form profile-p__form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
+                                        <form class="form profile-p__form">
                                             <div class="form__grid form__items">
                                                 <div class="item-form item-form--readonly" aria-readonly="true">
                                                     <span>Телефон</span>
@@ -2352,7 +2352,7 @@
             });
         })
     }
-    function findNearestAddress(clickedCoords, addresses, maxDistance = 0.0001) {
+    function findNearestAddress(clickedCoords, addresses, maxDistance = 0.0005) {
         return addresses.find(addr => {
           const dx = Math.abs(addr.coords[0] - clickedCoords[0]);
           const dy = Math.abs(addr.coords[1] - clickedCoords[1]);
