@@ -1,0 +1,119 @@
+.item-vacancy {
+    padding: 24px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--gray-color-light);
+    &__top {
+        margin-bottom: 20px;
+    }
+    &__city {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--gray-color);
+        margin-top: 8px;
+    }
+    &__details {
+        margin-bottom: 20px;
+    }
+    &__det {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8px;
+        align-items: start;
+        margin-bottom: 4px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 16px;
+            align-self: center;
+        }
+    }
+    &__icon {
+        width: 32px;
+        height: 32px;
+        padding: 8px;
+        border-radius: 6px;
+        background: var(--green-color-light);
+    }
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+    @media (max-width: $bp1) {
+        padding: 20px 24px;
+        &__top {
+            margin-bottom: 12px;
+        }
+        &__details {
+            margin-bottom: 16px;
+        }
+        &__det {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+    @media (max-width: $bp2) {
+        padding: 16px 20px;
+        border-radius: 16px;
+    }
+    @media (max-width: $bp4) {
+        padding: 20px 16px;
+    }
+}
+.vacancies {
+    &__tabs {
+        margin-bottom: 40px;
+    }
+    &__items {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    @media (min-width: $bp1) {
+        &__cards {
+            .info-card {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 24px;
+                align-items: start;
+                .h6 {
+                    align-self: center;
+                }
+            }
+        }
+    }
+    @media (max-width: $bp1) {
+        &__tabs {
+            margin-bottom: 24px;
+        }
+        &__items,
+        &__cards {
+            gap: 16px;
+        }
+    }
+    @media (max-width: $bp2) {
+        &__cards {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    @media (max-width: $bp3) {
+        &__items {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: $bp4) {
+        &__items,
+        &__cards {
+            gap: 12px;
+        }
+    }
+}

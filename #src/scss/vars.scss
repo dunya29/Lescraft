@@ -4,6 +4,7 @@
     --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
     --header-height: 163px;//215px;
     --main-offset: 40px;
+    --breadcrumbs-offset: 54px;
     --font-family: "InterDisplay", sans-serif;
     --font-family-secondary: "FirsNeue", sans-serif;
     --black: #232323;
@@ -38,6 +39,7 @@ $bp7: 350.98px;
         --content-width: 1196px;
         --header-height: 125px;//170px;
         --main-offset: 24px;
+        --breadcrumbs-offset: 48px;
     }
 }
 @media (max-width: $bp2) {

@@ -14,17 +14,29 @@
     z-index: 1000;
     overflow: auto;
     transition: all 0.3s 0.1s ease-out;
+    pointer-events: none!important;
     &.open {
         visibility: visible;
         opacity: 1;
         transition: all 0.3s ease-out;
+        pointer-events:all !important;
+        .modal {
+            pointer-events:all !important;
+        }
         .modal__content {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
             transition: all 0.3s 0.1s ease-out;
         }
     }
-    &__close.btn-cross {
+    &.loading {
+        &:before {
+            top: 50%;
+            background-color: var(--white);
+        }
+    }
+    .btn-cross.modal__close,
+    .btn-cross.dropdown__close {
         width: 32px;
         height: 32px;
         position: relative;
@@ -37,11 +49,20 @@
         top: 40px;
         z-index: 2;
     }
+    .add-info {
+        max-width: 100%;
+        p {
+            font-size: 14px;
+        }
+    }
     &__top {
         margin-bottom: 20px;
         p {
             font-size: 16px;
             margin-top: 16px;
+        }
+        .back-btn {
+            margin-bottom: 20px;
         }
     }
     &__content {
@@ -65,8 +86,14 @@
         grid-template-columns: auto auto;
         gap: 12px;
     }
+    &__scroll {
+        p {
+            font-size: 16px;
+        }
+    }
     @media (max-width: $bp1) {
-        &__close.btn-cross {
+        .btn-cross.modal__close,
+        .btn-cross.dropdown__close {
             width: 26px;
             height: 26px;
             top: 32px;
@@ -100,13 +127,17 @@
                 width: 100%;
             }
         }
-         &__close.modal__close.btn-cross {
+        .btn-cross.modal__close,
+        .btn-cross.dropdown__close {
+            width: 20px;
+            height: 20px;
+            top: 24px;
             right: calc((100% - var(--content-width)) / 2);
         }
         &__content {
             max-width: 100% !important;
             max-height: 100%;
-            padding: 24px 5px 0;
+            padding: 24px 4px 0;
             border-radius: 20px 20px 0 0;
             margin-bottom: 0;
             display: flex;
@@ -125,13 +156,8 @@
         &__scroll {
             flex: 1 1 auto;
             padding-bottom: 24px;
+            overflow-x: hidden;
             overflow-y: auto;
-        }
-        &__close.btn-cross {
-            width: 20px;
-            height: 20px;
-            top: 24px;
-            right: 50px;
         }
         &__btns {
             width: 100%;
@@ -143,12 +169,27 @@
         }
     }
     @media (max-width: $bp5) {
-        &__close.modal__close.btn-cross {
+        .btn-cross.modal__close,
+        .btn-cross.dropdown__close {
             right: var(--container-offset);
         }
-        &__top, &__scroll {
-            padding-left: var(--container-offset);
-            padding-right: var(--container-offset);
+        .custom-scroll {
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+                width: 0;
+                height: 0;
+            }
+        }
+        &__top,
+        &__scroll {
+            padding-left: calc(var(--container-offset) - 4px);
+            padding-right: calc(var(--container-offset) - 4px);
+        }
+        &__top {
+            .back-btn {
+                margin-bottom: 12px;
+            }
         }
         &__btns {
             grid-template-columns: 1fr;
@@ -163,23 +204,27 @@
 .fancy-modal {
     display: block;
     background: var(--white);
-    .modal__close.btn-cross {
+    z-index: 1001;
+    .btn-cross.modal__close {
         top: 0 !important;
         right: 0 !important;
     }
     &__content {
         height: 100%;
+        max-width: var(--content-width);
         min-height: 200px;
-        max-width: 1061px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         position: relative;
     }
     &__mainswiper {
+        width: 100%;
+        max-width: 1061px;
         flex: 1 1 auto;
         display: flex;
         position: relative;
+        margin: 0 auto;
         .swiper {
             width: 100%;
             height: 100%;
@@ -233,14 +278,14 @@
         }
     }
     @media (max-width: $bp1) {
-        &__content {
+        &__mainswiper {
             max-width: 979px;
         }
     }
     @media (max-width: $bp3) {
-        padding: 32px var(--container-offset);
+        padding: 20px var(--container-offset);
         overflow: auto;
-        &__content {
+        &__mainswiper {
             max-width: var(--content-width);
         }
     }
@@ -252,21 +297,22 @@
     @media (max-width: $bp6) {
         &__mainswiper,
         &__thumbswiper {
+            width: calc(100% + (var(--container-offset) * 2));
+            max-width: calc(100% + (var(--container-offset) * 2));
             margin-left: calc(var(--container-offset) * -1);
             margin-right: calc(var(--container-offset) * -1);
         }
         &__thumbswiper {
-            max-width: calc((100% + 2 * var(--container-offset)));
             padding: 0 var(--container-offset);
             overflow: hidden;
             .swiper {
                 overflow: visible;
             }
             .nav-btn--prev {
-                left: var(--container-offset);
+                left: 0;
             }
             .nav-btn--next {
-                right: var(--container-offset);
+                right: 0;
             }
         }
     }
@@ -336,6 +382,194 @@
         }
     }
 }
+.showrooms-modal {
+    .btn-cross.modal__close {
+        right: var(--container-offset) !important;
+    }
+}
+.log-modal {
+    .tabs-scroll {
+        margin-bottom: 16px;
+    }
+    input.required + .item-form__placeholder {
+        &:after {
+            content: none;
+        }
+    }
+    &__reg,
+    &__forget-password {
+        font-weight: 600;
+        button {
+            color: var(--green-color);
+        }
+    }
+    &__reg {
+        color: var(--gray-color);
+        margin-top: 24px;
+    }
+    &__forget-password {
+        text-align: right;
+    }
+    @media (max-width: $bp1) {
+        &__reg {
+            margin-top: 16px;
+        }
+    }
+    @media (max-width: $bp3) {
+        .tabs-scroll {
+            margin-bottom: 12px;
+        }
+    }
+}
+.address-modal {
+    .modal__content {
+        max-width: 1094px;
+        overflow: visible;
+    }
+    .form__footer .main-btn {
+        width: 100%;
+    }
+    .js-edit-address {
+        display: none;
+    }
+    &.edit {
+        .js-add-address {
+            display: none;
+        }
+        .js-edit-address {
+            display: inline-flex;
+        }
+    }
+    &__row {
+        display: grid;
+        grid-template-columns: 1.37fr 1fr;
+        gap: 20px;
+    }
+    &__mapBtn {
+        display: none;
+    }
+    @media (max-width: $bp1) {
+        .modal__content {
+            max-width: 1034px;
+        }
+        &__row {
+            grid-template-columns: 1.2fr 1fr;
+        }
+    }
+    @media (max-width: $bp2) {
+        .modal__content {
+            max-width: var(--content-width);
+        }
+    }
+    @media (max-width: $bp3) {
+        &__row {
+            display: block;
+        }
+        &__mapBtn {
+            width: 100%;
+            display: flex;
+            margin-bottom: 12px;
+            svg {
+                stroke: var(--primary-color);
+                margin: 0 8px 0 0;
+            }
+        }
+    }
+}
+#address-map-modal {
+    @media (min-width: $bp3) {
+        height: 100%;
+        padding: 0;
+        position: static;
+        background: none;
+        visibility: visible;
+        opacity: 1;
+        .modal__close.btn-cross,
+        .modal__top {
+            display: none;
+        }
+        .modal__content {
+            max-width: 100%;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            background: none;
+            transform: none;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    @media (max-width: $bp3) {
+        padding: 0;
+        height: 100dvh;
+        .modal__content {
+            height: 100%;
+            padding-bottom: 8px;
+            border-radius: 0;
+        }
+    }
+}
+.quickView-modal {
+    .modal__content {
+        max-width: 1372px;
+    }
+    .product__preview {
+        grid-area: 1/1/2/2;
+    }
+    .product__details {
+        max-height: 362px;
+        overflow: hidden;
+        .prod-details {
+            height: 100%;
+            padding-right: 10px;
+            overflow-y: auto;
+        }
+    }
+    &__inner {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1.1fr;
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+    @media (max-width: $bp1) {
+        .modal__content {
+            max-width: 1046px;
+        }
+        .product__details {
+            max-height: 296px;
+        }
+        &__inner {
+            grid-template-columns: 1.05fr 0.82fr 1.11fr;
+            gap: 24px 16px;
+            margin-bottom: 24px;
+        }
+    }
+    @media (max-width: $bp3) {
+        .total-product {
+            grid-column: 1/3;
+        }
+        &__inner {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    @media (max-width: $bp4) {
+        .total-product {
+            grid-column: 1/2;
+        }
+        .product__details {
+            max-height: 192px;
+        }
+        &__inner {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+.showrooms-modal {
+    .modal__top {
+        margin-bottom: 0;
+    }
+}
 .success-modal,
 .error-modal {
     h3 {
@@ -378,6 +612,7 @@
                 background-size: 20px 20px;
             }
         }
+        .main-btn,
         .stroke-btn {
             width: 100%;
             display: flex;
@@ -391,6 +626,11 @@
             background-color: var(--green-color-light);
         }
     }
+    &--log {
+        h3:before {
+            content: none;
+        }
+    }
 }
 .error-modal {
     h3 {
@@ -400,9 +640,58 @@
         }
     }
 }
-.showrooms-modal {
-    .modal__close.btn-cross {
-        right: var(--container-offset) !important;
+.success-popup {
+    position: fixed;
+    bottom: 40px;
+    right: var(--container-offset);
+    width: calc(100% - (var(--container-offset) * 2));
+    max-width: 323px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 8px;
+    background: var(--green-color-light);
+    z-index: 400;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s linear;
+    &:before {
+        content: "";
+        display: block;
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        background: url(../img/svg/success.svg) center/contain no-repeat;
+        margin-right: 8px;
+    }
+    &.show {
+        visibility: visible;
+        opacity: 1;
+    }
+    &__content {
+        p {
+            font-size: 14px;
+            font-weight: 400;
+            margin-top: 4px;
+        }
+    }
+    @media (max-width: $bp3) {
+        bottom: 68px;
+    }
+}
+.resend-pass {
+    &__btn {
+        &:disabled,
+        &.disabled {
+            color: var(--gray-color);
+        }
+    }
+    &__timeout {
+        display: contents;
+        color: var(--gray-color);
+        &.hidden {
+            display: none;
+        }
     }
 }
 .cart-popup {
@@ -589,11 +878,6 @@
         left: var(--container-offset);
     }
 }
-.showrooms-modal {
-    .modal__top {
-        margin-bottom: 0;
-    }
-}
 .tippy-content {
     font-size: 14px;
     color: var(--black);
@@ -606,7 +890,7 @@
         max-width: 260px;
         height: auto;
         left: auto;
-        right: auto;;
+        right: auto;
         padding: 8px 12px;
         border-radius: 8px;
         background: var(--green-color-light);
@@ -626,7 +910,7 @@
             left: 50%;
             transform: translate(-50%, -100%) rotate(180deg);
         }
-        .modal__close.btn-cross.btn-cross {
+        .btn-cross.modal__close {
             display: none;
         }
         .modal__content {

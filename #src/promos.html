@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Акции"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Акции"})
+                    </div>
+                </div>
+                <!--promos-p-->
+                <section class="section promos-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Акции</h1>
+                        </div>
+                        <div class="promos-p__wrapper">
+                            <div class="promos-p__items">
+                                @@include('_item-promo.html', {"nmb": 1})
+                                @@include('_item-promo.html', {"nmb": 2})
+                                @@include('_item-promo.html', {"nmb": 3})
+                                @@include('_item-promo.html', {"nmb": 4})
+                                @@include('_item-promo.html', {"nmb": 5})
+                                @@include('_item-promo.html', {"nmb": 6})
+                                @@include('_item-promo.html', {"nmb": 7})
+                                @@include('_item-promo.html', {"nmb": 1})
+                                @@include('_item-promo.html', {"nmb": 2})
+                                @@include('_item-promo.html', {"nmb": 3})
+                            </div>
+                            @@include("_pagination.html")
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

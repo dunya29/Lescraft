@@ -1,0 +1,39 @@
+<!--item-order-->
+@@if(inStock === true){
+<div class="item-order item-order--inStock js-prodBlock" data-id="173534" data-animation="fadeUp">
+    }
+    @@if(inStock === false){
+    <div class="item-order item-order--outOfStock js-prodBlock" data-id="173534" data-animation="fadeUp">
+        }
+        <a href="#" class="media-contain">
+            <img src="img/content/product-1-sm.png" alt="Брусок декоративный скошенный 19 × 70 × 2 200 мм">
+        </a>
+        <div class="item-order__main">
+            <h5><a href="#">Брусок декоративный скошенный 19&nbsp;×&nbsp;70&nbsp;×&nbsp;2&nbsp;200 мм</a></h5>
+            <div class="item-order__info">1 уп = 10 шт/192 м²</div>
+            <div class="item-order__art">Артикул: 171916</div>
+        </div>
+        <div class="item-order__details">
+            <div class="item-order__count">12 шт</div>
+            <div class="product-price item-order__total">
+                <span class="rub h4 product-price__current">18 000</span>
+                <del class="rub product-price__old">22 200</del>
+            </div>
+        </div>
+        @@if(inStock === true) {
+        <div class="product-action">
+            <div class="quantity" data-stock="45">
+                <button type="button" class="quantity__btn js-minus disabled" aria-label="Уменьшить количество на 1"></button>
+                <input type="number" class="quantity__count" value="1" aria-label="Количество">
+                <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
+            </div>
+            <button type="button" class="btn main-btn js-add-to-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
+                В корзину
+            </button>
+        </div>
+        }
+        @@if(inStock === false) {
+        <button class="btn stroke-btn mod-open-btn" data-modal="stock-modal">Узнать о поступлении</button>
+        }
+    </div>

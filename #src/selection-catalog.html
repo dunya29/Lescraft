@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Товары для дачи"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        <!--breadcrumbs-->
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a href="#" class="link">Главная</a></li>
+                                <li><a href="#" class="link">Каталог</a></li>
+                                <li><a href="#" class="link">Товары для дачи</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--subcatalog-->
+                <section class="section selection-cat">
+                    <div class="mb-60 selection-banner">
+                        <div class="selection-banner__inner">
+                            <div class="selection-banner__content">
+                                <h1 class="text-l">Товары для дачи</h1>
+                            </div>
+                            <div class="selection-banner__img">
+                                <div class="media-contain">
+                                    <img src="img/content/selection-catalog.png" alt>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--catalog-->
+                    <div class="catalog">
+                        <div class="container">
+                            <!--catalog-top-->
+                            <div class="catalog-top">
+                                <div class="catalog-top__action">
+                                    <div class="dropdown radio-select">
+                                        <div class="dropdown__header">
+                                            <span class="mob-hidden">По умолчанию</span>
+                                            <div class="dropdown__icon" aria-label="Развернуть/Свернуть">
+                                                <svg class="mob-hidden"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                                <svg class="desktop-hidden"><use xlink:href="img/svg/sprite.svg#sort"></use></svg>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown__body">
+                                            <div class="modal">
+                                                <div class="modal__content">
+                                                    <button type="button" class="btn-cross modal__close"></button>
+                                                    <div class="modal__top">
+                                                        <h3>Сортировать</h3>
+                                                    </div>
+                                                    <div class="custom-scroll modal__scroll">
+                                                        <div class="dropdown__options">
+                                                            <label>
+                                                                <input type="radio" name="f-sort" checked>
+                                                                <span>По умолчанию</span>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="f-sort">
+                                                                <span>По возрастанию цены</span>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="f-sort">
+                                                                <span>По убыванию цены</span>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="f-sort">
+                                                                <span>По названию (А-Я)</span>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="f-sort">
+                                                                <span>По названию (Я-А)</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="catalog-top__view-btns">
+                                        <button class="catalog-top__view-btn active" data-view="grid" aria-label="Отобразить в виде сетки">
+                                            <svg><use xlink:href="img/svg/sprite.svg#grid"></use></svg>
+                                        </button>
+                                        <button class="catalog-top__view-btn" data-view="tile" aria-label="Отобразить в виде плитки">
+                                            <svg><use xlink:href="img/svg/sprite.svg#tile"></use></svg>
+                                        </button>
+                                        <button class="catalog-top__view-btn" data-view="list" aria-label="Отобразить в виде списка">
+                                            <svg><use xlink:href="img/svg/sprite.svg#list"></use></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="js-prodWrapper">
+                                <div class="catalog__items" data-catalog-view="grid">
+                                    @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "1", "inStock": true})
+                                    @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                                    @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "3", "inStock": false})
+                                    @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+                                    @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "5", "inStock": true})
+                                    @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
+                                    @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "4", "inStock": false})
+                                </div>
+                                @@include("_pagination.html")
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                @@include('_other-cat.html', {"title": "Вы недавно смотрели", "btn": false})
+                @@include("_main-form.html")
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

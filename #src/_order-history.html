@@ -1,0 +1,35 @@
+<!--order-hist-->
+<div class="accordion no-close order-hist">
+    <div class="accordion__header order-hist__header">
+        <div class="order-hist__main">
+            <h4>Заказ № 1337 от 01.01.2025</h4>
+            <span class="order-hist__info">3 товара на сумму 36 000 ₽</span>
+        </div>
+        <div class="order-status order-status--@@status">@@statusTxt 04.01.2025</div>
+        <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
+            <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+        </div>
+    </div>
+    <div class="accordion__body">
+        <div class="accordion__content order-hist__content">
+            <div class="js-prodWrapper order-hist__items">
+                @@include("_item-order-history.html", {"inStock": false})
+                @@include("_item-order-history.html", {"inStock": true})
+                @@include("_item-order-history.html", {"inStock": true})
+            </div>
+            <div class="order-hist__bottom">
+                <button type="button" class="btn main-btn main-btn--link">
+                    Повторить заказ
+                    <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                </button>
+                <div class="order-hist__total">
+                    <span class="h6 order-hist__total-lbl">Итого:</span>
+                    <div class="order-hist__price">
+                        <span class="rub h4 order-hist__price-curr">54 499,78</span>
+                        <del class="rub h6 order-hist__price-old">67 200</del>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

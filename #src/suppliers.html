@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Для поставщиков"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Для поставщиков"})
+                    </div>
+                </div>
+                <!--suppliers-p-->
+                <section class="section info-block suppliers-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Для&nbsp;поставщиков</h1>
+                        </div>
+                        <div class="info-block__row">
+                            <div class="info-block__content">
+                                <div class="page-content">
+                                    <p>«Лескрафт» — крупнейший на&nbsp;Юге&nbsp;России поставщик строительных и&nbsp;отделочных материалов из&nbsp;натуральной древесины,
+                                        а&nbsp;также специализированного крепежа и&nbsp;лакокрасочных материалов.</p>
+                                    <p>Компания существует на&nbsp;рынке с&nbsp;2008&nbsp;года и&nbsp;на&nbsp;сегодняшний
+                                        день занимает лидирующие позиции в&nbsp;отрасли на&nbsp;территории:</p>
+                                    <ul>
+                                        <li>Краснодарского края;</li>
+                                        <li>Ростовской области;</li>
+                                        <li>Ставропольского края;</li>
+                                        <li>Республики Крым;</li>
+                                    </ul>
+                                </div>
+                                <a href="#" type="button" class="btn main-btn main-btn--link">
+                                    Заполнить анкету
+                                    <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                                </a>
+                            </div>
+                            <div class="info-block__banner">
+                                <div class="media-cover">
+                                    <img src="img/content/suppliers-banner.png" alt="">
+                                </div>
+                                <p class="h1">Мужик знает где&nbsp;брать дерево</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--main-advants-->
+                <section class="section main-advants" data-animation="fadeUp">
+                    <div class="container">
+                        <div class="sec-top"><h2>Наши <span>преимущества</span></h2></div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/safety.svg" alt>
+                                        </div>
+                                        <h4>Надёжность и качество</h4>
+                                        <div class="info-card__text">
+                                            <p>Более 10 лет компания является дилером крупнейших российских и зарубежных производителей. Мы тщательно отбираем поставщиков,
+                                                проверяем
+                                                продукцию на&nbsp;соответствие ГОСТу и ТУ перед добавлением в&nbsp;ассортимент и&nbsp;при&nbsp;каждой
+                                                отгрузке.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/tech-equipment.svg" alt>
+                                        </div>
+                                        <h4>Техническая оснащённость</h4>
+                                        <div class="info-card__text">
+                                            <p>Склады компании оснащены специализированным стеллажным оборудованием&nbsp;и
+                                                профессиональной спецтехникой. В&nbsp;каждом подразделении оборудован торговый зал&nbsp;и
+                                                представлены образцы реализуемой продукции.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/assortment.svg" alt>
+                                        </div>
+                                        <h4>Широкий ассортимент</h4>
+                                        <div class="info-card__text">
+                                            <p>Компания представлена во&nbsp;всех крупных городах ЮФО, СКФО и&nbsp;респ. Крым: десять обособленных подразделений с&nbsp;общей
+                                                складской
+                                                площадью 15 000&nbsp;м&nbsp;кв., в&nbsp;ассортименте
+                                                более 45&nbsp;товарных групп и&nbsp;12000&nbsp;SKU.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/delivery.svg" alt>
+                                        </div>
+                                        <h4>Развитие и&nbsp;сервис</h4>
+                                        <div class="info-card__text">
+                                            <p>Ежегодно мы&nbsp;увеличиваем свой оборот и&nbsp;товарную матрицу, расширяем географию
+                                                присутствия, используем современные каналы продаж и&nbsp;продвижения. В&nbsp;2021&nbsp;году
+                                                запущено собственное столярное производство.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

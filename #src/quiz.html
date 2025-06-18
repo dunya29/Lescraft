@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Анкета"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Анкета"})
+                    </div>
+                </div>
+                <!--quiz-p-->
+                <section class="section quiz-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Анкета</h1>
+                        </div>
+                        <form class="form quiz-form">
+                            <div class="quiz-form__sec active" data-step="1">
+                                <div class="quiz-form__top">
+                                    <h3>Какие товары вы поставляете?</h3>
+                                    <p class="h3 quiz-form__step">Шаг 1 / 2</p>
+                                    <p>Выберите одну или несколько категорий</p>
+                                </div>
+                                <div class="quiz-form__items">
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "1", "checkbox": true, "title": "Фанера ФК&nbsp;берёзовая"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "2", "checkbox": true, "title": "Фанера ФСФ&nbsp;берёзовая"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "3", "checkbox": true, "title": "Фанера ФСФ&nbsp;хвойная"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "4", "checkbox": true, "title": "Ламинированная фанера"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "5", "checkbox": true, "title": "OSB-3 (ОСП)"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "6", "checkbox": true, "title": "ДСП"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "7", "checkbox": true, "title": "ДВП"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "8", "checkbox": true, "title": "ЛДСП"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "9", "checkbox": true, "title": "ЛДМФ"})
+                                    </label>
+                                    <label class="category-check">
+                                        <input type="checkbox">
+                                        @@include('_item-subcat.html', {"nmb": "10", "checkbox": true, "title": "МДФ"})
+                                    </label>
+                                    <label class="category-check category-check--inp">
+                                        <input type="checkbox">
+                                        <!--item-cat-->
+                                        <div class="item-cat">
+                                            <div class="item-cat__top">
+                                                <h4>Свой вариант</h4>
+                                                <span class="item-cat__check"></span>
+                                            </div>
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" data-name="category-name" placeholder=" ">
+                                                    <div class="item-form__placeholder">Ваш вариант</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <button type="button" class="btn main-btn" data-to-step="2">Далее</button>
+                                <div data-error=""></div>
+                            </div>
+                            <div class="quiz-form__sec" data-step="2">
+                                <div class="quiz-form__top">
+                                    <h3>Заполните данные о поставщике</h3>
+                                    <p class="h3 quiz-form__step">Шаг 2 / 2</p>
+                                </div>
+                                <div class="width-less">
+                                    <div class="form__group">
+                                        <div class="form__lbl">Информация о компании</div>
+                                        <div class="form__items form__grid">
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" " class="required">
+                                                    <div class="item-form__placeholder">Название компании</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
+                                            </div>
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" " class="required">
+                                                    <div class="item-form__placeholder">ИНН</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
+                                            </div>
+                                            <div class="item-form item-form--mob-span-2">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" " class="required">
+                                                    <div class="item-form__placeholder">Email</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form__group">
+                                        <div class="form__lbl">Контактное лицо</div>
+                                        <div class="form__items form__grid">
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" " class="required">
+                                                    <div class="item-form__placeholder">ФИО</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
+                                            </div>
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="tel" placeholder=" " class="required" inputmode="text">
+                                                    <div class="item-form__placeholder">Телефон</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form__group">
+                                        <div class="form__lbl">Город производства</div>
+                                        <div class="form__items">
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" ">
+                                                    <div class="item-form__placeholder">Введите город</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form__group">
+                                        <div class="form__lbl">Какое количество товаров вы готовы поставлять нам ежемесячно?</div>
+                                        <div class="form__items">
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" ">
+                                                    <div class="item-form__placeholder">Введите количество в кубометрах</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form__group">
+                                        <div class="form__lbl">Прикрепите коммерческое предложение</div>
+                                        <p>В коммерческом предложении необходимо указать цены с&nbsp;НДС/без НДС, цена на&nbsp;франко-склад поставщика или&nbsp;франко-склад
+                                            покупателя, формат упаковки, должна стоять подпись ответственного лица и&nbsp;присутствовать печать</p>
+                                        <div class="item-form file-form">
+                                            <div class="file-form__info">
+                                                <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                                            </div>
+                                            <label>
+                                                <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                                                <span>Перетащите, или <span>выберите файл</span></span>
+                                            </label>
+                                            <div class="file-form__items"></div>
+                                            <span data-error></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn main-btn main-btn--link">
+                                    Отправить
+                                    <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

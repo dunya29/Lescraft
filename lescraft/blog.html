@@ -107,10 +107,10 @@
                     </div>
                     <div class="header__actions">
                         <a href="#" class="header__fav" aria-label="Перейти в избранные"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg></a>
-                        <!--<button type="button" class="header__profile mod-open-btn" aria-label="Войти" data-modal="login-modal">
+                        <button type="button" class="header__profile mod-open-btn" aria-label="Войти" data-modal="log-modal">
                             <svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg>
                         </button>
-                         <a href="#" class="header__profile" aria-label="Личный кабинет"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></a>  -->
+                        <!-- <a href="#" class="header__profile" aria-label="Личный кабинет"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></a>  -->
                         <a href="#" class="header__cart" aria-label="Перейти в корзину">
                             <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                             <span>6</span>
@@ -148,9 +148,9 @@
                                     </button>
                                     <nav class="custom-scroll main-menu__subnav">
                                         <ul>
-                                            <li class="link-btn has-icon" data-level="2">
+                                            <li class="link-btn " >
                                                 <a href="#" class="main-menu__header">Фанера и древесные плиты</a>
-                                                <div class="main-menu__body">
+                                                <!-- <div class="main-menu__body">
                                                     <button type="button" class="main-menu__body-header" data-back-to-level="2">
                                                         <svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg>
                                                         Фанера и древесные плиты
@@ -174,7 +174,7 @@
                                                             <li class="link-btn"><a href="#">Рогнеда</a></li>
                                                         </ul>
                                                     </nav>
-                                                </div>
+                                                </div> -->
                                             </li>
                                             <li class="link-btn has-icon" data-level="2">
                                                 <a href="#" class="main-menu__header">Отделочные материалы</a>
@@ -653,7 +653,7 @@
                             </div>
                             <!--page-row__aside-->
                             <aside class="page-row__aside">
-                                <div class="blog-anchors">
+                                <div class="nav-anchors">
                                     <ul>
                                         <li><a class="js-anchor" href="#stroganniy-brus">Строганный брус — что это</a></li>
                                         <li><a class="js-anchor" href="#eco-material">Экологичные материалы</a></li>
@@ -695,7 +695,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <!--card-->
-<article class="card js-prodBlock" data-id="123">
+<article class="card js-prodBlock" data-id="123" data-link="/product.html">
     <div class="card__preview">
         <div class="product-lbls">
             
@@ -710,15 +710,43 @@
         </a>
         
         
+        <button type="button" class="btn main-btn card__quick-view" aria-label="Быстрый просмотр">
+            Быстрый просмотр
+            <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+        </button>
     </div>
     <div class="card__inner">
         <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
+            <div class="card__main">
+                
+                <div class="product-status in-stock">Доступно сегодня</div>
+                
+                
+                <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+                <div class="card__info">1 уп = 10 шт/192 м²</div>
+            </div>
+            <dl class="card__details">
+                <div class="card__details-item">
+                    <dt>Материал:</dt>
+                    <dd>Сосна</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Вид товара:</dt>
+                    <dd>Вагонка</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Высота:</dt>
+                    <dd>70 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Ширина:</dt>
+                    <dd>19 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Длина:</dt>
+                    <dd>2000 см</dd>
+                </div>
+            </dl>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -734,12 +762,18 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
+            <div class="card__btns">
+                <button type="button" class="product-view tippy" aria-label="Быстрый просмотр">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+                    <p>Быстрый просмотр</p>
+                </button>
+                
+                
+                <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                
+            </div>
         </div>
         <div class="product-action">
             <div class="quantity" data-stock="45">
@@ -751,13 +785,17 @@
                 <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                 В корзину
             </button>
+            <a href="#" class="btn stroke-btn js-in-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                Товар в корзине
+            </a>
         </div>
     </div>
 </article>
                 </div>
                 <div class="swiper-slide">
                     <!--card-->
-<article class="card js-prodBlock" data-id="123">
+<article class="card js-prodBlock" data-id="123" data-link="/product.html">
     <div class="card__preview">
         <div class="product-lbls">
             
@@ -772,15 +810,43 @@
         </a>
         
         
+        <button type="button" class="btn main-btn card__quick-view" aria-label="Быстрый просмотр">
+            Быстрый просмотр
+            <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+        </button>
     </div>
     <div class="card__inner">
         <div class="card__header">
-            
-            
-            <div class="product-status out-of-stock">Ожидает поступления</div>
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
+            <div class="card__main">
+                
+                
+                <div class="product-status out-of-stock">Ожидает поступления</div>
+                
+                <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+                <div class="card__info">1 уп = 10 шт/192 м²</div>
+            </div>
+            <dl class="card__details">
+                <div class="card__details-item">
+                    <dt>Материал:</dt>
+                    <dd>Сосна</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Вид товара:</dt>
+                    <dd>Вагонка</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Высота:</dt>
+                    <dd>70 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Ширина:</dt>
+                    <dd>19 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Длина:</dt>
+                    <dd>2000 см</dd>
+                </div>
+            </dl>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -796,12 +862,18 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
+            <div class="card__btns">
+                <button type="button" class="product-view tippy" aria-label="Быстрый просмотр">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+                    <p>Быстрый просмотр</p>
+                </button>
+                
+                
+                <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                
+            </div>
         </div>
         <div class="product-action">
             <div class="quantity" data-stock="45">
@@ -813,13 +885,17 @@
                 <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                 В корзину
             </button>
+            <a href="#" class="btn stroke-btn js-in-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                Товар в корзине
+            </a>
         </div>
     </div>
 </article>
                 </div>
                 <div class="swiper-slide">
                     <!--card-->
-<article class="card js-prodBlock" data-id="123">
+<article class="card js-prodBlock" data-id="123" data-link="/product.html">
     <div class="card__preview">
         <div class="product-lbls">
             
@@ -834,15 +910,43 @@
         </a>
         
         
+        <button type="button" class="btn main-btn card__quick-view" aria-label="Быстрый просмотр">
+            Быстрый просмотр
+            <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+        </button>
     </div>
     <div class="card__inner">
         <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
+            <div class="card__main">
+                
+                <div class="product-status in-stock">Доступно сегодня</div>
+                
+                
+                <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+                <div class="card__info">1 уп = 10 шт/192 м²</div>
+            </div>
+            <dl class="card__details">
+                <div class="card__details-item">
+                    <dt>Материал:</dt>
+                    <dd>Сосна</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Вид товара:</dt>
+                    <dd>Вагонка</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Высота:</dt>
+                    <dd>70 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Ширина:</dt>
+                    <dd>19 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Длина:</dt>
+                    <dd>2000 см</dd>
+                </div>
+            </dl>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -858,12 +962,18 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
+            <div class="card__btns">
+                <button type="button" class="product-view tippy" aria-label="Быстрый просмотр">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+                    <p>Быстрый просмотр</p>
+                </button>
+                
+                
+                <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                
+            </div>
         </div>
         <div class="product-action">
             <div class="quantity" data-stock="45">
@@ -875,13 +985,17 @@
                 <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                 В корзину
             </button>
+            <a href="#" class="btn stroke-btn js-in-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                Товар в корзине
+            </a>
         </div>
     </div>
 </article>
                 </div>
                 <div class="swiper-slide">
                     <!--card-->
-<article class="card js-prodBlock" data-id="123">
+<article class="card js-prodBlock" data-id="123" data-link="/product.html">
     <div class="card__preview">
         <div class="product-lbls">
             
@@ -896,15 +1010,43 @@
         </a>
         
         
+        <button type="button" class="btn main-btn card__quick-view" aria-label="Быстрый просмотр">
+            Быстрый просмотр
+            <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+        </button>
     </div>
     <div class="card__inner">
         <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
+            <div class="card__main">
+                
+                <div class="product-status in-stock">Доступно сегодня</div>
+                
+                
+                <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+                <div class="card__info">1 уп = 10 шт/192 м²</div>
+            </div>
+            <dl class="card__details">
+                <div class="card__details-item">
+                    <dt>Материал:</dt>
+                    <dd>Сосна</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Вид товара:</dt>
+                    <dd>Вагонка</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Высота:</dt>
+                    <dd>70 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Ширина:</dt>
+                    <dd>19 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Длина:</dt>
+                    <dd>2000 см</dd>
+                </div>
+            </dl>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -920,12 +1062,18 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
+            <div class="card__btns">
+                <button type="button" class="product-view tippy" aria-label="Быстрый просмотр">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+                    <p>Быстрый просмотр</p>
+                </button>
+                
+                
+                <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                
+            </div>
         </div>
         <div class="product-action">
             <div class="quantity" data-stock="45">
@@ -937,13 +1085,17 @@
                 <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                 В корзину
             </button>
+            <a href="#" class="btn stroke-btn js-in-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                Товар в корзине
+            </a>
         </div>
     </div>
 </article>
                 </div>
                 <div class="swiper-slide">
                     <!--card-->
-<article class="card js-prodBlock" data-id="123">
+<article class="card js-prodBlock" data-id="123" data-link="/product.html">
     <div class="card__preview">
         <div class="product-lbls">
             
@@ -958,15 +1110,43 @@
         </a>
         
         
+        <button type="button" class="btn main-btn card__quick-view" aria-label="Быстрый просмотр">
+            Быстрый просмотр
+            <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+        </button>
     </div>
     <div class="card__inner">
         <div class="card__header">
-            
-            
-            <div class="product-status out-of-stock">Ожидает поступления</div>
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
+            <div class="card__main">
+                
+                
+                <div class="product-status out-of-stock">Ожидает поступления</div>
+                
+                <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+                <div class="card__info">1 уп = 10 шт/192 м²</div>
+            </div>
+            <dl class="card__details">
+                <div class="card__details-item">
+                    <dt>Материал:</dt>
+                    <dd>Сосна</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Вид товара:</dt>
+                    <dd>Вагонка</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Высота:</dt>
+                    <dd>70 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Ширина:</dt>
+                    <dd>19 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Длина:</dt>
+                    <dd>2000 см</dd>
+                </div>
+            </dl>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -982,12 +1162,18 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
+            <div class="card__btns">
+                <button type="button" class="product-view tippy" aria-label="Быстрый просмотр">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+                    <p>Быстрый просмотр</p>
+                </button>
+                
+                
+                <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                
+            </div>
         </div>
         <div class="product-action">
             <div class="quantity" data-stock="45">
@@ -999,13 +1185,17 @@
                 <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                 В корзину
             </button>
+            <a href="#" class="btn stroke-btn js-in-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                Товар в корзине
+            </a>
         </div>
     </div>
 </article>
                 </div>
                 <div class="swiper-slide">
                     <!--card-->
-<article class="card js-prodBlock" data-id="123">
+<article class="card js-prodBlock" data-id="123" data-link="/product.html">
     <div class="card__preview">
         <div class="product-lbls">
             
@@ -1020,15 +1210,43 @@
         </a>
         
         
+        <button type="button" class="btn main-btn card__quick-view" aria-label="Быстрый просмотр">
+            Быстрый просмотр
+            <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+        </button>
     </div>
     <div class="card__inner">
         <div class="card__header">
-            
-            <div class="product-status in-stock">Доступно сегодня</div>
-            
-            
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
+            <div class="card__main">
+                
+                <div class="product-status in-stock">Доступно сегодня</div>
+                
+                
+                <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+                <div class="card__info">1 уп = 10 шт/192 м²</div>
+            </div>
+            <dl class="card__details">
+                <div class="card__details-item">
+                    <dt>Материал:</dt>
+                    <dd>Сосна</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Вид товара:</dt>
+                    <dd>Вагонка</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Высота:</dt>
+                    <dd>70 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Ширина:</dt>
+                    <dd>19 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Длина:</dt>
+                    <dd>2000 см</dd>
+                </div>
+            </dl>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -1044,12 +1262,18 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            
-            
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            
+            <div class="card__btns">
+                <button type="button" class="product-view tippy" aria-label="Быстрый просмотр">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+                    <p>Быстрый просмотр</p>
+                </button>
+                
+                
+                <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                
+            </div>
         </div>
         <div class="product-action">
             <div class="quantity" data-stock="45">
@@ -1061,6 +1285,10 @@
                 <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                 В корзину
             </button>
+            <a href="#" class="btn stroke-btn js-in-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                Товар в корзине
+            </a>
         </div>
     </div>
 </article>
@@ -1336,6 +1564,13 @@
         </div>
     </div>
 </div>
+<!--success-popup-->
+<div class="success-popup">
+    <div class="success-popup__content">
+        <span class="h6">Вход выполнен</span>
+        <p>Состав корзины мог измениться проверьте своитовары</p>
+    </div>
+</div>
 <!--city-confirm-modal-->
 <div class="custom-scroll modal city-confirm-modal" id="city-confirm-modal">
     <div class="modal__content">
@@ -1419,24 +1654,24 @@
                     <div class="form__items">
                         <div class="item-form error">
                             <div class="item-form__inp">
-                                <input type="text" id="name" name="name" placeholder=" " class="required">
-                                <label for="name" class="item-form__placeholder">Имя</label>
+                                <input type="text" name="name" placeholder=" " class="required">
+                                <div class="item-form__placeholder">Имя</div>
                                 <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                             </div>
                             <span data-error>Заполните поле</span>
                         </div>
                         <div class="item-form">
                             <div class="item-form__inp">
-                                <input type="text" id="surname" placeholder=" " name="surname">
-                                <label for="surname" class="item-form__placeholder">Фамилия</label>
+                                <input type="text" placeholder=" " name="surname">
+                                <div class="item-form__placeholder">Фамилия</div>
                                 <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                             </div>
                             <span data-error></span>
                         </div>
                         <div class="item-form">
                             <div class="item-form__inp">
-                                <input type="text" id="email" placeholder=" " name="email" class="required">
-                                <label for="email" class="item-form__placeholder">Email</label>
+                                <input type="text" placeholder=" " name="email" class="required">
+                                <div class="item-form__placeholder">Email</div>
                                 <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                             </div>
                             <span data-error></span>
@@ -1500,20 +1735,20 @@
             <h3>Написать нам</h3>
         </div>
         <div class="custom-scroll modal__scroll">
-            <form class="form" onsubmit="event.preventDefault();openSuccessMod(this); openSuccessMod()">
+            <form class="form" onsubmit="event.preventDefault();formReset(this); openSuccessMod()">
                 <div class="form__items">
                     <div class="item-form">
                         <div class="item-form__inp">
-                            <input type="text" id="name" name="name" placeholder=" " class="required">
-                            <label for="name" class="item-form__placeholder">Имя</label>
+                            <input type="text" name="name" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Имя</div>
                             <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                         </div>
                         <span data-error></span>
                     </div>
                     <div class="item-form">
                         <div class="item-form__inp">
-                            <input type="tel" id="phone" placeholder=" " class="required">
-                            <label for="phone" class="item-form__placeholder">Телефон</label>
+                            <input type="tel" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Телефон</div>
                             <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                         </div>
                         <span data-error></span>
@@ -1545,20 +1780,20 @@
             <h3>Связаться с менеджером</h3>
         </div>
         <div class="custom-scroll modal__scroll">
-            <form class="form" onsubmit="event.preventDefault();openSuccessMod(this); openSuccessMod()">
+            <form class="form" onsubmit="event.preventDefault();formReset(this); openSuccessMod()">
                 <div class="form__items">
                     <div class="item-form">
                         <div class="item-form__inp">
-                            <input type="text" id="name" name="name" placeholder=" " class="required">
-                            <label for="name" class="item-form__placeholder">Имя</label>
+                            <input type="text" name="name" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Имя</div>
                             <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                         </div>
                         <span data-error></span>
                     </div>
                     <div class="item-form">
                         <div class="item-form__inp">
-                            <input type="tel" id="phone" placeholder=" " class="required">
-                            <label for="phone" class="item-form__placeholder">Телефон</label>
+                            <input type="tel" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Телефон</div>
                             <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
                         </div>
                         <span data-error></span>
@@ -1579,6 +1814,886 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<!--quickView-modal-->
+<div class="custom-scroll modal quickView-modal" id="quickView-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Доска строганая 58 × 168 × 5950 мм сорт С скруглением сосна ЛС</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="js-prodBlock js-prodWrapper fancy-block quickView-modal__inner">
+                <div class="product__preview">
+                    <div class="product-lbls">
+                        <span class="promo">Акция</span>
+                        <span class="recommended">Лескрафт рекомендует</span>
+                    </div>
+                    <div class="product__swipers">
+                        <div class="swiper product__mainswiper">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                            data-fit="media-contain"
+                                            data-thumb>
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain video" data-fancy="product-gallery" data-type="video" data-poster="img/content/product-1.png"
+                                            data-src="media/product-1-1.mp4" data-fit="media-contain"
+                                            data-thumb>
+                                            <picture><source srcset="img/content/product-1.webp" type="image/webp"><img src="img/content/product-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                            data-fit="media-contain"
+                                            data-thumb>
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                            data-fit="media-contain"
+                                            data-thumb>
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                            data-fit="media-contain"
+                                            data-thumb>
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain" data-fancy="product-gallery" data-type="image" data-src="img/content/product-1-1.webp"
+                                            data-fit="media-contain"
+                                            data-thumb>
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <!--esli izobrajeniy bolshe odnoqo-->
+                        <div class="swiper product__thumbswiper product__thumbswiper--quickView">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain video">
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="media-contain">
+                                            <picture><source srcset="img/content/product-1-1.webp" type="image/webp"><img src="img/content/product-1-1.png" alt></picture>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-navigation">
+                                <button type="button" class="nav-btn nav-btn--prev"><svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg></button>
+                                <button type="button" class="nav-btn nav-btn--next"><svg><use xlink:href="img/svg/sprite.svg#btn-next"></use></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--esli izobrajenie ne zaqrujeno-->
+                    <!--<div class="media-contain no-photo"></div>-->
+                </div>
+                <div class="product__details">
+                    <dl class="custom-scroll prod-details">
+                        <div class="prod-details__item">
+                            <dt>Артикул</dt>
+                            <dd>171916</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt class="item-tippy">Цена за упаковку
+                                <div class="tippy">
+                                    <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                    <p>Специальная цена для вас</p>
+                                </div>
+                            </dt>
+                            <dd>1 177,58 ₽</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>Цена за м²</dt>
+                            <dd>613,32 ₽</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>1 упаковка</dt>
+                            <dd>10 шт / 192 м²</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>Артикул</dt>
+                            <dd>171916</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt class="item-tippy">Цена за упаковку
+                                <div class="tippy">
+                                    <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                    <p>Специальная цена для вас</p>
+                                </div>
+                            </dt>
+                            <dd>1 177,58 ₽</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>Цена за м²</dt>
+                            <dd>613,32 ₽</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>1 упаковка</dt>
+                            <dd>10 шт / 192 м²</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>Артикул</dt>
+                            <dd>171916</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt class="item-tippy">Цена за упаковку
+                                <div class="tippy">
+                                    <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                    <p>Специальная цена для вас</p>
+                                </div>
+                            </dt>
+                            <dd>1 177,58 ₽</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>Цена за м²</dt>
+                            <dd>613,32 ₽</dd>
+                        </div>
+                        <div class="prod-details__item">
+                            <dt>1 упаковка</dt>
+                            <dd>10 шт / 192 м²</dd>
+                        </div>
+                    </dl>
+                </div>
+                <!--total-product-->
+                <div class="total-product">
+                    <div class="total-product__top">
+                        <div class="total-product__info">
+                            <span>Количество упаковок</span>
+                            <span>1 уп — 10 шт/192 м²</span>
+                        </div>
+                        <div class="quantity" data-stock="45">
+                            <button type="button" class="quantity__btn js-minus" aria-label="Уменьшить количество на 1"></button>
+                            <input type="number" class="quantity__count" value="1" aria-label="Количество">
+                            <button type="button" class="quantity__btn js-plus" aria-label="Увеличить количество на 1"></button>
+                        </div>
+                    </div>
+                    <div class="total-product__body">
+                        <dl class="prod-details">
+                            <div class="prod-details__item">
+                                <dt>Вес</dt>
+                                <dd>36,72 кг</dd>
+                            </div>
+                            <div class="prod-details__item">
+                                <dt>Площадь</dt>
+                                <dd>5,76 м²</dd>
+                            </div>
+                            <div class="prod-details__item">
+                                <dt>Объём</dt>
+                                <dd>0,07 м3</dd>
+                            </div>
+                        </dl>
+                        <div class="total-product__price-wrapper">
+                            <span class="total-product__price-lbl">Итого</span>
+                            <div class="product-price">
+                                <span class="rub h4 product-price__current">3 532,74</span>
+                                <del class="rub product-price__old">4 200 </del>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total-product__bot">
+                        <div class="product-status in-stock">Доступно сегодня (45)</div>
+                        <div class="product-action">
+                            <button type="button" class="btn main-btn js-add-to-cart">
+                                <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
+                                В корзину</button>
+                            <a href="#" class="btn stroke-btn js-in-cart">
+                                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                                Товар в корзине
+                            </a>
+                        </div>
+                        <button type="button" class="product-fav js-fav" aria-label="Добавить в избранное">
+                            <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn text-btn total-product__orderBtn mod-open-btn" data-modal="order-modal">
+                            Купить в 1 клик
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn stroke-btn quickView-modal__link">Подробнее о товаре</a>
+        </div>
+    </div>
+</div>
+<!--stock-modal-->
+<div class="custom-scroll modal stock-modal" id="stock-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Узнать о поступлении</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();formReset(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" name="name" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Имя</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " name="email" class="required">
+                            <div class="item-form__placeholder">Email</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Комментарий" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--price-modal-->
+<div class="custom-scroll modal price-modal" id="price-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Заказать прайс-лист</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();formReset(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" name="name" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Имя</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Email</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Комментарий" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--callback-modal-->
+<div class="custom-scroll modal callback-modal" id="callback-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Обратная связь</h3>
+            <p>Напишите нам, если у вас возник вопрос по&nbsp;нашему сайту или обслуживанию в&nbsp;магазине. Мы обязательно ответим в&nbsp;течение 24&nbsp;часов.</p>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();formReset(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Имя</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Телефон</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Сообщение" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form file-form">
+                        <div class="file-form__info">
+                            <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                        </div>
+                        <label>
+                            <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                            <span>Перетащите, или <span>выберите файл</span></span>
+                        </label>
+                        <div class="file-form__items"></div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--callback-modal-->
+<div class="custom-scroll modal callback-modal" id="callback-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Обратная связь</h3>
+            <p>Напишите нам, если у вас возник вопрос по&nbsp;нашему сайту или обслуживанию в&nbsp;магазине. Мы обязательно ответим в&nbsp;течение 24&nbsp;часов.</p>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();formReset(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Имя</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Телефон</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Сообщение" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form file-form">
+                        <div class="file-form__info">
+                            <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                        </div>
+                        <label>
+                            <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                            <span>Перетащите, или <span>выберите файл</span></span>
+                        </label>
+                        <div class="file-form__items"></div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--order-modal-->
+<div class="custom-scroll modal order-modal" id="order-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Купить в 1 клик</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form"
+                onsubmit="event.preventDefault();formReset(this); openSuccessMod('Ваш заказ успешно оформлен','Номер заказа 3478392853. Наш менеджер свяжется с вами в течении дня')">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required">
+                            <div class="item-form__placeholder">ФИО</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Телефон</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form item-form--mob-span-2">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Email</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Сообщение" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--order-cancel-modal-->
+<div class="custom-scroll modal order-cancel-modal" id="order-cancel-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Свяжитесь с менеджером для отмены вашего заказа</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();formReset(this); openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" name="name" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Имя</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Телефон</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <textarea placeholder="Комментарий" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link" data-order-id>
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--log-modal-->
+<div class="custom-scroll modal log-modal" id="log-modal">
+    <div class="switch-block modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>
+                <span class="active" data-block="individual">Вход и регистрация</span>
+                <span data-block="legal-entity">Вход</span>
+            </h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="tabs-scroll">
+                <div class="tabs">
+                    <span class="active" data-tab="individual">Для физических лиц</span>
+                    <span data-tab="legal-entity">Для юридических лиц</span>
+                </div>
+            </div>
+            <div class="active" data-block="individual">
+                <form class="form disabled-form"
+                    onsubmit="event.preventDefault();openModal(document.querySelector('#phone-confirm-modal'));resetPassword('+7 (972) 732 2937', 30)">
+                    <div class="form__items">
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="tel" placeholder=" " class="required">
+                                <div class="item-form__placeholder">Телефон</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <button type="submit" class="btn main-btn">Продолжить</button>
+                    </div>
+                </form>
+            </div>
+            <div data-block="legal-entity">
+                <form class="form"
+                    onsubmit="event.preventDefault();closeModal(document.querySelector('#log-modal'));showSuccessPopup('Вход выполнен','Состав корзины мог измениться проверьте своитовары')">
+                    <div class="form__items">
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" placeholder=" " class="required">
+                                <div class="item-form__placeholder">ИНН</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                        <div class="item-form item-form--password">
+                            <div class="item-form__inp">
+                                <input type="password" placeholder=" " class="required">
+                                <div class="item-form__placeholder">Введите пароль</div>
+                                <button type="button" class="item-form__eye" aria-label="Показать пароль"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                        <div class="log-modal__forget-password">
+                            <button type="button" class="mod-open-btn" data-modal="forget-password-modal">Забыли пароль?</button>
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <button type="submit" class="btn main-btn">Войти</button>
+                        <div class="log-modal__reg">Ещё нет аккаунта? <button type="button" class="mod-open-btn" data-modal="reg-modal">Зарегистрируйтесь</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--reg-modal-->
+<div class="custom-scroll modal reg-modal" id="reg-modal">
+    <div class="switch-block modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>
+                <span class="active" data-block="individual">Вход и регистрация</span>
+                <span data-block="legal-entity">Вход</span>
+            </h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="tabs-scroll">
+                <div class="tabs">
+                    <span data-tab="individual">Для физических лиц</span>
+                    <span class="active" data-tab="legal-entity">Для юридических лиц</span>
+                </div>
+            </div>
+            <div data-block="individual">
+                <form class="form disabled-form"
+                    onsubmit="event.preventDefault();openModal(document.querySelector('#phone-confirm-modal'));resetPassword('+7 (972) 732 2937', 30)">
+                    <div class="form__items">
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="tel" placeholder=" " class="required">
+                                <div class="item-form__placeholder">Телефон</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <button type="submit" class="btn main-btn">Продолжить</button>
+                    </div>
+                </form>
+            </div>
+            <div class="active" data-block="legal-entity">
+                <form class="form" onsubmit="event.preventDefault();formReset(this); openModal(document.querySelector('#reg-success-modal'))">
+                    <div class="form__group">
+                        <div class="form__lbl">Информация о компании</div>
+                        <div class="form__items">
+                            <div class="item-form">
+                                <div class="item-form__inp">
+                                    <input type="text" placeholder=" " class="required">
+                                    <div class="item-form__placeholder">Название компании</div>
+                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                </div>
+                                <span data-error></span>
+                            </div>
+                            <div class="item-form">
+                                <div class="item-form__inp">
+                                    <input type="text" placeholder=" " class="required">
+                                    <div class="item-form__placeholder">ИНН</div>
+                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                </div>
+                                <span data-error></span>
+                            </div>
+                            <div class="item-form item-form--mob-span-2">
+                                <div class="item-form__inp">
+                                    <input type="text" placeholder=" " class="required">
+                                    <div class="item-form__placeholder">Email</div>
+                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                </div>
+                                <span data-error></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__lbl">Пароль</div>
+                        <div class="form__items">
+                            <div class="item-form item-form--password">
+                                <div class="item-form__inp">
+                                    <input type="password" placeholder=" " class="required">
+                                    <div class="item-form__placeholder">Введите пароль</div>
+                                    <button type="button" class="item-form__eye" aria-label="Показать пароль"></button>
+                                </div>
+                                <span data-error></span>
+                            </div>
+                            <div class="item-form item-form--password">
+                                <div class="item-form__inp">
+                                    <input type="password" placeholder=" " class="required">
+                                    <div class="item-form__placeholder">Повторите пароль</div>
+                                    <button type="button" class="item-form__eye" aria-label="Показать пароль"></button>
+                                </div>
+                                <span data-error></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__lbl">Контактное лицо</div>
+                        <div class="form__items">
+                            <div class="item-form">
+                                <div class="item-form__inp">
+                                    <input type="text" placeholder=" " class="required">
+                                    <div class="item-form__placeholder">ФИО</div>
+                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                </div>
+                                <span data-error></span>
+                            </div>
+                            <div class="item-form">
+                                <div class="item-form__inp">
+                                    <input type="tel" placeholder=" " class="required">
+                                    <div class="item-form__placeholder">Телефон</div>
+                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                </div>
+                                <span data-error></span>
+                            </div>
+                            <div class="item-form item-form--span-3">
+                                <textarea placeholder="Комментарий"></textarea>
+                                <span data-error></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__lbl">Карточка компании</div>
+                        <div class="item-form file-form">
+                            <div class="file-form__info">
+                                <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                            </div>
+                            <label>
+                                <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                                <span>Перетащите, или <span>выберите файл</span></span>
+                            </label>
+                            <div class="file-form__items"></div>
+                            <span data-error></span>
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <label class="item-checkbox">
+                            <input type="checkbox" checked class="required">
+                            <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                        </label>
+                        <button type="submit" class="btn main-btn">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--phone-confirm-modal-->
+<div class="custom-scroll modal phone-confirm-modal" id="phone-confirm-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <button type="button" class="btn h6 back-btn" onclick="formReset(document.querySelector('.resend-pass'));openModal(document.querySelector('#log-modal'))">
+                <svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg>
+                Назад
+            </button>
+            <h3>Подтверждение</h3>
+            <p>Введите код из СМС, который мы отправили на номер <span data-log-phone>+7 (972) 732 2937</span></p>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form resend-pass" onsubmit="event.preventDefault();formReset(this);">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" pattern="\d*" maxlength="4" placeholder=" ">
+                            <div class="item-form__placeholder">Код</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <button type="button" class="btn text-btn resend-pass__btn" disabled onclick="formReset(document.querySelector('.resend-pass'));resetPassword(false, 30)">
+                        Запросить код повторно
+                        <span class="resend-pass__timeout"> через&nbsp;<span class="resend-pass__sec">30</span>&nbsp;с.</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--forget-password-modal-->
+<div class="custom-scroll modal forget-password-modal" id="forget-password-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Восстановление пароля</h3>
+            <p>Для восстановления вашего пароля необходимо ввести ваш&nbsp;email ниже, и&nbsp;мы&nbsp;вышлем ссылку для&nbsp;сброса пароля</p>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru')">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " name="email" class="required">
+                            <div class="item-form__placeholder">Email</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <div class="modal__btns">
+                        <button type="submit" class="btn main-btn main-btn--link">
+                            Сбросить пароль
+                            <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                        </button>
+                        <button type="button" class="btn h6 back-btn mod-open-btn" data-modal="log-modal">
+                            <svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg>
+                            Вернуться к форме авторизации
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--password-modal-->
+<div class="custom-scroll modal password-modal" id="password-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Смена пароля</h3>
+            <p>Придумайте новый пароль для&nbsp;входа в&nbsp;свой аккаунт</p>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form"
+                onsubmit="event.preventDefault();openSuccessMod('Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
+                <div class="form__items">
+                    <div class="item-form item-form--password">
+                        <div class="item-form__inp">
+                            <input type="password" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Введите пароль</div>
+                            <button type="button" class="item-form__eye" aria-label="Показать пароль"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form item-form--password">
+                        <div class="item-form__inp">
+                            <input type="password" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Повторите пароль</div>
+                            <button type="button" class="item-form__eye" aria-label="Показать пароль"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <button type="submit" class="btn main-btn">Изменить пароль</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--reg-success-modal-->
+<div class="custom-scroll modal success-modal success-modal--log" id="reg-success-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Заявка на регистрацию отправлена</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <p>Спасибо за регистрацию! Вход в аккаунт будет доступен после&nbsp;подтверждения менеджера. Менеджеры работают ежедневно с&nbsp;8:30&nbsp;до&nbsp;17:30. Сообщение
+                об&nbsp;успешном подтверждении аккаунта поступит на&nbsp;почту email@mail.ru.</p>
+            <button type="button" class="btn main-btn mod-open-btn" data-modal="contact-manager-modal">Связаться с менеджером</button>
+        </div>
+    </div>
+</div>
+<!--password-success-modal-->
+<div class="custom-scroll modal success-modal success-modal--log" id="password-success-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Пароль изменён</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <p>Ваш пароль был изменён, и теперь вы можете использовать его&nbsp;для&nbsp;входа в&nbsp;свой аккаунт</p>
+            <button type="button" class="btn main-btn mod-open-btn" data-modal="log-modal">Войти</button>
         </div>
     </div>
 </div>

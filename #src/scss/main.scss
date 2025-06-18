@@ -1,6 +1,6 @@
 .item-intro {
-    min-height: 100dvh;
-    padding-top: calc(30px + var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
+    padding-top: 30px;
     padding-bottom: 50px;
     display: grid;
     grid-template-columns: 1fr 1.12fr;
@@ -18,7 +18,7 @@
             transform: translateY(30px);
             transition: all 1s 0.4s ease;
         }
-        h2 {
+        .text-l {
             margin-bottom: 20px;
             transition-duration: 1.3s;
             transition-delay: 0.6s;
@@ -32,13 +32,13 @@
         }
     }
     @media (min-height: 600px) and (max-width: $bp2) {
-        min-height: 600px;
+        min-height: calc(600px - var(--header-height));
     }
     @media (min-height: 800px) and (max-width: $bp1) {
-        min-height: 800px;
+        min-height: calc(800px - var(--header-height));
     }
     @media (min-height: 1000px) and (min-width: $bp1) {
-        min-height: 1000px;
+        min-height: calc(1000px - var(--header-height));
     }
     @media (max-width: $bp1) {
         padding-bottom: 40px;
@@ -46,7 +46,7 @@
         gap: 20px;
         &__content {
             padding-bottom: 60px;
-            h2 {
+            .text-l {
                 margin-bottom: 16px;
             }
             p {
@@ -65,7 +65,7 @@
     }
     @media (min-width: $bp3) {
         &__content {
-            h2,
+            .text-l,
             p {
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
@@ -102,7 +102,7 @@
     }
     .nav-btn {
         position: absolute;
-        top: 55%;
+        top: 40%;
         &:hover {
             svg {
                 fill: var(--green-color);
@@ -145,7 +145,7 @@
             bottom: 40px;
         }
         .nav-btn {
-            top: 75%;
+            top: 73%;
         }
     }
     @media (max-width: $bp4) {
@@ -216,6 +216,11 @@
             padding: 8px;
         }
     }
+    @media (max-width: $bp3) {
+        .h6 {
+            font-size: 14px;
+        }
+    }
     @media (max-width: $bp4) {
         padding: 8px 12px;
         gap: 8px;
@@ -230,6 +235,9 @@
                 bottom: 12px;
                 right: 12px;
             }
+        }
+        .h6 {
+            font-size: 12px;
         }
         &__icon {
             width: 32px;

@@ -1,0 +1,330 @@
+<!--profile-edit-modal-->
+<div class="custom-scroll modal profile-edit-modal" id="profile-edit-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Изменение данных</h3>
+            <p>Введите новые данные</p>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();openSuccessMod()">
+                <div class="form__items">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" placeholder=" " class="required" value="+7 937 635-36-36">
+                            <div class="item-form__placeholder">Телефон</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required" value="Иванов">
+                            <div class="item-form__placeholder">Фамилия</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required" value="Георгий">
+                            <div class="item-form__placeholder">Имя</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required" value="Андреевич">
+                            <div class="item-form__placeholder">Отчество</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form item-form--mob-span-2">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required" value="example@mail.ru">
+                            <div class="item-form__placeholder">Email</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <div class="form__footer-row">
+                        <button type="submit" class="btn main-btn main-btn--link">
+                            Отправить
+                            <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                        </button>
+                        <div class="add-info">
+                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                            <p>Изменения будут приняты после проверки менеджером. Менеджеры работают ежедневно с 8:30 до 17:30</p>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--profile-le-edit-modal-->
+<div class="custom-scroll modal profile-edit-modal" id="profile-le-edit-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Изменение данных</h3>
+            <p>Введите новые данные</p>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <form class="form" onsubmit="event.preventDefault();openSuccessMod()">
+                <div class="form__group">
+                    <div class="form__lbl">Информация о компании</div>
+                    <div class="form__items">
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" placeholder=" " class="required" value="Woodber">
+                                <div class="item-form__placeholder">Название компании</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" placeholder=" " class="required" value="87654567890098">
+                                <div class="item-form__placeholder">ИНН</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                        <div class="item-form item-form--mob-span-2">
+                            <div class="item-form__inp">
+                                <input type="text" placeholder=" " class="required" value="example@mail.ru">
+                                <div class="item-form__placeholder">Email</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__group">
+                    <div class="form__lbl">Контактное лицо</div>
+                    <div class="form__items">
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="text" placeholder=" " class="required" value="Иванов Георгий Андреевич">
+                                <div class="item-form__placeholder">ФИО</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                        <div class="item-form">
+                            <div class="item-form__inp">
+                                <input type="tel" placeholder=" " class="required" value="+7 937 635-36-36">
+                                <div class="item-form__placeholder">Телефон</div>
+                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            </div>
+                            <span data-error></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__group">
+                    <div class="form__lbl">Карточка компании</div>
+                    <div class="item-form file-form">
+                        <div class="file-form__info">
+                            <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                        </div>
+                        <label>
+                            <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                            <span>Перетащите, или <span>выберите файл</span></span>
+                        </label>
+                        <div class="file-form__items">
+                            <div class="file-form__item">
+                                <div class="file-form__name">company.png</div>
+                                <div class="file-form__name">2.3 Mb</div>
+                                <button type="button" class="btn-cross file-form__del"></button>
+                            </div>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <div class="form__footer-row">
+                        <button type="submit" class="btn main-btn main-btn--link">
+                            Отправить
+                            <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                        </button>
+                        <div class="add-info">
+                            <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                            <p>Изменения будут приняты после проверки менеджером. Менеджеры работают ежедневно с 8:30 до 17:30</p>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--address-modal-->
+<div class="custom-scroll modal address-modal" id="address-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Адрес доставки</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <button class="btn stroke-btn mod-open-btn address-modal__mapBtn" data-modal="address-map-modal">
+                <svg><use xlink:href="img/svg/sprite.svg#location"></use></svg>
+                Указать адрес на карте
+            </button>
+            <div class="address-modal__row">
+                <form class="form address-form">
+                    <div class="dropdown item-form item-form--dropdown">
+                        <div class="item-form__inp">
+                            <input type="text" data-name="locality" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Населённый пункт</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            <button type="button" class="dropdown__header" aria-label="Развернуть/Свернуть">
+                                <div class="dropdown__icon">
+                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="dropdown__body">
+                            <div class="modal">
+                                <div class="modal__content">
+                                    <button type="button" class="btn-cross dropdown__close"></button>
+                                    <div class="modal__top">
+                                        <div class="h3">Населённый пункт</div>
+                                    </div>
+                                    <div class="custom-scroll modal__scroll">
+                                        <ul>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красная</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красивая</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красноармейская</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красноармейская</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Краснодонская</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="dropdown item-form item-form--dropdown">
+                        <div class="item-form__inp">
+                            <input type="text" data-name="street" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Улица</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            <button type="button" class="dropdown__header" aria-label="Развернуть/Свернуть">
+                                <div class="dropdown__icon">
+                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="dropdown__body">
+                            <div class="modal">
+                                <div class="modal__content">
+                                    <button type="button" class="btn-cross dropdown__close"></button>
+                                    <div class="modal__top">
+                                        <div class="h3">Улица</div>
+                                    </div>
+                                    <div class="custom-scroll modal__scroll">
+                                        <ul>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красная</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красивая</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красноармейская</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красноармейская</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Краснодонская</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="dropdown item-form item-form--dropdown">
+                        <div class="item-form__inp">
+                            <input type="text" data-name="house" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Дом</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                            <button type="button" class="dropdown__header" aria-label="Развернуть/Свернуть">
+                                <div class="dropdown__icon">
+                                    <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="dropdown__body">
+                            <div class="modal">
+                                <div class="modal__content">
+                                    <button type="button" class="btn-cross dropdown__close"></button>
+                                    <div class="modal__top">
+                                        <div class="h3">Дом</div>
+                                    </div>
+                                    <div class="custom-scroll modal__scroll">
+                                        <ul>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красная</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красивая</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красноармейская</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Красноармейская</a></li>
+                                            <li class="link-btn"><a href="#">г. Краснодар, ул. Краснодонская</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="form__footer">
+                        <button type="submit" class="btn main-btn js-add-address" onclick="event.preventDefault();closeModal(document.querySelector('#address-modal'));closeModal(document.querySelector('#address-map-modal'))">Добавить</button>
+                        <button type="submit" class="btn main-btn js-edit-address" onclick="event.preventDefault();closeModal(document.querySelector('#address-modal'));closeModal(document.querySelector('#address-map-modal'))" data-address-id>Редактировать</button>
+                    </div>
+                </form>
+                <div class="modal modal--mob address-map" id="address-map-modal">
+                    <div class="modal__content">
+                        <button type="button" class="btn-cross modal__close"></button>
+                        <div class="modal__top">
+                            <h3>Уточнение адреса</h3>
+                        </div>
+                        <div class="address-map__map-wrapper">
+                            <div class="map address-map__map" id="address-map"></div>
+                            <div class="address-map__marker"></div>
+                        </div>
+                        <div class="address-map__bottom">
+                            <div class="h6 address-map__address"></div>
+                            <div class="add-info hidden">
+                                <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                <p></p>
+                            </div>
+                            <button type="button" class="btn main-btn js-add-address" onclick="event.preventDefault();closeModal(document.querySelector('#address-modal'));closeModal(document.querySelector('#address-map-modal'))">Добавить</button>
+                            <button type="button" class="btn main-btn js-edit-address" onclick="event.preventDefault();closeModal(document.querySelector('#address-modal'));closeModal(document.querySelector('#address-map-modal'))">Редактировать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--address-del-modal-->
+<div class="custom-scroll modal address-del-modal" id="address-del-modal">
+    <div class="modal__content">
+        <button type="button" class="btn-cross modal__close"></button>
+        <div class="modal__top">
+            <h3>Вы хотите удалить выбранный адрес доставки?</h3>
+        </div>
+        <div class="custom-scroll modal__scroll">
+            <div class="modal__btns">
+                <button type="button" class="btn main-btn js-del-address" data-address-id
+                    onclick="clearCart(this.getAttribute('data-address-id'), ()=>closeModal(document.querySelector('#address-del-modal')))">Да</button>
+                <button type="button" class="btn stroke-btn modal__close">Нет</button>
+            </div>
+        </div>
+    </div>
+</div>

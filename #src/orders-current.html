@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Текущие заказы"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top page-top--account">
+                    <div class="container">
+                        @@include('_breadcrumbs-2.html', {"page1": "Личный кабинет", "page2": "Текущие заказы"})
+                        <a href="account.html" class="btn h6 back-btn">
+                            <svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg>
+                            Назад
+                        </a>
+                    </div>
+                </div>
+                <!--orders-p-->
+                <section class="section orders-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Текущие заказы</h1>
+                        </div>
+                        <!--page-row-->
+                        <div class="page-row page-row--account">
+                            <!--page-row__aside-->
+                            <aside class="page-row__aside">
+                                <nav class="account-nav">
+                                    <ul>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#account-profile"></use></svg>Личные данные<span></span></a></li>
+                                        <li><a class="active" href="#"><svg><use xlink:href="img/svg/sprite.svg#account-cart"></use></svg>Текущие заказы</a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#orders"></use></svg>История заказов<span></span></a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#log-out"></use></svg>Выйти из профиля</a></li>
+                                    </ul>
+                                </nav>
+                            </aside>
+                            <!--page-row__content-->
+                            <div class="page-row__content">
+                                <div class="history-p__wrapper">
+                                    <div class="histor-p__items">
+                                        @@include('_order-current.html', {"status": "payment-pending", "statusTxt": "Принят, ожидается оплата"})
+                                        @@include('_order-current.html', {"status": "paid", "statusTxt": "Принят, оплачен"})
+                                        @@include('_order-current.html', {"status": "ready-to-ship", "statusTxt": "Готов к отгрузке"})
+                                        @@include('_order-current.html', {"status": "delivering", "statusTxt": "Доставляется"})
+                                        @@include('_order-current.html', {"status": "pending-manager", "statusTxt": "Ожидает подтверждения менеджером"})
+                                    </div>
+                                    @@include('_pagination.html')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

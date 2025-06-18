@@ -46,6 +46,9 @@
     opacity: 1 !important;
     transform: scale(0.9);
 }
+[class*="__control"] {
+    display: none !important;
+}
 @keyframes balloon-fadeUp {
     0% {
         opacity: 0;
@@ -89,7 +92,8 @@
     }
     @media (max-width: $bp3) {
         .item-contact {
-            a:first-child, span:first-child {
+            a:first-child,
+            span:first-child {
                 font-size: 12px;
             }
         }
@@ -99,6 +103,74 @@
     @media (max-width: $bp3) {
         [class*="-balloon"] {
             display: none !important;
+        }
+    }
+}
+.address-map {
+    position: relative;
+    .map {
+        height: 264px;
+    }
+    [class*="-events-pane"] {
+        cursor: auto !important;
+    }
+    [class*="-balloon"] {
+        display: none !important;
+    }
+    &__marker {
+        width: 32px;
+        height: 32px;
+        background: url(../img/svg/map-marker-loc.svg) center/contain no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        &.undefined {
+            background-image: url(../img/svg/map-marker-loc-error.svg);
+        }
+    }
+    @media (min-width: $bp3) {
+        &__bottom {
+            display: none;
+        }
+    }
+    @media (max-width: $bp1) {
+        .map {
+            height: 235px;
+        }
+    }
+    @media (max-width: $bp3) {
+        .map {
+            height: 100%;
+            border-radius: 0;
+        }
+        .add-info {
+            margin-top: 12px;
+            &.hidden {
+                display: none;
+            }
+        }
+        .main-btn {
+            width: 100%;
+            margin-top: 24px;
+        }
+        &__map-wrapper {
+            flex: 1 1 auto;
+            overflow: hidden;
+        }
+        &__bottom {
+            padding-left: calc((100% - var(--content-width)) / 2);
+            padding-right: calc((100% - var(--content-width)) / 2);
+        }
+        &__address {
+            margin-top: 8px;
+        }
+    }
+    @media (max-width: 575.98px) {
+        &__bottom {
+            padding-left: calc(var(--container-offset) - 4px);
+            padding-right: calc(var(--container-offset) - 4px);
         }
     }
 }

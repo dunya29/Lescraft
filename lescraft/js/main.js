@@ -11,10 +11,9 @@ const menuBtn = document.querySelector('.menu-btn');
 const iconMenu = document.querySelector('.icon-menu');
 const overlay = document.querySelector(".overlay")
 const modal = document.querySelectorAll(".modal")
-const modOpenBtn = document.querySelectorAll(".mod-open-btn")
-const modCloseBtn = document.querySelectorAll(".mod-close-btn")
 const successModal = document.querySelector("#success-modal")
 const errorModal = document.querySelector("#error-modal")
+const successPopup = document.querySelector(".success-popup")
 const cookiePopup = document.querySelector("#cookie-popup")
 const dropdown = document.querySelectorAll(".dropdown")
 let animSpd = 400
@@ -65,7 +64,13 @@ function clearCart(cartType, callback = false) {
 }
 function catFilterSubmit() {
 }
+function setQuickView(callback = false) {
+    if (callback) {
+        callback()
+    }
+}
 /* perenesti в back end */
+
 //get path to sprite id
 function sprite(id) {
     return '<svg><use xlink:href="img/svg/sprite.svg#' + id + '"></use></svg>'
@@ -148,7 +153,7 @@ function updateOptionsVisibility() {
     if (document.querySelectorAll("[data-visibility]")) {
         document.querySelectorAll("[data-visibility]").forEach(item => {
             let attr = item.getAttribute("data-visibility")
-            if (document.querySelector(`[data-tab='${attr}'`) && document.querySelector(`[data-tab='${attr}'`).classList.contains("active")) {
+            if (document.querySelector(`[data-block='${attr}'`) && document.querySelector(`[data-block='${attr}'`).classList.contains("active")) {
                 item.classList.add("show")
             } else {
                 item.classList.remove("show")
@@ -156,11 +161,9 @@ function updateOptionsVisibility() {
         })
     }
 }
+updateOptionsVisibility()
 function tabSwitch(nav, block) {
     nav.forEach(item => {
-        if (item.classList.contains("active")) {
-            updateOptionsVisibility()
-        }
         item.addEventListener("click", () => {
             nav.forEach(el => {
                 el.classList.remove("active")
@@ -213,17 +216,15 @@ if (isFirefox) {
 }
 //fixed header
 let lastScroll = scrollPos();
-const headerTopEl = document.querySelector(".header__top")
+const headerTop = document.querySelector(".header__top")
 window.addEventListener("scroll", () => {
-    let scrollTop = scrollPos()
-    let headerTop = headerTopEl?.clientHeight || 0
-    if (scrollTop > headerTop) {
+    if (scrollPos() > headerTop.clientHeight) {
         header.classList.add("scroll")
-        if ((scrollTop > lastScroll && !header.classList.contains("unshow"))) {
+        if ((scrollPos() > lastScroll && !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
-            headerTranslate = headerTop
-            header.style.transform = 'translateY(' + (-headerTop - 1) + 'px)'
-        } else if (scrollTop < lastScroll && header.classList.contains("unshow")) {
+            headerTranslate = headerTop.clientHeight
+            header.style.transform = 'translateY(' + (-headerTop.clientHeight - 1) + 'px)'
+        } else if (scrollPos() < lastScroll && header.classList.contains("unshow")) {
             header.classList.remove("unshow")
             headerTranslate = 0
             header.style.transform = 'translateY(0)'
@@ -233,7 +234,7 @@ window.addEventListener("scroll", () => {
         headerTranslate = 0
         header.style.transform = 'translateY(0)'
     }
-    lastScroll = scrollTop
+    lastScroll = scrollPos()
 })
 //anchorlinks
 const anchorLinks = document.querySelectorAll(".js-anchor")
@@ -292,7 +293,7 @@ function unshowCookie() {
 function openModal(modal) {
     let activeModal = document.querySelector(".modal.open")
     disableScroll()
-    if (activeModal) {
+    if (activeModal && !activeModal.classList.contains("quickView-modal") && !activeModal.contains(modal)) {
         activeModal.classList.remove("open")
     }
     modal.classList.add("open")
@@ -304,6 +305,9 @@ function closeModal(modal) {
     }
     if (modal.closest(".dropdown")) {
         modal.closest(".dropdown").classList.remove("open")
+    }
+    if (modal.classList.contains("address-modal")) {
+        modal.classList.remove("edit")
     }
     modal.classList.remove("open")
     setTimeout(() => {
@@ -320,35 +324,52 @@ if (modal) {
         });
         mod.querySelectorAll(".modal__close").forEach(btn => {
             btn.addEventListener("click", () => {
-                closeModal(mod)
+                closeModal(btn.closest('.modal'))
             })
         })
     });
 }
 // modal button on click
-if (modOpenBtn) {
-    modOpenBtn.forEach(btn => {
-        btn.addEventListener("click", e => {
-            e.preventDefault()
-            let href = btn.getAttribute("data-modal")
-            openModal(document.getElementById(href))
+function modalShowBtns() {
+    const modOpenBtn = document.querySelectorAll(".mod-open-btn")
+    if (modOpenBtn.length) {
+        modOpenBtn.forEach(btn => {
+            btn.addEventListener("click", e => {
+                e.preventDefault()
+                let href = btn.getAttribute("data-modal")
+                openModal(document.getElementById(href))
+            })
         })
-    })
+    }
 }
+modalShowBtns()
 // modal close button on click
-if (modCloseBtn) {
-    modCloseBtn.forEach(btn => {
-        btn.addEventListener("click", e => {
-            e.preventDefault()
-            let href = btn.getAttribute("data-modal")
-            closeModal(document.getElementById(href))
+function modalUnshowBtns() {
+    const modCloseBtn = document.querySelectorAll(".mod-close-btn")
+    if (modCloseBtn.length) {
+        modCloseBtn.forEach(btn => {
+            btn.addEventListener("click", e => {
+                e.preventDefault()
+                let href = btn.getAttribute("data-modal")
+                closeModal(document.getElementById(href))
+            })
         })
+    }
+}
+modalUnshowBtns()
+//mobmodal close on resize
+const modalMob = document.querySelectorAll(".modal--mob")
+if (modalMob.length) {
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > bp.laptop) {
+            modalMob.forEach(item => closeModal(item))
+        }
     })
 }
 // custom fancybox
 function fancyModal(fancyItem) {
     let mediaSrc = []
-    let objectFit = fancyItem.getAttribute("data-fit") ? fancyItem.getAttribute("data-fit") : "media-cover"
+    let objectFit = fancyItem.hasAttribute("data-fit") ? "media-contain" : "media-cover"
     let val = fancyItem.getAttribute("data-fancy")
     let thumb = fancyItem.hasAttribute("data-thumb")
     document.querySelectorAll("[data-fancy]").forEach(el => {
@@ -517,7 +538,21 @@ if (dropdown) {
         item.querySelector(".dropdown__header").addEventListener("click", () => {
             item.classList.contains("open") ? closeDropdown(item) : openDropdown(item)
         })
+        if (item.querySelector(".dropdown__close")) {
+            item.querySelector(".dropdown__close").addEventListener("click", () => closeDropdown(item))
+        }
     })
+}
+// openSuccessPopup
+function showSuccessPopup(title = false, txt = false) {
+    if (successPopup && (title || txt)) {
+        successPopup.querySelector(".h6").textContent = title ? title : ''
+        successPopup.querySelector("p").textContent = txt ? txt : ''
+        successPopup.classList.add("show")
+        setTimeout(() => {
+            successPopup.classList.remove("show")
+        }, 3000);
+    }
 }
 //setSuccessTxt
 function setSuccessTxt(title = false, txt = false, btnTxt = false) {
@@ -610,17 +645,21 @@ if (itemFormPass) {
     })
 }
 //reset input field
+function showResetBtn(item, resetBtn) {
+    if (item.querySelector("input").value.length > 0) {
+        resetBtn.classList.add("show")
+    } else {
+        resetBtn.classList.remove("show")
+    }
+}
 const itemForm = document.querySelectorAll(".item-form")
 if (itemForm) {
     itemForm.forEach(item => {
         const resetBtn = item.querySelector(".item-form__reset")
         if (resetBtn) {
+            showResetBtn(item, resetBtn)
             item.querySelector("input").addEventListener("input", e => {
-                if (e.target.value.length > 0) {
-                    resetBtn.classList.add("show")
-                } else {
-                    resetBtn.classList.remove("show")
-                }
+                showResetBtn(item, resetBtn)
             })
             resetBtn.addEventListener("click", e => {
                 e.preventDefault()
@@ -663,6 +702,37 @@ if (disabledForm.length > 0) {
             })
         }
     })
+}
+//recoveryPassword
+function recoveryPassword(email) {
+    if (email && document.querySelector("[data-recovery-email]")) {
+        document.querySelector("[data-recovery-email]").textContent = email
+    }
+    openModal(document.querySelector("#forget-password-success-modal"))
+}
+//reset password
+let codeResTimeout
+function resetPassword(phone, timeout) {
+    clearTimeout(codeResTimeout)
+    document.querySelector(".resend-pass__btn").setAttribute("disabled", true)
+    let val = timeout || 30
+    document.querySelector(".resend-pass__timeout").classList.remove("hidden")
+    if (phone && document.querySelector("[data-log-phone]")) {
+        document.querySelector("[data-log-phone]").textContent = `Мы отправили письмо на электронный адрес ${phone}`
+    }
+
+    function changeTimeVal() {
+        if (val > 0) {
+            document.querySelector(".resend-pass__sec").textContent = val
+            codeResTimeout = setTimeout(changeTimeVal, 1000);
+        } else {
+            clearTimeout(codeResTimeout)
+            document.querySelector(".resend-pass__timeout").classList.add("hidden")
+            document.querySelector(".resend-pass__btn").removeAttribute("disabled")
+        }
+        val--
+    }
+    changeTimeVal()
 }
 //mask input
 const inp = document.querySelectorAll('input[type=tel]')
@@ -808,6 +878,7 @@ function disabledPlusBtn(item, count, inStock) {
 }
 function quantityOnChange(item, count, inStock) {
     let prodBlock = item.closest(".js-prodBlock")
+    let quantityVisCatType = ['tile', 'list'].includes(prodBlock.parentNode.getAttribute("data-catalog-view"))
     disabledMinusBtn(item, count)
     if (inStock) {
         disabledPlusBtn(item, count, inStock)
@@ -823,7 +894,10 @@ function quantityOnChange(item, count, inStock) {
             })
         })
     }
-    if (!prodBlock.classList.contains('js-prodBlock--product') || (prodBlock.classList.contains('js-prodBlock--product') && prodBlock.classList.contains("in-cart"))) {
+    if ((!prodBlock.classList.contains('js-prodBlock--product') && !quantityVisCatType) ||
+        (prodBlock.classList.contains('js-prodBlock--product') && prodBlock.classList.contains("in-cart")) ||
+        (quantityVisCatType && prodBlock.classList.contains("in-cart"))
+    ) {
         let productID = prodBlock.dataset.id
         addToCart(productID, count)
     }
@@ -844,9 +918,12 @@ function setQuantity() {
 }
 setQuantity()
 const jsProdWrapper = document.querySelectorAll(".js-prodWrapper")
+const quickViewMod = document.querySelector("#quickView-modal")
 if (jsProdWrapper.length) {
+    const quickViewModInner = quickViewMod.querySelector(".quickView-modal__inner")
+    const quickViewModLink = quickViewMod.querySelector(".quickView-modal__link")
     jsProdWrapper.forEach(wrapper => {
-        wrapper.addEventListener("click", e => {
+        wrapper.addEventListener("click", async e => {
             if (e.target.closest(".quantity")) {
                 let item = e.target.closest(".quantity")
                 const inp = item.querySelector(".quantity__count")
@@ -911,6 +988,21 @@ if (jsProdWrapper.length) {
                 if (cartRemovalModal) {
                     cartRemovalModal.querySelector(".js-remove-from-cart").setAttribute("data-id", prodId)
                     openModal(document.querySelector("#cart-removal-modal"))
+                }
+            }
+            if (e.target.classList.contains("product-view") || e.target.classList.contains("card__quick-view")) {
+                let link = e.target.closest(".js-prodBlock")?.getAttribute("data-link")
+                if (link && quickViewMod) {
+                    if (quickViewModLink) {
+                        quickViewModLink.setAttribute("href", link)
+                    }
+                    quickViewMod.classList.add("loading")
+                    openModal(quickViewMod)
+                    setQuickView(() => {
+                        initProductSwiper(quickViewModInner)
+                        quickViewMod.classList.remove("loading")
+                        modalShowBtns()
+                    })
                 }
             }
         })
@@ -1033,8 +1125,13 @@ if (accordion) {
                     if (el.querySelector(".accordion__header").classList.contains("active")) {
                         smoothDrop(el.querySelector(".accordion__header"), el.querySelector(".accordion__body"))
                         if (el.getBoundingClientRect().top < 0) {
-                            let pos = scrollPos() + item.getBoundingClientRect().top - el.querySelector(".accordion__body").clientHeight - header.clientHeight - 10
-                            window.scrollTo(0, pos)
+                            if (window.innerWidth < bp.desktop) {
+                                header.classList.remove("unshow")
+                            }
+                            setTimeout(() => {
+                                let pos = scrollPos() + item.getBoundingClientRect().top - el.querySelector(".accordion__body").clientHeight - header.clientHeight - 10
+                                window.scrollTo(0, pos)
+                            }, 300);
                         }
                     }
                 })
@@ -1151,18 +1248,21 @@ const animItem = document.querySelectorAll('[data-animation]')
 function animate() {
     animItem.forEach(item => {
         let animName = item.getAttribute("data-animation");
-        let itemTop = item.getBoundingClientRect().top + scrollPos();
-        let itemPoint = Math.abs(window.innerHeight - item.offsetHeight * 0.1)
-        if (scrollPos() > itemTop - itemPoint) {
-            item.classList.add(animName);
+        if (!item.classList.contains(animName)) {
+            let itemTop = item.getBoundingClientRect().top + scrollPos();
+            let itemPoint = Math.abs(window.innerHeight - window.innerHeight * 0.1)
+            if (scrollPos() > itemTop - itemPoint) {
+                item.classList.add(animName);
+            }
         }
     })
 }
-if (animItem.length > 0) {
-    animate()
-    window.addEventListener("scroll", animate)
-}
-
+window.addEventListener("load", () => {
+    if (animItem.length > 0) {
+        animate()
+        window.addEventListener("scroll", animate)
+    }
+})
 //swiper 6 items
 const swiper6 = document.querySelectorAll('.swiper6')
 if (swiper6.length) {
@@ -1429,8 +1529,9 @@ if (document.querySelector(".main-info .swiper")) {
     window.addEventListener("resize", initAboutSwiper)
 }
 //reviews swiper
-if (document.querySelector('.reviews .swiper')) {
-    let swiper = new Swiper(document.querySelector('.reviews .swiper'), {
+const reviewsSwiper = document.querySelector('.reviews .swiper')
+if (reviewsSwiper) {
+    let swiper = new Swiper(reviewsSwiper, {
         slidesPerView: 1,
         spaceBetween: 12,
         observer: true,
@@ -1438,12 +1539,12 @@ if (document.querySelector('.reviews .swiper')) {
         watchSlidesProgress: true,
         breakpoints: {
             1700.98: {
-                slidesPerView: 3,
+                slidesPerView: reviewsSwiper.parentNode.classList.contains("reviews--product") ? 2.22 : 3,
                 spaceBetween: 20
             },
-            1250.98: {
-                slidesPerView: 2.18,
-                spaceBetween: 16
+            1030.98: {
+                slidesPerView: reviewsSwiper.parentNode.classList.contains("reviews--product") ? 2 : 2.18,
+                spaceBetween: 16,
             },
             700.98: {
                 slidesPerView: 1.6,
@@ -1461,8 +1562,56 @@ if (document.querySelector('.reviews .swiper')) {
         speed: 800,
     })
 }
+//advants swiper
+if (document.querySelector(".main-advants .swiper")) {
+    let advantsSwiper
+    let isInitialized
+    function initAboutSwiper() {
+        if (window.innerWidth <= bp.tablet && !isInitialized) {
+            isInitialized = true
+            advantsSwiper = new Swiper(document.querySelector(".main-advants .swiper"), {
+                slidesPerView: 1.52,
+                spaceBetween: 12,
+                observer: true,
+                observeParents: true,
+                watchSlidesProgress: true,
+                speed: 800,
+            });
+        } else if (window.innerWidth > bp.tablet && isInitialized) {
+            isInitialized = false
+            advantsSwiper.destroy()
+        }
+    }
+    initAboutSwiper()
+    window.addEventListener("resize", initAboutSwiper)
+}
+//legal entity cards swiper
+if (document.querySelector(".legal-entity-cards .swiper")) {
+    let legalSwiper
+    let isInitialized
+    function initLegalSwiper() {
+        if (window.innerWidth <= bp.tablet && !isInitialized) {
+            isInitialized = true
+            legalSwiper = new Swiper(document.querySelector(".legal-entity-cards .swiper"), {
+                slidesPerView: 2,
+                spaceBetween: 12,
+                observer: true,
+                observeParents: true,
+                watchSlidesProgress: true,
+                speed: 800,
+            });
+        } else if (window.innerWidth > bp.tablet && isInitialized) {
+            isInitialized = false
+            legalSwiper.destroy()
+        }
+    }
+    initLegalSwiper()
+    window.addEventListener("resize", initLegalSwiper)
+}
 //menu
 const mainMenu = document.querySelector(".main-menu")
+const mainMenuNav = mainMenu.querySelectorAll('.link-btn')
+const mainMenuBackNav = mainMenu.querySelectorAll("[data-back-to-level]")
 function showMainMenu() {
     if (!menuBtn.classList.contains("active")) {
         disableScroll()
@@ -1474,7 +1623,7 @@ function showMainMenu() {
         mainMenu.classList.add("show")
         if (window.innerWidth > bp.laptop) {
             if (mainMenu.querySelector("[data-level='2']")) {
-                mainMenu.querySelectorAll("[data-level='2']")[0].classList.add("active")
+                mainMenu.querySelectorAll("[data-level='2']")[0].parentNode.children[0].classList.add("active")
             }
         }
     }
@@ -1490,25 +1639,17 @@ function unshowMainMenu() {
     enableScroll()
 }
 if (menuBtn && mainMenu) {
-    menuBtn.addEventListener("mouseenter", () => {
-        if (window.innerWidth > bp.desktop) {
-            showMainMenu()
-        }
-    })
-    menuBtn.addEventListener("mouseleave", () => {
-        if (window.innerWidth > bp.desktop) {
-            unshowMainMenu()
-        }
-    })
-    mainMenu.addEventListener("mouseenter", () => {
-        if (window.innerWidth > bp.desktop) {
-            showMainMenu()
-        }
-    })
-    mainMenu.addEventListener("mouseleave", () => {
-        if (window.innerWidth > bp.desktop) {
-            unshowMainMenu()
-        }
+    [menuBtn, mainMenu].forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            if (window.innerWidth > bp.desktop) {
+                showMainMenu()
+            }
+        })
+        item.addEventListener("mouseleave", () => {
+            if (window.innerWidth > bp.desktop) {
+                unshowMainMenu()
+            }
+        })
     })
     menuBtn.addEventListener("click", e => {
         if (window.innerWidth <= bp.desktop) {
@@ -1521,15 +1662,12 @@ if (menuBtn && mainMenu) {
 
         }
     })
-    const mainMenuNav = mainMenu.querySelectorAll('[data-level]')
-    const mainMenuBackNav = mainMenu.querySelectorAll("[data-back-to-level]")
     function navMenuOnOpen(nav) {
         if (!nav.classList.contains("active")) {
-            let attr = nav.dataset.level
-            mainMenu.querySelectorAll(`[data-level='${attr}']`).forEach(el => {
-                el.classList.remove("active")
-            })
-            nav.classList.add("active")
+            Array.from(nav.parentNode.children).forEach(el => el.classList.remove("active"))
+            if (nav.classList.contains("has-icon")) {
+                nav.classList.add("active")
+            }
         }
     }
     if (mainMenuNav.length) {
@@ -1566,6 +1704,24 @@ if (menuBtn && mainMenu) {
         }
     })
 }
+//header__cart
+const headerCartBtn = document.querySelector(".header__cart")
+const cartPopup = document.querySelector(".cart-popup")
+if (headerCartBtn && cartPopup) {
+    let cartVisibilityTimeout
+    [headerCartBtn, cartPopup].forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            clearTimeout(cartVisibilityTimeout)
+            cartPopup.classList.add("show")
+        })
+        item.addEventListener("mouseleave", () => {
+            clearTimeout(cartVisibilityTimeout)
+            cartVisibilityTimeout = setTimeout(() => {
+                cartPopup.classList.remove("show")
+            }, 300);
+        })
+    })
+}
 // catalog filter
 const catFilter = document.querySelector(".cat-filter")
 const filterSelected = document.querySelector(".filter-selected__items")
@@ -1578,8 +1734,6 @@ function initRangeSliders() {
         let rangeStart = item.querySelector(".range-filter__start")
         let rangeEnd = item.querySelector(".range-filter__end")
         let rangeSlider = item.querySelector(".range-filter__slider")
-        let rangeName = item.getAttribute("data-name")
-        let rangeId = item.getAttribute("data-id")
         let start = +item.getAttribute("data-start")
         let end = +item.getAttribute("data-end")
         let min = +item.getAttribute("data-min")
@@ -1593,18 +1747,12 @@ function initRangeSliders() {
             }
         });
         rangeStart.addEventListener("change", () => {
-            /*             if (!rangeEnd.value) {
-                            rangeEnd.value = max
-                        } */
             rangeSlider.noUiSlider.set([rangeStart.value, null])
             if (!item.classList.contains("updated")) {
                 item.classList.add("updated")
             }
         });
         rangeEnd.addEventListener("change", () => {
-            /*  if (!rangeStart.value) {
-                 rangeStart.value = min
-             } */
             rangeSlider.noUiSlider.set([null, rangeEnd.value])
             if (!item.classList.contains("updated")) {
                 item.classList.add("updated")
@@ -1612,12 +1760,6 @@ function initRangeSliders() {
         });
         let rangeValues = [rangeStart, rangeEnd];
         rangeSlider.noUiSlider.on('slide', function (values, handle) {
-            /* if (!rangeEnd.value) {
-                rangeEnd.value = max
-            }
-            if (!rangeStart.value) {
-                rangeStart.value = min
-            } */
             rangeValues[handle].value = parseInt(values[handle])
             if (!item.classList.contains("updated")) {
                 item.classList.add("updated")
@@ -1734,34 +1876,59 @@ if (catFilter && filterSelected) {
         })
     }
 }
+//catalog views
+const catalogViewBtn = document.querySelectorAll(".catalog-top__view-btn")
+const catalogView = document.querySelector("[data-catalog-view]")
+if (catalogViewBtn.length && catalogView) {
+    catalogViewBtn.forEach(item => {
+        item.addEventListener("click", () => {
+            catalogView.classList.add("loading")
+            catalogViewBtn.forEach(btn => btn.classList.remove("active"))
+            item.classList.add("active")
+            let attr = item.getAttribute("data-view")
+            catalogView.setAttribute("data-catalog-view", attr)
+            setTimeout(() => {
+                catalogView.classList.remove("loading")
+            }, 300);
+        })
+    })
+}
 // product
-const product = document.querySelector(".product")
-const productSwipers = document.querySelector(".product__swipers")
-if (product) {
+const productSwiper = document.querySelector(".product .product__swipers")
+function initProductSwiper(productSwiper) {
     //product swiper
-    if (productSwipers) {
+    if (productSwiper) {
+        const thumbs = productSwiper.querySelector(".product__thumbswiper")
         let thumbSwiper
-        if (productSwipers.querySelector(".product__thumbswiper")) {
-            thumbSwiper = new Swiper(".product__thumbswiper .swiper", {
-                slidesPerView: 4,
+        if (thumbs) {
+            thumbSwiper = new Swiper(thumbs.querySelector(".swiper"), {
+                slidesPerView: thumbs.classList.contains('product__thumbswiper--quickView') ? 3 : 4,
                 spaceBetween: 8,
                 observer: true,
                 observeParents: true,
                 watchSlidesProgress: true,
                 breakpoints: {
                     1700.98: {
-                        slidesPerView: 5.31,
+                        slidesPerView: thumbs.classList.contains('product__thumbswiper--quickView') ? 4 : 5.31,
                         spaceBetween: 12,
+                    },
+                    1030.98: {
+                        slidesPerView: thumbs.classList.contains('product__thumbswiper--quickView') ? 3 : 4,
+                        spaceBetween: 8,
+                    },
+                    700.98: {
+                        slidesPerView: 4,
+                        spaceBetween: 8,
                     },
                 },
                 navigation: {
-                    prevEl: productSwipers.querySelector(".nav-btn--prev"),
-                    nextEl: productSwipers.querySelector(".nav-btn--next"),
+                    prevEl: productSwiper.querySelector(".nav-btn--prev"),
+                    nextEl: productSwiper.querySelector(".nav-btn--next"),
                 },
                 speed: 800
             })
         }
-        let mainSwiper = new Swiper(".product__mainswiper .swiper", {
+        let mainSwiper = new Swiper(productSwiper.querySelector(".product__mainswiper .swiper"), {
             slidesPerView: 1,
             observer: true,
             observeParents: true,
@@ -1774,27 +1941,29 @@ if (product) {
                 swiper: thumbSwiper || null,
             },
             pagination: {
-                el: productSwipers.querySelector(".swiper-pagination"),
+                el: productSwiper.querySelector(".swiper-pagination"),
                 type: "bullets",
                 clickable: true,
             },
             navigation: {
-                prevEl: productSwipers.querySelector(".nav-btn--prev"),
-                nextEl: productSwipers.querySelector(".nav-btn--next"),
+                prevEl: productSwiper.querySelector(".nav-btn--prev"),
+                nextEl: productSwiper.querySelector(".nav-btn--next"),
             },
             speed: 300
         })
     }
 }
+initProductSwiper(productSwiper)
 //cart
 const cartP = document.querySelector(".cart-p")
 //enable / disable cart submit btn
 function cartSubmitBtn(checkItems) {
-    if (document.querySelector(".cart-p__form .total-cart__submit")) {
+    const submitBtn = cartP.querySelector(".total-cart__submit")
+    if (submitBtn) {
         if (!Array.from(checkItems).some(inp => inp.checked)) {
-            document.querySelector(".total-cart__submit").classList.add("disabled")
+            submitBtn.classList.add("disabled")
         } else {
-            document.querySelector(".total-cart__submit").classList.remove("disabled")
+            submitBtn.classList.remove("disabled")
         }
     }
     if (Array.from(checkItems).some(inp => inp.checked) && !Array.from(checkItems).every(inp => inp.checked)) {
@@ -1828,6 +1997,10 @@ if (clearCartBtns.length) {
 const orderP = document.querySelector(".order-p")
 if (orderP) {
     const switchBlocks = orderP.querySelectorAll(".switch-block")
+    const orderAddress = orderP.querySelectorAll("[data-address]")
+    const orderFullAddress = orderP.querySelector("[data-full-address]")
+    const orderAgree = orderP.querySelector("[data-agree]")
+    const orderSubmit = orderP.querySelector(".total-cart__submit")
     function setFullAddress() {
         let city = orderP.querySelector("[data-address='city']")?.textContent || ''
         let locality = orderP.querySelector("[data-address='locality']")?.value || ''
@@ -1835,7 +2008,7 @@ if (orderP) {
         let home = orderP.querySelector("[data-address='home']")?.value || ''
         let addressParts = [locality, street, home].filter(Boolean);
         let fullAddress = addressParts.join(', ');
-        document.querySelector("[data-full-address]").textContent = fullAddress || city
+        orderFullAddress.textContent = fullAddress || city
     }
     //reset on tab change
     if (switchBlocks.length) {
@@ -1843,7 +2016,7 @@ if (orderP) {
             item.querySelectorAll("[data-tab]").forEach(nav => {
                 nav.addEventListener("click", () => {
                     item.querySelectorAll("[data-block]").forEach(block => {
-                        formReset(block)
+                        //  formReset(block)
                     })
                     if (item.closest("[data-step]")) {
                         orderP.querySelectorAll("[data-step]").forEach(step => {
@@ -1879,9 +2052,9 @@ if (orderP) {
         })
     }
     //set full address
-    if (document.querySelector("[data-address]") && document.querySelector("[data-full-address]")) {
+    if (orderAddress.length && orderFullAddress) {
         setFullAddress()
-        document.querySelectorAll("[data-address]").forEach(item => {
+        orderAddress.forEach(item => {
             item.addEventListener("change", setFullAddress)
             if (item.closest(".item-form") && item.closest(".item-form").querySelector(".item-form__reset")) {
                 item.closest(".item-form").querySelector(".item-form__reset").addEventListener("click", setFullAddress)
@@ -1889,42 +2062,216 @@ if (orderP) {
         })
     }
     // enable/disable submit btn
-    if (orderP.querySelector("[data-agree]") && orderP.querySelector(".total-cart__submit")) {
-        orderP.querySelector("[data-agree]").addEventListener("change", () => {
-            if (!orderP.querySelector("[data-agree]").checked) {
-                orderP.querySelector(".total-cart__submit").classList.add("disabled")
+    if (orderAgree && orderSubmit) {
+        orderAgree.addEventListener("change", () => {
+            if (!orderAgree.checked) {
+                orderSubmit.classList.add("disabled")
             } else {
-                orderP.querySelector(".total-cart__submit").classList.remove("disabled")
+                orderSubmit.classList.remove("disabled")
             }
         })
     }
 }
+//order cancel
+const orderCancelBtn = document.querySelectorAll(".order-cancel-btn")
+const orderCancelModal = document.querySelector("#order-cancel-modal")
+if (orderCancelBtn.length && orderCancelModal) {
+    orderCancelBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let id = btn.closest(".order-current").getAttribute("data-order-id")
+            orderCancelModal.querySelector("button[type=submit]")?.setAttribute("data-order-id", id)
+            openModal(orderCancelModal)
+        })
+    })
+}
+const orderCallbackBtn = document.querySelectorAll(".order-callback-btn")
+const contactManagerMod = document.querySelector('#contact-manager-modal')
+if (orderCallbackBtn.length && contactManagerMod) {
+    orderCallbackBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let id = btn.closest(".order-current").getAttribute("data-order-id")
+            contactManagerMod.querySelector("button[type=submit]")?.setAttribute("data-order-id", id)
+            openModal(contactManagerMod)
+        })
+    })
+}
 //blog anchors 
-const blogAnchors = document.querySelectorAll(".blog-anchors .js-anchor")
-if (blogAnchors.length) {
-    let marginTop = header.clientHeight + 10
-    let marginBot = window.innerHeight - 110//header.clientHeight - 10 
-    let observerOptions = {
-        rootMargin: `-${marginTop}px 0px -${marginBot}px 0px`,
-        threshold: 0,
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const targetId = entry.target.id;
-                blogAnchors.forEach(link => link.classList.remove('active'));
-                const activeLink = document.querySelector(`.js-anchor[href="#${targetId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
+const navAnchors = document.querySelectorAll(".nav-anchors .js-anchor")
+if (navAnchors.length) {
+    function initializeObserver() {
+        if (window.innerWidth > bp.desktop) {
+            let marginTop = header.clientHeight + 10
+            let marginBot = window.innerHeight - (header.clientHeight + 10)
+            let observerOptions = {
+                rootMargin: `-${marginTop}px 0px -${marginBot}px 0px`,
+                threshold: 0,
+            };
+            let observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetId = entry.target.id;
+                        const activeLink = document.querySelector(`.js-anchor[href="#${targetId}"]`);
+                        navAnchors.forEach(link => link.classList.remove('active'));
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+            navAnchors.forEach(link => {
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    observer.observe(targetElement);
                 }
+            });
+            return observer
+        } else {
+            return null
+        }
+    }
+    let currentObserver = initializeObserver();
+    window.addEventListener('resize', () => {
+        if (currentObserver) {
+            currentObserver.disconnect();
+        }
+        currentObserver = initializeObserver();
+    });
+}
+const quizP = document.querySelector(".quiz-p")
+const quizStep = document.querySelectorAll(".quiz-p [data-step]")
+if (quizP && quizStep.length > 1) {
+    function setActiveStep(activeStep) {
+        quizP.querySelectorAll("[data-step]").forEach(step => step.classList.remove("active"))
+        activeStep.classList.add("active")
+        activeStep.style.opacity = 0
+        setTimeout(() => {
+            activeStep.style.opacity = 1
+        }, 0);
+    }
+    quizStep.forEach(item => {
+        const errorEl = item.querySelector("[data-error]")
+        let currentStepAttr = item.getAttribute("data-step")
+        const quizStepBtn = item.querySelector("[data-to-step]")
+        if (quizStepBtn) {
+            quizStepBtn.addEventListener('click', () => {
+                let nextStepAttr = quizStepBtn.getAttribute("data-to-step")
+                const activeStep = quizP.querySelector(`[data-step='${nextStepAttr}']`)
+                if (Number(currentStepAttr) === 1) {
+                    let hasInputChecked = Array.from(item.querySelectorAll(".category-check")).some(cat => {
+                        let checkedInp = cat.querySelector("input:checked")
+                        if (!checkedInp) {
+                            return false
+                        } else {
+                            const catInp = cat.querySelector(".item-form")
+                            if (catInp) {
+                                if (catInp.querySelector("input").value) {
+                                    return true
+                                } else {
+                                    catInp.classList.add("error")
+                                    return false
+                                }
+                            } else {
+                                return true
+                            }
+                        }
+                    })
+                    if (hasInputChecked && activeStep) {
+                        setActiveStep(activeStep)
+                        errorEl.textContent = ''
+                        if (item.querySelectorAll(".item-form")) {
+                            item.querySelectorAll(".item-form").forEach(inp => inp.classList.remove("error"))
+                        }
+                    } else {
+                        errorEl.textContent = 'Выберите одну или несколько категорий'
+                    }
+                }
+            })
+        }
+    })
+}
+//calculator
+const calculator = document.querySelectorAll(".calculator")
+function initCalcRangeSliders(calc) {
+    let rangeSliders = calc.querySelectorAll(".range-filter")
+    rangeSliders.forEach(item => {
+        let rangeStart = item.querySelector(".range-filter__start")
+        let rangeEnd = item.querySelector(".range-filter__end")
+        let rangeSlider = item.querySelector(".range-filter__slider")
+        let start = +item.getAttribute("data-start")
+        let min = +item.getAttribute("data-min")
+        let max = +item.getAttribute("data-max")
+        let timeOut
+        noUiSlider.create(rangeSlider, {
+            start: start,
+            connect: [true, false],
+            range: {
+                'min': min,
+                'max': max
             }
         });
-    }, observerOptions);
-    blogAnchors.forEach(link => {
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            observer.observe(targetElement);
+        rangeStart.addEventListener("change", () => {
+            if (rangeStart.value < min) {
+                rangeStart.value = min
+            }
+            if (rangeStart.value > max) {
+                rangeStart.value = max
+            }
+            rangeSlider.noUiSlider.set([rangeStart.value, null])
+        });
+        let rangeValues = [rangeStart, rangeEnd];
+        rangeSlider.noUiSlider.on('update', function (values, handle) {
+            rangeValues[handle].value = parseInt(values[handle])
+            clearTimeout(timeOut)
+            timeOut = setTimeout(() => {
+                let width = calc.querySelector("[data-range=width]")?.querySelector('.range-filter__slider').noUiSlider.get()
+                let length = calc.querySelector("[data-range=length]")?.querySelector('.range-filter__slider').noUiSlider.get()
+                let depth = calc.querySelector("[data-range=depth]")?.querySelector('.range-filter__slider').noUiSlider.get()
+                let square = width * length / 1000000
+                let volume = square * depth / 1000
+                calc.setAttribute("data-square", Number(square))
+                calc.setAttribute("data-volume", Number(volume))
+                let countInp = calc.querySelector("[data-calc-inp='data-count']")
+                if (countInp && countInp.value >= 1) {
+                    calc.querySelectorAll("[data-calc-inp]").forEach(el => {
+                        let elAttr = el.getAttribute("data-calc-inp")
+                        let elProductVal = calc.getAttribute(`${elAttr}`) || 1
+                        el.value = elProductVal * countInp.value
+                    })
+                }
+            }, 500);
+        });
+    })
+}
+if (calculator.length) {
+    calculator.forEach(calc => {
+        if (calc.querySelector(".range-filter")) {
+            initCalcRangeSliders(calc)
         }
-    });
+        const calcInputs = calc.querySelectorAll("[data-calc-inp]")
+        if (calcInputs.length) {
+            calcInputs.forEach(item => {
+                let prevVal = item.value
+                let attr = item.getAttribute("data-calc-inp")
+                item.addEventListener("change", () => {
+                    if (/^\d+(\.\d+)?$/.test(item.value)) {
+                        item.value = Number(item.value)
+                        let productVal = calc.getAttribute(`${attr}`) || 1
+                        let ratio = item.value / productVal
+                        calcInputs.forEach(el => {
+                            if (item !== el) {
+                                let elAttr = el.getAttribute("data-calc-inp")
+                                let elProductVal = calc.getAttribute(`${elAttr}`) || 1
+                                el.value = elProductVal * ratio
+                            }
+                        })
+                    } else {
+                        item.value = prevVal
+                    }
+                    prevVal = item.value
+                })
+            })
+        }
+
+    })
 }

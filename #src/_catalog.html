@@ -5,6 +5,10 @@
         <svg><use xlink:href="img/svg/sprite.svg#filter"></use></svg>
         Фильтры<span class="filter-count"></span>
     </button>
+    <button type="button" class="btn main-btn calc-icon mod-open-btn" data-modal="calc-modal">
+        <svg><use xlink:href="img/svg/sprite.svg#calculator"></use></svg>
+        Калькулятор
+    </button>
     <div class="filter-selected">
         <ul class="filter-selected__items"></ul>
         <div class="filter-reset filter-selected__reset">
@@ -19,7 +23,7 @@
                 <div class="dropdown__icon" aria-label="Развернуть/Свернуть">
                     <svg class="mob-hidden"><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
                     <svg class="desktop-hidden"><use xlink:href="img/svg/sprite.svg#sort"></use></svg>
-                </div>               
+                </div>
             </div>
             <div class="dropdown__body">
                 <div class="modal">
@@ -56,12 +60,24 @@
                 </div>
             </div>
         </div>
+        <div class="catalog-top__view-btns">
+            <button class="catalog-top__view-btn active" data-view="grid" aria-label="Отобразить в виде сетки">
+                <svg><use xlink:href="img/svg/sprite.svg#grid"></use></svg>
+            </button>
+            <button class="catalog-top__view-btn" data-view="tile" aria-label="Отобразить в виде плитки">
+                <svg><use xlink:href="img/svg/sprite.svg#tile"></use></svg>
+            </button>
+            <button class="catalog-top__view-btn" data-view="list" aria-label="Отобразить в виде списка">
+                <svg><use xlink:href="img/svg/sprite.svg#list"></use></svg>
+            </button>
+        </div>
     </div>
 </div>
 <!--page-row-->
 <div class="page-row">
     <!--page-row__aside-->
     <aside class="page-row__aside">
+        <!--cat-filter-->
         <div class="cat-filter">
             <!--filter-->
             <form class="cat-filter__form">
@@ -172,7 +188,7 @@
                                             </div>
                                             <div class="range-filter__amount">
                                                 <span>до</span>
-                                                <input type="number" min="20" max="300" placeholder="300" 
+                                                <input type="number" min="20" max="300" placeholder="300"
                                                     class="range-filter__end">
                                             </div>
                                         </div>
@@ -247,11 +263,99 @@
                 </div>
             </form>
         </div>
+        <!--calculator-->
+        <div class="calculator calculator--catalog">
+            <div class="calculator__top">
+                <span>Калькулятор</span>
+                <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
+            </div>
+            <div class="calculator__body">
+                <div class="modal modal--mob" id="calc-modal">
+                    <div class="modal__content">
+                        <button type="button" class="btn-cross modal__close"></button>
+                        <div class="modal__top">
+                            <h3>Калькулятор</h3>
+                        </div>
+                        <div class="custom-scroll modal__scroll">
+                            <p>Укажите размеры в мм:</p>
+                            <div class="calculator__sizes">
+                                <div class="calculator__size">
+                                    <div class="calculator__size-lbl">Толщина</div>
+                                    <div class="range-filter" data-range="depth" data-min="20" data-max="50" data-start="20">
+                                        <div class="range-filter__amounts">
+                                            <div class="range-filter__amount">
+                                                <input type="number" min="20" max="50" placeholder="20" value="20" class="range-filter__start">
+                                            </div>
+                                        </div>
+                                        <div class="range-filter__slider-wrap">
+                                            <div class="range-filter__slider"></div>
+                                            <div class="range-filter__minmax">
+                                                <span>20</span>
+                                                <span>50</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calculator__size">
+                                    <div class="calculator__size-lbl">Ширина</div>
+                                    <div class="range-filter" data-range="width" data-min="200" data-max="500" data-start="200">
+                                        <div class="range-filter__amounts">
+                                            <div class="range-filter__amount">
+                                                <input type="number" min="200" max="500" placeholder="200" value="200" class="range-filter__start">
+                                            </div>
+                                        </div>
+                                        <div class="range-filter__slider-wrap">
+                                            <div class="range-filter__slider"></div>
+                                            <div class="range-filter__minmax">
+                                                <span>200</span>
+                                                <span>500</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calculator__size">
+                                    <div class="calculator__size-lbl">Длина</div>
+                                    <div class="range-filter" data-range="length" data-min="200" data-max="500" data-start="200">
+                                        <div class="range-filter__amounts">
+                                            <div class="range-filter__amount">
+                                                <input type="number" min="200" max="500" placeholder="200" value="200" class="range-filter__start">
+                                            </div>
+                                        </div>
+                                        <div class="range-filter__slider-wrap">
+                                            <div class="range-filter__slider"></div>
+                                            <div class="range-filter__minmax">
+                                                <span>200</span>
+                                                <span>500</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Заполните одно из полей — остальные единицы будут рассчитаны автоматом</p>
+                            <div class="calculator__items">
+                                <label class="calculator__item">
+                                    <span>М<sup>3</sup></span>
+                                    <input type="number" placeholder="0" data-calc-inp="data-volume">
+                                </label>
+                                <label class="calculator__item">
+                                    <span>М<sup>2</sup></span>
+                                    <input type="number" placeholder="0" data-calc-inp="data-square">
+                                </label>
+                                <label class="calculator__item">
+                                    <span>Шт</span>
+                                    <input type="number" placeholder="0" data-calc-inp="data-count">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </aside>
     <!--page-row__content-->
     <div class="page-row__content">
         <div class="js-prodWrapper">
-            <div class="catalog__items">
+            <div class="catalog__items" data-catalog-view="grid">
                 @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "1", "inStock": true})
                 @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "2", "inStock": true})
                 @@include("_card.html", {"fav": false, "hasPhoto": true, "nmb": "3", "inStock": false})

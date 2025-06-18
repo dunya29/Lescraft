@@ -1,0 +1,196 @@
+.price-acc {
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--gray-color-light);
+    margin-bottom: 24px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .accordion__header {
+        padding: 24px 40px;
+        display: grid;
+        grid-template-columns: 3.2fr auto 140px;
+        gap: 20px;
+    }
+    .page-content {
+        table {
+            &:last-child {
+                tbody tr {
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+            tr {
+                border-radius: 0 !important;
+                border-left: none;
+                border-right: none;
+                &:nth-child(2n + 1) {
+                    background: var(--green-color-light);
+                }
+                &:first-child {
+                    th,
+                    td {
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+                }
+            }
+            th,
+            td {
+                min-width: 180px;
+                padding-left: 40px;
+                padding-right: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                &:first-child,
+                &:last-child {
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                &:first-child {
+                    flex-basis: 20.7%;
+                    min-width: 263px;
+                }
+                & > * {
+                    display: contents;
+                }
+            }
+        }
+    }
+    &__price {
+        font-weight: 600;
+    }
+    @media (max-width: $bp1) {
+        border-radius: 16px;
+        margin-bottom: 12px;
+        .accordion__header {
+            padding: 20px 24px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .page-content {
+            table {
+                tr {
+                    &:first-child {
+                        th,
+                        td {
+                            font-size: 16px;
+                        }
+                    }
+                }
+                th,
+                td {
+                    padding-left: 24px;
+                    padding-right: 24px;
+                    &:first-child,
+                    &:last-child {
+                        font-size: 16px;
+                    }
+                    &:first-child {
+                        flex-basis: 27.5%;
+                    }
+                    &:last-child {
+                        flex-basis: 9%;
+                    }
+                }
+            }
+        }
+        &__price {
+            justify-self: center;
+        }
+    }
+    @media (max-width: $bp2) {
+        margin-bottom: 8px;
+        .accordion__header {
+            padding: 20px;
+            grid-template-columns: 1.54fr 1fr 1.5fr;
+        }
+        .page-content {
+            table {
+                tr {
+                    &:first-child {
+                        th,
+                        td {
+                            font-size: 14px;
+                        }
+                    }
+                }
+                th,
+                td {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    &:first-child,
+                    &:last-child {
+                        font-size: 14px;
+                    }
+                    &:first-child {
+                        flex-basis: 16%;
+                    }
+                    &:last-child {
+                        flex-basis: 0%;
+                    }
+                }
+            }
+        }
+        &__price {
+            font-size: 14px;
+        }
+    }
+    @media (max-width: $bp4) {
+        .accordion__header {
+            padding: 16px;
+            display: flex;
+            gap: 0;
+        }
+        .page-content {
+            table {
+                tr {
+                    &:first-child {
+                        th,
+                        td {
+                            font-size: 16px;
+                        }
+                    }
+                }
+                th,
+                td {
+                    padding-left: 16px;
+                    padding-right: 16px;
+                }
+            }
+        }
+        &__price {
+            display: none;
+        }
+    }
+}
+.price-p {
+    .sec-top {
+        display: block;
+        &__content {
+            margin-top: 16px;
+            p {
+                font-size: 18px;
+                font-weight: 600;
+                max-width: 48%;
+            }
+        }
+    }
+    @media (max-width: $bp1) {
+        .sec-top__content {
+            p {
+                font-size: 16px;
+                max-width: 51%;
+            }
+        }
+    }
+    @media (max-width: $bp2) {
+        .sec-top__content {
+            p {
+                font-size: 14px;
+                max-width: 800px;
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Вакансии"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Вакансии"})
+                    </div>
+                </div>
+                <!--vacancies-->
+                <section class="section vacancies">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Вакансии</h1>
+                        </div>
+                        <div class="tabs-scroll vacancies__tabs">
+                            <div class="tabs">
+                                <a href="#" class="tabs__item active">Все</a>
+                                <a href="#" class="tabs__item">Краснодар</a>
+                                <a href="#" class="tabs__item">Адлер</a>
+                                <a href="#" class="tabs__item">Сочи</a>
+                                <a href="#" class="tabs__item">Армавир</a>
+                                <a href="#" class="tabs__item">Ростов-на-Дону</a>
+                            </div>
+                        </div>
+                        <div class="mb-90 vacancies__wrapper">
+                            <div class="vacancies__items">
+                                @@include("_item-vacancy.html")
+                                @@include("_item-vacancy.html")
+                                @@include("_item-vacancy.html")
+                                @@include("_item-vacancy.html")
+                                @@include("_item-vacancy.html")
+                                @@include("_item-vacancy.html")
+                            </div>
+                            @@include('_pagination.html')
+                        </div>
+                        <div class="vacancies__cards">
+                            <!--info-card-->
+                            <div class="info-card">
+                                <div class="info-card__icon">
+                                    <img src="img/svg/ecology.svg" alt>
+                                </div>
+                                <p class="h6">Работа с&nbsp;качественным и&nbsp;экологичным продуктом</p>
+                            </div>
+                            <!--info-card-->
+                            <div class="info-card">
+                                <div class="info-card__icon">
+                                    <img src="img/svg/carrier.svg" alt>
+                                </div>
+                                <p class="h6">Карьерный рост и&nbsp;профессиональное развитие</p>
+                            </div>
+                            <!--info-card-->
+                            <div class="info-card">
+                                <div class="info-card__icon">
+                                    <img src="img/svg/safety.svg" alt>
+                                </div>
+                                <p class="h6">Стабильность и&nbsp;надёжность компании</p>
+                            </div>
+                            <!--info-card-->
+                            <div class="info-card">
+                                <div class="info-card__icon">
+                                    <img src="img/svg/collective.svg" alt>
+                                </div>
+                                <p class="h6">Команда профессионалов и&nbsp;дружеская атмосфера</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

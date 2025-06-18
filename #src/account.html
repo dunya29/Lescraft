@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Личные данные"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Личный кабинет"})
+                    </div>
+                </div>
+                <!--profile-p-->
+                <section class="section profile-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Личные данные</h1>
+                        </div>
+                        <!--page-row-->
+                        <div class="page-row page-row--account page-row--account-nav">
+                            <!--page-row__aside-->
+                            <aside class="page-row__aside">
+                                <nav class="account-nav">
+                                    <ul>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#account-profile"></use></svg>Личные
+                                                данные<span></span></a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#account-cart"></use></svg>Текущие заказы</a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#orders"></use></svg>История заказов<span></span></a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#log-out"></use></svg>Выйти из профиля</a></li>
+                                    </ul>
+                                </nav>
+                            </aside>
+                            <!--page-row__content-->
+                            <div class="page-row__content">
+                                <div class="profile-p__wrapper">
+                                    <div class="profile-p__sec">
+                                        <div class="profile-p__lbl">Личная информация</div>
+                                        <form class="form profile-p__form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
+                                            <div class="form__grid form__items">
+                                                <div class="item-form item-form--readonly" aria-readonly="true">
+                                                    <span>Телефон</span>
+                                                    <span>+7 937 635-36-36</span>
+                                                </div>
+                                                <div class="item-form">
+                                                    <div class="item-form__inp">
+                                                        <input type="text" placeholder=" ">
+                                                        <div class="item-form__placeholder">Фамилия</div>
+                                                        <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                    </div>
+                                                    <span data-error></span>
+                                                </div>
+                                                <div class="item-form">
+                                                    <div class="item-form__inp">
+                                                        <input type="text" placeholder=" ">
+                                                        <div class="item-form__placeholder">Имя</div>
+                                                        <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                    </div>
+                                                    <span data-error></span>
+                                                </div>
+                                                <div class="item-form">
+                                                    <div class="item-form__inp">
+                                                        <input type="text" placeholder=" ">
+                                                        <div class="item-form__placeholder">Отчество</div>
+                                                        <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                    </div>
+                                                    <span data-error></span>
+                                                </div>
+                                                <div class="item-form">
+                                                    <div class="item-form__inp">
+                                                        <input type="text" placeholder=" ">
+                                                        <div class="item-form__placeholder">Email</div>
+                                                        <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                    </div>
+                                                    <span data-error></span>
+                                                </div>
+                                            </div>
+                                            <div class="form__footer">
+                                                <button type="submit" class="btn main-btn">
+                                                    Сохранить изменения
+                                                </button>
+                                                <div class="add-info">
+                                                    <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                    <p>Повторное изменение данных доступно после&nbsp;проверки менеджером</p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="profile-p__addresses profile-p__sec">
+                                        <div class="profile-p__lbl">Адреса доставки</div>
+                                        <div class="profile-p__address-list">
+                                            <div class="profile-p__address" data-address-id="1" data-address-locality="г. Краснодар" data-address-street="ул. Красная"
+                                                data-address-house="45">
+                                                <div class="item-contact">
+                                                    <span>Адрес</span>
+                                                    <span>г. Краснодар, ул. Красная, 45</span>
+                                                </div>
+                                                <div class="profile-p__address-actions">
+                                                    <button class="btn profile-p__address-edit"><svg><use xlink:href="img/svg/sprite.svg#edit"></use></svg></button>
+                                                    <button class="btn profile-p__address-del"><svg><use xlink:href="img/svg/sprite.svg#bin"></use></svg></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn text-btn profile-p__address-add mod-open-btn" data-modal="address-modal">
+                                            Добавить новый адрес
+                                            <svg><use xlink:href="img/svg/sprite.svg#plus-btn"></use></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+            @@include('_modal-profile.html')
+        </div>
+        @@include('_js.html')
+        @@include('_address-map.html')
+    </body>
+
+</html>

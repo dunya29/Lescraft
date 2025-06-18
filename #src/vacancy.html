@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Кладовщик на склад"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs-2.html', {"page1": "Вакансии","page2": "Кладовщик на склад"})
+                    </div>
+                </div>
+                <!--delivery-p-->
+                <section class="section vacancy-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Кладовщик на склад</h1>
+                        </div>
+                        <!--page-row-->
+                        <div class="page-row">
+                            <!--page-row__content-->
+                            <div class="page-row__content">
+                                <div class="page-content">
+                                    <h2>Условия</h2>
+                                    <ul>
+                                        <li>График работы: сменный 5/2 с 8:30 до 17:30;</li>
+                                        <li>Трудоустройство с первого рабочего дня;</li>
+                                        <li>Оформление по ТК РФ и все соц. гарантии, регулярные отчисления в пенсионный фонд, оплачиваемые отпуска и больничные;</li>
+                                        <li>Обучение за счёт компании, возможность карьерного роста и развития до старшего кладовщика;</li>
+                                        <li>Удобная спецодежда на все сезоны;</li>
+                                        <li>Оборудованная комната для приёма пищи и отдыха, раздевалка;</li>
+                                        <li>Подарки детям работников;</li>
+                                        <li>Место работы: г. Адлер, ул. Гастелло, 30 а;</li>
+                                        <li>Работа на современной технике Combilift, ричтрак и т.п.</li>
+                                    </ul>
+                                    <h2>Обязанности</h2>
+                                    <ul>
+                                        <li>Управление автопогрузчиком;</li>
+                                        <li>Содержание автопогрузчика в надлежащем техническом состоянии;</li>
+                                        <li>Ведение погрузочно-разгрузочных работ при помощи автопогрузчика;</li>
+                                        <li>Перемещения негабаритного товара внутри склада;</li>
+                                        <li>Участие в сборе заказа клиенту;</li>
+                                        <li>Участие в инвентаризации склада.</li>
+                                    </ul>
+                                    <h2>Требования</h2>
+                                    <ul>
+                                        <li>Опыт работы в должности водителя погрузчика от 6 месяцев;</li>
+                                        <li>Наличие действующего удостоверения Тракториста-машиниста В,С (Особые отметки: водитель погрузчика 3–4 разряда) будет
+                                            преимуществом;</li>
+                                        <li>Ведение погрузочно-разгрузочных работ при помощи автопогрузчика;</li>
+                                        <li>Перемещения негабаритного товара внутри склада;</li>
+                                        <li>Участие в сборе заказа клиенту;</li>
+                                        <li>Участие в инвентаризации склада.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--page-row__aside-->
+                            <aside class="page-row__aside">
+                                <!--feedback-form-->
+                                <form action class="form disabled-form feedback-form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
+                                    <h3>Откликнуться на вакансию</h3>
+                                    <div class="form__items">
+                                        <div class="item-form">
+                                            <div class="item-form__inp">
+                                                <input type="text" placeholder=" " class="required">
+                                                <div class="item-form__placeholder">Ваше имя</div>
+                                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                            </div>
+                                            <span data-error></span>
+                                        </div>
+                                        <div class="item-form">
+                                            <div class="item-form__inp">
+                                                <input type="tel" placeholder=" " class="required">
+                                                <div class="item-form__placeholder">Телефон</div>
+                                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                            </div>
+                                            <span data-error></span>
+                                        </div>
+                                        <div class="item-form">
+                                            <div class="item-form__inp">
+                                                <input type="text" placeholder=" " class="required">
+                                                <div class="item-form__placeholder">Email</div>
+                                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                            </div>
+                                            <span data-error></span>
+                                        </div>
+                                        <div class="item-form">
+                                            <textarea placeholder="Сообщение"></textarea>
+                                            <span data-error></span>
+                                        </div>
+                                        <div class="item-form file-form">
+                                            <div class="file-form__info">
+                                                <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                                            </div>
+                                            <label>
+                                                <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                                                <span>Перетащите, или <span>выберите файл</span></span>
+                                            </label>
+                                            <div class="file-form__items"></div>
+                                            <span data-error></span>
+                                        </div>
+                                    </div>
+                                    <div class="form__footer">
+                                        <button type="submit" class="btn main-btn main-btn--link">
+                                            Откликнуться
+                                            <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                                        </button>
+                                        <label class="item-checkbox">
+                                            <input type="checkbox" checked class="required">
+                                            <span>Нажимая кнопку «Откликнуться», я даю согласие на обработку своих персональных данных в соответствии <a href="#"
+                                                    target="_blank">Политикой конфиденциальности</a></span>
+                                        </label>
+                                    </div>
+                                </form>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

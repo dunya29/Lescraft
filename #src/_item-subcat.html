@@ -1,10 +1,25 @@
 <!--item-cat-->
+@@if(checkbox === false) {
 <a href="#" class="item-cat">
+}
+@@if(checkbox === true) {
+<div class="item-cat">
+}
     <div class="media-cover">
         <img src="img/subcat-@@nmb.png" alt="@@title">
     </div>
     <div class="item-cat__top">
         <h4>@@title</h4>
+        @@if(checkbox === true) {
+        <span class="item-cat__check"></span>
+        }
+        @@if(checkbox === false) {
         <div class="link-icon"></div>
+        }
     </div>
+@@if(checkbox === false) {
 </a>
+}
+@@if(checkbox === true) {
+</div>
+}

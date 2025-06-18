@@ -1,0 +1,51 @@
+<!--order-current-->
+<div class="order-current" data-order-id="1345">
+    <div class="order-current__header">
+        <div class="order-current__main">
+            <h4>Заказ № 1337 от 01.01.2025</h4>
+            <span class="order-current__info">3 товара на сумму 36 000 ₽</span>
+        </div>
+        <div class="order-current__status">
+            @@if(status === 'payment-pending') {
+            <button type="button" class="btn main-btn">
+                Оплатить онлайн
+            </button>
+            }
+            <div class="order-status order-status--@@status">@@statusTxt</div>
+        </div>
+    </div>
+    <div class="order-current__content">
+        <div class="js-prodWrapper order-current__items">
+            @@include("_item-order.html", {"inStock": true})
+            @@include("_item-order.html", {"inStock": true})
+            @@include("_item-order.html", {"inStock": true})
+        </div>
+        <div class="order-current__bottom">
+            <div class="item-contact">
+                <span>Оплата</span>
+                <span>Онлайн</span>
+            </div>
+            <div class="item-contact">
+                <span>Доставка</span>
+                <span>г. Краснодар, ул. Красная, 45</span>
+            </div>
+            <div class="order-current__total">
+                <span class="h6 order-current__total-lbl">Итого:</span>
+                <div class="order-current__price">
+                    <span class="rub h4 order-current__price-curr">54 499,78</span>
+                    <del class="rub h6 order-current__price-old">67 200</del>
+                </div>
+            </div>
+            <div class="order-current__btns">
+                <button type="button" class="btn stroke-btn order-callback-btn">
+                    Связаться с менеджером
+                </button>
+                <button type="button" class="btn text-btn order-cancel-btn">
+                    Отменить заказ
+                    <span class="btn-cross"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

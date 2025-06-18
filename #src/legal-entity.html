@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Для юридических лиц"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Для&nbsp;юридических&nbsp;лиц"})
+                    </div>
+                </div>
+                <!--legal-entity-->
+                <section class="mb-90 legal-entity">
+                    <div class="container">
+                        <div class="item-intro">
+                            <div class="item-intro__content">
+                                <h1 class="text-l">Стройматериалы для&nbsp;бизнеса: Все&nbsp;в&nbsp;одном месте.</h1>
+                                <p>Зарегистрируйтесь на нашем сайте, чтобы упростить процесс закупок, отслеживать заказы и получать оперативные консультации</p>
+                                <a href class="btn main-btn main-btn--link">
+                                    Зарегистрироваться
+                                    <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                                </a>
+                            </div>
+                            <div class="media-contain">
+                                <img src="img/content/intro-bg-1.png" alt>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--legal-entity-cards-->
+                <div class="section legal-entity-cards" data-animation="fadeUp">
+                    <div class="container">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/call-received.svg" alt>
+                                        </div>
+                                        <p class="h6">Консультация по&nbsp;вопросам регистрации в&nbsp;ЕГАИС</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/card.svg" alt>
+                                        </div>
+                                        <p class="h6">Оплата по&nbsp;безналичному расчёту</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/agreement.svg" alt>
+                                        </div>
+                                        <p class="h6">Работаем по&nbsp;договору</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!--info-card-->
+                                    <div class="info-card">
+                                        <div class="info-card__icon">
+                                            <img src="img/svg/wholesale.svg" alt>
+                                        </div>
+                                        <p class="h6">Оптовые цены и&nbsp;специальные&nbsp;условия</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--photo-reviews-->
+                <section class="section swiper5 photo-reviews" data-animation="fadeUp">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2>Фото-отзывы</h2>
+                        </div>
+                        <div class="swiper fancy-block">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="photo-reviews__img" data-fancy="review-gallery" data-src="img/content/letter.webp" data-fit data-thumb>
+                                        <img src="img/content/letter.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="photo-reviews__img" data-fancy="review-gallery" data-src="img/content/letter.webp" data-fit data-thumb>
+                                        <img src="img/content/letter.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="photo-reviews__img" data-fancy="review-gallery" data-src="img/content/letter.webp" data-fit data-thumb>
+                                        <img src="img/content/letter.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="photo-reviews__img" data-fancy="review-gallery" data-src="img/content/letter.webp" data-fit data-thumb>
+                                        <img src="img/content/letter.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="photo-reviews__img" data-fancy="review-gallery" data-src="img/content/letter.webp" data-fit data-thumb>
+                                        <img src="img/content/letter.jpg" alt>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="photo-reviews__img" data-fancy="review-gallery" data-src="img/content/letter.webp" data-fit data-thumb>
+                                        <img src="img/content/letter.jpg" alt>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

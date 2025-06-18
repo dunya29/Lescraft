@@ -1,0 +1,52 @@
+.quiz-p {
+}
+.quiz-form {
+    &__sec {
+        display: none;
+        transition: all 0.3s linear;
+        &.active {
+            display: block;
+        }
+        .main-btn {
+            margin-top: 32px;
+        }
+    }
+    &__top {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: start;
+        margin-bottom: 32px;
+    }
+    &__step {
+        color: var(--gray-color);
+        align-self: center;
+    }
+    @media (min-width: $bp1), (min-width: $bp4) and (max-width: $bp2) {
+        .form__lbl {
+            font-size: 18px;
+        }
+    }
+    @media (max-width: $bp1) {
+        &__sec {
+            .main-btn {
+                margin-top: 24px;
+            }
+        }
+        &__top {
+            margin-bottom: 20px;
+        }
+    }
+    @media (max-width: $bp3) {
+        .category-check--inp {
+            grid-column-end: span 2;
+        }
+    }
+    @media (max-width: $bp4) {
+        &__top {
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+    }
+}

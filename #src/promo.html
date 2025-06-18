@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Новинка месяца в ЛесКрафт: Брус строганный"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top">
+                    <div class="container">
+                        @@include('_breadcrumbs-2.html', {"page1": "Акции", "page2": "Новинка месяца в ЛесКрафт: Брус строганный"})
+                    </div>
+                </div>
+                <!--promo-block-->
+                <section class="section promo-block">
+                    <div class="container">
+                        <div class="promo-block__img">
+                            <img src="img/promo-bg.png" alt>
+                        </div>
+                        <div class="promo-block__content">
+                            <div class="promo-block__date">14.04.2024–21.04.2025</div>
+                            <h1>Скидки на брус строганный, только эту&nbsp;неделю</h1>
+                            <p>С 14 апреля по 21 апреля 2025 года принимайте участие в&nbsp;акции «Скидки на&nbsp;брус строганный, только эту&nbsp;неделю» от&nbsp;компании
+                                «Лескрафт». Успейте купить брус строганный только на&nbsp;этой неделе по&nbsp;сниженной цене</p>
+                            @@include("_social.html", {"whatsapp": false, "youtube": false})
+                        </div>
+                    </div>
+                </section>
+                <!--info-block-->
+                <section class="section info-block">
+                    <div class="container">
+                        <div class="info-block__row">
+                            <div class="info-block__content">
+                                <div class="page-content">
+                                    <h2>Друзья, ура, мы стали ещё ближе!</h2>
+                                    <p><b>Теперь жители станицы Елизаветинской могут прийти, посмотреть и&nbsp;потрогать все материалы лично!</b></p>
+                                    <p>А посмотреть‑то есть что:</p>
+                                    <ul>
+                                        <li>Материалы из дерева для внутренней и наружной отделки стен и пола;</li>
+                                        <li>Рейки и брус для декора и строительства;</li>
+                                        <li>Лестничные элементы;</li>
+                                        <li>Материалы для бани и сауны;</li>
+                                        <li>Лакокрасочные материалы для работы с деревом;</li>
+                                        <li>Специализированный крепёж.</li>
+                                    </ul>
+                                    <br>
+                                    <p><b>Доставка бесплатная! При любой сумме заказа</b></p>
+                                    <p>А все подробности можете узнать лично по адресу:</p>
+                                    <p>ст. Елизаветинская, ул. Степная, 252 </p>
+                                    <p>Или по телефону: </p>
+                                    <p>+7 918 482-61-96</p>
+                                </div>
+                            </div>
+                            <div class="info-block__banner">
+                                <div class="media-cover">
+                                    <img src="img/content/suppliers-banner.png" alt>
+                                </div>
+                                <p class="h1">Мужик знает где&nbsp;брать дерево</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                @@include('_other-cat.html', {"title": "Товары из акции", "btn": false})
+                <!--other-promos-->
+                <section class="section swiper4 other-promos" data-animation="fadeUp">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h2 class="h1">Другие акции</h2>
+                            <a href="#" class="btn stroke-btn stroke-btn--link">
+                                <span class="mobile-hidden">Смотреть&nbsp;</span>
+                                <span>все</span>
+                                <span class="link-icon"></span>
+                            </a>
+                        </div>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @@include("_item-promo.html", {"nmb": "1"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-promo.html", {"nmb": "2"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-promo.html", {"nmb": "5"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-promo.html", {"nmb": "4"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-promo.html", {"nmb": "5"})
+                                </div>
+                                <div class="swiper-slide">
+                                    @@include("_item-promo.html", {"nmb": "1"})
+                                </div>
+                            </div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+        </div>
+        @@include('_js.html')
+    </body>
+
+</html>

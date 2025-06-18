@@ -212,20 +212,17 @@ if (isFirefox) {
         })
     }
 }
-
 //fixed header
 let lastScroll = scrollPos();
-const headerTopEl = document.querySelector(".header__top")
+const headerTop = document.querySelector(".header__top")
 window.addEventListener("scroll", () => {
-    let scrollTop = scrollPos()
-    let headerTop = headerTopEl?.clientHeight || 0
-    if (scrollTop > headerTop) {
+    if (scrollPos() > headerTop.clientHeight) {
         header.classList.add("scroll")
-        if ((scrollTop > lastScroll && !header.classList.contains("unshow"))) {
+        if ((scrollPos() > lastScroll && !header.classList.contains("unshow"))) {
             header.classList.add("unshow")
-            headerTranslate = headerTop
-            header.style.transform = 'translateY(' + (-headerTop - 1) + 'px)'
-        } else if (scrollTop < lastScroll && header.classList.contains("unshow")) {
+            headerTranslate = headerTop.clientHeight
+            header.style.transform = 'translateY(' + (-headerTop.clientHeight - 1) + 'px)'
+        } else if (scrollPos() < lastScroll && header.classList.contains("unshow")) {
             header.classList.remove("unshow")
             headerTranslate = 0
             header.style.transform = 'translateY(0)'
@@ -235,7 +232,7 @@ window.addEventListener("scroll", () => {
         headerTranslate = 0
         header.style.transform = 'translateY(0)'
     }
-    lastScroll = scrollTop
+    lastScroll = scrollPos()
 })
 //anchorlinks
 const anchorLinks = document.querySelectorAll(".js-anchor")
@@ -1160,18 +1157,21 @@ const animItem = document.querySelectorAll('[data-animation]')
 function animate() {
     animItem.forEach(item => {
         let animName = item.getAttribute("data-animation");
-        let itemTop = item.getBoundingClientRect().top + scrollPos();
-        let itemPoint = Math.abs(window.innerHeight - item.offsetHeight * 0.1)
-        if (scrollPos() > itemTop - itemPoint) {
-            item.classList.add(animName);
+        if (!item.classList.contains(animName)) {
+            let itemTop = item.getBoundingClientRect().top + scrollPos();
+            let itemPoint = Math.abs(window.innerHeight - window.innerHeight * 0.1)
+            if (scrollPos() > itemTop - itemPoint) {
+                item.classList.add(animName);
+            }
         }
     })
 }
-if (animItem.length > 0) {
-    animate()
-    window.addEventListener("scroll", animate)
-}
-
+window.addEventListener("load", () => {
+    if (animItem.length > 0) {
+        animate()
+        window.addEventListener("scroll", animate)
+    }
+})
 //swiper 6 items
 const swiper6 = document.querySelectorAll('.swiper6')
 if (swiper6.length) {
@@ -1224,38 +1224,6 @@ if (swiper5.length) {
                     spaceBetween: 16
                 },
                 1030.98: {
-                    slidesPerView: 4,
-                    spaceBetween: 16
-                },
-                700.98: {
-                    slidesPerView: 3,
-                    spaceBetween: 16
-                }
-            },
-            scrollbar: {
-                el: item.querySelector(".swiper-scrollbar"),
-                draggable: true,
-            },
-            speed: 800,
-        });
-    })
-}
-//swiper 4 items
-const swiper4 = document.querySelectorAll('.swiper4')
-if (swiper4.length) {
-    swiper4.forEach(item => {
-        let itemSwiper = new Swiper(item.querySelector(".swiper"), {
-            slidesPerView: 2,
-            spaceBetween: 12,
-            observer: true,
-            observeParents: true,
-            watchSlidesProgress: true,
-            breakpoints: {
-                1700.98: {
-                    slidesPerView: 4,
-                    spaceBetween: 20
-                },
-                1250.98: {
                     slidesPerView: 4,
                     spaceBetween: 16
                 },
@@ -1483,7 +1451,7 @@ function showMainMenu() {
         mainMenu.classList.add("show")
         if (window.innerWidth > bp.laptop) {
             if (mainMenu.querySelector("[data-level='2']")) {
-                mainMenu.querySelectorAll("[data-level='2']")[0].classList.add("active")
+                mainMenu.querySelectorAll("[data-level='2']")[0].parentNode.children[0].classList.add("active")
             }
         }
     }
@@ -1530,15 +1498,18 @@ if (menuBtn && mainMenu) {
 
         }
     })
-    const mainMenuNav = mainMenu.querySelectorAll('[data-level]')
+    const mainMenuNav = mainMenu.querySelectorAll('.link-btn') //mainMenu.querySelectorAll('[data-level]')
     const mainMenuBackNav = mainMenu.querySelectorAll("[data-back-to-level]")
     function navMenuOnOpen(nav) {
         if (!nav.classList.contains("active")) {
-            let attr = nav.dataset.level
-            mainMenu.querySelectorAll(`[data-level='${attr}']`).forEach(el => {
-                el.classList.remove("active")
-            })
-            nav.classList.add("active")
+            Array.from(nav.parentNode.children).forEach(el => el.classList.remove("active"))
+            /* let attr = nav.dataset.level
+              mainMenu.querySelectorAll(`[data-level='${attr}']`).forEach(el => {
+                 el.classList.remove("active")
+             }) */
+            if (nav.classList.contains("has-icon")) {
+                nav.classList.add("active")
+            }
         }
     }
     if (mainMenuNav.length) {
@@ -1609,7 +1580,7 @@ function initRangeSliders() {
             }
             clearTimeout(filterTimer)
             filterTimer = setTimeout(() => {
-                catFilterSet()
+                catFilterSet(false)
             }, 500);
         });
         rangeEnd.addEventListener("change", () => {
@@ -1622,30 +1593,30 @@ function initRangeSliders() {
             }
             clearTimeout(filterTimer)
             filterTimer = setTimeout(() => {
-                catFilterSet()
+                catFilterSet(false)
             }, 500);
         });
         let rangeValues = [rangeStart, rangeEnd];
         rangeSlider.noUiSlider.on('slide', function (values, handle) {
-           /*  if (!rangeEnd.value) {
-                rangeEnd.value = max
-            }
-            if (!rangeStart.value) {
-                rangeStart.value = min
-            } */
+            /*  if (!rangeEnd.value) {
+                 rangeEnd.value = max
+             }
+             if (!rangeStart.value) {
+                 rangeStart.value = min
+             } */
             rangeValues[handle].value = parseInt(values[handle])
             if (!item.classList.contains("updated")) {
                 item.classList.add('updated')
             }
             clearTimeout(filterTimer)
             filterTimer = setTimeout(() => {
-                catFilterSet()
+                catFilterSet(false)
             }, 500);
         });
     })
 }
 function setRangeSelected() {
-    if (catFilter.querySelector(".range-filter")) {
+    /*if (catFilter.querySelector(".range-filter")) {
         catFilter.querySelectorAll(".range-filter").forEach(item => {
             if (item.classList.contains("updated")) {
                 let rangeId = item.getAttribute("data-id")
@@ -1654,9 +1625,10 @@ function setRangeSelected() {
                 filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${rangeId}">${rangeName + ' ' + Math.ceil(values[0]) + '-' + Math.ceil(values[1])}<button type="button" class="btn-cross"></button></li>`)
             }
         })
-    }
+    }*/
 }
-if (catFilter && filterSelected) {
+//if (catFilter && filterSelected) {
+if (catFilter) {
     initRangeSliders()
     catFilterObj = {
         checkInp: function (inp) {
@@ -1672,18 +1644,18 @@ if (catFilter && filterSelected) {
             let idx = inp.getAttribute("data-id")
             let inpName = inp.getAttribute("data-name")
             let selectedTxt = inpName ? inpName + " " + txt.toLowerCase() : txt
-            filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${idx}">${selectedTxt}<button type="button" class="btn-cross"></button></li>`)
-            catFilterSet()
+            //filterSelected.insertAdjacentHTML("afterbegin", `<li data-target="${idx}">${selectedTxt}<button type="button" class="btn-cross"></button></li>`)
+            catFilterSet(false)
         },
         removeSelected: function (id) {
-            if (filterSelected.querySelector(`[data-target="${id}"]`)) {
+            /*if (filterSelected.querySelector(`[data-target="${id}"]`)) {
                 filterSelected.querySelector(`[data-target="${id}"]`).remove()
                 catFilterSet()
-            }
+            }*/
         },
         selectedOnClick: function (e) {
             catFilterSubmit()
-            filterSelected.querySelectorAll("li").forEach(item => {
+            /*filterSelected.querySelectorAll("li").forEach(item => {
                 if (item.querySelector(".btn-cross").contains(e.target)) {
                     let dataTarget = item.getAttribute("data-target")
                     const el = catFilter.querySelector(`[data-id='${dataTarget}']`)
@@ -1694,15 +1666,15 @@ if (catFilter && filterSelected) {
                     }
                     item.remove()
                 }
-            })
+            })*/
         },
         selectedCount: function () {
-            if (filterCount.length) {
+            /*if (filterCount.length) {
                 let count = filterSelected.querySelector("li") ? filterSelected.querySelectorAll("li").length : ''
                 filterCount.forEach(item => {
                     item.textContent = count
                 })
-            }
+            }*/
         },
         closeFilter: function () {
             if (catFilter.classList.contains("show")) {
@@ -1715,32 +1687,32 @@ if (catFilter && filterSelected) {
             catFilter.querySelectorAll("label input").forEach(inp => {
                 this.uncheckInp(inp)
             })
-            filterSelected.innerHTML = ""
+            //filterSelected.innerHTML = ""
             if (catFilter.querySelector('.range-filter__slider')) {
                 catFilter.querySelectorAll('.range-filter__slider').forEach(item => item.noUiSlider.reset())
             }
             catFilterObj.closeFilter()
         }
     }
-    filterSelected.innerHTML = ""
-    catFilter.querySelectorAll("label input").forEach((inp, i) => {
+    //filterSelected.innerHTML = ""
+    /*catFilter.querySelectorAll("label input").forEach((inp, i) => {
         if (inp.checked) {
             catFilterObj.setSelected(inp)
         }
         catFilterObj.selectedCount()
-    })
-    setRangeSelected()
-    filterSelected.addEventListener("click", e => catFilterObj.selectedOnClick(e))
+    })*/
+    //setRangeSelected()
+    //filterSelected.addEventListener("click", e => catFilterObj.selectedOnClick(e))
     document.querySelectorAll(".filter-reset").forEach(item => item.addEventListener("click", () => catFilterObj.resetFilter()))
     document.querySelectorAll(".filter-submit").forEach(item => item.addEventListener("click", e => {
         e.preventDefault()
-        filterSelected.innerHTML = ""
+        //filterSelected.innerHTML = ""
         catFilter.querySelectorAll("label input").forEach((inp, i) => {
             let id = inp.getAttribute("data-id")
             inp.checked ? catFilterObj.setSelected(inp) : catFilterObj.removeSelected(id)
             catFilterObj.selectedCount()
         })
-        setRangeSelected()
+        //setRangeSelected()
         catFilterObj.closeFilter()
         catFilterSubmit()
 
@@ -1851,13 +1823,14 @@ const orderP = document.querySelector(".order-p")
 if (orderP) {
     const switchBlocks = orderP.querySelectorAll(".switch-block")
     function setFullAddress() {
-        let city = orderP.querySelector("[data-address='city']")?.textContent || ''
+        //let city = orderP.querySelector("[data-address='city']")?.textContent || ''
         let locality = orderP.querySelector("[data-address='locality']")?.value || ''
         let street = orderP.querySelector("[data-address='street']")?.value || ''
         let home = orderP.querySelector("[data-address='home']")?.value || ''
+        //let addressParts = [city, locality, street, home].filter(Boolean);
         let addressParts = [locality, street, home].filter(Boolean);
         let fullAddress = addressParts.join(', ');
-        document.querySelector("[data-full-address]").textContent = fullAddress || city
+        document.querySelector("[data-full-address]").textContent = fullAddress
     }
     //reset on tab change
     if (switchBlocks.length) {

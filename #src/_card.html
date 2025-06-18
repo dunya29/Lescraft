@@ -1,5 +1,5 @@
 <!--card-->
-<article class="card js-prodBlock" data-id="123">
+<article class="card js-prodBlock" data-id="123" data-link="/product.html">
     <div class="card__preview">
         <div class="product-lbls">
             @@if(inStock === true) {
@@ -19,17 +19,45 @@
         @@if(hasPhoto === false) {
         <a href="#" class="media-contain no-photo"></a>
         }
+        <button type="button" class="btn main-btn card__quick-view" aria-label="Быстрый просмотр">
+            Быстрый просмотр
+            <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+        </button>
     </div>
     <div class="card__inner">
         <div class="card__header">
-            @@if(inStock === true) {
-            <div class="product-status in-stock">Доступно сегодня</div>
-            }
-            @@if(inStock === false) {
-            <div class="product-status out-of-stock">Ожидает поступления</div>
-            }
-            <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
-            <div class="card__info">1 уп = 10 шт/192 м²</div>
+            <div class="card__main">
+                @@if(inStock === true) {
+                <div class="product-status in-stock">Доступно сегодня</div>
+                }
+                @@if(inStock === false) {
+                <div class="product-status out-of-stock">Ожидает поступления</div>
+                }
+                <h5><a href="#">Брусок декоративный скошенный 19 × 70 × 2 200 мм</a></h5>
+                <div class="card__info">1 уп = 10 шт/192 м²</div>
+            </div>
+            <dl class="card__details">
+                <div class="card__details-item">
+                    <dt>Материал:</dt>
+                    <dd>Сосна</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Вид товара:</dt>
+                    <dd>Вагонка</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Высота:</dt>
+                    <dd>70 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Ширина:</dt>
+                    <dd>19 см</dd>
+                </div>
+                <div class="card__details-item">
+                    <dt>Длина:</dt>
+                    <dd>2000 см</dd>
+                </div>
+            </dl>
         </div>
         <div class="card__footer">
             <div class="card__price-wrapper">
@@ -45,16 +73,22 @@
                     <del class="rub product-price__old">7 600</del>
                 </div>
             </div>
-            @@if (fav === true) {
-            <button type="button" class="js-fav product-fav active" aria-label="Удалить из избранного">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            }
-            @@if (fav === false) {
-            <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
-                <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
-            </button>
-            }
+            <div class="card__btns">
+                <button type="button" class="product-view tippy" aria-label="Быстрый просмотр">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-eye"></use></svg>
+                    <p>Быстрый просмотр</p>
+                </button>
+                @@if (fav === true) {
+                <button type="button" class="js-fav product-fav active" aria-label="Удалить из избранного">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                }
+                @@if (fav === false) {
+                <button type="button" class="js-fav product-fav" aria-label="Добавить в избранное">
+                    <svg><use xlink:href="img/svg/sprite.svg#product-fav"></use></svg>
+                </button>
+                }
+            </div>
         </div>
         <div class="product-action">
             <div class="quantity" data-stock="45">
@@ -66,6 +100,10 @@
                 <svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg>
                 В корзину
             </button>
+            <a href="#" class="btn stroke-btn js-in-cart">
+                <svg><use xlink:href="img/svg/sprite.svg#check"></use></svg>
+                Товар в корзине
+            </a>
         </div>
     </div>
 </article>

@@ -1,0 +1,135 @@
+<script src="https://api-maps.yandex.ru/2.1/?apikey=d02ef18b-3f8a-40d8-ad6a-d6aad95f6099&amp;lang=ru_RU"></script>
+<script>
+    let deliveryAddresses = [
+        {
+            "id": 1,
+            "coords": [45.090527, 38.995741]
+        },
+        {
+            "id": 2,
+            "coords": [45.026775, 38.970516]
+        }
+    ]
+</script>
+<script type="text/javascript">
+    const mapAddressMarker = document.querySelector(".address-map__marker")
+    const addressForm = document.querySelector(".address-form")
+    const choosenAddress = document.querySelector(".address-map__address")
+    const addressInfo = document.querySelector(".address-map .add-info")
+    const addAddress = document.querySelectorAll(".profile-p__addresses")
+    const addressModal = document.querySelector("#address-modal")
+    let zoom = 15
+    let addressMap
+    function init() {
+        addressMap = new ymaps.Map("address-map", {
+            center: [45.090527, 38.995741],
+            zoom,
+        });
+        addressMap.events.add('click', function (e) {
+            let clickedCoords = e.get('coords'); 
+            ymaps.geocode(clickedCoords).then(res => {
+                let firstGeoObject = res.geoObjects.get(0);
+                let meta = firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData')
+                let addressObj = {}
+                let foundAddress = findNearestAddress(clickedCoords, deliveryAddresses)
+                if (foundAddress) {
+                    mapAddressMarker.classList.remove("undefined")
+                    addressObj.locality = meta.Address.Components.find(c => c.kind === 'locality')?.name
+                    addressObj.street = meta.Address.Components.find(c => c.kind === 'street')?.name
+                    addressObj.house = meta.Address.Components.find(c => c.kind === 'house')?.name
+                    setAddressFields(addressObj)
+                    setAddressInfo(addressObj)
+                } else {
+                    mapAddressMarker.classList.add("undefined")
+                }
+            }).catch(err => console.log(err))            
+            addressMap.setCenter(clickedCoords, addressMap.getZoom(), {
+                duration: 300
+            });
+        })
+    }
+    function findNearestAddress(clickedCoords, addresses, maxDistance = 0.0001) {
+        return addresses.find(addr => {
+          const dx = Math.abs(addr.coords[0] - clickedCoords[0]);
+          const dy = Math.abs(addr.coords[1] - clickedCoords[1]);
+          return dx < maxDistance && dy < maxDistance;
+        });
+    }
+    function setAddressFields(address) {
+        Object.keys(address).forEach(key => {
+            const field = document.querySelector(`.address-form [data-name='${key}']`)
+            if (field) {
+                field.value = address[key] ? address[key] : ''
+            }
+        })
+    }
+    function setAddressInfo(address) { 
+        if (choosenAddress) {
+            choosenAddress.textContent = Object.values(address).filter(item => !!item).join(', ')
+        }
+        if (addressInfo) {
+            let missingParts = [];
+            if (!address.locality) missingParts.push('населённый пункт');
+            if (!address.street) missingParts.push('улицу');
+            if (!address.house) missingParts.push('номер дома');
+            addressInfo.textContent = missingParts.length > 0 ? `Укажите ${missingParts.join(', ')}` : ''
+            missingParts.length > 0 ? addressInfo.classList.remove("hidden") : addressInfo.classList.add("hidden")
+        }
+    }
+    if (document.querySelector("#address-map")) {
+        ymaps.ready(init);
+        setTimeout(() => {
+            if (addressMap) {
+            addressMap.container.fitToViewport(); 
+        }
+        }, 0);
+    }  
+    window.addEventListener("resize", function() {
+        if (addressMap) {
+            addressMap.container.fitToViewport(); 
+        }
+    });
+    if (addAddress.length) {
+        const localityInp = addressModal.querySelector("[data-name=locality]")
+        const streetInp = addressModal.querySelector("[data-name=street]")
+        const houseInp = addressModal.querySelector("[data-name=house]")
+        const jsEditAddress = addressModal.querySelectorAll(".js-edit-address")
+        const jsDelAddress = document.querySelector(".js-del-address")
+        addAddress.forEach(item => {
+            item.addEventListener("click", e => {
+                if (e.target.classList.contains("profile-p__address-edit") && addressModal) {
+                    const address = e.target.closest(".profile-p__address")
+                    let addressId = address.getAttribute("data-address-id") || ''
+                    let locality = address.getAttribute("data-address-locality") || ''
+                    let street = address.getAttribute("data-address-street") || ''
+                    let house = address.getAttribute("data-address-house") || ''
+                    if (localityInp) {
+                        localityInp.value = locality
+                    }
+                    if (streetInp) {
+                        streetInp.value = street
+                    }
+                    if (houseInp) {
+                        houseInp.value = house
+                    }
+                    jsEditAddress.forEach(btn => btn.setAttribute("data-address-id", addressId))
+                    addressModal.classList.add("edit")
+                    openModal(addressModal)
+                    if (addressMap) {
+                        addressMap.container.fitToViewport(); 
+                    } 
+                }
+                if (e.target.classList.contains("profile-p__address-del")) {
+                    let addressId = e.target.closest(".profile-p__address").getAttribute("data-address-id")
+                    if (jsDelAddress && addressId) {
+                        jsDelAddress.setAttribute("data-address-id", addressId)
+                        openModal(document.querySelector("#address-del-modal"))
+                    }
+                    if (addressMap) {
+                        addressMap.container.fitToViewport(); 
+                    } 
+                }
+            })
+        })
+    }
+</script>
