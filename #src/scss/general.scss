@@ -632,6 +632,18 @@ p a {
 		margin-bottom: 32px;
 	}
 }
+.desktop-hidden {
+	display: none;
+	@media (max-width: $bp4) {
+		display: block;
+	}
+}
+.mob-hidden {
+	display: block;
+	@media (max-width: $bp4) {
+		display: none;
+	}
+}
 .sec-top {
 	display: flex;
 	align-items: flex-start;
@@ -1437,7 +1449,7 @@ p a {
 			}
 		}
 	}
-	@media ((min-width: $bp1) ) {	
+	@media ((min-width: $bp1)) {
 		&__info {
 			&-desc {
 				font-size: 16px;

@@ -522,6 +522,11 @@
         &__cols {
             grid-template-columns: 1fr;
         }
+        &__col-wrapper {
+            .stroke-btn {
+                margin-bottom: 12px;
+            }
+        }
     }
 }
 .profile-noLogged {

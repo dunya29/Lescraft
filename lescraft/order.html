@@ -643,14 +643,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="accordion no-close order-p__fieldset" data-step="2">
-                                            <div class="accordion__header">
+                                        <div class="accordion no-close order-p__fieldset active" data-step="2">
+                                            <div class="accordion__header active">
                                                 <h4>Доставка <span data-radio-value></span></h4>
                                                 <div class="btn text-btn" aria-label="Развернуть/Свернуть" data-open="Развернуть" data-close="Свернуть">
                                                     <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
                                                 </div>
                                             </div>
-                                            <div class="accordion__body">
+                                            <div class="accordion__body active">
                                                 <div class="switch-block accordion__content">
                                                     <div class="item-tippy order-p__loc">
                                                         <button type="button" class="btn mod-open-btn page-loc" data-modal="city-modal">
@@ -678,6 +678,13 @@
                                                                 <div class="text-radio__content">
                                                                     <div class="text-radio__icon"><img src="img/svg/export.svg" alt></div>
                                                                     <p>Доставка до&nbsp;адреса</p>
+                                                                </div>
+                                                            </label>
+                                                            <label class="text-radio">
+                                                                <input type="radio" name="order-delivery" value="3" data-tab="3">
+                                                                <div class="text-radio__content">
+                                                                    <div class="text-radio__icon"><img src="img/svg/add-delivery.svg" alt></div>
+                                                                    <p>Дополнительный способ доставки</p>
                                                                 </div>
                                                             </label>
                                                         </div>
@@ -736,7 +743,17 @@
                                                                             </div>
                                                                             <div class="item-contact">
                                                                                 <span>Стоимость</span>
-                                                                                <span>Будет рассчитана менеджером</span>
+                                                                                <span class="rub">499</span>
+                                                                            </div>
+                                                                            <div class="item-contact">
+                                                                                <span>Срок доставки</span>
+                                                                                <span class="item-tippy">
+                                                                                    3 дня 
+                                                                                    <div class="tippy">
+                                                                                        <svg><use xlink:href="img/svg/sprite.svg#tippy"></use></svg>
+                                                                                        <p>Сроки доставки увеличены, так как часть заказа находится на другом складе</p>
+                                                                                    </div>                                                                                   
+                                                                                </span>
                                                                             </div>
                                                                         </div>
                                                                     </div>

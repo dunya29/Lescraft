@@ -933,6 +933,14 @@ p a:hover {
   margin-bottom: 60px;
 }
 
+.desktop-hidden {
+  display: none;
+}
+
+.mob-hidden {
+  display: block;
+}
+
 .sec-top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7385,7 +7393,7 @@ p a:hover {
 
 .desc-block__contacts {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(3, auto);
   gap: 20px;
 }
 
@@ -13897,6 +13905,14 @@ p a:hover {
     margin-bottom: 32px;
   }
 
+  .desktop-hidden {
+    display: block;
+  }
+
+  .mob-hidden {
+    display: none;
+  }
+
   .sec-top {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -15165,6 +15181,10 @@ p a:hover {
 
   .profile-p__cols {
     grid-template-columns: 1fr;
+  }
+
+  .profile-p__col-wrapper .stroke-btn {
+    margin-bottom: 12px;
   }
 
   .profile-noLogged {

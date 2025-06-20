@@ -377,7 +377,7 @@
     }
     &__contacts {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: repeat(3, auto);
         gap: 20px;
     }
     @media (max-width: $bp1) {
