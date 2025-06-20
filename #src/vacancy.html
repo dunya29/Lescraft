@@ -65,46 +65,53 @@
                             <aside class="page-row__aside">
                                 <!--feedback-form-->
                                 <form action class="form disabled-form feedback-form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
-                                    <h3>Откликнуться на вакансию</h3>
-                                    <div class="form__items">
-                                        <div class="item-form">
-                                            <div class="item-form__inp">
-                                                <input type="text" placeholder=" " class="required">
-                                                <div class="item-form__placeholder">Ваше имя</div>
-                                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                    <h3>Откликнуться на вакансию</h3>
+                                    <div class="form__group">
+                                        <div class="form__items">
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" " class="required">
+                                                    <div class="item-form__placeholder">Ваше имя</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
                                             </div>
-                                            <span data-error></span>
-                                        </div>
-                                        <div class="item-form">
-                                            <div class="item-form__inp">
-                                                <input type="tel" placeholder=" " class="required">
-                                                <div class="item-form__placeholder">Телефон</div>
-                                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="tel" placeholder=" " class="required">
+                                                    <div class="item-form__placeholder">Телефон</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
                                             </div>
-                                            <span data-error></span>
-                                        </div>
-                                        <div class="item-form">
-                                            <div class="item-form__inp">
-                                                <input type="text" placeholder=" " class="required">
-                                                <div class="item-form__placeholder">Email</div>
-                                                <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                            <div class="item-form">
+                                                <div class="item-form__inp">
+                                                    <input type="text" placeholder=" " class="required">
+                                                    <div class="item-form__placeholder">Email</div>
+                                                    <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                                                </div>
+                                                <span data-error></span>
                                             </div>
-                                            <span data-error></span>
-                                        </div>
-                                        <div class="item-form">
-                                            <textarea placeholder="Сообщение"></textarea>
-                                            <span data-error></span>
-                                        </div>
-                                        <div class="item-form file-form">
-                                            <div class="file-form__info">
-                                                <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                                            <div class="item-form">
+                                                <textarea placeholder="Сообщение"></textarea>
+                                                <span data-error></span>
                                             </div>
-                                            <label>
-                                                <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
-                                                <span>Перетащите, или <span>выберите файл</span></span>
-                                            </label>
-                                            <div class="file-form__items"></div>
-                                            <span data-error></span>
+                                        </div>
+                                    </div>
+                                    <div class="form__group">
+                                        <div class="form__lbl">Прикрепите ваше резюме</div>
+                                        <div class="form__items">
+                                            <div class="item-form file-form">
+                                                <div class="file-form__info">
+                                                    <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                                                </div>
+                                                <label>
+                                                    <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
+                                                    <span>Перетащите, или <span>выберите файл</span></span>
+                                                </label>
+                                                <div class="file-form__items"></div>
+                                                <span data-error></span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form__footer">

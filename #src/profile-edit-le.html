@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    @@include('_head.html', {
+    "title": "Личные данные"
+    })
+
+    <body>
+        <div class="wrap">
+            @@include('_header.html', {"main": false, "search": false})
+            <!--main-->
+            <main class="main">
+                @@include('_preloader.html")
+                <!--page-top-->
+                <div class="page-top page-top--account">
+                    <div class="container">
+                        @@include('_breadcrumbs.html', {"page": "Личные данные"})
+                        <a href="account.html" class="btn h6 back-btn">
+                            <svg><use xlink:href="img/svg/sprite.svg#btn-prev"></use></svg>
+                            Назад
+                        </a>
+                    </div>
+                </div>
+                <!--profile-p-->
+                <section class="section profile-p">
+                    <div class="container">
+                        <div class="sec-top">
+                            <h1>Личные данные</h1>
+                        </div>
+                        <!--page-row-->
+                        <div class="page-row page-row--account">
+                            <!--page-row__aside-->
+                            <aside class="page-row__aside">
+                                <nav class="account-nav">
+                                    <ul>
+                                        <li><a class="active" href="#"><svg><use xlink:href="img/svg/sprite.svg#account-profile"></use></svg>Информация о компании<span></span></a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#account-cart"></use></svg>Текущие заказы</a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#orders"></use></svg>История заказов<span></span></a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#price-list"></use></svg>Прайс-лист<span></span></a></li>
+                                        <li><a href="#"><svg><use xlink:href="img/svg/sprite.svg#log-out"></use></svg>Выйти из профиля</a></li>
+                                    </ul>
+                                </nav>
+                            </aside>
+                            <!--page-row__content-->
+                            <div class="page-row__content">
+                                <div class="profile-p__cols">
+                                    <div class="profile-p__col">
+                                        <div class="profile-p__lbl">Информация о компании</div>
+                                        <div class="item-contact">
+                                            <span>Название компании:</span>
+                                            <span>Woodber</span>
+                                        </div>
+                                        <div class="item-contact">
+                                            <span>ИНН:</span>
+                                            <span>2194808230590329</span>
+                                        </div>
+                                        <div class="item-contact">
+                                            <span>Email:</span>
+                                            <span>example@mail.ru</span>
+                                        </div>
+                                        <div class="item-contact">
+                                            <span>Карточка компании:</span>
+                                            <span>company.png (2,3 Mb)</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-p__col">
+                                        <div class="profile-p__lbl">Контактное лицо</div>
+                                        <div class="item-contact">
+                                            <span>ФИО</span>
+                                            <span>Иванов Алексей Алексеевич</span>
+                                        </div>
+                                        <div class="item-contact">
+                                            <span>Телефон</span>
+                                            <span>+7 937 635-36-36</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn stroke-btn mod-open-btn" data-modal="profile-le-edit-modal">Изменить данные</button>
+                                <div class="profile-p__cols">
+                                    <div class="profile-p__col">
+                                        <div class="profile-p__lbl">Изменение пароля</div>
+                                        <form class="form">
+                                            <div class="form__items">
+                                                <div class="item-form item-form--password">
+                                                    <div class="item-form__inp">
+                                                        <input type="password" placeholder=" " class="required">
+                                                        <div class="item-form__placeholder">Введите пароль</div>
+                                                        <button type="button" class="item-form__eye" aria-label="Показать пароль"></button>
+                                                    </div>
+                                                    <span data-error></span>
+                                                </div>
+                                                <div class="item-form item-form--password">
+                                                    <div class="item-form__inp">
+                                                        <input type="password" placeholder=" " class="required">
+                                                        <div class="item-form__placeholder">Повторите пароль</div>
+                                                        <button type="button" class="item-form__eye" aria-label="Показать пароль"></button>
+                                                    </div>
+                                                    <span data-error></span>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn main-btn">Сохранить</button>
+                                        </form>
+                                    </div>
+                                    <div class="profile-p__addresses profile-p__col">
+                                        <div class="profile-p__lbl">Адреса доставки</div>
+                                        <button class="btn text-btn profile-p__address-btn mod-open-btn" data-modal="address-modal">
+                                            Добавить новый адрес
+                                            <svg><use xlink:href="img/svg/sprite.svg#plus-btn"></use></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html', {"main": false})
+            @@include('_modal.html')
+            @@include('_modal-profile.html')
+        </div>
+        @@include('_js.html')
+        @@include('_address-map.html')
+    </body>
+
+</html>

@@ -3,7 +3,12 @@
     <div class="container">
         <div class="callback-form__inner">
             <div class="callback-form__info">
-                <h2>Заполните форму, и&nbsp;мы перезвоним вам.</h2>
+                @@if (firstOrder === false) {
+                   <h2>Заполните форму, и&nbsp;мы перезвоним вам.</h2> 
+                }
+                @@if (firstOrder === true) {
+                    <h2>Получите скидку на&nbsp;первый заказ</h2> 
+                 }
                 @@if(contacts === true) {
                 <div class="callback-form__contacts">
                     <div class="page-contact phone">
@@ -15,9 +20,12 @@
                     </div>
                 </div>
                 }
-                @@if(contacts === false) {
+                @@if(contacts === false && firstOrder === false) {
                 <p>Не ждите! Заполните форму, и мы оперативно свяжемся с вами</p>
                 }
+                @@if(contacts === false && firstOrder === true) {
+                    <p>Пока вы готовитесь сделать первый заказ, мы&nbsp;уже&nbsp;подготовили скидку на&nbsp;него. Заполните&nbsp;форму, и&nbsp;мы&nbsp;пришлём промокод вам&nbsp;на&nbsp;почту</p>
+                    }
             </div>
             <form class="form disabled-form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
                 <div class="form__grid">

@@ -118,6 +118,11 @@
     }
 }
 .article-p {
+    .page-row__content {
+        .nav-anchors {
+            display: none;
+        }
+    }
     .sec-top {
         display: block;
     }
@@ -141,8 +146,18 @@
         }
     }
     @media (max-width: $bp2) {
-        .nav-anchors {
-            display: none;
+        .page-row {
+            &__aside {
+                .nav-anchors {
+                    display: none;
+                }
+            }
+            &__content {
+                .nav-anchors {
+                    display: block;
+                    margin-bottom: 16px;
+                }
+            }
         }
     }
 }
@@ -403,10 +418,10 @@
         }
     }
     @media (max-width: $bp4) {
-        min-height: 0!important;
+        min-height: 0 !important;
         flex-direction: column-reverse;
         &__content {
-            max-width: 100%!important;
+            max-width: 100% !important;
         }
     }
 }

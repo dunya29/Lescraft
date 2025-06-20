@@ -556,18 +556,18 @@ function showSuccessPopup(title = false, txt = false) {
 }
 //setSuccessTxt
 function setSuccessTxt(title = false, txt = false, btnTxt = false) {
-    successModal.querySelector("h3").textContent = title ? title : "Заявка успешно отправлена"
-    successModal.querySelector(".stroke-btn").textContent = btnTxt ? btnTxt : "Закрыть"
+    successModal.querySelector("h3").innerHTML = title ? title : "Заявка успешно отправлена"
+    successModal.querySelector(".stroke-btn").innerHTML = btnTxt ? btnTxt : "Закрыть"
     if (txt) {
-        successModal.querySelector("p").textContent = txt
+        successModal.querySelector("p").innerHTML = txt
     }
 }
 //setErrorTxt
 function setErrorTxt(title = false, txt = false, btnTxt = false) {
-    errorModal.querySelector("h3").textContent = title ? title : "Что-то пошло не так"
-    errorModal.querySelector(".stroke-btn").textContent = btnTxt ? btnTxt : "Закрыть"
+    errorModal.querySelector("h3").innerHTML = title ? title : "Что-то пошло не так"
+    errorModal.querySelector(".stroke-btn").innerHTML = btnTxt ? btnTxt : "Закрыть"
     if (txt) {
-        errorModal.querySelector("p").textContent = txt
+        errorModal.querySelector("p").innerHTML = txt
     }
 }
 // openSuccessMod
@@ -704,11 +704,11 @@ if (disabledForm.length > 0) {
     })
 }
 //recoveryPassword
-function recoveryPassword(email) {
+function recoveryPassword(email, title = false, txt = false) {
     if (email && document.querySelector("[data-recovery-email]")) {
         document.querySelector("[data-recovery-email]").textContent = email
     }
-    openModal(document.querySelector("#forget-password-success-modal"))
+    openSuccessMod(title, txt)
 }
 //reset password
 let codeResTimeout
@@ -718,7 +718,7 @@ function resetPassword(phone, timeout) {
     let val = timeout || 30
     document.querySelector(".resend-pass__timeout").classList.remove("hidden")
     if (phone && document.querySelector("[data-log-phone]")) {
-        document.querySelector("[data-log-phone]").textContent = `Мы отправили письмо на электронный адрес ${phone}`
+        document.querySelector("[data-log-phone]").textContent = phone
     }
 
     function changeTimeVal() {
@@ -1599,6 +1599,10 @@ if (document.querySelector(".legal-entity-cards .swiper")) {
                 observeParents: true,
                 watchSlidesProgress: true,
                 speed: 800,
+                scrollbar: {
+                    el: document.querySelector(".legal-entity-cards .swiper-scrollbar"),
+                    draggable: true,
+                },
             });
         } else if (window.innerWidth > bp.tablet && isInitialized) {
             isInitialized = false

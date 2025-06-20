@@ -945,94 +945,7 @@
                 </div>
             </form>
         </div>
-        <!--calculator-->
-        <div class="calculator calculator--catalog">
-            <div class="calculator__top">
-                <span>Калькулятор</span>
-                <svg><use xlink:href="img/svg/sprite.svg#chevron-bot"></use></svg>
-            </div>
-            <div class="calculator__body">
-                <div class="modal modal--mob" id="calc-modal">
-                    <div class="modal__content">
-                        <button type="button" class="btn-cross modal__close"></button>
-                        <div class="modal__top">
-                            <h3>Калькулятор</h3>
-                        </div>
-                        <div class="custom-scroll modal__scroll">
-                            <p>Укажите размеры в мм:</p>
-                            <div class="calculator__sizes">
-                                <div class="calculator__size">
-                                    <div class="calculator__size-lbl">Толщина</div>
-                                    <div class="range-filter" data-range="depth" data-min="20" data-max="50" data-start="20">
-                                        <div class="range-filter__amounts">
-                                            <div class="range-filter__amount">
-                                                <input type="number" min="20" max="50" placeholder="20" value="20" class="range-filter__start">
-                                            </div>
-                                        </div>
-                                        <div class="range-filter__slider-wrap">
-                                            <div class="range-filter__slider"></div>
-                                            <div class="range-filter__minmax">
-                                                <span>20</span>
-                                                <span>50</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="calculator__size">
-                                    <div class="calculator__size-lbl">Ширина</div>
-                                    <div class="range-filter" data-range="width" data-min="200" data-max="500" data-start="200">
-                                        <div class="range-filter__amounts">
-                                            <div class="range-filter__amount">
-                                                <input type="number" min="200" max="500" placeholder="200" value="200" class="range-filter__start">
-                                            </div>
-                                        </div>
-                                        <div class="range-filter__slider-wrap">
-                                            <div class="range-filter__slider"></div>
-                                            <div class="range-filter__minmax">
-                                                <span>200</span>
-                                                <span>500</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="calculator__size">
-                                    <div class="calculator__size-lbl">Длина</div>
-                                    <div class="range-filter" data-range="length" data-min="200" data-max="500" data-start="200">
-                                        <div class="range-filter__amounts">
-                                            <div class="range-filter__amount">
-                                                <input type="number" min="200" max="500" placeholder="200" value="200" class="range-filter__start">
-                                            </div>
-                                        </div>
-                                        <div class="range-filter__slider-wrap">
-                                            <div class="range-filter__slider"></div>
-                                            <div class="range-filter__minmax">
-                                                <span>200</span>
-                                                <span>500</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Заполните одно из полей — остальные единицы будут рассчитаны автоматом</p>
-                            <div class="calculator__items">
-                                <label class="calculator__item">
-                                    <span>М<sup>3</sup></span>
-                                    <input type="number" placeholder="0" data-calc-inp="data-volume">
-                                </label>
-                                <label class="calculator__item">
-                                    <span>М<sup>2</sup></span>
-                                    <input type="number" placeholder="0" data-calc-inp="data-square">
-                                </label>
-                                <label class="calculator__item">
-                                    <span>Шт</span>
-                                    <input type="number" placeholder="0" data-calc-inp="data-count">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </aside>
     <!--page-row__content-->
     <div class="page-row__content">
@@ -1728,9 +1641,9 @@
             
 <!--pagination-->
 <nav class="pagination">
-    <a class="nav-btn" href="#"><svg><use href="img/svg/sprite.svg#btn-prev"></use></svg></a>
-    <a class="pagination__link" href="#">01</a>
-    <a class="pagination__link current" href="#">02</a>
+    <a class="nav-btn" disabled href="#"><svg><use href="img/svg/sprite.svg#btn-prev"></use></svg></a>
+    <a class="pagination__link current" href="#">01</a>
+    <a class="pagination__link" href="#">02</a>
     <a class="pagination__link" href="#">03</a>
     <a class="pagination__link" href="#">04</a>
     <span class="pagination__item">...</span>
@@ -4412,7 +4325,7 @@
             <p>Для восстановления вашего пароля необходимо ввести ваш&nbsp;email ниже, и&nbsp;мы&nbsp;вышлем ссылку для&nbsp;сброса пароля</p>
         </div>
         <div class="custom-scroll modal__scroll">
-            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru')">
+            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru','Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
                 <div class="form__items">
                     <div class="item-form">
                         <div class="item-form__inp">
@@ -4449,7 +4362,7 @@
         </div>
         <div class="custom-scroll modal__scroll">
             <form class="form"
-                onsubmit="event.preventDefault();openSuccessMod('Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
+                onsubmit="event.preventDefault();formReset(this);openModal(document.querySelector('#password-success-modal'))">
                 <div class="form__items">
                     <div class="item-form item-form--password">
                         <div class="item-form__inp">
@@ -4623,8 +4536,8 @@
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#home"></use></svg></div><span>Главная</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#catalog"></use></svg></div><span>Каталог</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg><span>3</span></div><span>Избранное</span></a></li>
-            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li> 
-            <li><button class="btn mod-open-btn" data-modal="account-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> -->
+            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li>--> 
+            <li><button class="btn mod-open-btn" data-modal="log-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> 
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg><span>6</span></div><span>Корзина</span></a></li>
         </ul>
     </div>

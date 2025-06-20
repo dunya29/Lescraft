@@ -389,12 +389,24 @@
 }
 .cart-p,
 .order-p {
+    .profile-noLogged {
+        max-width: calc(75.9% - 40px);
+
+    }
     .page-row__aside {
         flex: 0 0 24.1%;
     }
     @media (max-width: $bp1) {
+        .profile-noLogged {
+            max-width: calc(72.5% - 20px);
+        }
         .page-row__aside {
             flex: 0 0 27.5%;
+        }
+    }
+    @media (max-width: $bp2) {
+        .profile-noLogged {
+            max-width: 100%
         }
     }
 }

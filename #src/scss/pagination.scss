@@ -21,16 +21,19 @@
         &:before {
             background: var(--green-color-light);
         }
-    }
-    .nav-btn:first-child {
-        margin-right: 12px;
-    }
-    .nav-btn:last-child {
-        margin-left: 12px;
-    }
-    .nav-btn.disabled,
-    .nav-btn:disabled {
-        display: none;
+        &:first-child {
+            margin-right: 12px;
+        }
+        &:last-child {
+            margin-left: 12px;
+        }
+        &.disabled,
+        &:disabled {
+            svg {
+                opacity: 0.4;
+                pointer-events: none;
+            }
+        }
     }
     &__link,
     &__item {

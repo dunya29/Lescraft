@@ -14,12 +14,10 @@
     z-index: 1000;
     overflow: auto;
     transition: all 0.3s 0.1s ease-out;
-    pointer-events: none!important;
     &.open {
         visibility: visible;
         opacity: 1;
         transition: all 0.3s ease-out;
-        pointer-events:all !important;
         .modal {
             pointer-events:all !important;
         }
@@ -422,6 +420,10 @@
     }
 }
 .address-modal {
+    pointer-events: none!important;
+    &.open {
+        pointer-events:all !important;
+    }
     .modal__content {
         max-width: 1094px;
         overflow: visible;

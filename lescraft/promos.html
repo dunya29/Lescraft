@@ -603,9 +603,9 @@
                             
 <!--pagination-->
 <nav class="pagination">
-    <a class="nav-btn" href="#"><svg><use href="img/svg/sprite.svg#btn-prev"></use></svg></a>
-    <a class="pagination__link" href="#">01</a>
-    <a class="pagination__link current" href="#">02</a>
+    <a class="nav-btn" disabled href="#"><svg><use href="img/svg/sprite.svg#btn-prev"></use></svg></a>
+    <a class="pagination__link current" href="#">01</a>
+    <a class="pagination__link" href="#">02</a>
     <a class="pagination__link" href="#">03</a>
     <a class="pagination__link" href="#">04</a>
     <span class="pagination__item">...</span>
@@ -616,6 +616,54 @@
                         </div>
                     </div>
                 </section>
+                <!--callback-form-->
+<section class="section callback-form" data-animation="fadeUp">
+    <div class="container">
+        <div class="callback-form__inner">
+            <div class="callback-form__info">
+                
+                
+                    <h2>Получите скидку на&nbsp;первый заказ</h2> 
+                 
+                
+                
+                
+                    <p>Пока вы готовитесь сделать первый заказ, мы&nbsp;уже&nbsp;подготовили скидку на&nbsp;него. Заполните&nbsp;форму, и&nbsp;мы&nbsp;пришлём промокод вам&nbsp;на&nbsp;почту</p>
+                    
+            </div>
+            <form class="form disabled-form" onsubmit="event.preventDefault();formReset(this);openSuccessMod()">
+                <div class="form__grid">
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="text" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Ваше имя</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                    <div class="item-form">
+                        <div class="item-form__inp">
+                            <input type="tel" placeholder=" " class="required">
+                            <div class="item-form__placeholder">Телефон</div>
+                            <button type="button" class="btn-cross item-form__reset" aria-label="Очистить поле"></button>
+                        </div>
+                        <span data-error></span>
+                    </div>
+                </div>
+                <div class="form__footer">
+                    <label class="item-checkbox">
+                        <input type="checkbox" checked class="required">
+                        <span>Я соглашаюсь с <a href="#" target="_blank">Политикой обработки персональных данных</a></span>
+                    </label>
+                    <button type="submit" class="btn main-btn main-btn--link">
+                        Отправить
+                        <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
             </main>
             <!--footer-->
 
@@ -1817,7 +1865,7 @@
             <p>Для восстановления вашего пароля необходимо ввести ваш&nbsp;email ниже, и&nbsp;мы&nbsp;вышлем ссылку для&nbsp;сброса пароля</p>
         </div>
         <div class="custom-scroll modal__scroll">
-            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru')">
+            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru','Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
                 <div class="form__items">
                     <div class="item-form">
                         <div class="item-form__inp">
@@ -1854,7 +1902,7 @@
         </div>
         <div class="custom-scroll modal__scroll">
             <form class="form"
-                onsubmit="event.preventDefault();openSuccessMod('Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
+                onsubmit="event.preventDefault();formReset(this);openModal(document.querySelector('#password-success-modal'))">
                 <div class="form__items">
                     <div class="item-form item-form--password">
                         <div class="item-form__inp">
@@ -2028,8 +2076,8 @@
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#home"></use></svg></div><span>Главная</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#catalog"></use></svg></div><span>Каталог</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg><span>3</span></div><span>Избранное</span></a></li>
-            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li> 
-            <li><button class="btn mod-open-btn" data-modal="account-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> -->
+            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li>--> 
+            <li><button class="btn mod-open-btn" data-modal="log-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> 
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg><span>6</span></div><span>Корзина</span></a></li>
         </ul>
     </div>

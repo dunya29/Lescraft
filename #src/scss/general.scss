@@ -1396,12 +1396,15 @@ p a {
 		opacity: 0.4;
 	}
 	&__info {
+		font-size: 14px;
+		font-weight: 400;
+		color: var(--gray-color);
 		margin-bottom: 8px;
-		span {
-			font-size: 14px;
-			font-weight: 400;
-			color: var(--gray-color);
-			display: block;
+		&-desc {
+			font-weight: 500;
+			color: var(--black);
+			max-width: 542px;
+			margin-bottom: 8px;
 		}
 	}
 	&__items {
@@ -1431,6 +1434,14 @@ p a {
 			&:before,
 			&:after {
 				background: var(--gray-color);
+			}
+		}
+	}
+	@media ((min-width: $bp1) ) {	
+		&__info {
+			&-desc {
+				font-size: 16px;
+				max-width: 820px;
 			}
 		}
 	}
@@ -1464,6 +1475,9 @@ p a {
 		}
 		&__items::before {
 			font-size: 14px;
+		}
+		&__info-desc {
+			max-width: 100%;
 		}
 	}
 }

@@ -438,6 +438,7 @@
 <div class="breadcrumbs">
     <ul>
         <li><a href="#" class="link">Главная</a></li>
+        <li><a href="#" class="link">Корзина</a></li>
         <li>Оформление заказа</li>
     </ul>
 </div>
@@ -2016,7 +2017,7 @@
             <p>Для восстановления вашего пароля необходимо ввести ваш&nbsp;email ниже, и&nbsp;мы&nbsp;вышлем ссылку для&nbsp;сброса пароля</p>
         </div>
         <div class="custom-scroll modal__scroll">
-            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru')">
+            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru','Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
                 <div class="form__items">
                     <div class="item-form">
                         <div class="item-form__inp">
@@ -2053,7 +2054,7 @@
         </div>
         <div class="custom-scroll modal__scroll">
             <form class="form"
-                onsubmit="event.preventDefault();openSuccessMod('Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
+                onsubmit="event.preventDefault();formReset(this);openModal(document.querySelector('#password-success-modal'))">
                 <div class="form__items">
                     <div class="item-form item-form--password">
                         <div class="item-form__inp">
@@ -2227,8 +2228,8 @@
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#home"></use></svg></div><span>Главная</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#catalog"></use></svg></div><span>Каталог</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg><span>3</span></div><span>Избранное</span></a></li>
-            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li> 
-            <li><button class="btn mod-open-btn" data-modal="account-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> -->
+            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li>--> 
+            <li><button class="btn mod-open-btn" data-modal="log-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> 
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg><span>6</span></div><span>Корзина</span></a></li>
         </ul>
     </div>

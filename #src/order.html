@@ -14,7 +14,7 @@
                 <!--page-top-->
                 <div class="page-top">
                     <div class="container">
-                        @@include('_breadcrumbs.html', {"page": "Оформление заказа"})
+                        @@include('_breadcrumbs-2.html', {"page1":"Корзина", "page2": "Оформление заказа"})
                     </div>
                 </div>
                 <section class="section order-p">
@@ -22,7 +22,13 @@
                         <div class="sec-top">
                             <h1>Оформление заказа</h1>
                         </div>
-                        <div class="order-p__top"></div>
+                        <div class="profile-noLogged">
+                            <p><b>Есть аккаунт? Авторизуйтесь!</b></p>
+                            <button class="btn main-btn main-btn--link mod-open-btn" data-modal="log-modal">
+                                Войти
+                                <svg><use xlink:href="img/svg/sprite.svg#link"></use></svg>
+                            </button>
+                        </div>
                         <form class="form order-p__form">
                             <div class="page-row">
                                 <!--page-row__content-->

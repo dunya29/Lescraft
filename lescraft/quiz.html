@@ -706,7 +706,7 @@
                                     </label>
                                 </div>
                                 <button type="button" class="btn main-btn" data-to-step="2">Далее</button>
-                                <div data-error=""></div>
+                                <div data-error></div>
                             </div>
                             <div class="quiz-form__sec" data-step="2">
                                 <div class="quiz-form__top">
@@ -792,11 +792,12 @@
                                     </div>
                                     <div class="form__group">
                                         <div class="form__lbl">Прикрепите коммерческое предложение</div>
-                                        <p>В коммерческом предложении необходимо указать цены с&nbsp;НДС/без НДС, цена на&nbsp;франко-склад поставщика или&nbsp;франко-склад
-                                            покупателя, формат упаковки, должна стоять подпись ответственного лица и&nbsp;присутствовать печать</p>
                                         <div class="item-form file-form">
                                             <div class="file-form__info">
-                                                <span>Допустимые форматы: pdf, jpg, png. До 5 MB</span>
+                                                <p class="file-form__info-desc">В коммерческом предложении необходимо указать цены с&nbsp;НДС/без НДС, цена на&nbsp;франко-склад поставщика
+                                                    или&nbsp;франко-склад
+                                                    покупателя, формат упаковки, должна стоять подпись ответственного лица и&nbsp;присутствовать печать</p>
+                                                <p>Допустимые форматы: pdf, jpg, png. До 5 MB</p>
                                             </div>
                                             <label>
                                                 <input type="file" accept=".png, .jpg, .jpeg, .pdf" data-max-size="5">
@@ -2016,7 +2017,7 @@
             <p>Для восстановления вашего пароля необходимо ввести ваш&nbsp;email ниже, и&nbsp;мы&nbsp;вышлем ссылку для&nbsp;сброса пароля</p>
         </div>
         <div class="custom-scroll modal__scroll">
-            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru')">
+            <form class="form" onsubmit="event.preventDefault();formReset(this);recoveryPassword('email@mail.ru','Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
                 <div class="form__items">
                     <div class="item-form">
                         <div class="item-form__inp">
@@ -2053,7 +2054,7 @@
         </div>
         <div class="custom-scroll modal__scroll">
             <form class="form"
-                onsubmit="event.preventDefault();openSuccessMod('Проверьте свой почтовый ящик','На ваш почтовый ящик email@mail.ru мы&nbsp;отправили письмо с&nbsp;инструкциями по&nbsp;сбросу пароля')">
+                onsubmit="event.preventDefault();formReset(this);openModal(document.querySelector('#password-success-modal'))">
                 <div class="form__items">
                     <div class="item-form item-form--password">
                         <div class="item-form__inp">
@@ -2227,8 +2228,8 @@
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#home"></use></svg></div><span>Главная</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#catalog"></use></svg></div><span>Каталог</span></a></li>
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#fav"></use></svg><span>3</span></div><span>Избранное</span></a></li>
-            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li> 
-            <li><button class="btn mod-open-btn" data-modal="account-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> -->
+            <!-- <li><a href="profile.html"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Профиль</span></a></li>--> 
+            <li><button class="btn mod-open-btn" data-modal="log-modal"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#profile"></use></svg></div><span>Войти</span></button></li> 
             <li><a href="#"><div class="fixed-menu__icon"><svg><use xlink:href="img/svg/sprite.svg#cart"></use></svg><span>6</span></div><span>Корзина</span></a></li>
         </ul>
     </div>
